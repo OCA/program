@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-30 23:25+0000\n"
-"PO-Revision-Date: 2014-01-30 18:29-0500\n"
-"Last-Translator: Alexandre Boily <alexandre.boily@savoirfairelinux.com>\n"
+"PO-Revision-Date: 2014-02-13 03:52-0500\n"
+"Last-Translator: Davin Baragiotta <davin.baragiotta@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr "Partenaires"
 #. module: program_team
 #: field:program.action,team_department:0
 msgid "Administrative Units"
-msgstr ""
+msgstr "Unités administratives"
 
 #. module: program_team
 #: model:ir.model,name:program_team.model_program_action_team_department
@@ -54,7 +54,7 @@ msgstr "Rôle"
 #: model:ir.ui.menu,name:program_team.menu_configuration_action_team_role
 #: view:program.action.team.role:0
 msgid "Team Roles"
-msgstr ""
+msgstr "Rôles d'équipe"
 
 #. module: program_team
 #: field:program.action.team.member,employee:0
@@ -65,7 +65,7 @@ msgstr "Employé"
 #. module: program_team
 #: view:program.action.team.role:0
 msgid "Search Team Roles"
-msgstr ""
+msgstr "Rechercher dans les rôles d'équipe"
 
 #. module: program_team
 #: model:ir.model,name:program_team.model_program_action
@@ -73,7 +73,8 @@ msgid "program.action"
 msgstr "program.action"
 
 #. module: program_team
-#: view:program.action.team.role:0 field:program.action.team.role,name:0
+#: view:program.action.team.role:0
+#: field:program.action.team.role,name:0
 msgid "Name"
 msgstr "Nom"
 
@@ -85,8 +86,7 @@ msgstr "program.action.team.role"
 #. module: program_team
 #: help:program.action.team.partner,contribution:0
 msgid "Arbitrary contribution, usually a non-financial or unquantifiable one."
-msgstr ""
-"Contribution arbitraire, habituellement non-financière ou inquantifiable."
+msgstr "Contribution arbitraire, habituellement non-financière ou inquantifiable."
 
 #. module: program_team
 #: field:program.action,team_member:0
@@ -113,12 +113,12 @@ msgstr "Action"
 #. module: program_team
 #: field:program.action.team.department,department:0
 msgid "Administrative Unit"
-msgstr ""
+msgstr "Unité administrative"
 
 #. module: program_team
 #: view:program.action.team.role:0
 msgid "Team Role"
-msgstr ""
+msgstr "Rôle d'équipe"
 
 #. module: program_team
 #: model:ir.model,name:program_team.model_program_action_team_member
@@ -134,3 +134,4 @@ msgstr "program.action.team.partner"
 #: field:program.action.team.role,partner:0
 msgid "Partner"
 msgstr "Partenaire"
+

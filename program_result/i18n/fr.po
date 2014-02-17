@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-07 16:36+0000\n"
-"PO-Revision-Date: 2014-02-07 11:39-0500\n"
-"Last-Translator: Alexandre Boily <alexandre.boily@savoirfairelinux.com>\n"
+"PO-Revision-Date: 2014-02-13 03:53-0500\n"
+"Last-Translator: Davin Baragiotta <davin.baragiotta@savoirfairelinux.com>\n"
 "Language: fr\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -58,8 +58,10 @@ msgid "Search Restul Levels"
 msgstr "Rechercher dans les niveaux de résultats"
 
 #. module: program_result
-#: view:program.result:0 field:program.result,name:0
-#: view:program.result.level:0 field:program.result.level,name:0
+#: view:program.result:0
+#: field:program.result,name:0
+#: view:program.result.level:0
+#: field:program.result.level,name:0
 msgid "Name"
 msgstr "Nom"
 
@@ -76,7 +78,7 @@ msgstr "unknown"
 #. module: program_result
 #: field:program.result,planned_children:0
 msgid "Planned Children"
-msgstr "Enfant planifiés"
+msgstr "Enfants planifiés"
 
 #. module: program_result
 #: model:res.groups,name:program_result.program_result_user
@@ -84,7 +86,8 @@ msgid "Program Result User"
 msgstr "Utilisateur de résultat de programme"
 
 #. module: program_result
-#: view:program.action:0 field:program.action,parent_result:0
+#: view:program.action:0
+#: field:program.action,parent_result:0
 #: field:program.result,parent_result:0
 msgid "Parent Result"
 msgstr "Résultat parent"
@@ -95,7 +98,8 @@ msgid "Result Level"
 msgstr "Niveau de résultat"
 
 #. module: program_result
-#: field:program.result,level:0 field:program.result.level,depth:0
+#: field:program.result,level:0
+#: field:program.result.level,depth:0
 msgid "Level"
 msgstr "Niveau"
 
@@ -109,7 +113,7 @@ msgstr "La profondeur doit être supérieure ou égale à 0."
 #. module: program_result
 #: field:program.result,child_actions:0
 msgid "Child Actions"
-msgstr "Actions fils"
+msgstr "Actions filles"
 
 #. module: program_result
 #: code:addons/program_result/program.py:95
@@ -138,7 +142,8 @@ msgid "Result Levels"
 msgstr "Niveaux de résultats"
 
 #. module: program_result
-#: field:program.result,code:0 field:program.result.level,code:0
+#: field:program.result,code:0
+#: field:program.result.level,code:0
 msgid "Code"
 msgstr "Code"
 
@@ -155,7 +160,9 @@ msgstr "Résultats attendus"
 #. module: program_result
 #: model:ir.actions.act_window,name:program_result.action_program_result_tree
 #: model:ir.ui.menu,name:program_result.menu_program_action_result
-#: view:program.action:0 field:program.action,results:0 view:program.result:0
+#: view:program.action:0
+#: field:program.action,results:0
+#: view:program.result:0
 msgid "Results"
 msgstr "Résultats"
 
@@ -168,3 +175,4 @@ msgstr "Résultats fils attendus"
 #: field:program.result.level,result:0
 msgid "Result"
 msgstr "Résultat"
+

@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-05 20:03+0000\n"
-"PO-Revision-Date: 2014-02-05 15:05-0500\n"
-"Last-Translator: Alexandre Boily <alexandre.boily@savoirfairelinux.com>\n"
+"PO-Revision-Date: 2014-02-13 03:58-0500\n"
+"Last-Translator: Davin Baragiotta <davin.baragiotta@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -43,12 +43,14 @@ msgid "Description"
 msgstr "Description"
 
 #. module: program
-#: view:program.action:0 field:program.action,parent:0
+#: view:program.action:0
+#: field:program.action,parent:0
 msgid "Parent"
 msgstr "Parent"
 
 #. module: program
-#: field:program.action,level:0 field:program.action.level,depth:0
+#: field:program.action,level:0
+#: field:program.action.level,depth:0
 #: field:program.action.target,action:0
 msgid "Level"
 msgstr "Niveau"
@@ -61,7 +63,7 @@ msgstr "Transversal"
 #. module: program
 #: field:program.action,target_audience_type:0
 msgid "Target Audience Types"
-msgstr "Target Audience Types"
+msgstr "Types de public cible"
 
 #. module: program
 #: field:program.action.target,active:0
@@ -79,8 +81,10 @@ msgid "End Date"
 msgstr "Date de fin"
 
 #. module: program
-#: view:program.action:0 field:program.action,name:0
-#: field:program.action.level,name:0 field:program.action.target,name:0
+#: view:program.action:0
+#: field:program.action,name:0
+#: field:program.action.level,name:0
+#: field:program.action.target,name:0
 msgid "Name"
 msgstr "Nom"
 
@@ -94,7 +98,7 @@ msgstr "Programmes"
 #: code:addons/program/program_action_level.py:55
 #, python-format
 msgid "Depth must be greater than or equal to 0."
-msgstr "Le niveau doit être plus grande ou égal à 0."
+msgstr "Le niveau doit être plus grand ou égal à 0."
 
 #. module: program
 #: code:addons/program/program_action_level.py:39
@@ -107,7 +111,7 @@ msgstr "Erreur!"
 #: model:ir.actions.act_window,name:program.action_program_action_level_tree
 #: model:ir.ui.menu,name:program.menu_program_configuration_level
 msgid "Action Levels"
-msgstr "Action Levels"
+msgstr "Niveaux d'action"
 
 #. module: program
 #: model:res.groups,name:program.program_action_user
@@ -117,10 +121,11 @@ msgstr "Utilisateur d'action de programme"
 #. module: program
 #: model:ir.ui.menu,name:program.menu_program_configuration_target
 msgid "Action Target Types"
-msgstr "Types de publics cibles"
+msgstr "Types de public cible"
 
 #. module: program
-#: view:program.action:0 field:program.action.level,action:0
+#: view:program.action:0
+#: field:program.action.level,action:0
 msgid "Action"
 msgstr "Action"
 
@@ -132,7 +137,7 @@ msgstr "Rechercher dans les actions"
 #. module: program
 #: field:program.action,target_audience:0
 msgid "Target Audience"
-msgstr "Target Audience"
+msgstr "Public cible"
 
 #. module: program
 #: field:program.action,children:0
@@ -140,7 +145,8 @@ msgid "Sub-actions"
 msgstr "Sous-actions"
 
 #. module: program
-#: field:program.action,code:0 field:program.action.level,code:0
+#: field:program.action,code:0
+#: field:program.action.level,code:0
 msgid "Code"
 msgstr "Code"
 
@@ -165,12 +171,12 @@ msgstr "Grouper par..."
 #. module: program
 #: model:res.groups,comment:program.program_action_user
 msgid "Program Action Users"
-msgstr "Program Action Users"
+msgstr "Utilisateurs d'action de programme"
 
 #. module: program
 #: view:program.action.target:0
 msgid "Search Action Targets"
-msgstr "Search Action Targets"
+msgstr "Rechercher dans les publics cibles"
 
 #. module: program
 #: model:ir.model,name:program.model_program_action_level
@@ -186,3 +192,4 @@ msgstr "Date de début"
 #: model:ir.model,name:program.model_program_action_target
 msgid "program.action.target"
 msgstr "program.action.target"
+
