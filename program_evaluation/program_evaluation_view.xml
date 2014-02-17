@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+
+    <record id="view_program_evaluation_recommendation_tree" model="ir.ui.view">
+      <field name="name">Program Evaluation Recommendation Tree</field>
+      <field name="model">program.recommendation</field>
+      <field name="arch" type="xml">
+        <tree string="Recommendation" version="7.0">
+          <field name="code" />
+	  <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_program_evaluation_recommendation_form" model="ir.ui.view">
+      <field name="name">Program Evaluation Recommendation Form</field>
+      <field name="model">program.recommendation</field>
+      <field name="arch" type="xml">
+
+	<form string="Recommendation" version="7.0">
+	  <sheet>
+	    <group col="4">
+	      <field name="code" />
+	      <field name="name" />
+	    </group>
+	    <group>
+	      <field name="description" />
+	    </group>
+	  </sheet>
+	</form>
+      </field>
+    </record>
+
+    <record id="view_program_evaluation_form" model="ir.ui.view">
+      <field name="name">Program Evaluation Form</field>
+      <field name="model">program.evaluation</field>
+      <field name="arch" type="xml">
+        <form string="Evaluation" version="7.0">
+	  <header>
+	    <button
+		string="Plan"
+		name="plan"
+		states="draft"
+		type="workflow"
+		class="oe_highlight"
+		/>
+
+	    <button
+		string="Setup"
+		name="setup"
+		states="plan"
+		type="workflow"
+		class="oe_highlight"
+		/>
+
+	    <button
+		string="Ongoing"
+		name="ongoing"
+		states="setup"
+		type="workflow"
+		class="oe_highlight"
+		/>
+
+	    <button
+		string="Done"
+		name="done"
+		states="ongoing"
+		type="workflow"
+		class="oe_highlight"
+		/>
+	    <button
+		string="Cancel"
+		name="cancel"
+		states="draft,plan,setup,ongoing"
+		type="workflow"
+		class="oe_highlight"
+		/>
+
+
+	    <field name="state" widget="statusbar" statusbar_visible="draft,plan,setup,ongoing,done"/>
+	  </header>
+
+	  <sheet>
+	    <group>
+              <field name="name" />
+	    </group>
+
+	    <group>
+	      <field name="action_id" />
+	    </group>
+
+	    <group col="2">
+	      <field name="date_start" />
+	      <field name="date_end" />
+	    </group>
+
+	    <group col="2">
+	      <field name="abstract" />
+	    </group>
+
+	    <notebook>
+	      <page name="evaluators" string="Evaluators">
+		<field name="evaluator_id" domain="[('is_company', '=', False)]"/>
+	      </page>
+	      <page name="recommendations" string="Recommendations">
+		<field name="recommendation_id" context="{ 'default_evaluation_id': active_id }"/>
+	      </page>
+	    </notebook>
+	  </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <record id="view_program_evaluation_tree" model="ir.ui.view">
+      <field name="name">Program Evaluation Tree</field>
+      <field name="model">program.evaluation</field>
+      <field name="arch" type="xml">
+        <tree string="Evaluation" version="7.0">
+          <field name="name" />
+	  <field name="action_id" />
+	  <field name="date_start" />
+	  <field name="date_end" />
+        </tree>
+      </field>
+    </record>
+
+
+    <record id="action_program_evaluation_tree" model="ir.actions.act_window">
+      <field name="name">Evaluations</field>
+      <field name="res_model">program.evaluation</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_program_evaluation_tree" />
+      <field name="target">current</field>
+    </record>
+
+    <record id="action_program_evaluation_tree" model="ir.actions.act_window">
+      <field name="name">Evaluations</field>
+      <field name="res_model">program.evaluation</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_program_evaluation_tree" />
+      <field name="target">current</field>
+    </record>
+
+    <menuitem 
+	id="menu_program_evaluation_action"
+	name="Evaluations"
+	parent="program.menu_program"
+	groups="program.program_action_user"
+	sequence="1" />
+
+    <menuitem
+      id="menu_program_evaluation_action_action"
+      name="Evaluations"
+      parent="menu_program_evaluation_action"
+      action="action_program_evaluation_tree"
+      groups="program.program_action_user"
+      sequence="1" />    
+
+
+
+
+  </data>
+</openerp>

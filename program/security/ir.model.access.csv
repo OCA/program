@@ -1,0 +1,4 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+access_program_action_user,access_program_action_user,model_program_action,program_action_user,1,1,1,1
+access_program_action_level_user,access_program_action_level_user,model_program_action_level,program_action_user,1,1,1,1
+access_program_action_target_user,access_program_action_target_user,model_program_action_target,program_action_user,1,1,1,1

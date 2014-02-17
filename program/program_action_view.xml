@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+    <record id="view_program_action_tree" model="ir.ui.view">
+      <field name="name">Program Action Tree</field>
+      <field name="model">program.action</field>
+      <field name="arch" type="xml">
+        <tree string="Action" version="7.0">
+          <field name="level" />
+          <field name="code" />
+          <field name="name" />
+          <field name="date_from" />
+          <field name="date_to" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_program_action_form" model="ir.ui.view">
+      <field name="name">Program Action Form</field>
+      <field name="model">program.action</field>
+      <field name="arch" type="xml">
+        <form string="Action" version="7.0">
+          <sheet>
+            <div class="oe_title">
+              <label for="name" class="oe_edit_only" />
+              <h1>
+                <field name="name" />
+              </h1>
+            </div>
+
+            <group colspan="4" col="4">
+              <group>
+                <field name="code" />
+                <field name="level" />
+                <field name="parent" />
+              </group>
+
+              <group>
+                <field name="date_from" />
+                <field name="date_to" />
+              </group>
+            </group>
+
+            <group colspan="4" col="2">
+              <field name="description" />
+              <field name="target_audience" />
+              <field name="target_audience_type" domain="[('active', '=', True)]" />
+            </group>
+
+            <notebook>
+              <page name="children" string="Actions">
+                <group colspan="4" col="4">
+                  <group colspan="4" col="1">
+                    <label for="children" />
+                    <field name="children" nolabel="1">
+                      <tree>
+                        <field name="level" />
+                        <field name="name" />
+                      </tree>
+                    </field>
+                  </group>
+
+                  <!-- TODO hidden for this release; to be shown again after that.
+                  <group colspan="2" col="1">
+                    <label for="transverse" />
+                    <field name="transverse" nolabel="1">
+                      <tree>
+                        <field name="level" />
+                        <field name="name" />
+                      </tree>
+                    </field>
+                  </group>
+                  -->
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_program_action_search" model="ir.ui.view">
+      <field name="name">Program Action Search</field>
+      <field name="model">program.action</field>
+      <field name="arch" type="xml">
+        <search string="Search Actions" version="7.0">
+          <field name="name" string="Name" />
+
+          <group expand="0" string="Group by...">
+            <filter string="Parent" name="parent" context="{'group_by': 'parent'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_program_action_tree" model="ir.actions.act_window">
+      <field name="name">Actions</field>
+      <field name="res_model">program.action</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_program_action_tree" />
+      <field name="search_view_id" ref="view_program_action_search" />
+      <field name="target">current</field>
+    </record>
+
+    <menuitem
+      id="menu_program"
+      name="Programs"
+      groups="program_action_user"
+      sequence="12" />
+
+    <menuitem
+      id="menu_program_action"
+      name="Actions"
+      parent="menu_program"
+      groups="program_action_user"
+      sequence="1" />
+
+    <menuitem
+      id="menu_program_action_action"
+      name="Actions"
+      parent="menu_program_action"
+      action="action_program_action_tree"
+      groups="program_action_user"
+      sequence="1" />
+
+    <menuitem
+      id="menu_program_configuration"
+      name="Configuration"
+      parent="menu_program"
+      groups="program_action_user"
+      sequence="2" />
+  </data>
+</openerp>
