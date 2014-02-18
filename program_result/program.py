@@ -85,7 +85,7 @@ class program_action(orm.Model):
             vals = []
             for result in result_pool.browse(cr, uid, results, context=context):
                 val = {
-                    'result': (result.code and result.code + ' - ' or '') + result.name,
+                    'result': result.name_get()[0][1],
                     'expected': result.expected_child_results,
                     'childs': []
                 }
@@ -98,7 +98,7 @@ class program_action(orm.Model):
                     for child_result in result_pool.browse(
                             cr, uid, child_result_ids, context=context):
                         child_val = {
-                            'result': '%s - %s' % (child_result.code, child_result.name),
+                            'result': child_result.name_get()[0][1],
                             'description': child_result.description,
                             'childs': []
                         }
@@ -235,9 +235,13 @@ class program_result(orm.Model):
         parent = action.parent
 
         while parent:
-            if parent.results:
+            if not parent.results and parent.parent_result:
+                results = [parent.parent_result.id]
+                break
+            elif parent.results:
                 results = [r.id for r in parent.results]
                 break
+
             parent = parent.parent
 
         return [('id', 'in', results)]
@@ -254,6 +258,23 @@ class program_result(orm.Model):
 
         for result in self.browse(cr, uid, ids, context=context):
             res[result.id] = []
+
+        return res
+
+    def name_get(self, cr, uid, ids, context=None):
+        res = []
+
+        if not isinstance(ids, list):
+            ids = [ids]
+
+        for line in self.browse(cr, uid, ids, context=context):
+            res.append(
+                (line.id,
+                 ''.join([
+                     line.level and line.level.code  and line.level.code + ' - ' or '',
+                     (line.code and line.code + ' - ') or '',
+                     line.name]))
+            )
 
         return res
 
