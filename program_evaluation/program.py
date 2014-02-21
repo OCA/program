@@ -32,7 +32,6 @@ class program_recommendation(orm.Model):
         'code': fields.char(
             'Code',
             size=32,
-            required=True,
         ),
 
         'name': fields.char(
