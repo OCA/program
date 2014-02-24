@@ -103,7 +103,7 @@
 
 	    <notebook>
 	      <page name="evaluators" string="Evaluators">
-		<field name="evaluator_id" domain="[('is_company', '=', False)]"/>
+		<field name="evaluator_id" domain="[('is_company', '=', False), ('contact_id', '=', False)]"/>
 	      </page>
 	      <page name="recommendations" string="Recommendations">
 		<field name="recommendation_id" context="{ 'default_evaluation_id': active_id }"/>
