@@ -6,11 +6,10 @@
       <field name="model">program.action</field>
       <field name="inherit_id" ref="program.view_program_action_form" />
       <field name="arch" type="xml">
-        <xpath expr="//notebook/page[@name='children']" position="before">
-          <page name="team" string="Evaluation">
+        <xpath expr="//notebook/page[@name='children']" position="after">
+          <page name="evaluation" string="Evaluation">
             <group colspan="4" col="2">
-              <field name="evaluation">
-
+              <field name="evaluation" nolabel="1" context="{'from_action': True }"> 
               </field>
             </group>
           </page>
