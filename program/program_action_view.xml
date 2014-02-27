@@ -79,6 +79,17 @@
       </field>
     </record>
 
+    <record id="view_program_action_calendar" model="ir.ui.view">
+      <field name="name">Program Action Calendar</field>
+      <field name="model">program.action</field>
+      <field name="arch" type="xml">
+        <calendar string="Action Schedule" color="level" date_start="date_from" date_stop="date_to" version="7.0">
+          <field name="code" />
+          <field name="name" />
+        </calendar>
+      </field>
+    </record>
+
     <record id="view_program_action_search" model="ir.ui.view">
       <field name="name">Program Action Search</field>
       <field name="model">program.action</field>
@@ -97,7 +108,7 @@
       <field name="name">Actions</field>
       <field name="res_model">program.action</field>
       <field name="view_type">form</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,calendar</field>
       <field name="view_id" ref="view_program_action_tree" />
       <field name="search_view_id" ref="view_program_action_search" />
       <field name="target">current</field>

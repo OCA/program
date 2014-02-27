@@ -60,15 +60,10 @@ class program_action_level(orm.Model):
             cr, uid, ids, vals, context=context)
 
     def name_get(self, cr, uid, ids, context=None):
-        res = []
-
         if not isinstance(ids, list):
             ids = [ids]
-
-        for line in self.browse(cr, uid, ids, context=context):
-            res.append((line.id, (line.code and line.code + ' - ') + line.name))
-
-        return res
+        return [(line.id, (line.code and line.code + ' - ' or '') + line.name)
+                for line in self.browse(cr, uid, ids, context=context)]
 
     _columns = {
         'name': fields.char(
