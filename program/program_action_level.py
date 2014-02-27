@@ -59,6 +59,17 @@ class program_action_level(orm.Model):
             program_action_level, self).write(
             cr, uid, ids, vals, context=context)
 
+    def name_get(self, cr, uid, ids, context=None):
+        res = []
+
+        if not isinstance(ids, list):
+            ids = [ids]
+
+        for line in self.browse(cr, uid, ids, context=context):
+            res.append((line.id, (line.code and line.code + ' - ') + line.name))
+
+        return res
+
     _columns = {
         'name': fields.char(
             'Name',
