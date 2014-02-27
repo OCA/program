@@ -183,6 +183,17 @@ class program_result_level(orm.Model):
             program_result_level, self).write(
             cr, uid, ids, vals, context=context)
 
+    def name_get(self, cr, uid, ids, context=None):
+        res = []
+
+        if not isinstance(ids, list):
+            ids = [ids]
+
+        for line in self.browse(cr, uid, ids, context=context):
+            res.append((line.id, (line.code and line.code + ' - ') + line.name))
+
+        return res
+
     _columns = {
         'name': fields.char(
             'Name',
@@ -278,6 +289,17 @@ class program_result(orm.Model):
 
         return res
 
+    def _get_level_code(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+
+        if not isinstance(ids, list):
+            ids = [ids]
+
+        for line in self.browse(cr, uid, ids, context=context):
+            res[line.id] = line.level.code or line.level.name
+
+        return res
+
     _columns = {
         'name': fields.char(
             'Name',
@@ -341,4 +363,9 @@ class program_result(orm.Model):
             method=True,
             string='Planned Children',
         ),
+        'level_code': fields.function(
+            _get_level_code,
+            type='char',
+            method=True,
+            string="Level")
     }

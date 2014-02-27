@@ -44,7 +44,13 @@
 		<label for="parent_expected_child_results" string="Parent expected results recall" />
 		<div>
 		  <field name="parent_expected_child_results" />
-		  <field name="results" />
+		  <field name="results">
+		    <tree>
+		      <field name="level_code" />
+		      <field name="code" />
+		      <field name="name" />
+		    </tree>
+		  </field>
 		</div>
               </page>
 	      <page name="child_results" string="Child Results">
