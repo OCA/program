@@ -22,6 +22,7 @@
 
 from openerp.osv import fields, orm
 
+
 class program_indicator(orm.Model):
 
     _name = 'program.indicator'
@@ -48,5 +49,3 @@ class program_indicator(orm.Model):
         ),
 
     }
-
-
