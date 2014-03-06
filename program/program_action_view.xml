@@ -4,6 +4,7 @@
     <record id="view_program_action_tree" model="ir.ui.view">
       <field name="name">Program Action Tree</field>
       <field name="model">program.action</field>
+      <field name="field_parent">children</field>
       <field name="arch" type="xml">
         <tree string="Action" version="7.0">
           <field name="level" />
@@ -107,11 +108,30 @@
     <record id="action_program_action_tree" model="ir.actions.act_window">
       <field name="name">Actions</field>
       <field name="res_model">program.action</field>
-      <field name="view_type">form</field>
+      <field name="view_type">tree</field>
       <field name="view_mode">tree,form,calendar</field>
       <field name="view_id" ref="view_program_action_tree" />
       <field name="search_view_id" ref="view_program_action_search" />
       <field name="target">current</field>
+    </record>
+
+    <!-- Action to open list and forms of item (view_type=tree) -->
+    <record model="ir.actions.act_window" id="action_program_action_form">
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">program.action</field>
+        <field name="name">Action</field>
+        <field name="view_type">form</field>
+        <field name="domain">[('parent','child_of',active_id)]</field>
+        <field name="context">{'parent':active_id}</field>
+    </record>
+
+    <!-- Insert a value for tree view to open list and forms of item -->
+    <record model="ir.values" id="ir_action_action_structure_form">
+        <field name="key2" eval="'tree_but_open'"/>
+        <field name="model" eval="'program.action'"/>
+        <field name="name">Open Action Form</field>
+        <field name="value"
+               eval="'ir.actions.act_window,%d'%action_program_action_form"/>
     </record>
 
     <menuitem
