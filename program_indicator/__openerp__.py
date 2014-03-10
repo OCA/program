@@ -2,7 +2,7 @@
 ############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    This module copyright (C) 2013 Savoir-faire Linux
+#    This module copyright (C) 2014 Savoir-faire Linux
 #    (<http://www.savoirfairelinux.com>).
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
     'summary': 'Program Indicator',
     'description': """
 Program Indicator
-==================
+=================
 
 Contributeurs
 -------------
@@ -39,6 +39,7 @@ Contributeurs
     'depends': [
         'program'
     ],
+    'license': 'AGPL-3',
     'external_dependencies': {},
     'data': [
         'program_indicator_view.xml',
@@ -48,5 +49,3 @@ Contributeurs
     'test': [],
     'installable': True,
 }
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
