@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-30 23:25+0000\n"
-"PO-Revision-Date: 2014-01-30 23:25+0000\n"
+"POT-Creation-Date: 2014-03-12 20:33+0000\n"
+"PO-Revision-Date: 2014-03-12 20:33+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,11 +21,7 @@ msgid "Partners"
 msgstr ""
 
 #. module: program_team
-#: field:program.action,team_department:0
-msgid "Administrative Units"
-msgstr ""
-
-#. module: program_team
+#: model:_description:0
 #: model:ir.model,name:program_team.model_program_action_team_department
 msgid "program.action.team.department"
 msgstr ""
@@ -36,6 +32,7 @@ msgid "Organisation"
 msgstr ""
 
 #. module: program_team
+#: field:program.action.team.department,department:0
 #: field:program.action.team.role,department:0
 msgid "Department"
 msgstr ""
@@ -77,6 +74,7 @@ msgid "Name"
 msgstr ""
 
 #. module: program_team
+#: model:_description:0
 #: model:ir.model,name:program_team.model_program_action_team_role
 msgid "program.action.team.role"
 msgstr ""
@@ -97,6 +95,16 @@ msgid "Non-Financial Contribution"
 msgstr ""
 
 #. module: program_team
+#: model:_description:0
+msgid "Model Program Document"
+msgstr ""
+
+#. module: program_team
+#: field:program.action,team_department:0
+msgid "Departments"
+msgstr ""
+
+#. module: program_team
 #: view:program.action:0
 msgid "Team"
 msgstr ""
@@ -109,21 +117,18 @@ msgid "Action"
 msgstr ""
 
 #. module: program_team
-#: field:program.action.team.department,department:0
-msgid "Administrative Unit"
-msgstr ""
-
-#. module: program_team
 #: view:program.action.team.role:0
 msgid "Team Role"
 msgstr ""
 
 #. module: program_team
+#: model:_description:0
 #: model:ir.model,name:program_team.model_program_action_team_member
 msgid "program.action.team.member"
 msgstr ""
 
 #. module: program_team
+#: model:_description:0
 #: model:ir.model,name:program_team.model_program_action_team_partner
 msgid "program.action.team.partner"
 msgstr ""

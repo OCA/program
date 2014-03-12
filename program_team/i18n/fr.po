@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-30 23:25+0000\n"
-"PO-Revision-Date: 2014-02-13 03:52-0500\n"
+"POT-Creation-Date: 2014-03-12 20:33+0000\n"
+"PO-Revision-Date: 2014-03-12 16:51-0500\n"
 "Last-Translator: Davin Baragiotta <davin.baragiotta@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. module: program_team
 #: field:program.action,team_partner:0
@@ -23,11 +23,7 @@ msgid "Partners"
 msgstr "Partenaires"
 
 #. module: program_team
-#: field:program.action,team_department:0
-msgid "Administrative Units"
-msgstr "Unités administratives"
-
-#. module: program_team
+#: model:_description:0
 #: model:ir.model,name:program_team.model_program_action_team_department
 msgid "program.action.team.department"
 msgstr "program.action.team.department"
@@ -38,6 +34,7 @@ msgid "Organisation"
 msgstr "Organisation"
 
 #. module: program_team
+#: field:program.action.team.department,department:0
 #: field:program.action.team.role,department:0
 msgid "Department"
 msgstr "Département"
@@ -73,12 +70,12 @@ msgid "program.action"
 msgstr "program.action"
 
 #. module: program_team
-#: view:program.action.team.role:0
-#: field:program.action.team.role,name:0
+#: view:program.action.team.role:0 field:program.action.team.role,name:0
 msgid "Name"
 msgstr "Nom"
 
 #. module: program_team
+#: model:_description:0
 #: model:ir.model,name:program_team.model_program_action_team_role
 msgid "program.action.team.role"
 msgstr "program.action.team.role"
@@ -86,7 +83,8 @@ msgstr "program.action.team.role"
 #. module: program_team
 #: help:program.action.team.partner,contribution:0
 msgid "Arbitrary contribution, usually a non-financial or unquantifiable one."
-msgstr "Contribution arbitraire, habituellement non-financière ou inquantifiable."
+msgstr ""
+"Contribution arbitraire, habituellement non-financière ou inquantifiable."
 
 #. module: program_team
 #: field:program.action,team_member:0
@@ -97,6 +95,16 @@ msgstr "Membres"
 #: field:program.action.team.partner,contribution:0
 msgid "Non-Financial Contribution"
 msgstr "Contribution non-financière"
+
+#. module: program_team
+#: model:_description:0
+msgid "Model Program Document"
+msgstr "Modèle Program Document"
+
+#. module: program_team
+#: field:program.action,team_department:0
+msgid "Departments"
+msgstr "Départements"
 
 #. module: program_team
 #: view:program.action:0
@@ -111,21 +119,18 @@ msgid "Action"
 msgstr "Action"
 
 #. module: program_team
-#: field:program.action.team.department,department:0
-msgid "Administrative Unit"
-msgstr "Unité administrative"
-
-#. module: program_team
 #: view:program.action.team.role:0
 msgid "Team Role"
 msgstr "Rôle d'équipe"
 
 #. module: program_team
+#: model:_description:0
 #: model:ir.model,name:program_team.model_program_action_team_member
 msgid "program.action.team.member"
 msgstr "program.action.team.member"
 
 #. module: program_team
+#: model:_description:0
 #: model:ir.model,name:program_team.model_program_action_team_partner
 msgid "program.action.team.partner"
 msgstr "program.action.team.partner"
@@ -135,3 +140,8 @@ msgstr "program.action.team.partner"
 msgid "Partner"
 msgstr "Partenaire"
 
+#~ msgid "Administrative Units"
+#~ msgstr "Unités administratives"
+
+#~ msgid "Administrative Unit"
+#~ msgstr "Unité administrative"

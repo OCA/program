@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-13 21:52+0000\n"
-"PO-Revision-Date: 2014-02-13 21:52+0000\n"
+"POT-Creation-Date: 2014-03-12 20:32+0000\n"
+"PO-Revision-Date: 2014-03-12 20:32+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,7 @@ msgid "Program Result Users"
 msgstr ""
 
 #. module: program_result
+#: model:_description:0
 #: model:ir.model,name:program_result.model_program_result_level
 msgid "program.result.level"
 msgstr ""
@@ -79,11 +80,6 @@ msgid "Planned Children"
 msgstr ""
 
 #. module: program_result
-#: model:res.groups,name:program_result.program_result_user
-msgid "Program Result User"
-msgstr ""
-
-#. module: program_result
 #: view:program.action:0
 #: field:program.action,parent_result:0
 #: field:program.result,parent_result:0
@@ -97,6 +93,7 @@ msgstr ""
 
 #. module: program_result
 #: field:program.result,level:0
+#: field:program.result,level_code:0
 #: field:program.result.level,depth:0
 msgid "Level"
 msgstr ""
@@ -109,14 +106,26 @@ msgid "Depth must be greater than or equal to 0."
 msgstr ""
 
 #. module: program_result
+#: model:_description:0
+msgid "Model Program Document"
+msgstr ""
+
+#. module: program_result
 #: field:program.result,child_actions:0
 msgid "Child Actions"
 msgstr ""
 
 #. module: program_result
+#: model:ir.actions.act_window,name:program_result.action_program_result_level_tree
+#: model:ir.ui.menu,name:program_result.menu_program_configuration_result_level
+#: view:program.result.level:0
+msgid "Result Levels"
+msgstr ""
+
+#. module: program_result
 #: code:addons/program_result/program.py:163
 #: code:addons/program_result/program.py:178
-#: code:addons/program_result/program.py:229
+#: code:addons/program_result/program.py:240
 #, python-format
 msgid "Error!"
 msgstr ""
@@ -127,21 +136,20 @@ msgid "Parent expected results recall"
 msgstr ""
 
 #. module: program_result
+#: model:_description:0
 #: model:ir.model,name:program_result.model_program_result
 msgid "program.result"
 msgstr ""
 
 #. module: program_result
-#: code:addons/program_result/program.py:229
+#: code:addons/program_result/program.py:240
 #, python-format
 msgid "Action is absent from context."
 msgstr ""
 
 #. module: program_result
-#: model:ir.actions.act_window,name:program_result.action_program_result_level_tree
-#: model:ir.ui.menu,name:program_result.menu_program_configuration_result_level
-#: view:program.result.level:0
-msgid "Result Levels"
+#: model:res.groups,name:program_result.program_result_user
+msgid "Program Result User"
 msgstr ""
 
 #. module: program_result

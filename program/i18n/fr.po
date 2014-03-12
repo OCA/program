@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-05 20:03+0000\n"
-"PO-Revision-Date: 2014-02-13 03:58-0500\n"
+"POT-Creation-Date: 2014-03-12 20:32+0000\n"
+"PO-Revision-Date: 2014-03-12 16:47-0500\n"
 "Last-Translator: Davin Baragiotta <davin.baragiotta@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. module: program
 #: model:ir.actions.act_window,name:program.action_program_action_target_tree
@@ -44,16 +44,13 @@ msgstr "Description"
 
 #. module: program
 #: view:program.action:0
-#: field:program.action,parent:0
-msgid "Parent"
-msgstr "Parent"
+msgid "Action Schedule"
+msgstr "Calendrier des actions"
 
 #. module: program
-#: field:program.action,level:0
-#: field:program.action.level,depth:0
-#: field:program.action.target,action:0
-msgid "Level"
-msgstr "Niveau"
+#: model:ir.ui.menu,name:program.menu_program
+msgid "Programs"
+msgstr "Programmes"
 
 #. module: program
 #: field:program.action,transverse:0
@@ -81,17 +78,16 @@ msgid "End Date"
 msgstr "Date de fin"
 
 #. module: program
-#: view:program.action:0
-#: field:program.action,name:0
-#: field:program.action.level,name:0
-#: field:program.action.target,name:0
+#: view:program.action:0 field:program.action,name:0
+#: field:program.action.level,name:0 field:program.action.target,name:0
 msgid "Name"
 msgstr "Nom"
 
 #. module: program
-#: model:ir.ui.menu,name:program.menu_program
-msgid "Programs"
-msgstr "Programmes"
+#: field:program.action,level:0 field:program.action.level,depth:0
+#: field:program.action.target,action:0
+msgid "Level"
+msgstr "Niveau"
 
 #. module: program
 #: code:addons/program/program_action_level.py:40
@@ -99,6 +95,11 @@ msgstr "Programmes"
 #, python-format
 msgid "Depth must be greater than or equal to 0."
 msgstr "Le niveau doit être plus grand ou égal à 0."
+
+#. module: program
+#: model:_description:0
+msgid "Model Program Document"
+msgstr "Modèle Program Document"
 
 #. module: program
 #: code:addons/program/program_action_level.py:39
@@ -124,8 +125,8 @@ msgid "Action Target Types"
 msgstr "Types de public cible"
 
 #. module: program
-#: view:program.action:0
-#: field:program.action.level,action:0
+#: model:ir.actions.act_window,name:program.action_program_action_form
+#: view:program.action:0 field:program.action.level,action:0
 msgid "Action"
 msgstr "Action"
 
@@ -145,10 +146,14 @@ msgid "Sub-actions"
 msgstr "Sous-actions"
 
 #. module: program
-#: field:program.action,code:0
-#: field:program.action.level,code:0
+#: field:program.action,code:0 field:program.action.level,code:0
 msgid "Code"
 msgstr "Code"
+
+#. module: program
+#: view:program.action:0 field:program.action,parent:0
+msgid "Parent"
+msgstr "Parent"
 
 #. module: program
 #: view:program.action.level:0
@@ -179,7 +184,7 @@ msgid "Search Action Targets"
 msgstr "Rechercher dans les publics cibles"
 
 #. module: program
-#: model:ir.model,name:program.model_program_action_level
+#: model:_description:0 model:ir.model,name:program.model_program_action_level
 msgid "program.action.level"
 msgstr "program.action.level"
 
@@ -189,7 +194,7 @@ msgid "Start Date"
 msgstr "Date de début"
 
 #. module: program
+#: model:_description:0
 #: model:ir.model,name:program.model_program_action_target
 msgid "program.action.target"
 msgstr "program.action.target"
-
