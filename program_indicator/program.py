@@ -251,7 +251,6 @@ class program_indicator(orm.Model):
     _columns = {
         'name': fields.char(
             'Name',
-            size=128,
             required=True,
             select=True,
         ),
