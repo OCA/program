@@ -35,13 +35,18 @@ Program Indicator
 Contributeurs
 -------------
 * David Cormier (david.cormier@savoirfairelinux.com)
+
 """,
     'depends': [
-        'program'
+        'program',
+        'program_result',
     ],
     'external_dependencies': {},
     'data': [
         'program_indicator_view.xml',
+        'program_result_indicator_view.xml',
+        'program_indicator_workflow.xml',
+        'program_action_monitoring_view.xml',
     ],
     'demo': [
     ],
