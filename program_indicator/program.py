@@ -55,16 +55,16 @@ class program_action(orm.Model):
               <thead>
                 <tr class="oe_list_header_columns">
                   <th class="oe_list_header_char null">
-                    ${_('Indicator')}
+                    ${_indicator}
                   </th>
                   <th class="oe_list_header_char null">
-                    ${_('Initial value')}
+                    ${_initial_value}
                   </th>
                   <th class="oe_list_header_char null">
-                    ${_('Target value')}
+                    ${_target_value}
                   </th>
                   <th class="oe_list_header_char null">
-                    ${_('Value')}
+                    ${_value}
                   </th>
                 </tr>
               </thead>
@@ -72,16 +72,16 @@ class program_action(orm.Model):
                 % for indicator in result['indicators']:
                 <tr data-id="${indicator.id}" style>
                   <td class="oe_list_field_cell oe_list_field_char oe_required">
-                    ${indicator.indicator_id.name}
+                    ${indicator.indicator_id.name or ""}
                   </td>
                   <td class="oe_list_field_cell oe_list_field_char oe_required">
-                    ${indicator.value_initial}
+                    ${indicator.value_initial or ""}
                   </td>
                   <td class="oe_list_field_cell oe_list_field_char oe_required">
-                    ${indicator.value_target}
+                    ${indicator.value_target or ""}
                   </td>
                   <td class="oe_list_field_cell oe_list_field_char oe_required">
-                    ${indicator.value}
+                    ${indicator.value or ""}
                   </td>
                 </tr>
                 % endfor
@@ -130,8 +130,16 @@ class program_action(orm.Model):
                     'indicators': indicator_values
                 })
 
+            initial_value = _("""Initial value""")
+            indicator = _("""Indicator""")
+            target_value = _("""Target value""")
+            value = _("""Value""")
+
             res[action.id] = template.render(values=vals,
-                                             _=_)
+                                             _initial_value=initial_value,
+                                             _indicator=indicator,
+                                             _target_value=target_value,
+                                             _value=value)
 
         return res
 

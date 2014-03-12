@@ -7,10 +7,10 @@
       <field name="inherit_id" ref="program.view_program_action_form" />
       <field name="arch" type="xml">
         <xpath expr="//notebook/page[@name='monitoring']" position="inside">
-          <page name="evaluation" string="Easdcvaluation">
+          <page name="indicators" string="Indicators">
             <group colspan="4" col="2">
-              <field name="child_results_list" nolabel="1" context="{'from_action': True }"> 
-              </field>
+                <field name="child_results_list" nolabel="1" context="{'from_action': True }"> 
+                </field>
             </group>
           </page>
         </xpath>

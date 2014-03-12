@@ -16,7 +16,9 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: program_indicator
+#: code:addons/program_indicator/program.py:134
 #: view:program.indicator:0
+#: field:result.indicator,indicator_id:0
 msgid "Indicator"
 msgstr "Indicateur"
 
@@ -36,9 +38,21 @@ msgid "Risk Hypothesis"
 msgstr "Risques et hypothèses"
 
 #. module: program_indicator
-#: model:ir.model,name:program_indicator.model_program_indicator
-msgid "program.indicator"
-msgstr ""
+#: field:program.result,result_indicator_id:0
+#: view:result.indicator:0
+msgid "Result Indicator"
+msgstr "Indicateurs de résultats"
+
+#. module: program_indicator
+#: view:result.indicator:0
+#: field:result.indicator,action_id:0
+msgid "Action"
+msgstr "Action"
+
+#. module: program_indicator
+#: selection:result.indicator,state:0
+msgid "Draft"
+msgstr "Brouillon"
 
 #. module: program_indicator
 #: model:ir.actions.act_window,name:program_indicator.action_program_indicator_tree
@@ -51,4 +65,143 @@ msgstr "Indicateurs"
 #: field:program.indicator,verification_means:0
 msgid "Verification means"
 msgstr "Moyens de vérification"
+
+#. module: program_indicator
+#: model:ir.model,name:program_indicator.model_program_action
+msgid "program.action"
+msgstr ""
+
+#. module: program_indicator
+#: view:result.indicator:0
+#: selection:result.indicator,state:0
+msgid "Pending"
+msgstr ""
+
+#. module: program_indicator
+#: field:result.indicator,state:0
+msgid "Status"
+msgstr ""
+
+#. module: program_indicator
+#: field:result.indicator,risk_hypothesis:0
+msgid "Risk hypothesis"
+msgstr "Risques et hypothèses"
+
+#. module: program_indicator
+#: view:result.indicator:0
+msgid "Search Result Indicators"
+msgstr "Rechercher"
+
+#. module: program_indicator
+#: field:result.indicator,partner_id:0
+msgid "User"
+msgstr "Utilisateur"
+
+#. module: program_indicator
+#: field:result.indicator,value_date:0
+msgid "Date"
+msgstr "Date"
+
+#. module: program_indicator
+#: model:ir.model,name:program_indicator.model_result_indicator
+msgid "result.indicator"
+msgstr ""
+
+#. module: program_indicator
+#: view:result.indicator:0
+#: field:result.indicator,result_id:0
+msgid "Result"
+msgstr "Résultat"
+
+#. module: program_indicator
+#: view:program.result:0
+msgid "Result indicators"
+msgstr "Indicateurs de résultats"
+
+#. module: program_indicator
+#: code:addons/program_indicator/program.py:135
+#: field:result.indicator,value_target:0
+#, python-format
+msgid "Target value"
+msgstr "Valeur cible"
+
+#. module: program_indicator
+#: field:program.indicator,name:0
+msgid "Name"
+msgstr "Nom"
+
+#. module: program_indicator
+#: code:addons/program_indicator/program.py:133
+#: field:result.indicator,value_initial:0
+#, python-format
+msgid "Initial value"
+msgstr "Valeur initiale"
+
+#. module: program_indicator
+#: view:result.indicator:0
+#: selection:result.indicator,state:0
+msgid "Submitted"
+msgstr "Soumis"
+
+#. module: program_indicator
+#: code:addons/program_indicator/program.py:136
+#: field:result.indicator,value:0
+#, python-format
+msgid "Value"
+msgstr "Valeur"
+
+#. module: program_indicator
+#: selection:result.indicator,state:0
+msgid "Cancelled"
+msgstr "Annulé"
+
+#. module: program_indicator
+#: model:ir.model,name:program_indicator.model_program_result
+msgid "program.result"
+msgstr ""
+
+#. module: program_indicator
+#: field:result.indicator,comment:0
+msgid "Comment"
+msgstr "Commentaire"
+
+#. module: program_indicator
+#: model:ir.actions.act_window,name:program_indicator.action_program_result_indicator_tree
+#: model:ir.ui.menu,name:program_indicator.menu_result_indicator_action_action
+#: view:result.indicator:0
+msgid "Result Indicators"
+msgstr "Indicateurs de résultats"
+
+#. module: program_indicator
+#: field:result.indicator,mandatory:0
+msgid "Mandatory"
+msgstr "Obligatoire"
+
+#. module: program_indicator
+#: model:ir.model,name:program_indicator.model_program_indicator
+msgid "program.indicator"
+msgstr ""
+
+#. module: program_indicator
+#: view:result.indicator:0
+msgid "Group by..."
+msgstr "Grouper par..."
+
+
+#. module: program_indicator
+#: view:result.indicator:0
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: program_indicator
+#: view:result.indicator:0
+#: selection:result.indicator,state:0
+msgid "Validated"
+msgstr "Validé"
+
+#. module: program_indicator
+#: view:result.indicator:0
+#: selection:result.indicator,state:0
+msgid "Open"
+msgstr "Ouvert"
 

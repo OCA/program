@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-05 20:03+0000\n"
-"PO-Revision-Date: 2014-02-05 20:03+0000\n"
+"POT-Creation-Date: 2014-03-12 21:35+0000\n"
+"PO-Revision-Date: 2014-03-12 21:35+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,11 @@ msgstr ""
 #. module: program
 #: model:ir.actions.act_window,name:program.action_program_action_target_tree
 msgid "Action Targets"
+msgstr ""
+
+#. module: program
+#: view:program.action:0
+msgid "Monitoring"
 msgstr ""
 
 #. module: program
@@ -42,15 +47,12 @@ msgstr ""
 
 #. module: program
 #: view:program.action:0
-#: field:program.action,parent:0
-msgid "Parent"
+msgid "Action Schedule"
 msgstr ""
 
 #. module: program
-#: field:program.action,level:0
-#: field:program.action.level,depth:0
-#: field:program.action.target,action:0
-msgid "Level"
+#: model:ir.ui.menu,name:program.menu_program
+msgid "Programs"
 msgstr ""
 
 #. module: program
@@ -87,8 +89,10 @@ msgid "Name"
 msgstr ""
 
 #. module: program
-#: model:ir.ui.menu,name:program.menu_program
-msgid "Programs"
+#: field:program.action,level:0
+#: field:program.action.level,depth:0
+#: field:program.action.target,action:0
+msgid "Level"
 msgstr ""
 
 #. module: program
@@ -122,6 +126,7 @@ msgid "Action Target Types"
 msgstr ""
 
 #. module: program
+#: model:ir.actions.act_window,name:program.action_program_action_form
 #: view:program.action:0
 #: field:program.action.level,action:0
 msgid "Action"
@@ -146,6 +151,12 @@ msgstr ""
 #: field:program.action,code:0
 #: field:program.action.level,code:0
 msgid "Code"
+msgstr ""
+
+#. module: program
+#: view:program.action:0
+#: field:program.action,parent:0
+msgid "Parent"
 msgstr ""
 
 #. module: program
