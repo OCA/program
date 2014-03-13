@@ -198,3 +198,8 @@ msgstr "Date de début"
 #: model:ir.model,name:program.model_program_action_target
 msgid "program.action.target"
 msgstr "program.action.target"
+
+#. module: program
+#: view:program.action:0
+msgid "Monitoring"
+msgstr "Suivi"

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-12 20:32+0000\n"
-"PO-Revision-Date: 2014-03-12 20:32+0000\n"
+"POT-Creation-Date: 2014-03-12 21:35+0000\n"
+"PO-Revision-Date: 2014-03-12 21:35+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,11 @@ msgstr ""
 #. module: program
 #: model:ir.actions.act_window,name:program.action_program_action_target_tree
 msgid "Action Targets"
+msgstr ""
+
+#. module: program
+#: view:program.action:0
+msgid "Monitoring"
 msgstr ""
 
 #. module: program
