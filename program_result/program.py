@@ -190,7 +190,7 @@ class program_result_level(orm.Model):
             ids = [ids]
 
         for line in self.browse(cr, uid, ids, context=context):
-            res.append((line.id, (line.code and line.code + ' - ') + line.name))
+            res.append((line.id, (line.code and line.code + ' - ' or '') + line.name))
 
         return res
 
