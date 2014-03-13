@@ -24,6 +24,7 @@ from openerp.osv import fields, orm
 from mako.template import Template
 from openerp.tools.translate import _
 
+
 class program_result(orm.Model):
 
     _inherit = 'program.result'
@@ -106,7 +107,6 @@ class program_action(orm.Model):
 
         res = {}
 
-        result_pool = self.pool.get('program.result')
         indicator_pool = self.pool.get('result.indicator')
 
         vals = []
