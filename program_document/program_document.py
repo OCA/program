@@ -46,28 +46,15 @@ class program_action(orm.Model):
                 '&', ('attachment_document_ids.res_model', '=', 'program.evaluation'),
                 ('attachment_document_ids.res_id', 'in', [i.id for i in line.evaluation]),
             ]
-            ir_attachment_ids = ir_attachment_obj.search(
+            res[line.id] = ir_attachment_obj.search(
                 cr, uid, query, context=context)
-
-            # query = [
-            #     '|',
-            #     '&', ('attachmentdocument_ids.res_model', '=', 'program.evaluation'),
-            #     ('attachmentdocument_ids.res_id', 'in', [i.id for i in line.evaluation]),
-            #     '&', ('res_model', '=', 'program.evaluation'),
-            #     ('res_id', 'in', [i.id for i in line.evaluation])
-            # ]
-            # ir_attachment_ids += ir_attachment_obj.search(
-            #     cr, uid, query, context=context)
-
-            res[line.id] = ir_attachment_obj.read(
-                cr, uid, ir_attachment_ids, context=context)
 
         return res
 
     _columns = {
         'document_ids': fields.function(
             _get_documents,
-            type='one2many',
+            type='many2many',
             obj='ir.attachment',
             string='Documents')
     }
