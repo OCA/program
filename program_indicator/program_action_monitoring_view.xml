@@ -9,7 +9,7 @@
         <xpath expr="//notebook/page[@name='monitoring']" position="inside">
           <page name="indicators" string="Indicators">
             <group colspan="4" col="2">
-                <field name="child_results_list" nolabel="1" context="{'from_action': True }"> 
+                <field name="indicators_list" nolabel="1" context="{'from_action': True }"> 
                 </field>
             </group>
           </page>

@@ -37,11 +37,12 @@ class program_result(orm.Model):
         )
     }
 
+
 class program_action(orm.Model):
-    
+
     _inherit = 'program.action'
 
-    def _child_results_list(self, cr, uid, ids, name, arg, context=None):
+    def _indicators_list(self, cr, uid, ids, name, arg, context=None):
         template = Template(
 """<ul style="list-style-type: none;margin-left: -130px;">
 % for result in values:
@@ -96,7 +97,7 @@ class program_action(orm.Model):
 </table>
   <br />
 % endfor
-       
+
 </ul>""")
 
         if context is None:
@@ -111,18 +112,18 @@ class program_action(orm.Model):
 
         vals = []
         for action in self.browse(cr, uid, ids, context=context):
-            
+
             for result in action.results:
-                
+
                 indicator_values = []
 
                 indicator_ids = indicator_pool\
-                    .search(cr, uid,[('result_id', '=', result.id)],
+                    .search(cr, uid, [('result_id', '=', result.id)],
                             context=context)
 
                 indicators = indicator_pool.browse(cr, uid, indicator_ids,
                                                    context=context)
-                
+
                 for indicator in indicators:
                     indicator_values.append(indicator)
                 vals.append({
@@ -143,22 +144,23 @@ class program_action(orm.Model):
 
         return res
 
-
     _columns = {
-        'child_results_list': fields.function(
-            _child_results_list,
+        'indicators_list': fields.function(
+            _indicators_list,
             type='html',
             method=True,
-            string='Child Results',
+            string='Indicators',
         ),
     }
+
 
 class result_indicator(orm.Model):
 
     _name = 'result.indicator'
 
     def change_indicator(self, cr, uid, ids, indicator_id, context=None):
-        indicator = self.pool.get('program.indicator').browse(cr, uid, indicator_id, context=context)
+        indicator = self.pool.get('program.indicator').browse(
+            cr, uid, indicator_id, context=context)
 
         return {
             'value': {
@@ -248,7 +250,7 @@ class result_indicator(orm.Model):
         'comment': fields.text(
             'Comment',
         ),
-        
+
     }
 
 
@@ -278,8 +280,7 @@ class program_indicator(orm.Model):
 
     }
 
-class program_result(orm.Model):
-    
-    _inherit = 'program.result'
 
-    
+class program_result(orm.Model):
+
+    _inherit = 'program.result'
