@@ -64,7 +64,6 @@ class program_action(orm.Model):
         'level': fields.many2one(
             'program.action.level',
             string='Level',
-            required=True,
             select=True,
         ),
 
