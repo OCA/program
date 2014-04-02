@@ -33,6 +33,7 @@ class program_action_target(orm.Model):
             size=32,
             required=True,
             select=True,
+            translate=True,
         ),
 
         'action': fields.many2one(

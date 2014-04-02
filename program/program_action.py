@@ -34,6 +34,7 @@ class program_action(orm.Model):
             size=128,
             required=True,
             select=True,
+            translate=True,
         ),
 
         'parent': fields.many2one(
@@ -77,10 +78,12 @@ class program_action(orm.Model):
 
         'description': fields.text(
             'Description',
+            translate=True,
         ),
 
         'target_audience': fields.text(
             'Target Audience',
+            translate=True,
         ),
 
         'target_audience_type': fields.many2many(

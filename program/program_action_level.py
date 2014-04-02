@@ -71,6 +71,7 @@ class program_action_level(orm.Model):
             size=128,
             required=True,
             select=True,
+            translate=True,
         ),
 
         'action': fields.one2many(
