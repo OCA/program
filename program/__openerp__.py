@@ -22,7 +22,7 @@
 
 {
     'name': 'Program',
-    'version': '0.1',
+    'version': '0.2',
     'category': 'Program',
     'summary': 'Results Based Management',
     'description': '''

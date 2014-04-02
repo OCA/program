@@ -22,7 +22,7 @@
 
 {
     'name': 'Program Result',
-    'version': '0.1',
+    'version': '0.2',
     'category': 'Program',
     'summary': 'RBM Results',
     'description': '''

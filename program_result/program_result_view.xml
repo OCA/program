@@ -172,9 +172,16 @@
     </record>
 
     <menuitem
+      id="menu_program_result"
+      name="Results"
+      parent="program.menu_program"
+      groups="program_result_user"
+      sequence="2" />
+
+    <menuitem
       id="menu_program_action_result"
       name="Results"
-      parent="program.menu_program_action"
+      parent="menu_program_result"
       action="action_program_result_tree"
       groups="program_result_user"
       sequence="2" />

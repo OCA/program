@@ -147,11 +147,11 @@
     </record>
 
     <menuitem 
-	id="menu_program_evaluation_action"
-	name="Evaluations"
-	parent="program.menu_program"
-	groups="program.program_action_user"
-	sequence="1" />
+      id="menu_program_evaluation_action"
+      name="Evaluations"
+      parent="program.menu_program"
+      groups="program.program_action_user"
+      sequence="3" />
 
     <menuitem
       id="menu_program_evaluation_action_action"
