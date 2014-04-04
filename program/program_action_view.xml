@@ -113,6 +113,7 @@
       <field name="view_type">tree</field>
       <field name="view_mode">tree</field>
       <field name="view_id" ref="view_program_action_tree" />
+      <field name="domain">[('parent', '=', False)]</field>
       <field name="search_view_id" ref="view_program_action_search" />
       <field name="target">current</field>
     </record>
