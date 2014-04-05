@@ -5,6 +5,7 @@
     <record id="view_program_result_tree" model="ir.ui.view">
       <field name="name">Program Result Tree</field>
       <field name="model">program.result</field>
+      <field name="field_parent">children_result</field>
       <field name="arch" type="xml">
         <tree string="Results" version="7.0">
           <field name="result_level" />
@@ -70,6 +71,17 @@
     </record>
 
     <record id="action_program_result_tree" model="ir.actions.act_window">
+      <field name="name">Result Chain</field>
+      <field name="res_model">program.result</field>
+      <field name="view_type">tree</field>
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_program_result_tree" />
+      <field name="domain">[('parent_result', '=', False)]</field>
+      <field name="search_view_id" ref="view_program_result_search" />
+      <field name="target">current</field>
+    </record>
+
+    <record id="action_program_result_list" model="ir.actions.act_window">
       <field name="name">Results</field>
       <field name="res_model">program.result</field>
       <field name="view_type">form</field>
@@ -90,9 +102,17 @@
       id="menu_program_action_result"
       name="Results"
       parent="menu_program_result"
-      action="action_program_result_tree"
+      action="action_program_result_list"
       groups="program_result_user"
       sequence="2" />
+
+    <menuitem
+      id="menu_program_action_result_chain"
+      name="Result Chain"
+      parent="menu_program_result"
+      action="action_program_result_tree"
+      groups="program_result_user"
+      sequence="10" />
 
     <menuitem
       id="menu_program_configuration_result_level"
