@@ -168,6 +168,7 @@
       groups="program_action_user"
       sequence="1" />
 
+
     <menuitem
       id="menu_program_action_chain"
       name="Action Chains"

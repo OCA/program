@@ -49,7 +49,11 @@ Contributors
         'program_result_view.xml',
     ],
     'test': [],
-    'demo': [],
+    'demo': [
+        'program_result_level_demo.xml',
+        'program_result_demo.xml',
+        'program_action_demo.xml',
+    ],
     'auto_install': False,
     'installable': True,
 }

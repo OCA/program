@@ -50,7 +50,9 @@ Contributors
         'program_action_target_view.xml',
     ],
     'test': [],
-    'demo': [],
+    'demo': [
+        'program_action_demo.xml',
+    ],
     'auto_install': False,
     'installable': True,
 }
