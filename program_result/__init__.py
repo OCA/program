@@ -20,4 +20,8 @@
 #
 ##############################################################################
 
-import program
+from . import (
+    program_action,
+    program_result,
+    program_result_level,
+)

@@ -1,88 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <openerp>
   <data>
-    <record id="view_program_result_level_tree" model="ir.ui.view">
-      <field name="name">Program Result Level Tree</field>
-      <field name="model">program.result.level</field>
-      <field name="arch" type="xml">
-        <tree string="Result Levels" version="7.0">
-          <field name="code" />
-          <field name="name" />
-          <field name="depth" />
-        </tree>
-      </field>
-    </record>
 
     <record id="view_program_result_tree" model="ir.ui.view">
       <field name="name">Program Result Tree</field>
       <field name="model">program.result</field>
       <field name="arch" type="xml">
         <tree string="Results" version="7.0">
-          <field name="level" />
+          <field name="result_level" />
           <field name="code" />
           <field name="name" />
         </tree>
-      </field>
-    </record>
-
-    <record id="view_program_action_result_form" model="ir.ui.view">
-      <field name="name">Program Action Result Form</field>
-      <field name="model">program.action</field>
-      <field name="inherit_id" ref="program.view_program_action_form" />
-      <field name="arch" type="xml">
-        <page name="children" position="after">
-          <page name="results" string="Results">
-            <notebook name="results">
-              <page name="parent_result" string="Parent Result">
-                <field
-                  name="parent_result"
-                  context="{'action': id}"
-                  domain="[('parent_result_search', '=', True)]" />
-              </page>
-
-              <page name="expected_results" string="Expected Results">
-		<label for="parent_expected_child_results" string="Parent expected results recall" />
-		<div>
-		  <field name="parent_expected_child_results" />
-		  <field name="results">
-		    <tree>
-		      <field name="level_code" />
-		      <field name="code" />
-		      <field name="name" />
-		    </tree>
-		  </field>
-		</div>
-              </page>
-	      <page name="child_results" string="Child Results">
-		<field name="child_results_list" nolabel="1" />
-	      </page>
-            </notebook>
-          </page>
-        </page>
-      </field>
-    </record>
-
-    <record id="view_program_result_level_form" model="ir.ui.view">
-      <field name="name">Program Result Level Form</field>
-      <field name="model">program.result.level</field>
-      <field name="arch" type="xml">
-        <form string="Result Level" version="7.0">
-          <sheet>
-            <div class="oe_title">
-              <label for="name" class="oe_edit_only" />
-              <h1>
-                <field name="name" />
-              </h1>
-            </div>
-
-            <group colspan="4" col="4">
-              <group>
-                <field name="code" />
-                <field name="depth" />
-              </group>
-            </group>
-          </sheet>
-        </form>
       </field>
     </record>
 
@@ -102,7 +30,7 @@
             <group colspan="4" col="4">
               <group>
                 <field name="code" />
-                <field name="level" />
+                <field name="result_level" />
                 <field name="parent_action" />
                 <field name="parent_result" />
                 <field name="description" />
@@ -131,16 +59,6 @@
       </field>
     </record>
 
-    <record id="view_program_result_level_search" model="ir.ui.view">
-      <field name="name">Program Result Level Search</field>
-      <field name="model">program.result.level</field>
-      <field name="arch" type="xml">
-        <search string="Search Restul Levels" version="7.0">
-          <field name="name" string="Name" />
-        </search>
-      </field>
-    </record>
-
     <record id="view_program_result_search" model="ir.ui.view">
       <field name="name">Program Result Search</field>
       <field name="model">program.result</field>
@@ -149,16 +67,6 @@
           <field name="name" string="Name" />
         </search>
       </field>
-    </record>
-
-    <record id="action_program_result_level_tree" model="ir.actions.act_window">
-      <field name="name">Result Levels</field>
-      <field name="res_model">program.result.level</field>
-      <field name="view_type">form</field>
-      <field name="view_mode">tree,form</field>
-      <field name="view_id" ref="view_program_result_level_tree" />
-      <field name="search_view_id" ref="view_program_result_level_search" />
-      <field name="target">current</field>
     </record>
 
     <record id="action_program_result_tree" model="ir.actions.act_window">

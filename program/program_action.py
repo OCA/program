@@ -30,67 +30,22 @@ class program_action(orm.Model):
 
     _columns = {
         'name': fields.char(
-            'Name',
-            size=128,
-            required=True,
-            select=True,
-            translate=True,
-        ),
-
+            'Name', size=128, required=True, select=True, translate=True),
         'parent': fields.many2one(
-            'program.action',
-            string='Parent',
-            select=True,
-        ),
-
+            'program.action', string='Parent', select=True),
         'children': fields.one2many(
-            'program.action',
-            'parent',
-            string='Sub-actions',
-        ),
-
+            'program.action', 'parent', string='Sub-actions'),
         'transverse': fields.many2many(
-            'program.action',
-            'transverse_rel',
-            'from_id',
-            'to_id',
-            string='Transverse',
-        ),
-
-        'code': fields.char(
-            'Code',
-            size=32,
-        ),
-
+            'program.action', 'transverse_rel', 'from_id', 'to_id',
+            string='Transverse'),
+        'code': fields.char('Code', size=32),
         'action_level': fields.many2one(
-            'program.action.level',
-            string='Level',
-            select=True,
-        ),
-
-        'date_from': fields.date(
-            'Start Date',
-        ),
-
-        'date_to': fields.date(
-            'End Date',
-        ),
-
-        'description': fields.text(
-            'Description',
-            translate=True,
-        ),
-
-        'target_audience': fields.text(
-            'Target Audience',
-            translate=True,
-        ),
-
+            'program.action.level', string='Level', select=True),
+        'date_from': fields.date('Start Date'),
+        'date_to': fields.date('End Date'),
+        'description': fields.text('Description', translate=True),
+        'target_audience': fields.text('Target Audience', translate=True),
         'target_audience_type': fields.many2many(
-            'program.action.target',
-            'action_target_rel',
-            'action_id',
-            'target_id',
-            string='Target Audience Types',
-        ),
+            'program.action.target', 'action_target_rel',
+            'action_id', 'target_id', string='Target Audience Types'),
     }
