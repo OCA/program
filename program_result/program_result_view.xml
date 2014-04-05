@@ -117,7 +117,7 @@
                     <label for="child_actions" />
                     <field name="child_actions" nolabel="1">
                       <tree>
-                        <field name="level" />
+                        <field name="action_level" />
                         <field name="code" />
                         <field name="name" />
                       </tree>

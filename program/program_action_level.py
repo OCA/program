@@ -76,7 +76,7 @@ class program_action_level(orm.Model):
 
         'action': fields.one2many(
             'program.action',
-            'level',
+            'action_level',
             string='Action',
         ),
 
