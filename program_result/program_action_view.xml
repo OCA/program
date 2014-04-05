@@ -32,7 +32,10 @@
                 </div>
               </page>
               <page name="child_results" string="Child Results">
-                <field name="child_results_list" nolabel="1" />
+                <button name="action_open_child_results"
+                        string="View"
+                        type="object"
+                        icon="gtk-open"/>
               </page>
             </notebook>
           </page>

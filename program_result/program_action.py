@@ -21,7 +21,7 @@
 ##############################################################################
 
 from openerp.osv import fields, orm
-from mako.template import Template
+from openerp.tools.translate import _
 
 
 class program_action(orm.Model):
@@ -47,66 +47,21 @@ class program_action(orm.Model):
 
         return res
 
-    def _child_results_list(self, cr, uid, ids, name, arg, context=None):
-
-        template = Template("""\
-<ul style="list-style-type: none;margin-left: -130px;">
-% for result in results:
-  <li><p style="font-weight: bold;">${result['result']}</p>
-  % if result['childs']:
-    <ul style="list-style-type: none;">
-      % for child in result['childs']:
-        <li>${child['result']}</li>
-      % endfor
-    </ul>
-  % else:
-    % if result['expected']:
-      <div class="oe_form_field oe_form_field_text">
-        <span class="oe_form_text_content">${result['expected']}</span>
-      </div>
-    % endif
-  % endif
-  </li>
-% endfor
-</ul>""")
-
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-
-        res = {}
-
-        result_pool = self.pool.get('program.result')
-
-        for action in self.browse(cr, uid, ids, context=context):
-            vals = []
-            for result in action.results:
-                val = {
-                    'result': result.name_get()[0][1],
-                    'expected': result.expected_child_results,
-                    'childs': []
-                }
-                child_result_ids = result_pool.search(
-                    cr, uid, [('parent_result', '=', result.id)],
-                    context=context)
-                if not child_result_ids:
-                    continue
-                if not isinstance(child_result_ids, list):
-                    child_result_ids = [child_result_ids]
-
-                for child_result in result_pool.browse(
-                        cr, uid, child_result_ids, context=context):
-                    child_val = {
-                        'result': child_result.name_get()[0][1],
-                        'description': child_result.description,
-                        'childs': []
-                    }
-                    val['childs'].append(child_val)
-
-                vals.append(val)
-
-            res[action.id] = template.render(results=vals)
-
-        return res
+    def action_open_child_results(self, cr, uid, ids, context=None):
+        action = self.browse(cr, uid, ids, context=context)[0]
+        child_results = [r.id for r in action.child_results]
+        return {
+            'name': _('Child Results'),
+            'res_model': 'program.result',
+            'view_mode': 'tree',
+            'view_type': 'tree',
+            'type': 'ir.actions.act_window',
+            'nodestroy': True,
+            'domain': "[('id','in'," + str(child_results) + ")]",
+            'target': 'new',
+            'res_id': ids[0],
+            'context': context,
+        }
 
     _columns = {
         'results': fields.one2many(
@@ -115,9 +70,6 @@ class program_action(orm.Model):
             'program.result', string='Parent Result', select=True),
         'child_results': fields.function(
             _child_results, type='one2many', obj='program.result', method=True,
-            string='Child Results'),
-        'child_results_list': fields.function(
-            _child_results_list, type='html', method=True,
             string='Child Results'),
         'parent_expected_child_results': fields.related(
             'parent_result', 'expected_child_results', type='text',

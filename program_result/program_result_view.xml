@@ -66,8 +66,32 @@
       <field name="arch" type="xml">
         <search string="Search Results" version="7.0">
           <field name="name" string="Name" />
+
+          <group expand="0" string="Group by...">
+            <filter string="Parent" name="parent_result"
+                    context="{'group_by': 'parent_result'}" />
+          </group>
         </search>
       </field>
+    </record>
+
+    <!-- Action to open list and forms of item (view_type=tree) -->
+    <record id="action_program_result_form" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">program.result</field>
+        <field name="name">Result</field>
+        <field name="view_type">form</field>
+        <field name="domain">[('parent_result', 'child_of', active_id)]</field>
+        <field name="context">{'parent_result': active_id}</field>
+    </record>
+
+    <!-- Insert a value for tree view to open list and forms of item -->
+    <record id="ir_action_result_structure_form" model="ir.values">
+        <field name="key2" eval="'tree_but_open'"/>
+        <field name="model" eval="'program.result'"/>
+        <field name="name">Open Result Form</field>
+        <field name="value"
+               eval="'ir.actions.act_window,%d'%action_program_result_form"/>
     </record>
 
     <record id="action_program_result_tree" model="ir.actions.act_window">
