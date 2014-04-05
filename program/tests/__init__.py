@@ -1,9 +1,9 @@
-# -*- coding: utf-8 -*-
-
+# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2014 Savoir-faire Linux (<www.savoirfairelinux.com>).
+#    This module copyright (C) 2010 - 2014 Savoir-faire Linux
+#    (<http://www.savoirfairelinux.com>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -20,20 +20,10 @@
 #
 ##############################################################################
 
-from openerp.osv import fields, orm
+from . import (
+    test_program_action,
+)
 
-
-class program_action_target(orm.Model):
-
-    _name = 'program.action.target'
-
-    _columns = {
-        'name': fields.char(
-            'Name', size=32, required=True, select=True, translate=True),
-        'action': fields.many2one(
-            'program.action', string='Level', select=True),
-        'active': fields.boolean('Active'),
-    }
-    _defaults = {
-        'active': True,
-    }
+checks = [
+    test_program_action,
+]

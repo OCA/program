@@ -29,34 +29,21 @@ class program_action_level(orm.Model):
     _name = 'program.action.level'
 
     def create(self, cr, uid, data, context=None):
-        if context is None:
-            context = {}
-
-        depth = data['depth']
-
-        if depth < 0:
+        if data.get('depth', -1) < 0:
             raise orm.except_orm(
                 _('Error!'),
                 _('Depth must be greater than or equal to 0.')
             )
-
-        return super(
-            program_action_level, self).create(cr, uid, data, context=context)
+        return super(program_action_level, self).create(
+            cr, uid, data, context=context)
 
     def write(self, cr, uid, ids, vals, context=None):
-        if context is None:
-            context = {}
-
-        if 'depth' in vals:
-            depth = vals['depth']
-            if depth < 0:
-                raise orm.except_orm(
-                    _('Error!'),
-                    _('Depth must be greater than or equal to 0.')
-                )
-
-        return super(
-            program_action_level, self).write(
+        if vals.get('depth', 0) < 0:
+            raise orm.except_orm(
+                _('Error!'),
+                _('Depth must be greater than or equal to 0.')
+            )
+        return super(program_action_level, self).write(
             cr, uid, ids, vals, context=context)
 
     def name_get(self, cr, uid, ids, context=None):
@@ -67,30 +54,12 @@ class program_action_level(orm.Model):
 
     _columns = {
         'name': fields.char(
-            'Name',
-            size=128,
-            required=True,
-            select=True,
-            translate=True,
-        ),
-
+            'Name', size=128, required=True, select=True, translate=True),
         'action': fields.one2many(
-            'program.action',
-            'action_level',
-            string='Action',
-        ),
-
-        'code': fields.char(
-            'Code',
-            size=32,
-        ),
-
-        'depth': fields.integer(
-            'Level',
-            required=True,
-        ),
+            'program.action', 'action_level', string='Action'),
+        'code': fields.char('Code', size=32),
+        'depth': fields.integer('Level', required=True),
     }
-
     _defaults = {
         'depth': 1,
     }
