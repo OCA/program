@@ -20,9 +20,23 @@
 #
 ##############################################################################
 
-from . import program_action
-from . import program_action_team_department
-from . import program_action_team_member
-from . import program_action_team_partner
-from . import program_action_team_partner_type
-from . import program_action_team_role
+from openerp.osv import fields, orm
+
+
+class program_action_team_partner_type(orm.Model):
+
+    _name = 'program.action.team.partner.type'
+
+    _columns = {
+
+        'name': fields.char(
+            'Type',
+        ),
+
+        'active': fields.boolean(
+            'Active',
+            default=True
+        ),
+
+
+    }

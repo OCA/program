@@ -57,21 +57,3 @@ class program_action_team_partner(orm.Model):
             ),
         ),
     }
-
-class program_action_team_partner_type(orm.Model):
-
-    _name = 'program.action.team.partner.type'
-
-    _columns = {
-        
-        'name': fields.char(
-            'Type',
-        ),
-
-        'active': fields.boolean(
-            'Active', 
-            default=True
-        ),
-        
-
-    }
