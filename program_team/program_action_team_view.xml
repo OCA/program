@@ -25,7 +25,8 @@
 
               <field name="team_partner">
                 <tree editable="bottom">
-                  <field name="organisation" domain="[('is_company', '=', True)]" />
+                  <field name="organisation" domain="[('is_company', '=', True)]"
+                         context="{'default_is_company': True}" />
                   <field name="role" domain="[('partner', '=', True)]" />
                   <field name="contribution" />
                 </tree>
