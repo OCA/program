@@ -29,6 +29,7 @@
                          context="{'default_is_company': True}" />
                   <field name="role" domain="[('partner', '=', True)]" />
                   <field name="contribution" />
+                  <field name="type" domain="[('active', '=', True)]" />
                 </tree>
               </field>
             </group>

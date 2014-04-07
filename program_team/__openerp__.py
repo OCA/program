@@ -46,6 +46,7 @@ Contributors
     'data': [
         'security/ir.model.access.csv',
         'program_action_team_role_view.xml',
+        'program_action_team_partner_type_view.xml',
         'program_action_team_view.xml',
     ],
     'test': [],
