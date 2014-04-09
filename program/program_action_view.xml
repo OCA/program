@@ -44,11 +44,17 @@
 
             <group colspan="4" col="2">
               <field name="description" />
-              <field name="target_audience" />
-              <field name="target_audience_type" domain="[('active', '=', True)]" />
             </group>
 
             <notebook>
+              <page name="target" string="Targets">
+                <group colspan="4" col="2">
+
+                  <field name="target_audience" />
+                  <field name="target_audience_type" domain="[('active', '=', True)]" />
+                </group>
+              </page>
+
               <page name="children" string="Actions">
                 <group colspan="4" col="4">
                   <group colspan="4" col="1">

@@ -18,6 +18,12 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 
 #. module: program
+#: view:program.action:0
+msgid "Targets"
+msgstr "Cibles"
+
+
+#. module: program
 #: model:ir.actions.act_window,name:program.action_program_action_target_tree
 msgid "Action Targets"
 msgstr "Publics cibles"

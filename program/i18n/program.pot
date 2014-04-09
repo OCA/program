@@ -16,6 +16,11 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: program
+#: view:program.action:0
+msgid "Targets"
+msgstr ""
+
+#. module: program
 #: model:ir.actions.act_window,name:program.action_program_action_target_tree
 msgid "Action Targets"
 msgstr ""
