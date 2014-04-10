@@ -116,7 +116,7 @@ class program_result(orm.Model):
             'program.action', 'parent_result', string='Child Actions'),
         'parent_result': fields.related(
             'parent_action', 'parent_result', type='many2one', store=True,
-            relation='program.result', string='Parent Result', readonly=True),
+            relation='program.result', string='Parent Result'),
         'children_result': fields.function(
             _get_child_results, type='one2many', relation='program.result',
             method=True),
