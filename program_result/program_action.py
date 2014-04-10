@@ -75,3 +75,24 @@ class program_action(orm.Model):
             'parent_result', 'expected_child_results', type='text',
             string='Parent Expected Child Results', readonly=True),
     }
+
+    def write(self, cr, user, ids, vals, context=None):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        res = super(program_action, self).write(
+            cr, user, ids, vals, context=context)
+        if 'parent_result' in vals:
+            self._init_parent_results(cr, user, ids, context=context)
+        return res
+
+    def _init_parent_results(self, cr, user, ids, context=None):
+        """Initialize the parent_result of action's child results"""
+        result_model = self.pool.get('program.result')
+        result_ids = result_model.search(
+            cr, user, [('parent_action', 'in', ids)], context=context)
+        for result_id in result_ids:
+            result = result_model.browse(
+                cr, user, result_id, context=context)
+            parent_result_id = result_model._get_parent_result(
+                cr, user, result_ids, 'parent_id', context=context)
+            result.write({'parent_result': parent_result_id})

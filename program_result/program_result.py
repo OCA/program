@@ -104,6 +104,15 @@ class program_result(orm.Model):
             for result in self.browse(cr, uid, ids, context=context)
         }
 
+    def _get_parent_result(self, cr, uid, ids, field, args=[], context=None):
+        if not isinstance(ids, list):
+            ids = [ids]
+        return {
+            result.id: result.parent_action.parent_result.id
+            if result.parent_action else False
+            for result in self.browse(cr, uid, ids, context=context)
+        }
+
     _columns = {
         'name': fields.char('Name', size=128, required=True, select=True),
         'code': fields.char('Code', size=32),
@@ -114,9 +123,9 @@ class program_result(orm.Model):
             'program.action', string='Parent Action', select=True),
         'child_actions': fields.one2many(
             'program.action', 'parent_result', string='Child Actions'),
-        'parent_result': fields.related(
-            'parent_action', 'parent_result', type='many2one', store=True,
-            relation='program.result', string='Parent Result'),
+        'parent_result': fields.function(
+            _get_parent_result, type='many2one', store=True,
+            obj='program.result', string='Parent Result'),
         'children_result': fields.function(
             _get_child_results, type='one2many', relation='program.result',
             method=True),

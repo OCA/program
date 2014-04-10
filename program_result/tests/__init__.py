@@ -22,8 +22,10 @@
 
 from . import (
     test_program_result,
+    test_program_action,
 )
 
 checks = [
     test_program_result,
+    test_program_action,
 ]
