@@ -119,7 +119,7 @@
       id="menu_program_result"
       name="Results"
       parent="program.menu_program"
-      groups="program_result_user"
+      groups="program.program_user"
       sequence="2" />
 
     <menuitem
@@ -127,7 +127,7 @@
       name="Results"
       parent="menu_program_result"
       action="action_program_result_list"
-      groups="program_result_user"
+      groups="program.program_user"
       sequence="2" />
 
     <menuitem
@@ -135,7 +135,7 @@
       name="Result Chain"
       parent="menu_program_result"
       action="action_program_result_tree"
-      groups="program_result_user"
+      groups="program.program_user"
       sequence="10" />
 
     <menuitem
@@ -143,7 +143,7 @@
       name="Result Levels"
       parent="program.menu_program_configuration"
       action="action_program_result_level_tree"
-      groups="program_result_user"
+      groups="program.program_user"
       sequence="70" />
   </data>
 </openerp>

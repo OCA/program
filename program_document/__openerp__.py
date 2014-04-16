@@ -45,7 +45,6 @@ Contributors
         'document_multiple_records'
     ],
     'data': [
-        'security/program_document_security.xml',
         'program_document_view.xml',
     ],
     'test': [],

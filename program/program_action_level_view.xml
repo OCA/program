@@ -63,7 +63,7 @@
       name="Action Levels"
       parent="menu_program_configuration"
       action="action_program_action_level_tree"
-      groups="program_action_user"
+      groups="program_user"
       sequence="1" />
   </data>
 </openerp>

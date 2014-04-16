@@ -43,7 +43,7 @@ Contributors
         'program',
     ],
     'data': [
-        'security/program_result_security.xml',
+        'security/ir.model.access.csv',
         'program_action_view.xml',
         'program_result_level_view.xml',
         'program_result_view.xml',

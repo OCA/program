@@ -67,7 +67,7 @@
       name="Team Roles"
       parent="program.menu_program_configuration"
       action="action_program_action_team_role_tree"
-      groups="program.program_action_user"
+      groups="program.program_user"
       sequence="40" />
   </data>
 </openerp>

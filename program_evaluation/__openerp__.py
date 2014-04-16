@@ -41,6 +41,7 @@ Contributors
     ],
     'external_dependencies': {},
     'data': [
+        'security/ir.model.access.csv',
         'program_evaluation_view.xml',
         'program_recommendation_view.xml',
         'program_evaluation_workflow.xml',

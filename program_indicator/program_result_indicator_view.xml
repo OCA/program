@@ -146,7 +146,7 @@
       name="Result Indicators"
       parent="menu_program_indicator_action"
       action="action_program_result_indicator_tree"
-      groups="program.program_action_user"
+      groups="program.program_user"
       sequence="1" />    
 
   </data>

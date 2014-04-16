@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <openerp>
   <data noupdate="0">
-    <record id="program_action_user" model="res.groups">
-      <field name="name">Program Action User</field>
-      <field name="category_id" ref="base.module_category_human_resources" />
+    <record id="program_user" model="res.groups">
+      <field name="name">Program User</field>
+      <field name="category_id" ref="base.module_category_accounting_and_finance" />
       <field name="users" eval="[(4, ref('base.user_root'))]" />
-      <field name="comment">Program Action Users</field>
+      <field name="comment">Program Users</field>
     </record>
   </data>
 </openerp>

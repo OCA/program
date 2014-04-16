@@ -156,14 +156,14 @@
     <menuitem
       id="menu_program"
       name="Programs"
-      groups="program_action_user"
+      groups="program_user"
       sequence="12" />
 
     <menuitem
       id="menu_program_action"
       name="Actions"
       parent="menu_program"
-      groups="program_action_user"
+      groups="program_user"
       sequence="1" />
 
     <menuitem
@@ -171,7 +171,7 @@
       name="Actions"
       parent="menu_program_action"
       action="action_program_action_list"
-      groups="program_action_user"
+      groups="program_user"
       sequence="1" />
 
 
@@ -180,14 +180,14 @@
       name="Action Chains"
       parent="menu_program_action"
       action="action_program_action_tree"
-      groups="program_action_user"
+      groups="program_user"
       sequence="2" />
 
     <menuitem
       id="menu_program_configuration"
       name="Configuration"
       parent="menu_program"
-      groups="program_action_user"
+      groups="program_user"
       sequence="10" />
   </data>
 </openerp>

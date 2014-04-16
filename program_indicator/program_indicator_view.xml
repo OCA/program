@@ -49,7 +49,7 @@
 	id="menu_program_indicator_action"
 	name="Indicators"
 	parent="program.menu_program"
-	groups="program.program_action_user"
+	groups="program.program_user"
 	sequence="1" />
 
     <menuitem
@@ -57,7 +57,7 @@
       name="Indicators"
       parent="menu_program_indicator_action"
       action="action_program_indicator_tree"
-      groups="program.program_action_user"
+      groups="program.program_user"
       sequence="1" />    
   </data>
 </openerp>
