@@ -1,0 +1,3 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+access_program_evaluation,access_program_evaluation,model_program_evaluation,program_evaluation_user,1,1,1,1
+access_program_recommendation,access_program_recommendation,model_program_recommendation,program_evaluation_user,1,1,1,1

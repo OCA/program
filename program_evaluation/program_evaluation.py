@@ -23,57 +23,12 @@
 from openerp.osv import fields, orm
 
 
-class program_recommendation(orm.Model):
-
-    _name = 'program.recommendation'
-
-    _columns = {
-
-        'code': fields.char(
-            'Code',
-            size=32,
-        ),
-
-        'name': fields.char(
-            'Name',
-            size=128,
-            required=True
-        ),
-
-        'description': fields.text(
-            'Description'
-        ),
-
-        'evaluation_id': fields.many2one(
-            'program.evaluation',
-            'Evaluation'
-        )
-
-    }
-
-
-class program_action(orm.Model):
-
-    _inherit = 'program.action'
-
-    _columns = {
-        'evaluation': fields.one2many(
-            'program.evaluation',
-            'action_id',
-            string='Evaluations',
-        ),
-
-    }
-
-
 class program_evaluation(orm.Model):
 
     _name = 'program.evaluation'
-
     _defaults = {
         'state': 'draft'
     }
-
     _columns = {
         'state': fields.selection(
             [
@@ -84,47 +39,15 @@ class program_evaluation(orm.Model):
                 ('done', 'Done'),
                 ('cancel', 'Cancelled'),
             ],
-            'Status',
-            select=True,
-            required=True,
-            readonly=True
-        ),
-
-        'name': fields.char(
-            'Name',
-            size=128,
-            required=True,
-            select=True,
-        ),
-
-        'abstract': fields.text(
-            'Abstract'
-        ),
-
-        'action_id': fields.many2one(
-            'program.action',
-            'Action',
-        ),
-
-        'date_start': fields.date(
-            'Start date',
-        ),
-
-        'date_end': fields.date(
-            'End date',
-        ),
-
+            'Status', select=True, required=True, readonly=True),
+        'name': fields.char('Name', size=128, required=True, select=True),
+        'abstract': fields.text('Abstract'),
+        'action_id': fields.many2one('program.action', 'Action'),
+        'date_start': fields.date('Start date'),
+        'date_end': fields.date('End date'),
         'evaluator_id': fields.many2many(
-            'res.partner',
-            'evaluators_rel',
-            'from_id',
-            'to_id',
-            string='Evaluator',
-        ),
-
+            'res.partner', 'evaluators_rel', 'from_id', 'to_id',
+            string='Evaluator'),
         'recommendation_id': fields.one2many(
-            'program.recommendation',
-            'evaluation_id',
-            'Recommendation',
-        ),
+            'program.recommendation', 'evaluation_id', 'Recommendation'),
     }

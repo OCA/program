@@ -22,7 +22,7 @@
 
 {
     'name': 'Program Evaluation',
-    'version': '0.2',
+    'version': '0.3',
     'author': 'Savoir-faire Linux',
     'maintainer': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',
@@ -32,7 +32,7 @@
 Program Evaluation
 ==================
 
-Contributeurs
+Contributors
 -------------
 * David Cormier (david.cormier@savoirfairelinux.com)
 """,
@@ -42,13 +42,12 @@ Contributeurs
     'external_dependencies': {},
     'data': [
         'program_evaluation_view.xml',
+        'program_recommendation_view.xml',
         'program_evaluation_workflow.xml',
-        'program_action_evaluation_view.xml'
+        'program_action_view.xml'
     ],
     'demo': [
     ],
     'test': [],
     'installable': True,
 }
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+
+    <record id="view_program_evaluation_recommendation_tree" model="ir.ui.view">
+      <field name="name">Program Evaluation Recommendation Tree</field>
+      <field name="model">program.recommendation</field>
+      <field name="arch" type="xml">
+        <tree string="Recommendation" version="7.0">
+          <field name="code" />
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_program_evaluation_recommendation_form" model="ir.ui.view">
+      <field name="name">Program Evaluation Recommendation Form</field>
+      <field name="model">program.recommendation</field>
+      <field name="arch" type="xml">
+
+        <form string="Recommendation" version="7.0">
+          <sheet>
+            <group col="4">
+              <field name="code" />
+              <field name="name" />
+            </group>
+            <group>
+              <field name="description" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+  </data>
+</openerp>

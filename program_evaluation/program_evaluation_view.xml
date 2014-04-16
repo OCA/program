@@ -2,114 +2,56 @@
 <openerp>
   <data>
 
-    <record id="view_program_evaluation_recommendation_tree" model="ir.ui.view">
-      <field name="name">Program Evaluation Recommendation Tree</field>
-      <field name="model">program.recommendation</field>
-      <field name="arch" type="xml">
-        <tree string="Recommendation" version="7.0">
-          <field name="code" />
-	  <field name="name" />
-        </tree>
-      </field>
-    </record>
-
-    <record id="view_program_evaluation_recommendation_form" model="ir.ui.view">
-      <field name="name">Program Evaluation Recommendation Form</field>
-      <field name="model">program.recommendation</field>
-      <field name="arch" type="xml">
-
-	<form string="Recommendation" version="7.0">
-	  <sheet>
-	    <group col="4">
-	      <field name="code" />
-	      <field name="name" />
-	    </group>
-	    <group>
-	      <field name="description" />
-	    </group>
-	  </sheet>
-	</form>
-      </field>
-    </record>
-
     <record id="view_program_evaluation_form" model="ir.ui.view">
       <field name="name">Program Evaluation Form</field>
       <field name="model">program.evaluation</field>
       <field name="arch" type="xml">
         <form string="Evaluation" version="7.0">
-	  <header>
-	    <button
-		string="Plan"
-		name="plan"
-		states="draft"
-		type="workflow"
-		class="oe_highlight"
-		/>
+          <header>
+            <button string="Plan" name="plan" states="draft" type="workflow"
+                    class="oe_highlight"/>
+            <button string="Setup" name="setup" states="plan" type="workflow"
+                    class="oe_highlight"/>
+            <button string="Ongoing" name="ongoing" states="setup"
+                    type="workflow" class="oe_highlight"/>
+            <button string="Done" name="done" states="ongoing" type="workflow"
+                    class="oe_highlight"/>
+            <button string="Cancel" name="cancel" type="workflow"
+                    states="draft,plan,setup,ongoing" class="oe_highlight"/>
+            <field name="state" widget="statusbar"
+                   statusbar_visible="draft,plan,setup,ongoing,done"/>
+          </header>
 
-	    <button
-		string="Setup"
-		name="setup"
-		states="plan"
-		type="workflow"
-		class="oe_highlight"
-		/>
-
-	    <button
-		string="Ongoing"
-		name="ongoing"
-		states="setup"
-		type="workflow"
-		class="oe_highlight"
-		/>
-
-	    <button
-		string="Done"
-		name="done"
-		states="ongoing"
-		type="workflow"
-		class="oe_highlight"
-		/>
-	    <button
-		string="Cancel"
-		name="cancel"
-		states="draft,plan,setup,ongoing"
-		type="workflow"
-		class="oe_highlight"
-		/>
-
-
-	    <field name="state" widget="statusbar" statusbar_visible="draft,plan,setup,ongoing,done"/>
-	  </header>
-
-	  <sheet>
-	    <group>
+          <sheet>
+            <group>
               <field name="name" />
-	    </group>
+            </group>
 
-	    <group>
-	      <field name="action_id"
-		     required="not context.get('from_action', False)"
-		     invisible="context.get('from_action', False)"/>
-	    </group>
+            <group>
+              <field name="action_id"
+                     required="not context.get('from_action', False)"
+                     invisible="context.get('from_action', False)"/>
+            </group>
 
-	    <group col="2">
-	      <field name="date_start" />
-	      <field name="date_end" />
-	    </group>
+            <group col="2">
+              <field name="date_start" />
+              <field name="date_end" />
+            </group>
 
-	    <group col="2">
-	      <field name="abstract" />
-	    </group>
+            <group col="2">
+              <field name="abstract" />
+            </group>
 
-	    <notebook>
-	      <page name="evaluators" string="Evaluators">
-		<field name="evaluator_id" domain="[('is_company', '=', False), ('contact_id', '=', False)]"/>
-	      </page>
-	      <page name="recommendations" string="Recommendations">
-		<field name="recommendation_id" context="{ 'default_evaluation_id': active_id }"/>
-	      </page>
-	    </notebook>
-	  </sheet>
+            <notebook>
+              <page name="evaluators" string="Evaluators">
+                <field name="evaluator_id" domain="[('is_company', '=', False), ('contact_id', '=', False)]"/>
+              </page>
+              <page name="recommendations" string="Recommendations">
+                <field name="recommendation_id"
+                       context="{ 'default_evaluation_id': active_id }"/>
+              </page>
+            </notebook>
+          </sheet>
         </form>
       </field>
     </record>
@@ -121,8 +63,8 @@
       <field name="arch" type="xml">
         <tree string="Evaluation" version="7.0">
           <field name="name" />
-	  <field name="date_start" />
-	  <field name="date_end" />
+            <field name="date_start" />
+            <field name="date_end" />
         </tree>
       </field>
     </record>
@@ -160,9 +102,6 @@
       action="action_program_evaluation_tree"
       groups="program.program_action_user"
       sequence="1" />    
-
-
-
 
   </data>
 </openerp>
