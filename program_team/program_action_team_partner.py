@@ -57,3 +57,26 @@ class program_action_team_partner(orm.Model):
             ),
         ),
     }
+
+    def action_partner_form_view(self, cr, uid, ids, context=None):
+        """Pop-up partner form view for program.action.team.partner."""
+        if ids and type(ids) is list:
+            partner_id = ids[0]
+        elif type(ids) in (long, int):
+            partner_id = ids
+        else:
+            return {}
+        partner = self.browse(cr, uid, partner_id, context=context)
+        model_data_pool = self.pool['ir.model.data']
+        return {
+            'name': partner.organisation.name_get()[0][1],
+            'res_model': 'res.partner',
+            'view_mode': 'form',
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'res_id': partner.organisation.id,
+            'context': context,
+            'view_id': model_data_pool.get_object_reference(
+                cr, uid, 'program_team', 'view_partner_form')[1]
+        }
+

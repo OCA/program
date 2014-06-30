@@ -45,3 +45,25 @@ class program_action_team_department(orm.Model):
             string='Role',
         ),
     }
+
+    def action_department_form_view(self, cr, uid, ids, context=None):
+        """Pop-up department form view for program.action.team.department."""
+        if ids and type(ids) is list:
+            department_id = ids[0]
+        elif type(ids) in (long, int):
+            department_id = ids
+        else:
+            return {}
+        department = self.browse(cr, uid, department_id, context=context)
+        model_data_pool = self.pool['ir.model.data']
+        return {
+            'name': department.department.name_get()[0][1],
+            'res_model': 'hr.department',
+            'view_mode': 'form',
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'res_id': department.department.id,
+            'context': context,
+            'view_id': model_data_pool.get_object_reference(
+                cr, uid, 'program_team', 'view_department_form')[1]
+        }

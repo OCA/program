@@ -45,3 +45,25 @@ class program_action_team_member(orm.Model):
             string='Role',
         ),
     }
+
+    def action_member_form_view(self, cr, uid, ids, context=None):
+        """Pop-up employee form view for program.action.team.member."""
+        if ids and type(ids) is list:
+            member_id = ids[0]
+        elif type(ids) in (long, int):
+            member_id = ids
+        else:
+            return {}
+        member = self.browse(cr, uid, member_id, context=context)
+        model_data_pool = self.pool['ir.model.data']
+        return {
+            'name': member.employee.name_get()[0][1],
+            'res_model': 'hr.employee',
+            'view_mode': 'form',
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'res_id': member.employee.id,
+            'context': context,
+            'view_id': model_data_pool.get_object_reference(
+                cr, uid, 'program_team', 'view_employee_form')[1]
+        }

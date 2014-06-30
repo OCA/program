@@ -22,7 +22,7 @@
 
 {
     'name': 'Program Team',
-    'version': '0.1',
+    'version': '0.2',
     'category': 'Program',
     'summary': 'Team Management on RBM',
     'description': '''
@@ -35,6 +35,7 @@ Contributors
 ------------
 
 * Alexandre Boily (alexandre.boily@savoirfairelinux.com)
+* Sandy Carter (sandy.carter@savoirfairelinux.com)
 ''',
     'author': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',
@@ -46,8 +47,11 @@ Contributors
     'data': [
         'security/ir.model.access.csv',
         'program_action_team_role_view.xml',
+        'hr_employee_view.xml',
+        'hr_department_view.xml',
+        'res_partner_view.xml',
         'program_action_team_partner_type_view.xml',
-        'program_action_team_view.xml',
+        'program_action_view.xml',
     ],
     'test': [],
     'demo': [],

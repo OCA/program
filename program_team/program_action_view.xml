@@ -12,6 +12,9 @@
               <field name="team_department">
                 <tree editable="bottom">
                   <field name="department" />
+                    <button name="action_department_form_view"
+                            type="object"
+                            icon="gtk-open"/>
                   <field name="role" domain="[('department', '=', True)]" />
                 </tree>
               </field>
@@ -19,6 +22,9 @@
               <field name="team_member">
                 <tree editable="bottom">
                   <field name="employee" />
+                  <button name="action_member_form_view"
+                          type="object"
+                          icon="gtk-open"/>
                   <field name="role" domain="[('employee', '=', True)]" />
                 </tree>
               </field>
@@ -27,6 +33,9 @@
                 <tree editable="bottom">
                   <field name="organisation" domain="[('is_company', '=', True)]"
                          context="{'default_is_company': True}" />
+                  <button name="action_partner_form_view"
+                          type="object"
+                          icon="gtk-open"/>
                   <field name="role" domain="[('partner', '=', True)]" />
                   <field name="contribution" />
                   <field name="type" domain="[('active', '=', True)]" />
