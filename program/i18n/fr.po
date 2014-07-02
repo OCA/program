@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-02 16:38+0000\n"
-"PO-Revision-Date: 2014-07-02 12:43-0500\n"
+"PO-Revision-Date: 2014-07-02 17:14-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -82,7 +82,7 @@ msgstr "Transversal"
 #. module: program
 #: field:program.result,target_audience_type_ids:0
 msgid "Target Audience Types"
-msgstr "Types de public cible"
+msgstr "Types de publics cibles"
 
 #. module: program
 #: view:program.result:0
@@ -130,7 +130,7 @@ msgstr "Le niveau doit être plus grand ou égal à 0."
 #. module: program
 #: model:ir.ui.menu,name:program.menu_program_configuration_target
 msgid "Result Target Types"
-msgstr "Types de résultats cibles"
+msgstr "Types de publics cibles"
 
 #. module: program
 #: view:program.result.target:0
@@ -167,7 +167,7 @@ msgstr ""
 #. module: program
 #: field:program.result,target_audience:0
 msgid "Target Audience"
-msgstr "Public cible"
+msgstr "Publics cibles"
 
 #. module: program
 #: model:ir.actions.act_window,name:program.action_program_result_level_tree
@@ -194,7 +194,7 @@ msgstr "Parent"
 #: model:ir.actions.act_window,name:program.action_program_result_tree
 #: model:ir.ui.menu,name:program.menu_program_result_chain
 msgid "Result Chain"
-msgstr "Chaîne de résultat"
+msgstr "Chaîne de résultats"
 
 #. module: program
 #: model:ir.actions.act_window,name:program.action_program_result_form

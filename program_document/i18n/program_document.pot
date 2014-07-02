@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-12 20:32+0000\n"
-"PO-Revision-Date: 2014-03-12 20:32+0000\n"
+"POT-Creation-Date: 2014-07-02 21:32+0000\n"
+"PO-Revision-Date: 2014-07-02 21:32+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,13 +16,13 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: program_document
-#: view:program.action:0
+#: view:program.result:0
 msgid "Add"
 msgstr ""
 
 #. module: program_document
-#: view:program.action:0
-#: field:program.action,document_ids:0
+#: view:program.result:0
+#: field:program.result,document_ids:0
 msgid "Documents"
 msgstr ""
 
@@ -32,7 +32,11 @@ msgid "Model Program Document"
 msgstr ""
 
 #. module: program_document
-#: model:ir.model,name:program_document.model_program_action
-msgid "program.action"
+#: view:program.result:0
+msgid "Name"
 msgstr ""
 
+#. module: program_document
+#: model:ir.model,name:program_document.model_program_result
+msgid "program.result"
+msgstr ""

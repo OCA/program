@@ -20,38 +20,32 @@
 #
 ##############################################################################
 
-from openerp.osv import fields, orm
+{
+    'name': 'Program Document - Evaluation Bindings',
+    'version': '0.4',
+    'category': 'Program',
+    'summary': "Evaluation bindings for Program Document",
+    'license': 'AGPL-3',
+    'description': '''
+Program Document - Evaluation Bindings
+======================================
 
+Contributors
+------------
 
-class program_result(orm.Model):
-    """Model Program Document"""
-
-    _description = __doc__
-    _inherit = 'program.result'
-
-    def _get_documents(self, cr, uid, ids, field_name, args, context=None):
-        if not isinstance(ids, list):
-            ids = [ids]
-
-        res = {}
-
-        ir_attachment_obj = self.pool.get('ir.attachment')
-
-        for line in self.browse(cr, uid, ids, context=context):
-            query = [
-                '&',
-                ('attachment_document_ids.res_model', '=', 'program.result'),
-                ('attachment_document_ids.res_id', '=', line.id),
-            ]
-            res[line.id] = ir_attachment_obj.search(
-                cr, uid, query, context=context)
-
-        return res
-
-    _columns = {
-        'document_ids': fields.function(
-            _get_documents,
-            type='many2many',
-            obj='ir.attachment',
-            string='Documents')
-    }
+* Sandy Carter (sandy.carter@savoirfairelinux.com)
+''',
+    'author': 'Savoir-faire Linux',
+    'website': 'http://www.savoirfairelinux.com',
+    'license': 'AGPL-3',
+    'depends': [
+        'program_document',
+        'program_evaluation'
+    ],
+    'data': [
+    ],
+    'test': [],
+    'demo': [],
+    'auto_install': True,
+    'installable': True,
+}
