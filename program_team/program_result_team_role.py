@@ -31,9 +31,5 @@ class program_result_team_role(orm.Model):
         'is_employee': fields.boolean('Employee'),
         'is_department': fields.boolean('Department'),
         'is_partner': fields.boolean('Partner'),
-    }
-    _defaults = {
-        'is_employee': True,
-        'is_department': True,
-        'is_partner': True,
+        'is_contact': fields.boolean('Contact'),
     }

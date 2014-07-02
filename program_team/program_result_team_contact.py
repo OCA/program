@@ -23,24 +23,17 @@
 from openerp.osv import fields, orm
 
 
-class program_result(orm.Model):
+class program_result_team_contact(orm.Model):
 
-    _inherit = 'program.result'
+    _name = 'program.result.team.contact'
     _columns = {
-        'department_id': fields.many2one(
-            'hr.department', string="Department", select=True
+        'result_id': fields.many2one(
+            'program.result', string='Result', select=True,
         ),
-        'team_department_ids': fields.one2many(
-            'program.result.team.department',
-            'result_id', string='Departments',
+        'contact_id': fields.many2one(
+            'res.partner', string='Contact', required=True, select=True,
         ),
-        'team_member_ids': fields.one2many(
-            'program.result.team.member', 'result_id', string='Members',
-        ),
-        'team_partner_ids': fields.one2many(
-            'program.result.team.partner', 'result_id', string='Partners',
-        ),
-        'team_contact_ids': fields.one2many(
-            'program.result.team.contact', 'result_id', string='Contacts',
+        'role_id': fields.many2one(
+            'program.result.team.role', string='Role', select=True,
         ),
     }

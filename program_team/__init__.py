@@ -21,10 +21,12 @@
 ##############################################################################
 
 from . import (
+    res_partner,
     program_result,
     program_result_team_department,
     program_result_team_member,
     program_result_team_partner,
     program_result_team_partner_type,
     program_result_team_role,
+    program_result_team_contact,
 )

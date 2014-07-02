@@ -23,24 +23,41 @@
 from openerp.osv import fields, orm
 
 
-class program_result(orm.Model):
+class res_partner(orm.Model):
 
-    _inherit = 'program.result'
+    _inherit = 'res.partner'
+
+    def _is_not_employee_search(self, cr, uid, obj, name, args, context=None):
+        """Get all res.partner who aren't companies and don't have employees"""
+
+        if context is None:
+            context = {}
+
+        partner_pool = self.pool.get('res.partner')
+        partner_ids = partner_pool.search(
+            cr, uid, [('is_company', '=', False)], context=context)
+        partners = partner_pool.browse(cr, uid, partner_ids, context=context)
+
+        res = []
+
+        for partner in partners:
+            ok = True
+            users = partner.user_ids
+            for user in users:
+                if user.employee_ids:
+                    ok = False
+                    break
+            if ok:
+                res.append(partner.id)
+
+        return [('id', 'in', res)]
+
     _columns = {
-        'department_id': fields.many2one(
-            'hr.department', string="Department", select=True
-        ),
-        'team_department_ids': fields.one2many(
-            'program.result.team.department',
-            'result_id', string='Departments',
-        ),
-        'team_member_ids': fields.one2many(
-            'program.result.team.member', 'result_id', string='Members',
-        ),
-        'team_partner_ids': fields.one2many(
-            'program.result.team.partner', 'result_id', string='Partners',
-        ),
-        'team_contact_ids': fields.one2many(
-            'program.result.team.contact', 'result_id', string='Contacts',
+        'is_not_employee': fields.function(
+            lambda **x: True,
+            fnct_search=_is_not_employee_search,
+            type='boolean',
+            string='Not Employee',
+            method=True,
         ),
     }

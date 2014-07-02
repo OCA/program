@@ -11,6 +11,7 @@
           <field name="is_department" />
           <field name="is_employee" />
           <field name="is_partner" />
+          <field name="is_contact" />
         </tree>
 
       </field>
@@ -34,6 +35,7 @@
               <field name="is_department" />
               <field name="is_employee" />
               <field name="is_partner" />
+              <field name="is_contact" />
             </group>
           </sheet>
         </form>
