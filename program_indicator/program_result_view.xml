@@ -9,8 +9,9 @@
 
         <page name="children" position="after">
           <page name="result_indicators" string="Result indicators">
-            <group colspan="4" col="2">
-              <field name="result_indicator_ids" context="{'from_result': True}"/>
+            <group col="1">
+              <label for="result_indicator_ids" />
+              <field name="result_indicator_ids" nolabel="1" context="{'from_result': True}"/>
             </group>
           </page>
         </page>

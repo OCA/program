@@ -38,12 +38,16 @@
       <field name="arch" type="xml">
 
         <tree string="Result Indicators" version="7.0">
-          <field name="result_id" />
           <field name="indicator_id" />
+          <field name="result_id" />
+          <field name="verification_means" />
+          <field name="risk_hypothesis" />
           <field name="value_initial" />
           <field name="value_target" />
           <field name="value" />
           <field name="state" />
+          <field name="frequency" />
+          <field name="partner_id" />
         </tree>
 
       </field>
@@ -104,6 +108,7 @@
               <field name="value_initial" />
               <field name="value_target" />
               <field name="value" />
+              <field name="frequency" />
               <field name="value_date" />
               <field name="partner_id"
                      domain="[('is_company', '=', False), ('contact_id', '=', False)]" />

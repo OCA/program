@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-02 21:29+0000\n"
-"PO-Revision-Date: 2014-07-02 17:38-0500\n"
+"POT-Creation-Date: 2014-07-03 21:25+0000\n"
+"PO-Revision-Date: 2014-07-03 17:27-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -76,14 +76,19 @@ msgid "Search Result Indicators"
 msgstr "Rechercher"
 
 #. module: program_indicator
-#: field:program.indicator.result,partner_id:0
-msgid "User"
-msgstr "Utilisateur"
-
-#. module: program_indicator
 #: field:program.indicator.result,value_date:0
 msgid "Date"
 msgstr "Date"
+
+#. module: program_indicator
+#: field:program.indicator.result,partner_id:0
+msgid "Manager of follow-up"
+msgstr "Responsable de suivi"
+
+#. module: program_indicator
+#: help:program.indicator.result,frequency:0
+msgid "Delay between two checks of the indicator."
+msgstr "Delai entre deux suivis de l'indicateur."
 
 #. module: program_indicator
 #: view:program.result:0
@@ -94,11 +99,6 @@ msgstr "Indicateurs de résultats"
 #: field:program.indicator,name:0
 msgid "Name"
 msgstr "Libellé"
-
-#. module: program_indicator
-#: model:_description:0
-msgid "Model Program Document"
-msgstr "Modèle du document de programmation"
 
 #. module: program_indicator
 #: view:program.indicator.result:0 selection:program.indicator.result,state:0
@@ -121,6 +121,7 @@ msgid "Target Value"
 msgstr "Valeur cible"
 
 #. module: program_indicator
+#: model:_description:0
 #: model:ir.model,name:program_indicator.model_program_result
 msgid "program.result"
 msgstr ""
@@ -154,6 +155,11 @@ msgid "Group by..."
 msgstr "Grouper par..."
 
 #. module: program_indicator
+#: field:program.indicator.result,frequency:0
+msgid "Frequency"
+msgstr "Periodicité"
+
+#. module: program_indicator
 #: view:program.indicator.result:0 field:program.indicator.result,result_id:0
 msgid "Result"
 msgstr "Résultat"
@@ -183,6 +189,12 @@ msgstr "Ouvert"
 #: field:program.indicator.result,risk_hypothesis:0
 msgid "Risk hypothesis"
 msgstr "Risques et hypothèses"
+
+#~ msgid "User"
+#~ msgstr "Utilisateur"
+
+#~ msgid "Model Program Document"
+#~ msgstr "Modèle du document de programmation"
 
 #~ msgid "Action"
 #~ msgstr "Action"

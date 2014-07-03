@@ -46,9 +46,12 @@ class program_indicator_result(orm.Model):
         'risk_hypothesis': fields.text('Risk hypothesis'),
         'value_initial': fields.char('Initial Value'),
         'value_target': fields.char('Target Value'),
+        'frequency': fields.char(
+            'Frequency', help="Delay between two checks of the indicator."
+        ),
         'value': fields.char('Value'),
         'value_date': fields.datetime('Date'),
-        'partner_id': fields.many2one('res.partner', 'User'),
+        'partner_id': fields.many2one('res.partner', 'Manager of follow-up'),
         'comment': fields.text('Comment'),
     }
     _defaults = {

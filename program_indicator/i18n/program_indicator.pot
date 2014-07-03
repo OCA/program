@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-02 21:29+0000\n"
-"PO-Revision-Date: 2014-07-02 21:29+0000\n"
+"POT-Creation-Date: 2014-07-03 21:25+0000\n"
+"PO-Revision-Date: 2014-07-03 21:25+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -77,13 +77,18 @@ msgid "Search Result Indicators"
 msgstr ""
 
 #. module: program_indicator
-#: field:program.indicator.result,partner_id:0
-msgid "User"
+#: field:program.indicator.result,value_date:0
+msgid "Date"
 msgstr ""
 
 #. module: program_indicator
-#: field:program.indicator.result,value_date:0
-msgid "Date"
+#: field:program.indicator.result,partner_id:0
+msgid "Manager of follow-up"
+msgstr ""
+
+#. module: program_indicator
+#: help:program.indicator.result,frequency:0
+msgid "Delay between two checks of the indicator."
 msgstr ""
 
 #. module: program_indicator
@@ -94,11 +99,6 @@ msgstr ""
 #. module: program_indicator
 #: field:program.indicator,name:0
 msgid "Name"
-msgstr ""
-
-#. module: program_indicator
-#: model:_description:0
-msgid "Model Program Document"
 msgstr ""
 
 #. module: program_indicator
@@ -123,6 +123,7 @@ msgid "Target Value"
 msgstr ""
 
 #. module: program_indicator
+#: model:_description:0
 #: model:ir.model,name:program_indicator.model_program_result
 msgid "program.result"
 msgstr ""
@@ -153,6 +154,11 @@ msgstr ""
 #. module: program_indicator
 #: view:program.indicator.result:0
 msgid "Group by..."
+msgstr ""
+
+#. module: program_indicator
+#: field:program.indicator.result,frequency:0
+msgid "Frequency"
 msgstr ""
 
 #. module: program_indicator
