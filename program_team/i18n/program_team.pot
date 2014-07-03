@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-12 20:33+0000\n"
-"PO-Revision-Date: 2014-03-12 20:33+0000\n"
+"POT-Creation-Date: 2014-07-02 21:16+0000\n"
+"PO-Revision-Date: 2014-07-02 21:16+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,82 +16,115 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: program_team
-#: field:program.action,team_partner:0
+#: field:program.result,team_partner_ids:0
+#: view:res.partner:0
 msgid "Partners"
 msgstr ""
 
 #. module: program_team
-#: model:_description:0
-#: model:ir.model,name:program_team.model_program_action_team_department
-msgid "program.action.team.department"
+#: field:program.result,team_contact_ids:0
+msgid "Contacts"
 msgstr ""
 
 #. module: program_team
-#: field:program.action.team.partner,organisation:0
+#: field:program.result.team.partner,organisation_id:0
 msgid "Organisation"
 msgstr ""
 
 #. module: program_team
-#: field:program.action.team.department,department:0
-#: field:program.action.team.role,department:0
+#: model:_description:0
+#: model:ir.model,name:program_team.model_program_result_team_member
+msgid "program.result.team.member"
+msgstr ""
+
+#. module: program_team
+#: field:program.result,department_id:0
+#: field:program.result.team.department,department_id:0
+#: field:program.result.team.role,is_department:0
 msgid "Department"
 msgstr ""
 
 #. module: program_team
-#: field:program.action.team.department,role:0
-#: field:program.action.team.member,role:0
-#: field:program.action.team.partner,role:0
+#: field:program.result.team.contact,role_id:0
+#: field:program.result.team.department,role_id:0
+#: field:program.result.team.member,role_id:0
+#: field:program.result.team.partner,role_id:0
 msgid "Role"
 msgstr ""
 
 #. module: program_team
-#: model:ir.actions.act_window,name:program_team.action_program_action_team_role_tree
-#: model:ir.ui.menu,name:program_team.menu_configuration_action_team_role
-#: view:program.action.team.role:0
+#: model:ir.actions.act_window,name:program_team.action_program_result_team_role_tree
+#: model:ir.ui.menu,name:program_team.menu_configuration_result_team_role
+#: view:program.result.team.role:0
 msgid "Team Roles"
 msgstr ""
 
 #. module: program_team
-#: field:program.action.team.member,employee:0
-#: field:program.action.team.role,employee:0
+#: model:_description:0
+#: model:ir.model,name:program_team.model_program_result_team_partner
+msgid "program.result.team.partner"
+msgstr ""
+
+#. module: program_team
+#: view:hr.employee:0
+#: field:program.result.team.member,employee_id:0
+#: field:program.result.team.role,is_employee:0
 msgid "Employee"
 msgstr ""
 
 #. module: program_team
-#: view:program.action.team.role:0
+#: view:program.result.team.role:0
 msgid "Search Team Roles"
 msgstr ""
 
 #. module: program_team
-#: model:ir.model,name:program_team.model_program_action
-msgid "program.action"
-msgstr ""
-
-#. module: program_team
-#: view:program.action.team.role:0
-#: field:program.action.team.role,name:0
-msgid "Name"
-msgstr ""
-
-#. module: program_team
 #: model:_description:0
-#: model:ir.model,name:program_team.model_program_action_team_role
-msgid "program.action.team.role"
+#: model:ir.model,name:program_team.model_program_result_team_contact
+msgid "program.result.team.contact"
 msgstr ""
 
 #. module: program_team
-#: help:program.action.team.partner,contribution:0
+#: field:program.result.team.partner,type_id:0
+#: field:program.result.team.partner.type,name:0
+msgid "Type"
+msgstr ""
+
+#. module: program_team
+#: field:program.result.team.partner,contribution:0
+msgid "Non-Financial Contribution"
+msgstr ""
+
+#. module: program_team
+#: help:program.result.team.partner,contribution:0
 msgid "Arbitrary contribution, usually a non-financial or unquantifiable one."
 msgstr ""
 
 #. module: program_team
-#: field:program.action,team_member:0
+#: model:_description:0
+#: model:ir.model,name:program_team.model_program_result_team_partner_type
+msgid "program.result.team.partner.type"
+msgstr ""
+
+#. module: program_team
+#: field:program.result,team_member_ids:0
 msgid "Members"
 msgstr ""
 
 #. module: program_team
-#: field:program.action.team.partner,contribution:0
-msgid "Non-Financial Contribution"
+#: field:program.result.team.partner.type,is_active:0
+msgid "Active"
+msgstr ""
+
+#. module: program_team
+#: model:_description:0
+#: model:ir.model,name:program_team.model_program_result_team_role
+msgid "program.result.team.role"
+msgstr ""
+
+#. module: program_team
+#: view:program.result.team.role:0
+#: field:program.result.team.role,name:0
+msgid "Name"
 msgstr ""
 
 #. module: program_team
@@ -100,41 +133,84 @@ msgid "Model Program Document"
 msgstr ""
 
 #. module: program_team
-#: field:program.action,team_department:0
+#: field:res.partner,is_not_employee:0
+msgid "Not Employee"
+msgstr ""
+
+#. module: program_team
+#: field:program.result,team_department_ids:0
 msgid "Departments"
 msgstr ""
 
 #. module: program_team
-#: view:program.action:0
+#: model:_description:0
+#: model:ir.model,name:program_team.model_program_result_team_department
+msgid "program.result.team.department"
+msgstr ""
+
+#. module: program_team
+#: view:hr.department:0
+msgid "department"
+msgstr ""
+
+#. module: program_team
+#: field:program.result.team.contact,contact_id:0
+#: field:program.result.team.role,is_contact:0
+msgid "Contact"
+msgstr ""
+
+#. module: program_team
+#: view:program.result.team.partner.type:0
+msgid "Partner Type"
+msgstr ""
+
+#. module: program_team
+#: view:program.result:0
 msgid "Team"
 msgstr ""
 
 #. module: program_team
-#: field:program.action.team.department,action:0
-#: field:program.action.team.member,action:0
-#: field:program.action.team.partner,action:0
-msgid "Action"
+#: view:hr.department:0
+#: view:hr.employee:0
+#: view:res.partner:0
+msgid "Discard"
 msgstr ""
 
 #. module: program_team
-#: view:program.action.team.role:0
+#: model:ir.model,name:program_team.model_program_result
+msgid "program.result"
+msgstr ""
+
+#. module: program_team
+#: view:program.result.team.role:0
 msgid "Team Role"
 msgstr ""
 
 #. module: program_team
-#: model:_description:0
-#: model:ir.model,name:program_team.model_program_action_team_member
-msgid "program.action.team.member"
+#: view:hr.department:0
+#: view:hr.employee:0
+#: view:res.partner:0
+msgid "Save and Close"
+msgstr ""
+
+#. module: program_team
+#: field:program.result.team.contact,result_id:0
+#: field:program.result.team.department,result_id:0
+#: field:program.result.team.member,result_id:0
+#: field:program.result.team.partner,result_id:0
+msgid "Result"
 msgstr ""
 
 #. module: program_team
 #: model:_description:0
-#: model:ir.model,name:program_team.model_program_action_team_partner
-msgid "program.action.team.partner"
-msgstr ""
-
-#. module: program_team
-#: field:program.action.team.role,partner:0
+#: model:ir.model,name:program_team.model_res_partner
+#: field:program.result.team.role,is_partner:0
 msgid "Partner"
 msgstr ""
 
+#. module: program_team
+#: view:hr.department:0
+#: view:hr.employee:0
+#: view:res.partner:0
+msgid "or"
+msgstr ""

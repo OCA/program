@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <!-- Views -->
+    <record id="view_employee_form" model="ir.ui.view">
+      <field name="name">Program Team Employee Form View</field>
+      <field name="model">hr.employee</field>
+      <field name="inherit_id" ref="hr.view_employee_form"/>
+      <field name="arch" type="xml">
+
+        <form string="Employee" version="7.0">
+          <footer>
+            <button string="Save and Close" name="_" type="action" class="oe_highlight" accesskey="C"/>
+            or
+            <button string="Discard" class="oe_link" special="cancel" accesskey="D"/>
+          </footer>
+        </form>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>

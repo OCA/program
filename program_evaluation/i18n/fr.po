@@ -6,20 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-12 20:33+0000\n"
-"PO-Revision-Date: 2014-03-12 16:49-0500\n"
-"Last-Translator: Davin Baragiotta <davin.baragiotta@savoirfairelinux.com>\n"
+"POT-Creation-Date: 2014-07-02 21:30+0000\n"
+"PO-Revision-Date: 2014-07-02 17:35-0500\n"
+"Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 1.5.4\n"
-
-#. module: program_evaluation
-#: field:program.evaluation,action_id:0
-msgid "Action"
-msgstr "Action"
+"X-Generator: Poedit 1.6.5\n"
 
 #. module: program_evaluation
 #: selection:program.evaluation,state:0
@@ -32,15 +28,10 @@ msgid "Start date"
 msgstr "Date de début"
 
 #. module: program_evaluation
-#: view:program.action:0 view:program.evaluation:0
-#: field:program.recommendation,evaluation_id:0
+#: view:program.evaluation:0 field:program.recommendation,evaluation_id:0
+#: view:program.result:0
 msgid "Evaluation"
 msgstr "Évaluation"
-
-#. module: program_evaluation
-#: model:ir.model,name:program_evaluation.model_program_action
-msgid "program.action"
-msgstr "program.action"
 
 #. module: program_evaluation
 #: view:program.evaluation:0
@@ -61,7 +52,7 @@ msgstr "Planifier"
 #: model:ir.actions.act_window,name:program_evaluation.action_program_evaluation_tree
 #: model:ir.ui.menu,name:program_evaluation.menu_program_evaluation_action
 #: model:ir.ui.menu,name:program_evaluation.menu_program_evaluation_action_action
-#: field:program.action,evaluation:0
+#: field:program.result,evaluation_ids:0
 msgid "Evaluations"
 msgstr "Évaluations"
 
@@ -118,7 +109,12 @@ msgid "Cancelled"
 msgstr "Annulée"
 
 #. module: program_evaluation
-#: field:program.evaluation,evaluator_id:0
+#: model:ir.model,name:program_evaluation.model_program_result
+msgid "program.result"
+msgstr ""
+
+#. module: program_evaluation
+#: field:program.evaluation,evaluator_ids:0
 msgid "Evaluator"
 msgstr "Évaluateur"
 
@@ -143,7 +139,12 @@ msgid "Done"
 msgstr "Terminée"
 
 #. module: program_evaluation
-#: field:program.evaluation,recommendation_id:0 view:program.recommendation:0
+#: field:program.evaluation,result_id:0
+msgid "Result"
+msgstr "Résultat"
+
+#. module: program_evaluation
+#: field:program.evaluation,recommendation_ids:0 view:program.recommendation:0
 msgid "Recommendation"
 msgstr "Recommandation"
 
@@ -151,3 +152,9 @@ msgstr "Recommandation"
 #: view:program.evaluation:0
 msgid "Cancel"
 msgstr "Annuler"
+
+#~ msgid "Action"
+#~ msgstr "Action"
+
+#~ msgid "program.action"
+#~ msgstr "program.action"

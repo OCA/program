@@ -1,9 +1,9 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
+
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    This module copyright (C) 2013 Savoir-faire Linux
-#    (<http://www.savoirfairelinux.com>).
+#    Copyright (C) 2014 Savoir-faire Linux (<www.savoirfairelinux.com>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -20,8 +20,32 @@
 #
 ##############################################################################
 
-from . import (
-    program_evaluation,
-    program_recommendation,
-    program_result,
-)
+{
+    'name': 'Program Document - Evaluation Bindings',
+    'version': '0.4',
+    'category': 'Program',
+    'summary': "Evaluation bindings for Program Document",
+    'license': 'AGPL-3',
+    'description': '''
+Program Document - Evaluation Bindings
+======================================
+
+Contributors
+------------
+
+* Sandy Carter (sandy.carter@savoirfairelinux.com)
+''',
+    'author': 'Savoir-faire Linux',
+    'website': 'http://www.savoirfairelinux.com',
+    'license': 'AGPL-3',
+    'depends': [
+        'program_document',
+        'program_evaluation'
+    ],
+    'data': [
+    ],
+    'test': [],
+    'demo': [],
+    'auto_install': True,
+    'installable': True,
+}

@@ -22,9 +22,10 @@
 
 {
     'name': 'Program Document',
-    'version': '0.1',
+    'version': '0.4',
     'category': 'Program',
-    'summary': 'Program Documents',
+    'summary': "Manage program's documents",
+    'license': 'AGPL-3',
     'description': '''
 Program Document
 ================
@@ -41,11 +42,10 @@ Contributors
     'license': 'AGPL-3',
     'depends': [
         'program',
-        'program_evaluation',
         'document_multiple_records'
     ],
     'data': [
-        'program_document_view.xml',
+        'program_result_view.xml',
     ],
     'test': [],
     'demo': [],

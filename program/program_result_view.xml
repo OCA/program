@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+    <record id="view_program_result_tree" model="ir.ui.view">
+      <field name="name">Result Tree</field>
+      <field name="model">program.result</field>
+      <field name="field_parent">child_ids</field>
+      <field name="arch" type="xml">
+        <tree string="Results" version="7.0">
+          <field name="result_level_id" />
+          <field name="code" />
+          <field name="name" />
+          <field name="date_from" />
+          <field name="date_to" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_program_result_form" model="ir.ui.view">
+      <field name="name">Result Form</field>
+      <field name="model">program.result</field>
+      <field name="arch" type="xml">
+        <form string="Result" version="7.0">
+          <sheet>
+            <div class="oe_title">
+              <label for="name" class="oe_edit_only" />
+              <h1>
+                <field name="name" />
+              </h1>
+            </div>
+
+            <group colspan="4" col="4">
+              <group>
+                <field name="code" />
+                <field name="result_level_id" />
+                <field name="parent_id" />
+              </group>
+
+              <group>
+                <field name="date_from" />
+                <field name="date_to" />
+              </group>
+            </group>
+
+            <group colspan="4" col="2">
+              <field name="description" />
+            </group>
+
+            <notebook>
+              <page name="target" string="Targets">
+                <group colspan="4" col="2">
+
+                  <field name="target_audience" />
+                  <field name="target_audience_type_ids" domain="[('active', '=', True)]" />
+                </group>
+              </page>
+
+              <page name="children" string="Results">
+                <group colspan="4" col="4">
+                  <group colspan="4" col="1">
+                    <label for="child_ids" />
+                    <field name="child_ids" nolabel="1">
+                      <tree>
+                        <field name="result_level_id" />
+                        <field name="name" />
+                      </tree>
+                    </field>
+                  </group>
+                </group>
+              </page>
+              <page name="monitoring" string="Monitoring">
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_program_result_calendar" model="ir.ui.view">
+      <field name="name">Result Calendar</field>
+      <field name="model">program.result</field>
+      <field name="arch" type="xml">
+        <calendar string="Result Schedule" color="result_level_id" date_start="date_from" date_stop="date_to" version="7.0">
+          <field name="code" />
+          <field name="name" />
+        </calendar>
+      </field>
+    </record>
+
+    <record id="view_program_result_search" model="ir.ui.view">
+      <field name="name">Result Search</field>
+      <field name="model">program.result</field>
+      <field name="arch" type="xml">
+        <search string="Search Results" version="7.0">
+          <field name="name" string="Name" />
+
+          <group expand="0" string="Group by...">
+            <filter string="Parent" name="parent_id" context="{'group_by': 'parent_id'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_program_result_tree" model="ir.actions.act_window">
+      <field name="name">Result Chain</field>
+      <field name="res_model">program.result</field>
+      <field name="view_type">tree</field>
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_program_result_tree" />
+      <field name="domain">[('parent_id', '=', False)]</field>
+      <field name="search_view_id" ref="view_program_result_search" />
+      <field name="target">current</field>
+    </record>
+
+    <record id="action_program_result_list" model="ir.actions.act_window">
+      <field name="name">Results</field>
+      <field name="res_model">program.result</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form,calendar</field>
+      <field name="view_id" ref="view_program_result_tree" />
+      <field name="search_view_id" ref="view_program_result_search" />
+      <field name="target">current</field>
+    </record>
+
+    <!-- Action to open list and forms of item (view_type=tree) -->
+    <record model="ir.actions.act_window" id="action_program_result_form">
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">program.result</field>
+        <field name="name">Results</field>
+        <field name="view_type">form</field>
+        <field name="domain">[('parent_id', 'child_of', active_id)]</field>
+        <field name="context">{'parent_id': active_id}</field>
+    </record>
+
+    <!-- Insert a value for tree view to open list and forms of item -->
+    <record model="ir.values" id="ir_action_result_structure_form">
+        <field name="key2" eval="'tree_but_open'"/>
+        <field name="model" eval="'program.result'"/>
+        <field name="name">Open Result Form</field>
+        <field name="value"
+               eval="'ir.actions.act_window,%d'%action_program_result_form"/>
+    </record>
+
+    <menuitem
+      id="menu_program"
+      name="Programs"
+      groups="program_user"
+      sequence="12" />
+
+    <menuitem
+      id="menu_program_result"
+      name="Results"
+      parent="menu_program"
+      groups="program_user"
+      sequence="1" />
+
+    <menuitem
+      id="menu_program_result_result"
+      name="Results"
+      parent="menu_program_result"
+      action="action_program_result_list"
+      groups="program_user"
+      sequence="1" />
+
+
+    <menuitem
+      id="menu_program_result_chain"
+      name="Result Chain"
+      parent="menu_program_result"
+      action="action_program_result_tree"
+      groups="program_user"
+      sequence="2" />
+
+    <menuitem
+      id="menu_program_configuration"
+      name="Configuration"
+      parent="menu_program"
+      groups="program_user"
+      sequence="10" />
+  </data>
+</openerp>

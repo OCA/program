@@ -28,9 +28,9 @@
             </group>
 
             <group>
-              <field name="action_id"
-                     required="not context.get('from_action', False)"
-                     invisible="context.get('from_action', False)"/>
+              <field name="result_id"
+                     required="not context.get('from_result', False)"
+                     invisible="context.get('from_result', False)"/>
             </group>
 
             <group col="2">
@@ -44,10 +44,11 @@
 
             <notebook>
               <page name="evaluators" string="Evaluators">
-                <field name="evaluator_id" domain="[('is_company', '=', False), ('contact_id', '=', False)]"/>
+                <field name="evaluator_ids"
+                       domain="[('is_company', '=', False), ('contact_id', '=', False)]"/>
               </page>
               <page name="recommendations" string="Recommendations">
-                <field name="recommendation_id"
+                <field name="recommendation_ids"
                        context="{ 'default_evaluation_id': active_id }"/>
               </page>
             </notebook>

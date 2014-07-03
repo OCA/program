@@ -1,3 +1,0 @@
-"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
-access_program_result,access_program_result,model_program_result,program.program_user,1,1,1,1
-access_program_result_level,access_program_result_level,model_program_result_level,program.program_user,1,1,1,1

@@ -20,6 +20,8 @@
 #
 ##############################################################################
 
-from . import program_action
-from . import program_action_level
-from . import program_action_target
+from . import (
+    program_result,
+    program_result_level,
+    program_result_target,
+)

@@ -1,8 +1,9 @@
 # -*- encoding: utf-8 -*-
+
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    This module copyright (C) 2013 Savoir-faire Linux
+#    This module copyright (C) 2010 - 2014 Savoir-faire Linux
 #    (<http://www.savoirfairelinux.com>).
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -20,8 +21,30 @@
 #
 ##############################################################################
 
-from . import (
-    program_evaluation,
-    program_recommendation,
-    program_result,
-)
+from openerp.osv import orm
+
+
+class program_result(orm.Model):
+    _inherit = 'program.result'
+
+    def _get_documents(self, cr, uid, ids, field_name, args, context=None):
+        if not isinstance(ids, list):
+            ids = [ids]
+
+        res = super(program_result, self)._get_documents(
+            cr, uid, ids, field_name, args, context=context
+        )
+
+        ir_attachment_obj = self.pool.get('ir.attachment')
+
+        for line in self.browse(cr, uid, ids, context=context):
+            query = [
+                '&',
+                ('attachment_document_ids.res_model', '=', 'program.evaluation'),
+                ('attachment_document_ids.res_id', 'in',
+                 [i.id for i in line.evaluation_ids]),
+            ]
+            res[line.id] += ir_attachment_obj.search(
+                cr, uid, query, context=context)
+
+        return res

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-12 21:35+0000\n"
-"PO-Revision-Date: 2014-03-12 21:35+0000\n"
+"POT-Creation-Date: 2014-07-02 16:38+0000\n"
+"PO-Revision-Date: 2014-07-02 16:38+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,62 +16,81 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: program
-#: view:program.action:0
-msgid "Targets"
+#: view:program.result:0
+msgid "Search Results"
 msgstr ""
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_action_target_tree
-msgid "Action Targets"
-msgstr ""
-
-#. module: program
-#: view:program.action:0
+#: view:program.result:0
 msgid "Monitoring"
 msgstr ""
 
 #. module: program
-#: view:program.action.level:0
-msgid "Search Action Levels"
+#: model:_description:0
+#: model:ir.model,name:program.model_program_result_level
+msgid "program.result.level"
 msgstr ""
 
 #. module: program
-#: view:program.action.target:0
-msgid "Action Target"
+#: model:_description:0
+#: model:ir.model,name:program.model_program_result_target
+msgid "program.result.target"
 msgstr ""
 
 #. module: program
-#: model:ir.model,name:program.model_program_action
-msgid "program.action"
+#: model:program.result,name:program.demo_program_result_mission_A
+msgid "Mission A"
 msgstr ""
 
 #. module: program
-#: field:program.action,description:0
+#: model:program.result,name:program.demo_program_result_program_C
+msgid "Program C"
+msgstr ""
+
+#. module: program
+#: view:program.result.level:0
+msgid "Result Level"
+msgstr ""
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_project_D
+msgid "Project D"
+msgstr ""
+
+#. module: program
+#: field:program.result,description:0
 msgid "Description"
 msgstr ""
 
 #. module: program
-#: view:program.action:0
-msgid "Action Schedule"
+#: model:program.result,name:program.demo_program_result_operation_F
+msgid "Operation F"
 msgstr ""
 
 #. module: program
-#: model:ir.ui.menu,name:program.menu_program
-msgid "Programs"
+#: field:program.result,result_level_id:0
+#: field:program.result.level,depth:0
+#: field:program.result.target,result:0
+msgid "Level"
 msgstr ""
 
 #. module: program
-#: field:program.action,transverse:0
+#: field:program.result,transverse_ids:0
 msgid "Transverse"
 msgstr ""
 
 #. module: program
-#: field:program.action,target_audience_type:0
+#: field:program.result,target_audience_type_ids:0
 msgid "Target Audience Types"
 msgstr ""
 
 #. module: program
-#: field:program.action.target,active:0
+#: view:program.result:0
+msgid "Result Schedule"
+msgstr ""
+
+#. module: program
+#: field:program.result.target,active:0
 msgid "Active"
 msgstr ""
 
@@ -81,136 +100,148 @@ msgid "Configuration"
 msgstr ""
 
 #. module: program
-#: field:program.action,date_to:0
+#: view:program.result.target:0
+msgid "Search Result Targets"
+msgstr ""
+
+#. module: program
+#: field:program.result,date_to:0
 msgid "End Date"
 msgstr ""
 
 #. module: program
-#: view:program.action:0
-#: field:program.action,name:0
-#: field:program.action.level,name:0
-#: field:program.action.target,name:0
+#: view:program.result:0
+#: field:program.result,name:0
+#: field:program.result.level,name:0
+#: field:program.result.target,name:0
 msgid "Name"
 msgstr ""
 
 #. module: program
-#: field:program.action,level:0
-#: field:program.action.level,depth:0
-#: field:program.action.target,action:0
-msgid "Level"
+#: model:ir.ui.menu,name:program.menu_program
+msgid "Programs"
 msgstr ""
 
 #. module: program
-#: code:addons/program/program_action_level.py:40
-#: code:addons/program/program_action_level.py:55
+#: code:addons/program/program_result_level.py:35
+#: code:addons/program/program_result_level.py:44
 #, python-format
 msgid "Depth must be greater than or equal to 0."
 msgstr ""
 
 #. module: program
-#: model:_description:0
-msgid "Model Program Document"
+#: model:ir.ui.menu,name:program.menu_program_configuration_target
+msgid "Result Target Types"
 msgstr ""
 
 #. module: program
-#: code:addons/program/program_action_level.py:39
-#: code:addons/program/program_action_level.py:54
+#: view:program.result.target:0
+msgid "Result Target"
+msgstr ""
+
+#. module: program
+#: view:program.result.level:0
+msgid "Search Result Levels"
+msgstr ""
+
+#. module: program
+#: code:addons/program/program_result_level.py:34
+#: code:addons/program/program_result_level.py:43
 #, python-format
 msgid "Error!"
 msgstr ""
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_action_level_tree
-#: model:ir.ui.menu,name:program.menu_program_configuration_level
-msgid "Action Levels"
+#: model:ir.actions.act_window,name:program.action_program_result_target_tree
+msgid "Result Targets"
 msgstr ""
 
 #. module: program
-#: model:res.groups,name:program.program_action_user
-msgid "Program Action User"
+#: field:program.result,child_ids:0
+msgid "Sub-results"
 msgstr ""
 
 #. module: program
-#: model:ir.ui.menu,name:program.menu_program_configuration_target
-msgid "Action Target Types"
+#: model:_description:0
+#: model:ir.model,name:program.model_program_result
+msgid "program.result"
 msgstr ""
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_action_form
-#: view:program.action:0
-#: field:program.action.level,action:0
-msgid "Action"
-msgstr ""
-
-#. module: program
-#: view:program.action:0
-msgid "Search Actions"
-msgstr ""
-
-#. module: program
-#: field:program.action,target_audience:0
+#: field:program.result,target_audience:0
 msgid "Target Audience"
 msgstr ""
 
 #. module: program
-#: field:program.action,children:0
-msgid "Sub-actions"
+#: model:ir.actions.act_window,name:program.action_program_result_level_tree
+#: model:ir.ui.menu,name:program.menu_program_configuration_level
+msgid "Result Levels"
 msgstr ""
 
 #. module: program
-#: field:program.action,code:0
-#: field:program.action.level,code:0
+#: model:res.groups,name:program.program_user
+msgid "Program User"
+msgstr ""
+
+#. module: program
+#: field:program.result,code:0
+#: field:program.result.level,code:0
 msgid "Code"
 msgstr ""
 
 #. module: program
-#: view:program.action:0
-#: field:program.action,parent:0
+#: view:program.result:0
+#: field:program.result,parent_id:0
 msgid "Parent"
 msgstr ""
 
 #. module: program
-#: view:program.action.level:0
-msgid "Action Level"
+#: model:ir.actions.act_window,name:program.action_program_result_tree
+#: model:ir.ui.menu,name:program.menu_program_result_chain
+msgid "Result Chain"
 msgstr ""
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_action_tree
-#: model:ir.ui.menu,name:program.menu_program_action
-#: model:ir.ui.menu,name:program.menu_program_action_action
-#: view:program.action:0
-msgid "Actions"
+#: model:ir.actions.act_window,name:program.action_program_result_form
+#: model:ir.actions.act_window,name:program.action_program_result_list
+#: model:ir.ui.menu,name:program.menu_program_result
+#: model:ir.ui.menu,name:program.menu_program_result_result
+#: view:program.result:0
+msgid "Results"
 msgstr ""
 
 #. module: program
-#: view:program.action:0
+#: model:program.result,name:program.demo_program_result_domain_B
+msgid "Domain B"
+msgstr ""
+
+#. module: program
+#: view:program.result:0
 msgid "Group by..."
 msgstr ""
 
 #. module: program
-#: model:res.groups,comment:program.program_action_user
-msgid "Program Action Users"
+#: view:program.result:0
+#: field:program.result.level,result_ids:0
+msgid "Result"
 msgstr ""
 
 #. module: program
-#: view:program.action.target:0
-msgid "Search Action Targets"
+#: model:program.result,name:program.demo_program_result_activity_E
+msgid "Activity E"
 msgstr ""
 
 #. module: program
-#: model:_description:0
-#: model:ir.model,name:program.model_program_action_level
-msgid "program.action.level"
+#: model:res.groups,comment:program.program_user
+msgid "Program Users"
 msgstr ""
 
 #. module: program
-#: field:program.action,date_from:0
+#: field:program.result,date_from:0
 msgid "Start Date"
 msgstr ""
 
 #. module: program
-#: model:_description:0
-#: model:ir.model,name:program.model_program_action_target
-msgid "program.action.target"
+#: view:program.result:0
+msgid "Targets"
 msgstr ""
-

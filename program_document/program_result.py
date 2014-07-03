@@ -20,13 +20,38 @@
 #
 ##############################################################################
 
-from . import (
-    res_partner,
-    program_result,
-    program_result_team_department,
-    program_result_team_member,
-    program_result_team_partner,
-    program_result_team_partner_type,
-    program_result_team_role,
-    program_result_team_contact,
-)
+from openerp.osv import fields, orm
+
+
+class program_result(orm.Model):
+    """Model Program Document"""
+
+    _description = __doc__
+    _inherit = 'program.result'
+
+    def _get_documents(self, cr, uid, ids, field_name, args, context=None):
+        if not isinstance(ids, list):
+            ids = [ids]
+
+        res = {}
+
+        ir_attachment_obj = self.pool.get('ir.attachment')
+
+        for line in self.browse(cr, uid, ids, context=context):
+            query = [
+                '&',
+                ('attachment_document_ids.res_model', '=', 'program.result'),
+                ('attachment_document_ids.res_id', '=', line.id),
+            ]
+            res[line.id] = ir_attachment_obj.search(
+                cr, uid, query, context=context)
+
+        return res
+
+    _columns = {
+        'document_ids': fields.function(
+            _get_documents,
+            type='many2many',
+            obj='ir.attachment',
+            string='Documents')
+    }
