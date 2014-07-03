@@ -1,0 +1,28 @@
+<openerp>
+  <data>
+    <record id="view_program_result_form" model="ir.ui.view">
+      <field name="model">program.result</field>
+      <field name="inherit_id" ref="program.view_program_result_form" />
+      <field name="arch" type="xml">
+
+        <page name="children" position="after">
+          <page name="documents" string="Documents">
+            <button name="%(document_multiple_records.action_view_document)s"
+                    type="action"
+                    string="Add"
+                    class="oe_edit_only"/>
+            <field name="document_ids">
+              <tree create="1">
+                <field name="name" string="Name"/>
+                <field name="datas_fname" />
+                <field name="create_uid" />
+                <field name="create_date" />
+              </tree>
+            </field>
+          </page>
+        </page>
+
+      </field>
+    </record>
+  </data>
+</openerp>

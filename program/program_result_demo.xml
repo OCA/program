@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE openerp SYSTEM "openerp.dtd">
+<openerp>
+  <data noupdate="1">
+
+    <record id="demo_program_result_mission_A" model="program.result">
+      <field name="name">Mission A</field>
+      <field name="code">A</field>
+    </record>
+
+    <record id="demo_program_result_domain_B" model="program.result">
+      <field name="name">Domain B</field>
+      <field name="code">B</field>
+      <field name="parent_id" ref="demo_program_result_mission_A"/>
+    </record>
+
+    <record id="demo_program_result_program_C" model="program.result">
+      <field name="name">Program C</field>
+      <field name="code">C</field>
+      <field name="parent_id" ref="demo_program_result_domain_B"/>
+    </record>
+
+    <record id="demo_program_result_project_D" model="program.result">
+      <field name="name">Project D</field>
+      <field name="code">D</field>
+      <field name="parent_id" ref="demo_program_result_program_C"/>
+    </record>
+
+    <record id="demo_program_result_activity_E" model="program.result">
+      <field name="name">Activity E</field>
+      <field name="code">E</field>
+      <field name="parent_id" ref="demo_program_result_project_D"/>
+    </record>
+
+    <record id="demo_program_result_operation_F" model="program.result">
+      <field name="name">Operation F</field>
+      <field name="code">F</field>
+      <field name="parent_id" ref="demo_program_result_activity_E"/>
+    </record>
+
+  </data>
+</openerp>

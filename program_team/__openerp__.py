@@ -22,7 +22,7 @@
 
 {
     'name': 'Program Team',
-    'version': '0.2',
+    'version': '0.4',
     'category': 'Program',
     'summary': 'Team Management on RBM',
     'description': '''
@@ -46,12 +46,12 @@ Contributors
     ],
     'data': [
         'security/ir.model.access.csv',
-        'program_action_team_role_view.xml',
+        'program_result_team_role_view.xml',
         'hr_employee_view.xml',
         'hr_department_view.xml',
         'res_partner_view.xml',
-        'program_action_team_partner_type_view.xml',
-        'program_action_view.xml',
+        'program_result_team_partner_type_view.xml',
+        'program_result_view.xml',
     ],
     'test': [],
     'demo': [],

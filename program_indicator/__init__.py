@@ -20,4 +20,8 @@
 #
 ##############################################################################
 
-from . import program
+from . import (
+    program_result,
+    program_indicator,
+    program_indicator_result,
+)

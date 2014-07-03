@@ -6,22 +6,18 @@
       <field name="name">Program Indicator Form</field>
       <field name="model">program.indicator</field>
       <field name="arch" type="xml">
+
         <form string="Indicator" version="7.0">
-	  <sheet>
+          <sheet>
             <group>
               <field name="name" />
-            </group>
-            <group>
               <field name="generic" />
-            </group>
-            <group>
               <field name="verification_means" />
-            </group>
-            <group>
               <field name="risk_hypothesis" />
             </group>
-	  </sheet>
+          </sheet>
         </form>
+
       </field>
     </record>
 
@@ -29,10 +25,12 @@
       <field name="name">Program Indicator Tree</field>
       <field name="model">program.indicator</field>
       <field name="arch" type="xml">
+
         <tree string="Indicator" version="7.0">
           <field name="name" />
-	  <field name="generic" />
+          <field name="generic" />
         </tree>
+
       </field>
     </record>
 
@@ -46,11 +44,11 @@
     </record>
 
     <menuitem 
-	id="menu_program_indicator_action"
-	name="Indicators"
-	parent="program.menu_program"
-	groups="program.program_user"
-	sequence="1" />
+        id="menu_program_indicator_action"
+        name="Indicators"
+        parent="program.menu_program"
+        groups="program.program_user"
+        sequence="1" />
 
     <menuitem
       id="menu_program_indicator_action_action"
@@ -58,6 +56,7 @@
       parent="menu_program_indicator_action"
       action="action_program_indicator_tree"
       groups="program.program_user"
-      sequence="1" />    
+      sequence="1" />
+
   </data>
 </openerp>

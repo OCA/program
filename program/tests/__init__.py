@@ -21,9 +21,9 @@
 ##############################################################################
 
 from . import (
-    test_program_action,
+    test_program_result,
 )
 
 checks = [
-    test_program_action,
+    test_program_result,
 ]

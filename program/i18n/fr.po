@@ -6,70 +6,91 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-12 20:32+0000\n"
-"PO-Revision-Date: 2014-03-12 16:47-0500\n"
-"Last-Translator: Davin Baragiotta <davin.baragiotta@savoirfairelinux.com>\n"
+"POT-Creation-Date: 2014-07-02 16:38+0000\n"
+"PO-Revision-Date: 2014-07-02 12:43-0500\n"
+"Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.6.5\n"
 
 #. module: program
-#: view:program.action:0
-msgid "Targets"
-msgstr "Cibles"
-
-
-#. module: program
-#: model:ir.actions.act_window,name:program.action_program_action_target_tree
-msgid "Action Targets"
-msgstr "Publics cibles"
+#: view:program.result:0
+msgid "Search Results"
+msgstr "Rechercher les Résultats : "
 
 #. module: program
-#: view:program.action.level:0
-msgid "Search Action Levels"
-msgstr "Rechercher dans les niveaux d'actions"
+#: view:program.result:0
+msgid "Monitoring"
+msgstr "Suivi"
 
 #. module: program
-#: view:program.action.target:0
-msgid "Action Target"
-msgstr "Public cible"
+#: model:_description:0 model:ir.model,name:program.model_program_result_level
+msgid "program.result.level"
+msgstr ""
 
 #. module: program
-#: model:ir.model,name:program.model_program_action
-msgid "program.action"
-msgstr "program.action"
+#: model:_description:0
+#: model:ir.model,name:program.model_program_result_target
+msgid "program.result.target"
+msgstr ""
 
 #. module: program
-#: field:program.action,description:0
+#: model:program.result,name:program.demo_program_result_mission_A
+msgid "Mission A"
+msgstr "Mission A"
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_program_C
+msgid "Program C"
+msgstr "Programme C"
+
+#. module: program
+#: view:program.result.level:0
+msgid "Result Level"
+msgstr "Niveau de résultats"
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_project_D
+msgid "Project D"
+msgstr "Projet D"
+
+#. module: program
+#: field:program.result,description:0
 msgid "Description"
 msgstr "Description"
 
 #. module: program
-#: view:program.action:0
-msgid "Action Schedule"
-msgstr "Calendrier des actions"
+#: model:program.result,name:program.demo_program_result_operation_F
+msgid "Operation F"
+msgstr "Opération F"
 
 #. module: program
-#: model:ir.ui.menu,name:program.menu_program
-msgid "Programs"
-msgstr "Programmes"
+#: field:program.result,result_level_id:0 field:program.result.level,depth:0
+#: field:program.result.target,result:0
+msgid "Level"
+msgstr "Niveau"
 
 #. module: program
-#: field:program.action,transverse:0
+#: field:program.result,transverse_ids:0
 msgid "Transverse"
 msgstr "Transversal"
 
 #. module: program
-#: field:program.action,target_audience_type:0
+#: field:program.result,target_audience_type_ids:0
 msgid "Target Audience Types"
 msgstr "Types de public cible"
 
 #. module: program
-#: field:program.action.target,active:0
+#: view:program.result:0
+msgid "Result Schedule"
+msgstr "Horaire des Résultats"
+
+#. module: program
+#: field:program.result.target,active:0
 msgid "Active"
 msgstr "Actif"
 
@@ -79,133 +100,175 @@ msgid "Configuration"
 msgstr "Configuration"
 
 #. module: program
-#: field:program.action,date_to:0
+#: view:program.result.target:0
+msgid "Search Result Targets"
+msgstr "Rechercher dans les résultats cibles"
+
+#. module: program
+#: field:program.result,date_to:0
 msgid "End Date"
 msgstr "Date de fin"
 
 #. module: program
-#: view:program.action:0 field:program.action,name:0
-#: field:program.action.level,name:0 field:program.action.target,name:0
+#: view:program.result:0 field:program.result,name:0
+#: field:program.result.level,name:0 field:program.result.target,name:0
 msgid "Name"
 msgstr "Nom"
 
 #. module: program
-#: field:program.action,level:0 field:program.action.level,depth:0
-#: field:program.action.target,action:0
-msgid "Level"
-msgstr "Niveau"
+#: model:ir.ui.menu,name:program.menu_program
+msgid "Programs"
+msgstr "Programmes"
 
 #. module: program
-#: code:addons/program/program_action_level.py:40
-#: code:addons/program/program_action_level.py:55
+#: code:addons/program/program_result_level.py:35
+#: code:addons/program/program_result_level.py:44
 #, python-format
 msgid "Depth must be greater than or equal to 0."
 msgstr "Le niveau doit être plus grand ou égal à 0."
 
 #. module: program
-#: model:_description:0
-msgid "Model Program Document"
-msgstr "Modèle Program Document"
+#: model:ir.ui.menu,name:program.menu_program_configuration_target
+msgid "Result Target Types"
+msgstr "Types de résultats cibles"
 
 #. module: program
-#: code:addons/program/program_action_level.py:39
-#: code:addons/program/program_action_level.py:54
+#: view:program.result.target:0
+msgid "Result Target"
+msgstr "Cible de Résultat"
+
+#. module: program
+#: view:program.result.level:0
+msgid "Search Result Levels"
+msgstr "Rechercher dans les niveaux de résultats"
+
+#. module: program
+#: code:addons/program/program_result_level.py:34
+#: code:addons/program/program_result_level.py:43
 #, python-format
 msgid "Error!"
 msgstr "Erreur!"
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_action_level_tree
-#: model:ir.ui.menu,name:program.menu_program_configuration_level
-msgid "Action Levels"
-msgstr "Niveaux d'action"
+#: model:ir.actions.act_window,name:program.action_program_result_target_tree
+msgid "Result Targets"
+msgstr "Cibles de Résultats"
 
 #. module: program
-#: model:res.groups,name:program.program_action_user
-msgid "Program Action User"
-msgstr "Utilisateur d'action de programme"
+#: field:program.result,child_ids:0
+msgid "Sub-results"
+msgstr "Sous-résultats"
 
 #. module: program
-#: model:ir.ui.menu,name:program.menu_program_configuration_target
-msgid "Action Target Types"
-msgstr "Types de public cible"
+#: model:_description:0 model:ir.model,name:program.model_program_result
+msgid "program.result"
+msgstr ""
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_action_form
-#: view:program.action:0 field:program.action.level,action:0
-msgid "Action"
-msgstr "Action"
-
-#. module: program
-#: view:program.action:0
-msgid "Search Actions"
-msgstr "Rechercher dans les actions"
-
-#. module: program
-#: field:program.action,target_audience:0
+#: field:program.result,target_audience:0
 msgid "Target Audience"
 msgstr "Public cible"
 
 #. module: program
-#: field:program.action,children:0
-msgid "Sub-actions"
-msgstr "Sous-actions"
+#: model:ir.actions.act_window,name:program.action_program_result_level_tree
+#: model:ir.ui.menu,name:program.menu_program_configuration_level
+msgid "Result Levels"
+msgstr "Niveaux de résultats"
 
 #. module: program
-#: field:program.action,code:0 field:program.action.level,code:0
+#: model:res.groups,name:program.program_user
+msgid "Program User"
+msgstr "Utilisateur de la programmation"
+
+#. module: program
+#: field:program.result,code:0 field:program.result.level,code:0
 msgid "Code"
 msgstr "Code"
 
 #. module: program
-#: view:program.action:0 field:program.action,parent:0
+#: view:program.result:0 field:program.result,parent_id:0
 msgid "Parent"
 msgstr "Parent"
 
 #. module: program
-#: view:program.action.level:0
-msgid "Action Level"
-msgstr "Niveau d'action"
+#: model:ir.actions.act_window,name:program.action_program_result_tree
+#: model:ir.ui.menu,name:program.menu_program_result_chain
+msgid "Result Chain"
+msgstr "Chaîne de résultat"
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_action_tree
-#: model:ir.ui.menu,name:program.menu_program_action
-#: model:ir.ui.menu,name:program.menu_program_action_action
-#: view:program.action:0
-msgid "Actions"
-msgstr "Actions"
+#: model:ir.actions.act_window,name:program.action_program_result_form
+#: model:ir.actions.act_window,name:program.action_program_result_list
+#: model:ir.ui.menu,name:program.menu_program_result
+#: model:ir.ui.menu,name:program.menu_program_result_result
+#: view:program.result:0
+msgid "Results"
+msgstr "Résultats"
 
 #. module: program
-#: view:program.action:0
+#: model:program.result,name:program.demo_program_result_domain_B
+msgid "Domain B"
+msgstr "Domaine B"
+
+#. module: program
+#: view:program.result:0
 msgid "Group by..."
 msgstr "Grouper par..."
 
 #. module: program
-#: model:res.groups,comment:program.program_action_user
-msgid "Program Action Users"
-msgstr "Utilisateurs d'action de programme"
+#: view:program.result:0 field:program.result.level,result_ids:0
+msgid "Result"
+msgstr "Résultat"
 
 #. module: program
-#: view:program.action.target:0
-msgid "Search Action Targets"
-msgstr "Rechercher dans les publics cibles"
+#: model:program.result,name:program.demo_program_result_activity_E
+msgid "Activity E"
+msgstr "Activité E"
 
 #. module: program
-#: model:_description:0 model:ir.model,name:program.model_program_action_level
-msgid "program.action.level"
-msgstr "program.action.level"
+#: model:res.groups,comment:program.program_user
+msgid "Program Users"
+msgstr "Utilisateurs de la programmation"
 
 #. module: program
-#: field:program.action,date_from:0
+#: field:program.result,date_from:0
 msgid "Start Date"
 msgstr "Date de début"
 
 #. module: program
-#: model:_description:0
-#: model:ir.model,name:program.model_program_action_target
-msgid "program.action.target"
-msgstr "program.action.target"
+#: view:program.result:0
+msgid "Targets"
+msgstr "Cibles"
 
-#. module: program
-#: view:program.action:0
-msgid "Monitoring"
-msgstr "Suivi"
+#~ msgid "Action Targets"
+#~ msgstr "Publics cibles"
+
+#~ msgid "Search Action Levels"
+#~ msgstr "Rechercher dans les niveaux d'actions"
+
+#~ msgid "Action Target"
+#~ msgstr "Public cible"
+
+#~ msgid "Search Action Targets"
+#~ msgstr "Rechercher dans les publics cibles"
+
+#~ msgid "Action Levels"
+#~ msgstr "Niveaux d'action"
+
+#~ msgid "Action"
+#~ msgstr "Action"
+
+#~ msgid "Sub-actions"
+#~ msgstr "Sous-actions"
+
+#~ msgid "Action Level"
+#~ msgstr "Niveau d'action"
+
+#~ msgid "Model Program Document"
+#~ msgstr "Modèle Program Document"
+
+#~ msgid "Program Action User"
+#~ msgstr "Utilisateur d'action de programme"
+
+#~ msgid "Actions"
+#~ msgstr "Actions"

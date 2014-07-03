@@ -42,12 +42,12 @@ class program_evaluation(orm.Model):
             'Status', select=True, required=True, readonly=True),
         'name': fields.char('Name', size=128, required=True, select=True),
         'abstract': fields.text('Abstract'),
-        'action_id': fields.many2one('program.action', 'Action'),
+        'result_id': fields.many2one('program.result', 'Result'),
         'date_start': fields.date('Start date'),
         'date_end': fields.date('End date'),
-        'evaluator_id': fields.many2many(
+        'evaluator_ids': fields.many2many(
             'res.partner', 'evaluators_rel', 'from_id', 'to_id',
             string='Evaluator'),
-        'recommendation_id': fields.one2many(
+        'recommendation_ids': fields.one2many(
             'program.recommendation', 'evaluation_id', 'Recommendation'),
     }

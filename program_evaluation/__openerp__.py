@@ -22,11 +22,12 @@
 
 {
     'name': 'Program Evaluation',
-    'version': '0.3',
+    'version': '0.4',
     'author': 'Savoir-faire Linux',
     'maintainer': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',
     'category': 'Customer Relationship Management',
+    'license': 'AGPL-3',
     'summary': 'Program Evaluation',
     'description': """
 Program Evaluation
@@ -35,6 +36,7 @@ Program Evaluation
 Contributors
 -------------
 * David Cormier (david.cormier@savoirfairelinux.com)
+* Sandy Carter (sandy.carter@savoirfairelinux.com)
 """,
     'depends': [
         'program'
@@ -45,7 +47,7 @@ Contributors
         'program_evaluation_view.xml',
         'program_recommendation_view.xml',
         'program_evaluation_workflow.xml',
-        'program_action_view.xml'
+        'program_result_view.xml'
     ],
     'demo': [
     ],

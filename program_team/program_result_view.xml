@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+    <record id="view_program_result_form" model="ir.ui.view">
+      <field name="model">program.result</field>
+      <field name="inherit_id" ref="program.view_program_result_form" />
+      <field name="arch" type="xml">
+
+        <field name="parent_id" position="after">
+          <field name="department_id" />
+        </field>
+
+        <page name="children" position="before">
+          <page name="team" string="Team">
+            <group colspan="4" col="2">
+              <field name="team_department_ids">
+                <tree editable="bottom">
+                  <field name="department_id"/>
+                    <button name="action_department_form_view"
+                            type="object"
+                            icon="gtk-open"/>
+                  <field name="role_id" domain="[('is_department', '=', True)]" />
+                </tree>
+              </field>
+
+              <field name="team_member_ids">
+                <tree editable="bottom">
+                  <field name="employee_id"/>
+                  <button name="action_member_form_view"
+                          type="object"
+                          icon="gtk-open"/>
+                  <field name="role_id" domain="[('is_employee', '=', True)]" />
+                </tree>
+              </field>
+
+              <field name="team_partner_ids">
+                <tree editable="bottom">
+                  <field name="organisation_id" domain="[('is_company', '=', True)]"
+                         context="{'default_is_company': True}" />
+                  <button name="action_partner_form_view"
+                          type="object"
+                          icon="gtk-open"/>
+                  <field name="role_id" domain="[('is_partner', '=', True)]" />
+                  <field name="contribution" />
+                  <field name="type_id" domain="[('is_active', '=', True)]" />
+                </tree>
+              </field>
+            </group>
+          </page>
+        </page>
+
+      </field>
+    </record>
+  </data>
+</openerp>

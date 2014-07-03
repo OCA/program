@@ -22,7 +22,7 @@
 
 {
     'name': 'Program',
-    'version': '0.2',
+    'version': '0.4',
     'category': 'Program',
     'summary': 'Results Based Management',
     'description': '''
@@ -35,6 +35,7 @@ Contributors
 ------------
 
 * Alexandre Boily (alexandre.boily@savoirfairelinux.com)
+* Sandy Carter (sandy.carter@savoirfairelinux.com)
 ''',
     'author': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',
@@ -45,13 +46,13 @@ Contributors
     'data': [
         'security/program_security.xml',
         'security/ir.model.access.csv',
-        'program_action_view.xml',
-        'program_action_level_view.xml',
-        'program_action_target_view.xml',
+        'program_result_view.xml',
+        'program_result_level_view.xml',
+        'program_result_target_view.xml',
     ],
     'test': [],
     'demo': [
-        'program_action_demo.xml',
+        'program_result_demo.xml',
     ],
     'auto_install': False,
     'installable': True,

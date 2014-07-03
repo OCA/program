@@ -20,9 +20,11 @@
 #
 ##############################################################################
 
-from . import program_action
-from . import program_action_team_department
-from . import program_action_team_member
-from . import program_action_team_partner
-from . import program_action_team_partner_type
-from . import program_action_team_role
+from . import (
+    program_result,
+    program_result_team_department,
+    program_result_team_member,
+    program_result_team_partner,
+    program_result_team_partner_type,
+    program_result_team_role,
+)
