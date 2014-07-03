@@ -1,0 +1,24 @@
+language: python
+
+python:
+  - "2.7"
+
+virtualenv:
+  system_site_packages: true
+
+before_install:
+  - git clone https://github.com/OCA/maintainer-quality-tools.git /tmp/maintainer-quality-tools
+  - export PATH=/tmp/maintainer-quality-tools/travis:$PATH
+  - travis_install_nightly 7.0
+ 
+install:
+  - pip install coveralls flake8
+#  - git clone https://github.com/OCA/knowledge.git /tmp/knowledge -b 7.0  # Temp until https://code.launchpad.net/~savoirfairelinux-openerp/knowledge-addons/document_multiple_records/+merge/206960 is on github
+  - bzr branch lp:~savoirfairelinux-openerp/knowledge-addons/document_multiple_records /tmp/knowledge
+
+script:
+    - travis_run_flake8
+    - travis_run_tests 7.0 openerp_test /tmp/knowledge
+
+after_success:
+  coveralls
