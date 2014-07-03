@@ -43,6 +43,10 @@
             </group>
 
             <group colspan="4" col="2">
+              <field name="is_transversal" />
+            </group>
+
+            <group colspan="4" col="2">
               <field name="description" />
             </group>
 
@@ -56,17 +60,26 @@
               </page>
 
               <page name="children" string="Results">
-                <group colspan="4" col="4">
-                  <group colspan="4" col="1">
-                    <label for="child_ids" />
-                    <field name="child_ids" nolabel="1">
-                      <tree>
-                        <field name="result_level_id" />
-                        <field name="name" />
-                      </tree>
-                    </field>
-                  </group>
+                <group col="1">
+                  <label for="child_ids" />
+                  <field name="child_ids" nolabel="1">
+                    <tree>
+                      <field name="result_level_id" />
+                      <field name="name" />
+                    </tree>
+                  </field>
                 </group>
+
+                <group col="1" attrs="{'invisible': [('is_transversal', '=', False)]}">
+                  <label for="transverse_ids" />
+                  <field name="transverse_ids" nolabel="1" domain="[('id', '!=', id), ('result_level_id.depth', '=', 1)]">
+                    <tree>
+                      <field name="result_level_id" />
+                      <field name="name" />
+                    </tree>
+                  </field>
+                </group>
+
               </page>
               <page name="monitoring" string="Monitoring">
               </page>

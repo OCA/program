@@ -43,7 +43,7 @@ msgstr ""
 #: field:program.result.team.department,department_id:0
 #: field:program.result.team.role,is_department:0
 msgid "Department"
-msgstr "Département"
+msgstr "Unité Administrative"
 
 #. module: program_team
 #: field:program.result.team.contact,role_id:0

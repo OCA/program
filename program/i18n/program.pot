@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-02 16:38+0000\n"
-"PO-Revision-Date: 2014-07-02 16:38+0000\n"
+"POT-Creation-Date: 2014-07-03 20:22+0000\n"
+"PO-Revision-Date: 2014-07-03 20:22+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -35,6 +35,11 @@ msgstr ""
 #: model:_description:0
 #: model:ir.model,name:program.model_program_result_target
 msgid "program.result.target"
+msgstr ""
+
+#. module: program
+#: model:ir.ui.menu,name:program.menu_program_configuration
+msgid "Configuration"
 msgstr ""
 
 #. module: program
@@ -95,8 +100,9 @@ msgid "Active"
 msgstr ""
 
 #. module: program
-#: model:ir.ui.menu,name:program.menu_program_configuration
-msgid "Configuration"
+#: view:program.result:0
+#: field:program.result,parent_id:0
+msgid "Parent"
 msgstr ""
 
 #. module: program
@@ -107,6 +113,11 @@ msgstr ""
 #. module: program
 #: field:program.result,date_to:0
 msgid "End Date"
+msgstr ""
+
+#. module: program
+#: field:program.result,is_transversal:0
+msgid "Transversal"
 msgstr ""
 
 #. module: program
@@ -157,11 +168,6 @@ msgid "Result Targets"
 msgstr ""
 
 #. module: program
-#: field:program.result,child_ids:0
-msgid "Child Results"
-msgstr ""
-
-#. module: program
 #: model:_description:0
 #: model:ir.model,name:program.model_program_result
 msgid "program.result"
@@ -190,9 +196,8 @@ msgid "Code"
 msgstr ""
 
 #. module: program
-#: view:program.result:0
-#: field:program.result,parent_id:0
-msgid "Parent"
+#: field:program.result,child_ids:0
+msgid "Child Results"
 msgstr ""
 
 #. module: program
