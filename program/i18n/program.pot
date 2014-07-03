@@ -158,7 +158,7 @@ msgstr ""
 
 #. module: program
 #: field:program.result,child_ids:0
-msgid "Sub-results"
+msgid "Child Results"
 msgstr ""
 
 #. module: program

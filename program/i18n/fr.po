@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-02 16:38+0000\n"
-"PO-Revision-Date: 2014-07-02 17:14-0500\n"
+"PO-Revision-Date: 2014-07-03 16:04-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -156,8 +156,8 @@ msgstr "Cibles de Résultats"
 
 #. module: program
 #: field:program.result,child_ids:0
-msgid "Sub-results"
-msgstr "Sous-résultats"
+msgid "Child Results"
+msgstr "Résultats fils"
 
 #. module: program
 #: model:_description:0 model:ir.model,name:program.model_program_result
@@ -239,6 +239,9 @@ msgstr "Date de début"
 #: view:program.result:0
 msgid "Targets"
 msgstr "Cibles"
+
+#~ msgid "Sub-results"
+#~ msgstr "Sous-résultats"
 
 #~ msgid "Action Targets"
 #~ msgstr "Publics cibles"

@@ -34,7 +34,7 @@ class program_result(orm.Model):
         'parent_id': fields.many2one(
             'program.result', string='Parent', select=True),
         'child_ids': fields.one2many(
-            'program.result', 'parent_id', string='Sub-results'),
+            'program.result', 'parent_id', string='Child Results'),
         'transverse_ids': fields.many2many(
             'program.result', 'transverse_rel', 'from_id', 'to_id',
             string='Transverse'),
