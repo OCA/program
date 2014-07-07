@@ -18,7 +18,7 @@ install:
 
 script:
     - travis_run_flake8
-    - travis_run_tests 7.0 openerp_test /tmp/knowledge
+    - travis_run_tests 7.0 /tmp/knowledge
 
 after_success:
   coveralls
