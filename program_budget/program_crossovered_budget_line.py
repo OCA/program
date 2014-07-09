@@ -35,10 +35,13 @@ class program_crossovered_budget_lines(orm.Model):
     _columns = {
         "partner_id": fields.many2one(
             "res.partner", string="Partner", required=True),
+        "budget_id": fields.many2one(
+            "crossovered.budget", string="Budget", required=True),
         "result_id": fields.many2one("program.result", string="Result"),
-        "crossovered_budget_line_id": fields.many2one(
-            "crossovered.budget.lines", string="Budget Line"
-        ),
+        "currency_amount": fields.float(
+            string="Amount in Currency", digits=(12, 0)),
+        "currency_id": fields.many2one('res.currency', "Currency"),
         "amount": fields.float(
-            string="Amount", digits=(12, 0), required=True),
+            string="Amount in Account Currency", digits=(12, 0),
+            required=True),
     }

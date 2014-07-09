@@ -1,0 +1,162 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* program_budget
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-08 19:30+0000\n"
+"PO-Revision-Date: 2014-07-08 19:30+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: program_budget
+#: view:program.result:0
+msgid "Partners"
+msgstr ""
+
+#. module: program_budget
+#: field:program.result,account_analytic_id:0
+msgid "Analytic account"
+msgstr ""
+
+#. module: program_budget
+#: field:program.result,company_label:0
+msgid "Company Label"
+msgstr ""
+
+#. module: program_budget
+#: field:program.result,foreign_budget_lines:0
+msgid "Foreign Budgets"
+msgstr ""
+
+#. module: program_budget
+#: field:program.crossovered.budget.lines,amount:0
+msgid "Amount in Account Currency"
+msgstr ""
+
+#. module: program_budget
+#: field:program.result,crossovered_budgets_modified_total:0
+#: field:program.result,foreign_budget_total:0
+msgid "unknown"
+msgstr ""
+
+#. module: program_budget
+#: field:program.result,company_id:0
+msgid "Company"
+msgstr ""
+
+#. module: program_budget
+#: view:program.result.region:0
+msgid "Result Region"
+msgstr ""
+
+#. module: program_budget
+#: model:_description:0
+#: model:ir.model,name:program_budget.model_program_crossovered_budget_lines
+msgid "program.crossovered.budget.lines"
+msgstr ""
+
+#. module: program_budget
+#: field:program.result,target_region:0
+msgid "Target Region"
+msgstr ""
+
+#. module: program_budget
+#: model:_description:0
+#: model:ir.model,name:program_budget.model_program_result
+msgid "program.result"
+msgstr ""
+
+#. module: program_budget
+#: view:program.result.region:0
+#: field:program.result.region,name:0
+msgid "Name"
+msgstr ""
+
+#. module: program_budget
+#: field:program.crossovered.budget.lines,budget_id:0
+#: view:program.result:0
+msgid "Budget"
+msgstr ""
+
+#. module: program_budget
+#: view:program.result:0
+msgid "Total in Account Currency"
+msgstr ""
+
+#. module: program_budget
+#: view:program.result:0
+msgid "Summary"
+msgstr ""
+
+#. module: program_budget
+#: view:program.result:0
+msgid "Planned"
+msgstr ""
+
+#. module: program_budget
+#: code:addons/program_budget/program_result.py:72
+#, python-format
+msgid "Error"
+msgstr ""
+
+#. module: program_budget
+#: field:program.result,target_country:0
+msgid "Target Country"
+msgstr ""
+
+#. module: program_budget
+#: model:ir.actions.act_window,name:program_budget.action_program_result_region_tree
+#: model:ir.ui.menu,name:program_budget.menu_program_configuration_region
+#: view:program.result.region:0
+msgid "Result Regions"
+msgstr ""
+
+#. module: program_budget
+#: model:_description:0
+#: model:ir.model,name:program_budget.model_program_result_region
+msgid "program.result.region"
+msgstr ""
+
+#. module: program_budget
+#: field:program.crossovered.budget.lines,currency_amount:0
+msgid "Amount in Currency"
+msgstr ""
+
+#. module: program_budget
+#: field:program.crossovered.budget.lines,currency_id:0
+#: field:program.result,currency_id:0
+msgid "Currency"
+msgstr ""
+
+#. module: program_budget
+#: field:program.crossovered.budget.lines,result_id:0
+msgid "Result"
+msgstr ""
+
+#. module: program_budget
+#: code:addons/program_budget/program_result.py:73
+#, python-format
+msgid "You do not have the permissions to view this result's related budget since you belong in another department"
+msgstr ""
+
+#. module: program_budget
+#: field:program.crossovered.budget.lines,partner_id:0
+msgid "Partner"
+msgstr ""
+
+#. module: program_budget
+#: field:program.result,budget_total:0
+msgid "Total"
+msgstr ""
+
+#. module: program_budget
+#: field:program.result,crossovered_budget_ids:0
+msgid "Budgets"
+msgstr ""

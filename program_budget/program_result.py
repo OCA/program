@@ -21,40 +21,47 @@
 ##############################################################################
 
 from openerp.osv import fields, orm
-from openerp.tools.translate import _
 
 
 class program_result(orm.Model):
 
     _inherit = 'program.result'
 
-    def _get_account_company_name(
+    def _get_account_company(
             self, cr, uid, ids, name, args, context=None):
-        return {
-            result.id: result.account_analytic_id.company_id.name_get()[0][1]
-            for result in self.browse(cr, uid, ids, context=context)
-            if result.account_analytic_id.company_id
-        }
+        user_pool = self.pool['res.users']
+        company_id = user_pool.browse(cr, uid, uid, context=context).company_id
+        res = {}
+        for result in self.browse(cr, uid, ids, context=context):
+            company = result.account_analytic_id.company_id or company_id
+            res[result.id] = company.id
+        return res
+
+    def _get_account_company_label(
+            self, cr, uid, ids, name, args, context=None):
+        company_pool = self.pool['res.company']
+        res = self._get_account_company(
+            cr, uid, ids, name, args, context=context)
+        for i, company_id in res.iteritems():
+            try:
+                name = (
+                    company_pool.name_get(cr, uid, company_id,
+                                          context=context)[0][1]
+                    + u" : \u00A0"
+                )
+            except IndexError:
+                name = ""
+            res[i] = name
+        return res
 
     def _get_crossovered_budgets(self, cr, uid, ids, name, args, context=None):
         res = {}
-        res_users_pool = self.pool['res.users']
-        account_pool = self.pool['account.analytic.account']
-        res_user = res_users_pool.browse(cr, uid, uid, context=context)
         for result in self.browse(cr, uid, ids, context=context):
             crossovered_budget_lines = []
-            account = result.account_analytic_id
-            if account:
-                permitted_accounts = account_pool._admin_unit_rule_search(
-                    cr, uid, args=res_user, context=context)[0][2]
-                if result.account_analytic_id.id not in permitted_accounts:
-                    raise orm.except_orm(
-                        _('Error'),
-                        _("You do not have the permissions to view this "
-                          "result's related budget since you belong in "
-                          "another department")
-                    )
-                crossovered_budget_lines += account.crossovered_budget_line
+            for child in result.descendant_ids + [result]:
+                account = child.account_analytic_id
+                if account:
+                    crossovered_budget_lines += account.crossovered_budget_line
             res[result.id] = [l.id for l in crossovered_budget_lines]
         return res
 
@@ -66,7 +73,7 @@ class program_result(orm.Model):
         cbl_pool = self.pool['crossovered.budget.lines']
         for budget_id, crossovered_budget_lines_ids in budget_ids.items():
             res[budget_id] = sum(
-                line.modified_amount
+                line.planned_amount
                 for line in cbl_pool.browse(
                     cr, uid, crossovered_budget_lines_ids, context=context)
             )
@@ -74,10 +81,12 @@ class program_result(orm.Model):
 
     def _get_foreign_budgets_total(
             self, cr, uid, ids, name, args, context=None):
-        return {
-            result.id: sum(line.amount for line in result.foreign_budget_lines)
-            for result in self.browse(cr, uid, ids, context=context)
-        }
+        res = {}
+        for result in self.browse(cr, uid, ids, context=context):
+            amount = sum(sum(l.amount for l in child.foreign_budget_lines)
+                         for child in result.descendant_ids + [result])
+            res[result.id] = amount
+        return res
 
     def _get_budget_total(self, cr, uid, ids, name, args, context=None):
         budgets = list()
@@ -102,12 +111,18 @@ class program_result(orm.Model):
         'budget_total': fields.function(
             _get_budget_total, string='Total', type='float', digits=(12, 0),
             readonly=True),
-        'crossovered_budgets': fields.function(
+        'crossovered_budget_ids': fields.function(
             _get_crossovered_budgets, type='many2many',
             obj='crossovered.budget.lines', string='Budgets'),
-        'account_company_id': fields.function(
-            _get_account_company_name, type='char', string='Company',
+        'company_id': fields.function(
+            _get_account_company, type='many2one', relation='res.company',
+            string='Company', readonly=True),
+        'company_label': fields.function(
+            _get_account_company_label, type='char', string='Company Label',
             readonly=True),
+        'currency_id': fields.related(
+            'company_id', 'currency_id', type='many2one',
+            relation='res.currency', string='Currency', readonly=True),
         'crossovered_budgets_modified_total': fields.function(
             _get_crossovered_budgets_modified_total, type='float',
             digits = (12, 0), readonly=True),

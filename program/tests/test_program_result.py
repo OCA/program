@@ -36,7 +36,7 @@ class test_program_result(TransactionCase):
         self.program_result_level_model = self.registry("program.result.level")
         # Get context
         self.context = self.user_model.context_get(self.cr, self.uid)
-        parent_id = self.program_result_model.create(
+        self.parent_id = self.program_result_model.create(
             self.cr, self.uid, {'name': 'Test Parent'}, context=self.context)
         result_level_id = self.program_result_level_model.create(
             self.cr, self.uid, {
@@ -45,7 +45,7 @@ class test_program_result(TransactionCase):
             }, context=self.context)
         self.vals = {
             'name': 'Test Result',
-            'parent_id': parent_id,
+            'parent_id': self.parent_id,
             'code': 'TEST',
             'result_level_id': result_level_id,
             'date_from': str(time.localtime(time.time())[0] + 1) + '-01-01',
@@ -53,19 +53,23 @@ class test_program_result(TransactionCase):
             'description': 'Testing the program result object',
             'target_audience': 'Unittest Framework',
         }
-
-    def test_create_program_result(self):
-        self.assertTrue(self.program_result_model.create(
-            self.cr, self.uid, self.vals, context=self.context))
+        self.result_id = self.program_result_model.create(
+            self.cr, self.uid, self.vals, context=self.context)
 
     def test_write_program_result(self):
-        program_result_id = self.program_result_model.create(
-            self.cr, self.uid, self.vals, context=self.context)
         vals = {
             'name': 'Test Change Name',
         }
         self.program_result_model.write(
-            self.cr, self.uid, program_result_id, vals, context=self.context)
+            self.cr, self.uid, self.result_id, vals, context=self.context)
         result = self.program_result_model.browse(
-            self.cr, self.uid, program_result_id, context=self.context)
+            self.cr, self.uid, self.result_id, context=self.context)
         self.assertEquals(result.name, vals['name'])
+
+    def test_get_descendants_program_result(self):
+        parent_result = self.program_result_model.browse(
+            self.cr, self.uid, self.parent_id, context=self.context)
+        self.assertEqual(
+            [r.id for r in parent_result.descendant_ids],
+            [self.result_id],
+        )
