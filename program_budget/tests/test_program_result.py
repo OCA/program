@@ -42,6 +42,7 @@ class test_program_result(test_program_result.test_program_result):
         self.budget_id = budget_model.create(cr, uid, {
             'name': 'Test Budget',
             'code': year,
+            'year': year,
             'date_from': date_from,
             'date_to': date_from,
         }, context=context)
