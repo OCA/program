@@ -28,6 +28,23 @@ class program_result(orm.Model):
     _name = 'program.result'
     _parent_name = 'parent_id'
 
+    def _get_descendants(self, cr, uid, ids, name=None, args=None,
+                         context=None):
+        """Return any result which is either a child or recursively a child
+        of result.
+        """
+        res = {}
+        if context is None:
+            context = {}
+        if type(ids) is not list:
+            ids = [ids]
+        for result in self.browse(cr, uid, ids, context=context):
+            child_list = [r.id for r in result.child_ids]
+            for child in result.child_ids:
+                child_list += child._get_descendants(child.id)[child.id]
+            res[result.id] = child_list
+        return res
+
     _columns = {
         'name': fields.char(
             'Name', required=True, select=True, translate=True),
@@ -35,6 +52,9 @@ class program_result(orm.Model):
             'program.result', string='Parent', select=True),
         'child_ids': fields.one2many(
             'program.result', 'parent_id', string='Child Results'),
+        'descendant_ids': fields.function(
+            _get_descendants, type='one2many', relation='program.result',
+            string='Descendants', readonly=True),
         'is_transversal': fields.boolean('Transversal'),
         'transverse_ids': fields.many2many(
             'program.result', 'transverse_rel', 'from_id', 'to_id',

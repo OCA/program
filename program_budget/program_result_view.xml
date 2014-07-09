@@ -11,29 +11,58 @@
         <notebook>
           <page name="budget" string="Budget">
 
-            <group name="total">
-              <b><label for="budget_total"/></b>
-              <field name="budget_total" nolabel="1"/>
+            <field name="currency_id" invisible="1"/>
+
+            <group name="sale_total" class="oe_subtotal_footer oe_left">
+              <div class="oe_horizontal_separator oe_clear oe_left" colspan="2">Summary</div>
+              <b><field name="company_label" nolabel="1" class="oe_form_label oe_left"/></b>
+              <field name="crossovered_budgets_modified_total"
+                     nolabel="1" widget="monetary"
+                     options="{'currency_field': 'currency_id'}"/>
+
+              <b><label for="foreign_budget_lines"/></b>
+              <field name="foreign_budget_total"
+                     nolabel="1"
+                     widget="monetary"
+                     options="{'currency_field': 'currency_id'}"/>
+              <label for="budget_total" class="oe_subtotal_footer_separator"/>
+              <field name="budget_total"
+                     nolabel="1"
+                     class="oe_subtotal_footer_separator"
+                     widget='monetary'
+                     options="{'currency_field': 'currency_id'}"/>
             </group>
 
             <group name="foreign budgets">
-              <b><label for="foreign_budget_lines"/></b>
-              <field name="foreign_budget_total" nolabel="1"/>
-              <field name="foreign_budget_lines" nolabel="1" colspan="2">
+              <div class="oe_horizontal_separator oe_clear "><field name="company_id" nolabel="1"/></div>
+              <field name="crossovered_budget_ids" nolabel="1" colspan="2">
                 <tree>
-                  <field name="partner_id"/>
-                  <field name="amount" sum="Amount"/>
+                  <field name="crossovered_budget_id"/>
+                  <field name="planned_amount"
+                         sum="Planned"/>
                 </tree>
               </field>
             </group>
 
-            <group name="company_budget" col="2">
-              <b><field name="account_company_id" nolabel="1"/></b>
-              <field name="crossovered_budgets_modified_total" nolabel="1"/>
-              <field name="crossovered_budgets" nolabel="1" colspan="2">
-                <tree>
-                  <field name="crossovered_budget_id"/>
-                  <field name="planned_amount" sum="Planned"/>
+            <group string="Partners" col="2">
+              <field name="foreign_budget_lines"
+                     nolabel="1"
+                     colspan="2"
+                     context="{'default_result_id': id}">
+                <tree editable="bottom">
+                  <field name="result_id" invisible="1"/>
+                  <field name="partner_id" domain="[('is_company', '=', True)]"/>
+                  <field name="budget_id"/>
+                  <field name="currency_amount"
+                         groups="base.group_multi_currency"
+                         attrs="{'required': True}"/>
+                  <field name="currency_id"
+                         groups="base.group_multi_currency"
+                         attrs="{'required': True}"/>
+                  <!-- In company's currency -->
+                  <field name="amount"
+                         sum="Total in Account Currency"
+                         widget="monetary"/>
                 </tree>
               </field>
             </group>
