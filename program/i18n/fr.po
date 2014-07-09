@@ -82,7 +82,7 @@ msgstr "Niveau"
 #. module: program
 #: field:program.result,transverse_ids:0
 msgid "Transverse"
-msgstr "Résultats transversaux"
+msgstr "Résultats transversaux à ce résultat"
 
 #. module: program
 #: field:program.result,target_audience_type_ids:0
