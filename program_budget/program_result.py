@@ -37,23 +37,6 @@ class program_result(orm.Model):
             res[result.id] = company.id
         return res
 
-    def _get_account_company_label(
-            self, cr, uid, ids, name, args, context=None):
-        company_pool = self.pool['res.company']
-        res = self._get_account_company(
-            cr, uid, ids, name, args, context=context)
-        for i, company_id in res.iteritems():
-            try:
-                name = (
-                    company_pool.name_get(cr, uid, company_id,
-                                          context=context)[0][1]
-                    + u" : \u00A0"
-                )
-            except IndexError:
-                name = ""
-            res[i] = name
-        return res
-
     def _get_crossovered_budgets(self, cr, uid, ids, name, args, context=None):
         res = {}
         for result in self.browse(cr, uid, ids, context=context):
@@ -117,19 +100,16 @@ class program_result(orm.Model):
         'company_id': fields.function(
             _get_account_company, type='many2one', relation='res.company',
             string='Company', readonly=True),
-        'company_label': fields.function(
-            _get_account_company_label, type='char', string='Company Label',
-            readonly=True),
         'currency_id': fields.related(
             'company_id', 'currency_id', type='many2one',
             relation='res.currency', string='Currency', readonly=True),
         'crossovered_budgets_modified_total': fields.function(
             _get_crossovered_budgets_modified_total, type='float',
-            digits = (12, 0), readonly=True),
+            digits = (12, 0), readonly=True, string="Total Company Budget"),
         'foreign_budget_lines': fields.one2many(
             'program.crossovered.budget.lines', 'result_id',
-            'Foreign Budgets'),
+            string='Foreign Budgets'),
         'foreign_budget_total': fields.function(
             _get_foreign_budgets_total, type='float',
-            digits=(12, 0), readonly=True),
+            digits=(12, 0), readonly=True, string="Total Foreign Budgets"),
     }

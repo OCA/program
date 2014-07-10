@@ -95,13 +95,3 @@ class test_program_result(test_program_result.test_program_result):
         result = self.program_result_model.browse(
             cr, uid, self.result_id, context=context)
         self.assertEquals(result.budget_total, 120.0)
-
-    def test_get_account_company_label(self):
-        cr, uid, context = self.cr, self.uid, self.context
-        parent_result = self.program_result_model.browse(
-            cr, uid, self.parent_id, context=context)
-        users_pool = self.registry("res.users")
-        company = users_pool.browse(cr, uid, uid, context=context).company_id
-        name = company.name_get()[0][1] + u" :"
-        label = parent_result.company_label
-        self.assertEquals(label.strip(), name.strip())

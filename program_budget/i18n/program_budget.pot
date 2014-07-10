@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-08 19:30+0000\n"
-"PO-Revision-Date: 2014-07-08 19:30+0000\n"
+"POT-Creation-Date: 2014-07-10 21:22+0000\n"
+"PO-Revision-Date: 2014-07-10 21:22+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,8 +26,8 @@ msgid "Analytic account"
 msgstr ""
 
 #. module: program_budget
-#: field:program.result,company_label:0
-msgid "Company Label"
+#: model:ir.model,name:program_budget.model_program_result
+msgid "program.result"
 msgstr ""
 
 #. module: program_budget
@@ -41,12 +41,6 @@ msgid "Amount in Account Currency"
 msgstr ""
 
 #. module: program_budget
-#: field:program.result,crossovered_budgets_modified_total:0
-#: field:program.result,foreign_budget_total:0
-msgid "unknown"
-msgstr ""
-
-#. module: program_budget
 #: field:program.result,company_id:0
 msgid "Company"
 msgstr ""
@@ -54,6 +48,16 @@ msgstr ""
 #. module: program_budget
 #: view:program.result.region:0
 msgid "Result Region"
+msgstr ""
+
+#. module: program_budget
+#: field:program.result,foreign_budget_total:0
+msgid "Total Foreign Budgets"
+msgstr ""
+
+#. module: program_budget
+#: field:program.result,crossovered_budgets_modified_total:0
+msgid "Total Company Budget"
 msgstr ""
 
 #. module: program_budget
@@ -68,15 +72,19 @@ msgid "Target Region"
 msgstr ""
 
 #. module: program_budget
-#: model:_description:0
-#: model:ir.model,name:program_budget.model_program_result
-msgid "program.result"
+#: view:program.result:0
+msgid "Total in Account Currency"
 msgstr ""
 
 #. module: program_budget
 #: view:program.result.region:0
 #: field:program.result.region,name:0
 msgid "Name"
+msgstr ""
+
+#. module: program_budget
+#: model:_description:0
+msgid "Model Program Document"
 msgstr ""
 
 #. module: program_budget
@@ -87,23 +95,12 @@ msgstr ""
 
 #. module: program_budget
 #: view:program.result:0
-msgid "Total in Account Currency"
-msgstr ""
-
-#. module: program_budget
-#: view:program.result:0
 msgid "Summary"
 msgstr ""
 
 #. module: program_budget
 #: view:program.result:0
 msgid "Planned"
-msgstr ""
-
-#. module: program_budget
-#: code:addons/program_budget/program_result.py:72
-#, python-format
-msgid "Error"
 msgstr ""
 
 #. module: program_budget
@@ -138,12 +135,6 @@ msgstr ""
 #. module: program_budget
 #: field:program.crossovered.budget.lines,result_id:0
 msgid "Result"
-msgstr ""
-
-#. module: program_budget
-#: code:addons/program_budget/program_result.py:73
-#, python-format
-msgid "You do not have the permissions to view this result's related budget since you belong in another department"
 msgstr ""
 
 #. module: program_budget

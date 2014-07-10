@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-08 19:30+0000\n"
-"PO-Revision-Date: 2014-07-08 15:31-0500\n"
+"POT-Creation-Date: 2014-07-10 21:22+0000\n"
+"PO-Revision-Date: 2014-07-10 17:31-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: Savoir-faire Linux <support@savoirfairelinux.com>\n"
 "Language: fr\n"
@@ -29,25 +29,19 @@ msgid "Analytic account"
 msgstr "Compte analytique"
 
 #. module: program_budget
-#: field:program.result,company_label:0
-msgid "Company Label"
-msgstr "Libellé de companie"
+#: model:ir.model,name:program_budget.model_program_result
+msgid "program.result"
+msgstr ""
 
 #. module: program_budget
 #: field:program.result,foreign_budget_lines:0
 msgid "Foreign Budgets"
-msgstr "Budget total des partenaires"
+msgstr "Budgets des partenaires"
 
 #. module: program_budget
 #: field:program.crossovered.budget.lines,amount:0
 msgid "Amount in Account Currency"
 msgstr "Total en devise du compte"
-
-#. module: program_budget
-#: field:program.result,crossovered_budgets_modified_total:0
-#: field:program.result,foreign_budget_total:0
-msgid "unknown"
-msgstr "inconnu"
 
 #. module: program_budget
 #: field:program.result,company_id:0
@@ -58,6 +52,16 @@ msgstr "Companie"
 #: view:program.result.region:0
 msgid "Result Region"
 msgstr "Région du résultat"
+
+#. module: program_budget
+#: field:program.result,foreign_budget_total:0
+msgid "Total Foreign Budgets"
+msgstr "Budget total des partenaires"
+
+#. module: program_budget
+#: field:program.result,crossovered_budgets_modified_total:0
+msgid "Total Company Budget"
+msgstr "Budget total de la companie"
 
 #. module: program_budget
 #: model:_description:0
@@ -71,10 +75,9 @@ msgid "Target Region"
 msgstr "Région cible"
 
 #. module: program_budget
-#: model:_description:0
-#: model:ir.model,name:program_budget.model_program_result
-msgid "program.result"
-msgstr ""
+#: view:program.result:0
+msgid "Total in Account Currency"
+msgstr "Total en devise du compte"
 
 #. module: program_budget
 #: view:program.result.region:0 field:program.result.region,name:0
@@ -82,14 +85,14 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: program_budget
+#: model:_description:0
+msgid "Model Program Document"
+msgstr "Modèle du document de programmation"
+
+#. module: program_budget
 #: field:program.crossovered.budget.lines,budget_id:0 view:program.result:0
 msgid "Budget"
 msgstr "Budget"
-
-#. module: program_budget
-#: view:program.result:0
-msgid "Total in Account Currency"
-msgstr "Total en devise du compte"
 
 #. module: program_budget
 #: view:program.result:0
@@ -100,12 +103,6 @@ msgstr "Récapitulatif"
 #: view:program.result:0
 msgid "Planned"
 msgstr "Planifiée"
-
-#. module: program_budget
-#: code:addons/program_budget/program_result.py:72
-#, python-format
-msgid "Error"
-msgstr "Erreur"
 
 #. module: program_budget
 #: field:program.result,target_country:0
@@ -142,16 +139,6 @@ msgid "Result"
 msgstr "Résultat"
 
 #. module: program_budget
-#: code:addons/program_budget/program_result.py:73
-#, python-format
-msgid ""
-"You do not have the permissions to view this result's related budget since "
-"you belong in another department"
-msgstr ""
-"Vous n'avez pas la permission de voir le budget de ce résultat puisque vous "
-"ne faites pas partie du bon département."
-
-#. module: program_budget
 #: field:program.crossovered.budget.lines,partner_id:0
 msgid "Partner"
 msgstr "Organisme"
@@ -166,9 +153,21 @@ msgstr "Total"
 msgid "Budgets"
 msgstr "Budgets"
 
-#, fuzzy
-#~ msgid "Total in company currency"
-#~ msgstr "Total en devises"
+#~ msgid "Company Label"
+#~ msgstr "Libellé de companie"
+
+#~ msgid "unknown"
+#~ msgstr "inconnu"
+
+#~ msgid "Error"
+#~ msgstr "Erreur"
+
+#~ msgid ""
+#~ "You do not have the permissions to view this result's related budget "
+#~ "since you belong in another department"
+#~ msgstr ""
+#~ "Vous n'avez pas la permission de voir le budget de ce résultat puisque "
+#~ "vous ne faites pas partie du bon département."
 
 #~ msgid "Amount"
 #~ msgstr "Montant"
