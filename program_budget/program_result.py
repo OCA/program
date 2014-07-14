@@ -21,6 +21,7 @@
 ##############################################################################
 
 from openerp.osv import fields, orm
+from openerp.addons import decimal_precision as dp
 
 
 class program_result(orm.Model):
@@ -92,7 +93,8 @@ class program_result(orm.Model):
             'program.result.region', string='Target Region'
         ),
         'budget_total': fields.function(
-            _get_budget_total, string='Total', type='float', digits=(12, 0),
+            _get_budget_total, string='Total', type='float',
+            digits_compute=dp.get_precision('Account'),
             readonly=True),
         'crossovered_budget_ids': fields.function(
             _get_crossovered_budgets, type='many2many',
@@ -105,11 +107,13 @@ class program_result(orm.Model):
             relation='res.currency', string='Currency', readonly=True),
         'crossovered_budgets_modified_total': fields.function(
             _get_crossovered_budgets_modified_total, type='float',
-            digits = (12, 0), readonly=True, string="Total Company Budget"),
+            digits_compute=dp.get_precision('Account'), readonly=True,
+            string="Total Company Budget"),
         'foreign_budget_lines': fields.one2many(
             'program.crossovered.budget.lines', 'result_id',
             string='Foreign Budgets'),
         'foreign_budget_total': fields.function(
             _get_foreign_budgets_total, type='float',
-            digits=(12, 0), readonly=True, string="Total Foreign Budgets"),
+            digits_compute=dp.get_precision('Account'), readonly=True,
+            string="Total Foreign Budgets"),
     }

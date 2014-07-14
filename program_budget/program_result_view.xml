@@ -55,14 +55,15 @@
                   <field name="budget_id"/>
                   <field name="currency_amount"
                          groups="base.group_multi_currency"
-                         attrs="{'required': True}"/>
+                         attrs="{'required': True}"
+                         on_change="onchange_currency_amount(currency_amount, currency_id)"/>
                   <field name="currency_id"
                          groups="base.group_multi_currency"
-                         attrs="{'required': True}"/>
+                         attrs="{'required': True}"
+                         on_change="onchange_currency_amount(currency_amount, currency_id)"/>
                   <!-- In company's currency -->
                   <field name="amount"
-                         sum="Total in Account Currency"
-                         widget="monetary"/>
+                         sum="Total in Account Currency"/>
                 </tree>
               </field>
             </group>
@@ -73,6 +74,19 @@
         <field name="target_audience" position="before">
           <field name="target_country" />
           <field name="target_region" />
+        </field>
+
+      </field>
+    </record>
+
+    <record id="view_program_result_form_mc" model="ir.ui.view">
+      <field name="model">program.result</field>
+      <field name="inherit_id" ref="view_program_result_form" />
+      <field name="groups_id" eval="[(6, 0, [ref('base.group_multi_currency')])]"/>
+      <field name="arch" type="xml">
+
+        <field name="amount" position="attributes">
+          <attribute name="readonly">1</attribute>
         </field>
 
       </field>

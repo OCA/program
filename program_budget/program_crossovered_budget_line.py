@@ -21,6 +21,7 @@
 ###############################################################################
 
 from openerp.osv import orm, fields
+from openerp.addons import decimal_precision as dp
 
 
 class program_crossovered_budget_lines(orm.Model):
@@ -39,9 +40,26 @@ class program_crossovered_budget_lines(orm.Model):
             "crossovered.budget", string="Budget", required=True),
         "result_id": fields.many2one("program.result", string="Result"),
         "currency_amount": fields.float(
-            string="Amount in Currency", digits=(12, 0)),
+            string="Amount in Currency",
+            digits_compute=dp.get_precision('Account'),
+        ),
         "currency_id": fields.many2one('res.currency', "Currency"),
         "amount": fields.float(
-            string="Amount in Account Currency", digits=(12, 0),
-            required=True),
+            string="Amount in Account Currency",
+            digits_compute=dp.get_precision('Account'),
+            required=True,
+        ),
     }
+
+    def onchange_currency_amount(
+            self, cr, uid, ids, currency_amount, currency_id, context=None):
+        currency_pool = self.pool['res.currency']
+        rate = False
+        if currency_id:
+            curr = currency_pool.browse(cr, uid, currency_id, context=context)
+            rate = curr.rate
+        return {
+            'value': {
+                'amount': currency_amount / (rate or 1.0),
+            }
+        }
