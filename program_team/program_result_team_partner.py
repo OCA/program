@@ -66,4 +66,3 @@ class program_result_team_partner(orm.Model):
             'view_id': model_data_pool.get_object_reference(
                 cr, uid, 'program_team', 'view_partner_form')[1]
         }
-
