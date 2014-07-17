@@ -88,7 +88,7 @@ class test_program_result(test_program_result.test_program_result):
         cr, uid, context = self.cr, self.uid, self.context
         parent_result = self.program_result_model.browse(
             cr, uid, self.parent_id, context=context)
-        cb_ids = parent_result.crossovered_budget_line_ids
+        cb_ids = parent_result.crossovered_budget_ids
         self.assertEquals([i.id for i in cb_ids], [self.cbl_id])
 
     def test_get_budget_total(self):
