@@ -33,7 +33,7 @@
               <group>
                 <field name="code" />
                 <field name="result_level_id" />
-                <field name="parent_id" />
+                <field name="parent_id" domain="[('id', '!=', id)]"/>
               </group>
 
               <group>
