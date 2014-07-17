@@ -81,8 +81,6 @@
                 </group>
 
               </page>
-              <page name="monitoring" string="Monitoring">
-              </page>
             </notebook>
           </sheet>
         </form>

@@ -35,7 +35,7 @@
 
             <group name="foreign budgets">
               <div class="oe_horizontal_separator oe_clear "><field name="company_id" nolabel="1"/></div>
-              <field name="crossovered_budget_ids" nolabel="1" colspan="2">
+              <field name="crossovered_budget_line_ids" nolabel="1" colspan="2">
                 <tree>
                   <field name="crossovered_budget_id"/>
                   <field name="planned_amount"

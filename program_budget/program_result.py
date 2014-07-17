@@ -43,7 +43,8 @@ class program_result(orm.Model):
             res[result.id] = company.id
         return res
 
-    def _get_crossovered_budgets(self, cr, uid, ids, name, args, context=None):
+    def _get_crossovered_budget_lines(
+            self, cr, uid, ids, name, args, context=None):
         res = {}
         for result in self.browse(cr, uid, ids, context=context):
             crossovered_budget_lines = []
@@ -57,7 +58,7 @@ class program_result(orm.Model):
     def _get_crossovered_budgets_modified_total(
             self, cr, uid, ids, name, args, context=None):
         res = {}
-        budget_ids = self._get_crossovered_budgets(
+        budget_ids = self._get_crossovered_budget_lines(
             cr, uid, ids, name, args, context=context)
         cbl_pool = self.pool['crossovered.budget.lines']
         for budget_id, crossovered_budget_lines_ids in budget_ids.items():
@@ -101,9 +102,9 @@ class program_result(orm.Model):
             _get_budget_total, string='Total', type='float',
             digits_compute=dp.get_precision('Account'),
             readonly=True),
-        'crossovered_budget_ids': fields.function(
-            _get_crossovered_budgets, type='many2many',
-            obj='crossovered.budget.lines', string='Budgets'),
+        'crossovered_budget_line_ids': fields.function(
+            _get_crossovered_budget_lines, type='many2many',
+            obj='crossovered.budget.lines', string='Budget Lines'),
         'company_id': fields.function(
             _get_account_company, type='many2one', relation='res.company',
             string='Company', readonly=True),
