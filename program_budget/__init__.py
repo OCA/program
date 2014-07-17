@@ -24,4 +24,5 @@ from . import (
     program_result,
     program_result_region,
     program_crossovered_budget_line,
+    account_analytic_account,
 )

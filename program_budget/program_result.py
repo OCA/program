@@ -22,11 +22,16 @@
 
 from openerp.osv import fields, orm
 from openerp.addons import decimal_precision as dp
+from openerp.tools.translate import _
 
 
 class program_result(orm.Model):
 
     _inherit = 'program.result'
+    _propagatable_fields = [
+        'name',
+        'code',
+    ]
 
     def _get_account_company(
             self, cr, uid, ids, name, args, context=None):
@@ -117,3 +122,119 @@ class program_result(orm.Model):
             digits_compute=dp.get_precision('Account'), readonly=True,
             string="Total Foreign Budgets"),
     }
+
+    def _get_parent_account_id(self, cr, uid, ids, vals=None, context=None):
+        """ Return the parent account analytic id."""
+        if not ids and not vals:
+            return False
+        if not vals:
+            vals = self.read(
+                cr, uid, ids, ['parent_id'],
+                context=context
+            )[0]
+        parent_id = vals.get('parent_id')
+        if not parent_id:
+            return False
+        parent_id = self.browse(cr, uid, parent_id, context=context)
+        return (parent_id.account_analytic_id
+                and parent_id.account_analytic_id.id)
+
+    def create(self, cr, uid, vals, context=None):
+        """ Create a program.result
+
+        Create an analytic account under under the root node
+        of the budgetary period or under the parent result,
+        if specified. """
+
+        if context is None:
+            context = {}
+
+        if context.get('account_written'):
+            return super(program_result, self).create(
+                cr, uid, vals, context=context
+            )
+
+        vals['account_analytic_id'] = self._create_related_account(
+            cr, uid, vals, context=context)
+
+        return super(program_result, self).create(
+            cr, uid, vals, context=context)
+
+    def write(self, cr, uid, ids, vals, context=None):
+        """ Update the program.result
+
+        Propagate the changes to the account analytic that is
+        tied to this program result.
+
+        If the parent result is changed, move the linked account
+        analytic as well. """
+
+        if context is None:
+            context = {}
+
+        if type(ids) not in (list, ):
+            ids = [ids]
+
+        res = super(program_result, self).write(
+            cr, uid, ids, vals, context=context)
+
+        if context.get('account_written'):
+            return res
+
+        for result in self.browse(cr, uid, ids, context=context):
+            if not result.account_analytic_id:
+                prop_vals = dict(self.read(
+                    cr, uid, result.id,
+                    self._propagatable_fields,
+                    context=context).items() + vals.items())
+                account_id = self._create_related_account(
+                    cr, uid, prop_vals, context=context)
+                result.write({'account_analytic_id': account_id},
+                             context=context)
+                result = result.browse(context=context)[0]
+
+            propagated_fields = {
+                i: j
+                for i, j in vals.items() if i in self._propagatable_fields
+            }
+
+            if 'parent_id' in vals:
+                parent_account_id = self._get_parent_account_id(
+                    cr, uid, ids, dict(
+                        parent_id=result.parent_id.id,
+                    ), context=context)
+                propagated_fields['parent_id'] = parent_account_id
+
+            if propagated_fields:
+                account_pool = self.pool.get('account.analytic.account')
+                account_pool.write(
+                    cr, uid, result.account_analytic_id.id,
+                    propagated_fields,
+                    context=dict(context, result_written=True))
+
+        return res
+
+    def unlink(self, cr, uid, ids, context=None):
+        raise orm.except_orm(_('Error'),
+                             _('Deletion of Results has been disabled'))
+
+    def _create_related_account(self, cr, uid, vals, context=None):
+        parent_account_id = self._get_parent_account_id(
+            cr, uid, ids=None, vals=vals, context=context
+        )
+
+        account_pool = self.pool.get('account.analytic.account')
+        propagated_fields = {
+            i: j
+            for i, j in vals.items() if i in self._propagatable_fields
+        }
+
+        return account_pool.create(
+            cr, uid, dict(propagated_fields.items() + {
+                'name': vals.get('name', False),
+                'code': vals.get('code', False),
+                'type': 'view',
+                'parent_id': parent_account_id,
+            }.items()),
+            context=dict(context, result_written=True),
+        )

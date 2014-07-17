@@ -23,8 +23,10 @@
 
 from . import (
     test_program_result,
+    test_analytic,
 )
 
 checks = [
     test_program_result,
+    test_analytic,
 ]
