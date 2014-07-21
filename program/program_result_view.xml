@@ -29,6 +29,10 @@
               </h1>
             </div>
 
+            <group colspan="4" col="2">
+              <field name="long_name"/>
+            </group>
+
             <group colspan="4" col="4">
               <group>
                 <field name="code" />

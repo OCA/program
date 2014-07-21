@@ -48,6 +48,7 @@ class program_result(orm.Model):
     _columns = {
         'name': fields.char(
             'Name', required=True, select=True, translate=True),
+        'long_name': fields.char('Long name', translate=True),
         'parent_id': fields.many2one(
             'program.result', string='Parent', select=True),
         'child_ids': fields.one2many(
