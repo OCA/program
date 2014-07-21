@@ -66,7 +66,7 @@
               <page name="children" string="Results">
                 <group col="1">
                   <label for="child_ids" />
-                  <field name="child_ids" nolabel="1">
+                  <field name="child_ids" nolabel="1" context="{'default_parent_id': id}">
                     <tree>
                       <field name="result_level_id" />
                       <field name="name" />
