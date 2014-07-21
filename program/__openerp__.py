@@ -52,6 +52,7 @@ Contributors
     ],
     'test': [],
     'demo': [
+        'program_result_level_demo.xml',
         'program_result_demo.xml',
     ],
     'auto_install': False,

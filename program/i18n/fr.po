@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 20:22+0000\n"
-"PO-Revision-Date: 2014-07-03 16:42-0500\n"
+"POT-Creation-Date: 2014-07-21 14:40+0000\n"
+"PO-Revision-Date: 2014-07-21 10:53-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -18,30 +18,48 @@ msgstr ""
 "X-Generator: Poedit 1.6.5\n"
 
 #. module: program
+#: model:program.result.level,name:program.result_level_re
+msgid "Realisation"
+msgstr "Extrant / Réalisation"
+
+#. module: program
 #: view:program.result:0
 msgid "Search Results"
 msgstr "Rechercher les Résultats : "
 
 #. module: program
-#: view:program.result:0
-msgid "Monitoring"
-msgstr "Suivi"
+#: model:program.result.level,code:program.result_level_fr
+msgid "FR"
+msgstr "RF"
 
 #. module: program
-#: model:_description:0 model:ir.model,name:program.model_program_result_level
+#: model:ir.model,name:program.model_program_result_level
 msgid "program.result.level"
 msgstr ""
 
 #. module: program
-#: model:_description:0
-#: model:ir.model,name:program.model_program_result_target
-msgid "program.result.target"
-msgstr ""
+#: model:program.result.level,name:program.result_level_fr
+msgid "Final Result"
+msgstr "Résultat final"
 
 #. module: program
-#: model:ir.ui.menu,name:program.menu_program_configuration
-msgid "Configuration"
-msgstr "Configuration"
+#: model:program.result.level,name:program.result_level_ir
+msgid "Intermediate Result"
+msgstr "Résultat intermédiaire"
+
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_form
+#: model:ir.actions.act_window,name:program.action_program_result_list
+#: model:ir.ui.menu,name:program.menu_program_result
+#: model:ir.ui.menu,name:program.menu_program_result_result
+#: view:program.result:0
+msgid "Results"
+msgstr "Résultats"
+
+#. module: program
+#: view:program.result.target:0
+msgid "Result Target"
+msgstr "Cible de Résultat"
 
 #. module: program
 #: model:program.result,name:program.demo_program_result_mission_A
@@ -74,10 +92,20 @@ msgid "Operation F"
 msgstr "Opération F"
 
 #. module: program
-#: field:program.result,result_level_id:0 field:program.result.level,depth:0
-#: field:program.result.target,result:0
-msgid "Level"
-msgstr "Niveau"
+#: field:program.result,descendant_ids:0
+msgid "Descendants"
+msgstr "Descendance"
+
+#. module: program
+#: model:ir.ui.menu,name:program.menu_program
+msgid "Programs"
+msgstr "Programmes"
+
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_tree
+#: model:ir.ui.menu,name:program.menu_program_result_chain
+msgid "Result Chain"
+msgstr "Chaîne de résultats"
 
 #. module: program
 #: field:program.result,transverse_ids:0
@@ -85,9 +113,34 @@ msgid "Transverse"
 msgstr "Résultats transversaux à ce résultat"
 
 #. module: program
+#: model:program.result.level,code:program.result_level_re
+msgid "RE"
+msgstr "RE"
+
+#. module: program
+#: model:program.result.level,name:program.result_level_imr
+msgid "Immediate Result"
+msgstr "Résultat Immédiat"
+
+#. module: program
+#: model:program.result.level,code:program.result_level_imr
+msgid "ImR"
+msgstr "RIm"
+
+#. module: program
+#: model:ir.model,name:program.model_program_result_target
+msgid "program.result.target"
+msgstr ""
+
+#. module: program
 #: field:program.result,target_audience_type_ids:0
 msgid "Target Audience Types"
 msgstr "Types de publics cibles"
+
+#. module: program
+#: view:program.result:0 field:program.result,parent_id:0
+msgid "Parent"
+msgstr "Parent"
 
 #. module: program
 #: view:program.result:0
@@ -100,9 +153,9 @@ msgid "Active"
 msgstr "Actif"
 
 #. module: program
-#: view:program.result:0 field:program.result,parent_id:0
-msgid "Parent"
-msgstr "Parent"
+#: model:ir.ui.menu,name:program.menu_program_configuration
+msgid "Configuration"
+msgstr "Configuration"
 
 #. module: program
 #: view:program.result.target:0
@@ -126,9 +179,10 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: program
-#: model:ir.ui.menu,name:program.menu_program
-msgid "Programs"
-msgstr "Programmes"
+#: field:program.result,result_level_id:0 field:program.result.level,depth:0
+#: field:program.result.target,result:0
+msgid "Level"
+msgstr "Niveau"
 
 #. module: program
 #: code:addons/program/program_result_level.py:35
@@ -143,9 +197,9 @@ msgid "Result Target Types"
 msgstr "Types de publics cibles"
 
 #. module: program
-#: view:program.result.target:0
-msgid "Result Target"
-msgstr "Cible de Résultat"
+#: model:program.result.level,code:program.result_level_ir
+msgid "IR"
+msgstr "RI"
 
 #. module: program
 #: view:program.result.level:0
@@ -165,7 +219,7 @@ msgid "Result Targets"
 msgstr "Cibles de Résultats"
 
 #. module: program
-#: model:_description:0 model:ir.model,name:program.model_program_result
+#: model:ir.model,name:program.model_program_result
 msgid "program.result"
 msgstr ""
 
@@ -196,19 +250,14 @@ msgid "Child Results"
 msgstr "Résultats fils"
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_tree
-#: model:ir.ui.menu,name:program.menu_program_result_chain
-msgid "Result Chain"
-msgstr "Chaîne de résultats"
+#: model:program.result.level,code:program.result_level_mi
+msgid "MI"
+msgstr "MI"
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_form
-#: model:ir.actions.act_window,name:program.action_program_result_list
-#: model:ir.ui.menu,name:program.menu_program_result
-#: model:ir.ui.menu,name:program.menu_program_result_result
-#: view:program.result:0
-msgid "Results"
-msgstr "Résultats"
+#: model:program.result.level,name:program.result_level_mi
+msgid "Mission"
+msgstr "Mission"
 
 #. module: program
 #: model:program.result,name:program.demo_program_result_domain_B
@@ -244,6 +293,9 @@ msgstr "Date de début"
 #: view:program.result:0
 msgid "Targets"
 msgstr "Cibles"
+
+#~ msgid "Monitoring"
+#~ msgstr "Suivi"
 
 #~ msgid "Sub-results"
 #~ msgstr "Sous-résultats"

@@ -54,7 +54,7 @@ class program_result(orm.Model):
             'program.result', 'parent_id', string='Child Results'),
         'descendant_ids': fields.function(
             _get_descendants, type='one2many', relation='program.result',
-            string='Descendants', readonly=True),
+            string='Descendant', readonly=True),
         'is_transversal': fields.boolean('Transversal'),
         'transverse_ids': fields.many2many(
             'program.result', 'transverse_rel', 'from_id', 'to_id',

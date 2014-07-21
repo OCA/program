@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data noupdate="1">
+
+    <record id="demo_result_level_mi" model="program.result.level">
+      <field name="name">Mission</field>
+      <field name="code">MI</field>
+      <field name="depth">1</field>
+    </record>
+
+    <record id="demo_result_level_fr" model="program.result.level">
+      <field name="name">Final Result</field>
+      <field name="code">FR</field>
+      <field name="depth">2</field>
+    </record>
+
+    <record id="demo_result_level_ir" model="program.result.level">
+      <field name="name">Intermediate Result</field>
+      <field name="code">IR</field>
+      <field name="depth">3</field>
+    </record>
+
+    <record id="demo_result_level_imr" model="program.result.level">
+      <field name="name">Immediate Result</field>
+      <field name="code">ImR</field>
+      <field name="depth">4</field>
+    </record>
+
+    <record id="demo_result_level_re" model="program.result.level">
+      <field name="name">Realisation</field>
+      <field name="code">RE</field>
+      <field name="depth">5</field>
+    </record>
+
+  </data>
+</openerp>

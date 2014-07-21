@@ -57,7 +57,7 @@ class program_result_level(orm.Model):
             'Name', size=128, required=True, select=True, translate=True),
         'result_ids': fields.one2many(
             'program.result', 'result_level_id', string='Result'),
-        'code': fields.char('Code', size=32),
+        'code': fields.char('Code', size=32, translate=True),
         'depth': fields.integer('Level', required=True),
     }
     _defaults = {

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 20:22+0000\n"
-"PO-Revision-Date: 2014-07-03 20:22+0000\n"
+"POT-Creation-Date: 2014-07-21 14:40+0000\n"
+"PO-Revision-Date: 2014-07-21 14:40+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,30 +16,47 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: program
+#: model:program.result.level,name:program.result_level_re
+msgid "Realisation"
+msgstr ""
+
+#. module: program
 #: view:program.result:0
 msgid "Search Results"
 msgstr ""
 
 #. module: program
-#: view:program.result:0
-msgid "Monitoring"
+#: model:program.result.level,code:program.result_level_fr
+msgid "FR"
 msgstr ""
 
 #. module: program
-#: model:_description:0
 #: model:ir.model,name:program.model_program_result_level
 msgid "program.result.level"
 msgstr ""
 
 #. module: program
-#: model:_description:0
-#: model:ir.model,name:program.model_program_result_target
-msgid "program.result.target"
+#: model:program.result.level,name:program.result_level_fr
+msgid "Final Result"
 msgstr ""
 
 #. module: program
-#: model:ir.ui.menu,name:program.menu_program_configuration
-msgid "Configuration"
+#: model:program.result.level,name:program.result_level_ir
+msgid "Intermediate Result"
+msgstr ""
+
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_form
+#: model:ir.actions.act_window,name:program.action_program_result_list
+#: model:ir.ui.menu,name:program.menu_program_result
+#: model:ir.ui.menu,name:program.menu_program_result_result
+#: view:program.result:0
+msgid "Results"
+msgstr ""
+
+#. module: program
+#: view:program.result.target:0
+msgid "Result Target"
 msgstr ""
 
 #. module: program
@@ -73,10 +90,19 @@ msgid "Operation F"
 msgstr ""
 
 #. module: program
-#: field:program.result,result_level_id:0
-#: field:program.result.level,depth:0
-#: field:program.result.target,result:0
-msgid "Level"
+#: field:program.result,descendant_ids:0
+msgid "Descendants"
+msgstr ""
+
+#. module: program
+#: model:ir.ui.menu,name:program.menu_program
+msgid "Programs"
+msgstr ""
+
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_tree
+#: model:ir.ui.menu,name:program.menu_program_result_chain
+msgid "Result Chain"
 msgstr ""
 
 #. module: program
@@ -85,8 +111,34 @@ msgid "Transverse"
 msgstr ""
 
 #. module: program
+#: model:program.result.level,code:program.result_level_re
+msgid "RE"
+msgstr ""
+
+#. module: program
+#: model:program.result.level,name:program.result_level_imr
+msgid "Immediate Result"
+msgstr ""
+
+#. module: program
+#: model:program.result.level,code:program.result_level_imr
+msgid "ImR"
+msgstr ""
+
+#. module: program
+#: model:ir.model,name:program.model_program_result_target
+msgid "program.result.target"
+msgstr ""
+
+#. module: program
 #: field:program.result,target_audience_type_ids:0
 msgid "Target Audience Types"
+msgstr ""
+
+#. module: program
+#: view:program.result:0
+#: field:program.result,parent_id:0
+msgid "Parent"
 msgstr ""
 
 #. module: program
@@ -100,9 +152,8 @@ msgid "Active"
 msgstr ""
 
 #. module: program
-#: view:program.result:0
-#: field:program.result,parent_id:0
-msgid "Parent"
+#: model:ir.ui.menu,name:program.menu_program_configuration
+msgid "Configuration"
 msgstr ""
 
 #. module: program
@@ -129,8 +180,10 @@ msgid "Name"
 msgstr ""
 
 #. module: program
-#: model:ir.ui.menu,name:program.menu_program
-msgid "Programs"
+#: field:program.result,result_level_id:0
+#: field:program.result.level,depth:0
+#: field:program.result.target,result:0
+msgid "Level"
 msgstr ""
 
 #. module: program
@@ -146,8 +199,8 @@ msgid "Result Target Types"
 msgstr ""
 
 #. module: program
-#: view:program.result.target:0
-msgid "Result Target"
+#: model:program.result.level,code:program.result_level_ir
+msgid "IR"
 msgstr ""
 
 #. module: program
@@ -168,7 +221,6 @@ msgid "Result Targets"
 msgstr ""
 
 #. module: program
-#: model:_description:0
 #: model:ir.model,name:program.model_program_result
 msgid "program.result"
 msgstr ""
@@ -201,18 +253,13 @@ msgid "Child Results"
 msgstr ""
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_tree
-#: model:ir.ui.menu,name:program.menu_program_result_chain
-msgid "Result Chain"
+#: model:program.result.level,code:program.result_level_mi
+msgid "MI"
 msgstr ""
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_form
-#: model:ir.actions.act_window,name:program.action_program_result_list
-#: model:ir.ui.menu,name:program.menu_program_result
-#: model:ir.ui.menu,name:program.menu_program_result_result
-#: view:program.result:0
-msgid "Results"
+#: model:program.result.level,name:program.result_level_mi
+msgid "Mission"
 msgstr ""
 
 #. module: program

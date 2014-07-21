@@ -3,39 +3,38 @@
 <openerp>
   <data noupdate="1">
 
-    <record id="demo_program_result_mission_A" model="program.result">
+    <record id="demo_program_result_mi_A" model="program.result">
       <field name="name">Mission A</field>
       <field name="code">A</field>
+      <field name="result_level_id" ref="program.demo_result_level_mi"/>
     </record>
 
-    <record id="demo_program_result_domain_B" model="program.result">
-      <field name="name">Domain B</field>
+    <record id="demo_program_result_fr_B" model="program.result">
+      <field name="name">Final Result B</field>
       <field name="code">B</field>
-      <field name="parent_id" ref="demo_program_result_mission_A"/>
+      <field name="parent_id" ref="demo_program_result_mi_A"/>
+      <field name="result_level_id" ref="program.demo_result_level_fr"/>
     </record>
 
-    <record id="demo_program_result_program_C" model="program.result">
-      <field name="name">Program C</field>
+    <record id="demo_program_result_ir_C" model="program.result">
+      <field name="name">Intermediate Result C</field>
       <field name="code">C</field>
-      <field name="parent_id" ref="demo_program_result_domain_B"/>
+      <field name="parent_id" ref="demo_program_result_fr_B"/>
+      <field name="result_level_id" ref="program.demo_result_level_ir"/>
     </record>
 
-    <record id="demo_program_result_project_D" model="program.result">
-      <field name="name">Project D</field>
+    <record id="demo_program_result_imr_D" model="program.result">
+      <field name="name">Immediate Result D</field>
       <field name="code">D</field>
-      <field name="parent_id" ref="demo_program_result_program_C"/>
+      <field name="parent_id" ref="demo_program_result_ir_C"/>
+      <field name="result_level_id" ref="program.demo_result_level_imr"/>
     </record>
 
-    <record id="demo_program_result_activity_E" model="program.result">
-      <field name="name">Activity E</field>
+    <record id="demo_program_result_re_E" model="program.result">
+      <field name="name">Realisation E</field>
       <field name="code">E</field>
-      <field name="parent_id" ref="demo_program_result_project_D"/>
-    </record>
-
-    <record id="demo_program_result_operation_F" model="program.result">
-      <field name="name">Operation F</field>
-      <field name="code">F</field>
-      <field name="parent_id" ref="demo_program_result_activity_E"/>
+      <field name="parent_id" ref="demo_program_result_imr_D"/>
+      <field name="result_level_id" ref="program.demo_result_level_re"/>
     </record>
 
   </data>
