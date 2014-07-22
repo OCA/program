@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-22 18:38+0000\n"
-"PO-Revision-Date: 2014-07-22 18:38+0000\n"
+"POT-Creation-Date: 2014-07-22 21:17+0000\n"
+"PO-Revision-Date: 2014-07-22 21:17+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,13 +16,23 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: program
+#: model:program.result.level,name:program.demo_result_level_re
+msgid "Realisation"
+msgstr ""
+
+#. module: program
 #: view:program.result:0
 msgid "Search Results"
 msgstr ""
 
 #. module: program
-#: field:program.result,long_name:0
-msgid "Long name"
+#: model:program.result.level,code:program.demo_result_level_fr
+msgid "FR"
+msgstr ""
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_imr_D
+msgid "Immediate Result D"
 msgstr ""
 
 #. module: program
@@ -31,19 +41,68 @@ msgid "program.result.level"
 msgstr ""
 
 #. module: program
+#: model:program.result.level,name:program.demo_result_level_fr
+msgid "Final Result"
+msgstr ""
+
+#. module: program
+#: model:program.result.level,name:program.demo_result_level_ir
+msgid "Intermediate Result"
+msgstr ""
+
+#. module: program
 #: model:ir.model,name:program.model_program_result_target
 msgid "program.result.target"
 msgstr ""
 
 #. module: program
-#: field:program.result,transverse_label:0
+#: field:program.result,long_name:0
+msgid "Long name"
+msgstr ""
+
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_form
+#: model:ir.actions.act_window,name:program.action_program_result_list
+#: model:ir.ui.menu,name:program.menu_program_result
+#: model:ir.ui.menu,name:program.menu_program_result_result
+#: view:program.result:0
+msgid "Results"
+msgstr ""
+
+#. module: program
+#: view:program.result.target:0
+msgid "Result Target"
+msgstr ""
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_mi_A
+msgid "Mission A"
+msgstr ""
+
+#. module: program
+#: field:program.result,message_follower_ids:0
+msgid "Followers"
+msgstr ""
+
+#. module: program
+#: field:program.result,transverse_child_ids_label:0
 msgid "Contributes to Label"
 msgstr ""
 
 #. module: program
-#: code:addons/program/program_result.py:58
+#: code:addons/program/program_result.py:59
 #, python-format
-msgid "Contributes to %s"
+msgid "%s contributes to"
+msgstr ""
+
+#. module: program
+#: field:program.result,message_unread:0
+msgid "Unread Messages"
+msgstr ""
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_ir_C
+msgid "Intermediate Result C"
 msgstr ""
 
 #. module: program
@@ -64,7 +123,7 @@ msgid "Parent"
 msgstr ""
 
 #. module: program
-#: field:program.result,transverse_inv_label:0
+#: field:program.result,transverse_parent_ids_label:0
 msgid "Contributed by label"
 msgstr ""
 
@@ -74,8 +133,33 @@ msgid "Programs"
 msgstr ""
 
 #. module: program
-#: field:program.result,transverse_ids:0
+#: field:program.result,transverse_child_ids:0
 msgid "Contributes to"
+msgstr ""
+
+#. module: program
+#: help:program.result,message_ids:0
+msgid "Messages and communication history"
+msgstr ""
+
+#. module: program
+#: model:program.result.level,code:program.demo_result_level_re
+msgid "RE"
+msgstr ""
+
+#. module: program
+#: model:program.result.level,name:program.demo_result_level_imr
+msgid "Immediate Result"
+msgstr ""
+
+#. module: program
+#: model:program.result.level,code:program.demo_result_level_imr
+msgid "ImR"
+msgstr ""
+
+#. module: program
+#: field:program.result,message_is_follower:0
+msgid "Is a Follower"
 msgstr ""
 
 #. module: program
@@ -109,13 +193,18 @@ msgid "Descendant"
 msgstr ""
 
 #. module: program
-#: field:program.result,transverse_inv_ids:0
+#: field:program.result,transverse_parent_ids:0
 msgid "Contributed by"
 msgstr ""
 
 #. module: program
 #: field:program.result,date_to:0
 msgid "End Date"
+msgstr ""
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_re_E
+msgid "Realisation E"
 msgstr ""
 
 #. module: program
@@ -146,8 +235,24 @@ msgid "Result Target Types"
 msgstr ""
 
 #. module: program
-#: view:program.result.target:0
-msgid "Result Target"
+#: model:program.result.level,code:program.demo_result_level_ir
+msgid "IR"
+msgstr ""
+
+#. module: program
+#: field:program.result,message_ids:0
+msgid "Messages"
+msgstr ""
+
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_tree
+#: model:ir.ui.menu,name:program.menu_program_result_chain
+msgid "Result Chain"
+msgstr ""
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_fr_B
+msgid "Final Result B"
 msgstr ""
 
 #. module: program
@@ -168,19 +273,24 @@ msgid "Depth"
 msgstr ""
 
 #. module: program
-#: code:addons/program/program_result.py:68
+#: code:addons/program/program_result.py:69
 #, python-format
 msgid "Contributed by %s"
 msgstr ""
 
 #. module: program
-#: model:ir.model,name:program.model_program_result
-msgid "program.result"
+#: field:program.result,message_summary:0
+msgid "Summary"
 msgstr ""
 
 #. module: program
 #: field:program.result,target_audience:0
 msgid "Target Audience"
+msgstr ""
+
+#. module: program
+#: help:program.result,message_unread:0
+msgid "If checked new messages require your attention."
 msgstr ""
 
 #. module: program
@@ -206,18 +316,13 @@ msgid "Child Results"
 msgstr ""
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_tree
-#: model:ir.ui.menu,name:program.menu_program_result_chain
-msgid "Result Chain"
+#: model:program.result.level,code:program.demo_result_level_mi
+msgid "MI"
 msgstr ""
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_form
-#: model:ir.actions.act_window,name:program.action_program_result_list
-#: model:ir.ui.menu,name:program.menu_program_result
-#: model:ir.ui.menu,name:program.menu_program_result_result
-#: view:program.result:0
-msgid "Results"
+#: model:program.result.level,name:program.demo_result_level_mi
+msgid "Mission"
 msgstr ""
 
 #. module: program
@@ -226,8 +331,18 @@ msgid "Group by..."
 msgstr ""
 
 #. module: program
+#: help:program.result,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr ""
+
+#. module: program
 #: model:ir.actions.act_window,name:program.action_program_result_target_tree
 msgid "Result Targets"
+msgstr ""
+
+#. module: program
+#: model:ir.model,name:program.model_program_result
+msgid "Email Thread"
 msgstr ""
 
 #. module: program

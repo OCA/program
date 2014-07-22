@@ -56,7 +56,7 @@ class program_result(orm.Model):
 
     def _transverse_label(
             self, cr, uid, ids=None, name=None, args=None, context=None):
-        string = _('Contributes to %s')
+        string = _('%s contributes to')
         if ids is None:
             return string % ''
         return {
@@ -96,16 +96,16 @@ class program_result(orm.Model):
         'descendant_ids': fields.function(
             _get_descendants, type='one2many', relation='program.result',
             string='Descendant', readonly=True),
-        'transverse_label': fields.function(
+        'transverse_child_ids_label': fields.function(
             _transverse_label, type='char', string='Contributes to Label'),
-        'transverse_ids': fields.many2many(
+        'transverse_child_ids': fields.many2many(
             'program.result', 'transverse_rel', 'from_id', 'to_id',
             string='Contributes to', track_visibility='onchange',
         ),
-        'transverse_inv_label': fields.function(
+        'transverse_parent_ids_label': fields.function(
             _transverse_inv_label, type='char',
             string='Contributed by label'),
-        'transverse_inv_ids': fields.many2many(
+        'transverse_parent_ids': fields.many2many(
             'program.result', 'transverse_rel', 'to_id', 'from_id',
             string='Contributed by', track_visibility='onchange',
         ),
@@ -125,8 +125,12 @@ class program_result(orm.Model):
         ),
     }
     _defaults = {
-        'transverse_label': lambda s, c, u, context: s._transverse_label(
-            c, u, context=context),
-        'transverse_inv_label': lambda s, c, u, cx: s._transverse_inv_label(
-            c, u, context=cx),
+        'transverse_child_ids_label': (
+            lambda self, cr, uid, context:
+            self._transverse_label(cr, uid, context=context)
+        ),
+        'transverse_parent_ids_label': (
+            lambda self, cr, uid, context:
+            self._transverse_inv_label(cr, uid, context=context)
+        ),
     }

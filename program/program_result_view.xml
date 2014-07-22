@@ -69,8 +69,8 @@
                   </group>
 
                   <group col="1">
-                    <b><field name="transverse_label" nolabel="1"/></b>
-                    <field name="transverse_ids" nolabel="1" domain="[('id', '!=', id), ('depth', '&lt;', depth)]" attrs="{'readonly': [('depth', '==', 0)]}">
+                    <b><field name="transverse_child_ids_label" nolabel="1"/></b>
+                    <field name="transverse_child_ids" nolabel="1" domain="[('id', '!=', id), ('depth', '&lt;', depth)]" attrs="{'readonly': [('depth', '==', 0)]}">
                       <tree>
                         <field name="result_level_id" />
                         <field name="name" />
@@ -89,8 +89,8 @@
                   </group>
 
                   <group col="1">
-                    <b><field name="transverse_inv_label" nolabel="1"/></b>
-                    <field name="transverse_inv_ids" nolabel="1" domain="[('id', '!=', id), ('depth', '&gt;', depth)]" attrs="{'readonly': [('depth', '==', 0)]}">
+                    <b><field name="transverse_parent_ids_label" nolabel="1"/></b>
+                    <field name="transverse_parent_ids" nolabel="1" domain="[('id', '!=', id), ('depth', '&gt;', depth)]" attrs="{'readonly': [('depth', '==', 0)]}">
                       <tree>
                         <field name="result_level_id" />
                         <field name="name" />
