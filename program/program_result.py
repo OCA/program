@@ -21,6 +21,7 @@
 ##############################################################################
 
 from openerp.osv import fields, orm
+from openerp.tools.translate import _
 
 
 class program_result(orm.Model):
@@ -51,6 +52,22 @@ class program_result(orm.Model):
             for result in self.browse(cr, uid, ids, context=context)
         }
 
+    def _get_transverse_label(
+            self, cr, uid, ids, name=None, args=None, context=None):
+        string = _('Contributes to %s')
+        return {
+            result.id: string % result.name or ''
+            for result in self.browse(cr, uid, ids, context=context)
+        }
+
+    def _get_transverse_inv_label(
+            self, cr, uid, ids, name=None, args=None, context=None):
+        string = _('Contributed by %s')
+        return {
+            result.id: string % result.name or ''
+            for result in self.browse(cr, uid, ids, context=context)
+        }
+
     _columns = {
         'name': fields.char(
             'Name', required=True, select=True, translate=True),
@@ -65,10 +82,15 @@ class program_result(orm.Model):
         'descendant_ids': fields.function(
             _get_descendants, type='one2many', relation='program.result',
             string='Descendant', readonly=True),
+        'transverse_label': fields.function(
+            _get_transverse_label, type='char', string='Contributes to Label'),
         'transverse_ids': fields.many2many(
             'program.result', 'transverse_rel', 'from_id', 'to_id',
             string='Contributes to'),
-        'transverse_rev_ids': fields.many2many(
+        'transverse_inv_label': fields.function(
+            _get_transverse_inv_label, type='char',
+            string='Contributed by label'),
+        'transverse_inv_ids': fields.many2many(
             'program.result', 'transverse_rel', 'to_id', 'from_id',
             string='Contributed by'),
         'code': fields.char('Code', size=32),
@@ -83,4 +105,8 @@ class program_result(orm.Model):
         'target_audience_type_ids': fields.many2many(
             'program.result.target', string='Target Audience Types'
         ),
+    }
+    _defaults = {
+        'transverse_label': 'Contributes to',
+        'transverse_inv_label': 'Contributed by',
     }

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-22 15:02+0000\n"
-"PO-Revision-Date: 2014-07-22 15:02+0000\n"
+"POT-Creation-Date: 2014-07-22 18:13+0000\n"
+"PO-Revision-Date: 2014-07-22 18:13+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,38 +16,8 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: program
-#: model:program.result.level,name:program.demo_result_level_re
-msgid "Realisation"
-msgstr ""
-
-#. module: program
 #: view:program.result:0
 msgid "Search Results"
-msgstr ""
-
-#. module: program
-#: model:program.result.level,code:program.demo_result_level_fr
-msgid "FR"
-msgstr ""
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_imr_D
-msgid "Immediate Result D"
-msgstr ""
-
-#. module: program
-#: model:ir.model,name:program.model_program_result_level
-msgid "program.result.level"
-msgstr ""
-
-#. module: program
-#: model:program.result.level,name:program.demo_result_level_fr
-msgid "Final Result"
-msgstr ""
-
-#. module: program
-#: model:program.result.level,name:program.demo_result_level_ir
-msgid "Intermediate Result"
 msgstr ""
 
 #. module: program
@@ -56,27 +26,24 @@ msgid "Long name"
 msgstr ""
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_form
-#: model:ir.actions.act_window,name:program.action_program_result_list
-#: model:ir.ui.menu,name:program.menu_program_result
-#: model:ir.ui.menu,name:program.menu_program_result_result
-#: view:program.result:0
-msgid "Results"
+#: model:ir.model,name:program.model_program_result_level
+msgid "program.result.level"
 msgstr ""
 
 #. module: program
-#: view:program.result.target:0
-msgid "Result Target"
+#: model:ir.model,name:program.model_program_result_target
+msgid "program.result.target"
 msgstr ""
 
 #. module: program
-#: model:program.result,name:program.demo_program_result_mi_A
-msgid "Mission A"
+#: field:program.result,transverse_label:0
+msgid "Contributes to Label"
 msgstr ""
 
 #. module: program
-#: model:program.result,name:program.demo_program_result_ir_C
-msgid "Intermediate Result C"
+#: code:addons/program/program_result.py:57
+#, python-format
+msgid "Contributes to %s"
 msgstr ""
 
 #. module: program
@@ -97,6 +64,11 @@ msgid "Parent"
 msgstr ""
 
 #. module: program
+#: field:program.result,transverse_inv_label:0
+msgid "Contributed by label"
+msgstr ""
+
+#. module: program
 #: model:ir.ui.menu,name:program.menu_program
 msgid "Programs"
 msgstr ""
@@ -104,26 +76,6 @@ msgstr ""
 #. module: program
 #: field:program.result,transverse_ids:0
 msgid "Contributes to"
-msgstr ""
-
-#. module: program
-#: model:program.result.level,code:program.demo_result_level_re
-msgid "RE"
-msgstr ""
-
-#. module: program
-#: model:program.result.level,name:program.demo_result_level_imr
-msgid "Immediate Result"
-msgstr ""
-
-#. module: program
-#: model:program.result.level,code:program.demo_result_level_imr
-msgid "ImR"
-msgstr ""
-
-#. module: program
-#: model:ir.model,name:program.model_program_result_target
-msgid "program.result.target"
 msgstr ""
 
 #. module: program
@@ -157,18 +109,13 @@ msgid "Descendant"
 msgstr ""
 
 #. module: program
-#: field:program.result,transverse_rev_ids:0
+#: field:program.result,transverse_inv_ids:0
 msgid "Contributed by"
 msgstr ""
 
 #. module: program
 #: field:program.result,date_to:0
 msgid "End Date"
-msgstr ""
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_re_E
-msgid "Realisation E"
 msgstr ""
 
 #. module: program
@@ -199,19 +146,8 @@ msgid "Result Target Types"
 msgstr ""
 
 #. module: program
-#: model:program.result.level,code:program.demo_result_level_ir
-msgid "IR"
-msgstr ""
-
-#. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_tree
-#: model:ir.ui.menu,name:program.menu_program_result_chain
-msgid "Result Chain"
-msgstr ""
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_fr_B
-msgid "Final Result B"
+#: view:program.result.target:0
+msgid "Result Target"
 msgstr ""
 
 #. module: program
@@ -227,8 +163,14 @@ msgid "Error!"
 msgstr ""
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_target_tree
-msgid "Result Targets"
+#: field:program.result,depth:0
+msgid "Depth"
+msgstr ""
+
+#. module: program
+#: code:addons/program/program_result.py:65
+#, python-format
+msgid "Contributed by %s"
 msgstr ""
 
 #. module: program
@@ -264,18 +206,28 @@ msgid "Child Results"
 msgstr ""
 
 #. module: program
-#: model:program.result.level,code:program.demo_result_level_mi
-msgid "MI"
+#: model:ir.actions.act_window,name:program.action_program_result_tree
+#: model:ir.ui.menu,name:program.menu_program_result_chain
+msgid "Result Chain"
 msgstr ""
 
 #. module: program
-#: model:program.result.level,name:program.demo_result_level_mi
-msgid "Mission"
+#: model:ir.actions.act_window,name:program.action_program_result_form
+#: model:ir.actions.act_window,name:program.action_program_result_list
+#: model:ir.ui.menu,name:program.menu_program_result
+#: model:ir.ui.menu,name:program.menu_program_result_result
+#: view:program.result:0
+msgid "Results"
 msgstr ""
 
 #. module: program
 #: view:program.result:0
 msgid "Group by..."
+msgstr ""
+
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_target_tree
+msgid "Result Targets"
 msgstr ""
 
 #. module: program
