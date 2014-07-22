@@ -46,23 +46,28 @@ class program_result(orm.Model):
             res[result.id] = child_list
         return res
 
-    def _get_parent_id(self, cr, uid, ids, name=None, args=None, context=None):
+    def _get_parent_id(
+            self, cr, uid, ids=None, name=None, args=None, context=None):
         return {
             result.id: result.parent_id.id
             for result in self.browse(cr, uid, ids, context=context)
         }
 
-    def _get_transverse_label(
-            self, cr, uid, ids, name=None, args=None, context=None):
+    def _transverse_label(
+            self, cr, uid, ids=None, name=None, args=None, context=None):
         string = _('Contributes to %s')
+        if ids is None:
+            return string % ''
         return {
             result.id: string % result.name or ''
             for result in self.browse(cr, uid, ids, context=context)
         }
 
-    def _get_transverse_inv_label(
-            self, cr, uid, ids, name=None, args=None, context=None):
+    def _transverse_inv_label(
+            self, cr, uid, ids=None, name=None, args=None, context=None):
         string = _('Contributed by %s')
+        if ids is None:
+            return string % ''
         return {
             result.id: string % result.name or ''
             for result in self.browse(cr, uid, ids, context=context)
@@ -83,12 +88,12 @@ class program_result(orm.Model):
             _get_descendants, type='one2many', relation='program.result',
             string='Descendant', readonly=True),
         'transverse_label': fields.function(
-            _get_transverse_label, type='char', string='Contributes to Label'),
+            _transverse_label, type='char', string='Contributes to Label'),
         'transverse_ids': fields.many2many(
             'program.result', 'transverse_rel', 'from_id', 'to_id',
             string='Contributes to'),
         'transverse_inv_label': fields.function(
-            _get_transverse_inv_label, type='char',
+            _transverse_inv_label, type='char',
             string='Contributed by label'),
         'transverse_inv_ids': fields.many2many(
             'program.result', 'transverse_rel', 'to_id', 'from_id',
@@ -107,6 +112,8 @@ class program_result(orm.Model):
         ),
     }
     _defaults = {
-        'transverse_label': 'Contributes to',
-        'transverse_inv_label': 'Contributed by',
+        'transverse_label': lambda s, c, u, context: s._transverse_label(
+            c, u, context=context),
+        'transverse_inv_label': lambda s, c, u, cx: s._transverse_inv_label(
+            c, u, context=cx),
     }

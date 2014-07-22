@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-22 18:13+0000\n"
-"PO-Revision-Date: 2014-07-22 14:15-0500\n"
+"POT-Creation-Date: 2014-07-22 18:38+0000\n"
+"PO-Revision-Date: 2014-07-22 14:38-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -43,7 +43,7 @@ msgid "Contributes to Label"
 msgstr "Contribue à (Libellé)"
 
 #. module: program
-#: code:addons/program/program_result.py:57
+#: code:addons/program/program_result.py:58
 #, python-format
 msgid "Contributes to %s"
 msgstr "Contribue à %s"
@@ -166,7 +166,7 @@ msgid "Depth"
 msgstr "Profondeur"
 
 #. module: program
-#: code:addons/program/program_result.py:65
+#: code:addons/program/program_result.py:68
 #, python-format
 msgid "Contributed by %s"
 msgstr "Résultat contribuant à %s"
