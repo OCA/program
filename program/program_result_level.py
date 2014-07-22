@@ -27,24 +27,7 @@ from openerp.tools.translate import _
 class program_result_level(orm.Model):
 
     _name = 'program.result.level'
-
-    def create(self, cr, uid, data, context=None):
-        if data.get('depth', -1) < 0:
-            raise orm.except_orm(
-                _('Error!'),
-                _('Depth must be greater than or equal to 0.')
-            )
-        return super(program_result_level, self).create(
-            cr, uid, data, context=context)
-
-    def write(self, cr, uid, ids, vals, context=None):
-        if vals.get('depth', 0) < 0:
-            raise orm.except_orm(
-                _('Error!'),
-                _('Depth must be greater than or equal to 0.')
-            )
-        return super(program_result_level, self).write(
-            cr, uid, ids, vals, context=context)
+    _parent_name = 'parent_id'
 
     def name_get(self, cr, uid, ids, context=None):
         if not isinstance(ids, list):
@@ -52,14 +35,37 @@ class program_result_level(orm.Model):
         return [(line.id, (line.code and line.code + ' - ' or '') + line.name)
                 for line in self.browse(cr, uid, ids, context=context)]
 
+    def _get_depth(
+            self, cr, uid, ids=None, name=None, args=None, context=None):
+        if type(ids) is not list:
+            ids = [ids]
+        return {
+            level.id: (
+                self._get_depth(
+                    cr, uid, level.parent_id.id, context=context
+                )[level.parent_id.id] if level.parent_id else 0) + 1
+            for level in self.browse(cr, uid, ids, context=context)
+        }
+
     _columns = {
         'name': fields.char(
             'Name', size=128, required=True, select=True, translate=True),
         'result_ids': fields.one2many(
             'program.result', 'result_level_id', string='Result'),
         'code': fields.char('Code', size=32, translate=True),
-        'depth': fields.integer('Level', required=True),
+        'parent_id': fields.many2one('program.result.level', 'Parent'),
+        'child_id': fields.one2many(
+            'program.result.level', fields_id='parent_id', string='Child',
+            limit=1
+        ),
+        'depth': fields.function(
+            _get_depth, type='integer', string='Level', store=True
+        ),
     }
-    _defaults = {
-        'depth': 1,
-    }
+
+    def _rec_message(self, cr, uid, ids, context=None):
+        return _('Error! You can not create recursive Levels.')
+
+    _constraints = [
+        (orm.Model._check_recursion, _rec_message, ['parent_id']),
+    ]

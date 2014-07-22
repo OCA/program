@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-22 21:17+0000\n"
-"PO-Revision-Date: 2014-07-22 21:17+0000\n"
+"POT-Creation-Date: 2014-07-22 22:07+0000\n"
+"PO-Revision-Date: 2014-07-22 22:07+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -51,8 +51,9 @@ msgid "Intermediate Result"
 msgstr ""
 
 #. module: program
-#: model:ir.model,name:program.model_program_result_target
-msgid "program.result.target"
+#: code:addons/program/program_result.py:160
+#, python-format
+msgid "Error! You can not create recursive Results."
 msgstr ""
 
 #. module: program
@@ -119,6 +120,7 @@ msgstr ""
 #: view:program.result:0
 #: field:program.result,parent_id:0
 #: field:program.result,parent_id2:0
+#: field:program.result.level,parent_id:0
 msgid "Parent"
 msgstr ""
 
@@ -168,8 +170,8 @@ msgid "Target Audience Types"
 msgstr ""
 
 #. module: program
-#: view:program.result:0
-msgid "Result Schedule"
+#: field:program.result.level,child_id:0
+msgid "Child"
 msgstr ""
 
 #. module: program
@@ -223,10 +225,8 @@ msgid "Level"
 msgstr ""
 
 #. module: program
-#: code:addons/program/program_result_level.py:35
-#: code:addons/program/program_result_level.py:44
-#, python-format
-msgid "Depth must be greater than or equal to 0."
+#: view:program.result:0
+msgid "Result Schedule"
 msgstr ""
 
 #. module: program
@@ -261,13 +261,6 @@ msgid "Search Result Levels"
 msgstr ""
 
 #. module: program
-#: code:addons/program/program_result_level.py:34
-#: code:addons/program/program_result_level.py:43
-#, python-format
-msgid "Error!"
-msgstr ""
-
-#. module: program
 #: field:program.result,depth:0
 msgid "Depth"
 msgstr ""
@@ -281,6 +274,12 @@ msgstr ""
 #. module: program
 #: field:program.result,message_summary:0
 msgid "Summary"
+msgstr ""
+
+#. module: program
+#: code:addons/program/program_result_level.py:67
+#, python-format
+msgid "Error! You can not create recursive Levels."
 msgstr ""
 
 #. module: program
@@ -349,6 +348,11 @@ msgstr ""
 #: view:program.result:0
 #: field:program.result.level,result_ids:0
 msgid "Result"
+msgstr ""
+
+#. module: program
+#: model:ir.model,name:program.model_program_result_target
+msgid "program.result.target"
 msgstr ""
 
 #. module: program

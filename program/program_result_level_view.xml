@@ -29,6 +29,7 @@
             <group colspan="4" col="4">
               <group>
                 <field name="code" />
+                <field name="parent_id" domain="[('child_id', '=', False), ('id', '!=', id)]"/>
                 <field name="depth" />
               </group>
             </group>

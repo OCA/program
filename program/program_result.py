@@ -74,6 +74,27 @@ class program_result(orm.Model):
             for result in self.browse(cr, uid, ids, context=context)
         }
 
+    def _clear_transversal(self, cr, user, ids, context=None):
+        """Transverse all children and remove their transversal relations"""
+        for result in self.browse(cr, user, ids, context=context):
+            child_ids = [child.id for child in result.child_ids]
+            self._clear_transversal(cr, user, child_ids, context=context)
+            result.write({
+                'transverse_child_ids': [(6, False, [])],
+                'transverse_parent_ids': [(6, False, [])],
+            })
+
+    def write(self, cr, user, ids, vals, context=None):
+        """Clear transversals if tree structure has changed"""
+        res = super(program_result, self).write(
+            cr, user, ids, vals, context=context
+        )
+
+        if 'parent_id' in vals and not context.get('install_mode'):
+            self._clear_transversal(cr, user, ids, context=context)
+
+        return res
+
     _columns = {
         'name': fields.char(
             'Name', required=True, select=True, translate=True,
@@ -134,3 +155,10 @@ class program_result(orm.Model):
             self._transverse_inv_label(cr, uid, context=context)
         ),
     }
+
+    def _rec_message(self, cr, uid, ids, context=None):
+        return _('Error! You can not create recursive Results.')
+
+    _constraints = [
+        (orm.Model._check_recursion, _rec_message, ['parent_id']),
+    ]

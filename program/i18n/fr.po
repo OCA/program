@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-22 21:17+0000\n"
-"PO-Revision-Date: 2014-07-22 17:18-0500\n"
+"POT-Creation-Date: 2014-07-22 22:07+0000\n"
+"PO-Revision-Date: 2014-07-22 18:08-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -53,9 +53,10 @@ msgid "Intermediate Result"
 msgstr "Résultat intermédiaire"
 
 #. module: program
-#: model:ir.model,name:program.model_program_result_target
-msgid "program.result.target"
-msgstr ""
+#: code:addons/program/program_result.py:160
+#, python-format
+msgid "Error! You can not create recursive Results."
+msgstr "Erreur ! Vous ne pouvez pas créer de résultats récursifs"
 
 #. module: program
 #: field:program.result,long_name:0
@@ -119,7 +120,7 @@ msgstr "Description"
 
 #. module: program
 #: view:program.result:0 field:program.result,parent_id:0
-#: field:program.result,parent_id2:0
+#: field:program.result,parent_id2:0 field:program.result.level,parent_id:0
 msgid "Parent"
 msgstr "Parent"
 
@@ -169,9 +170,9 @@ msgid "Target Audience Types"
 msgstr "Types de publics cibles"
 
 #. module: program
-#: view:program.result:0
-msgid "Result Schedule"
-msgstr "Horaire des Résultats"
+#: field:program.result.level,child_id:0
+msgid "Child"
+msgstr "Enfant"
 
 #. module: program
 #: field:program.result.target,active:0
@@ -221,11 +222,9 @@ msgid "Level"
 msgstr "Niveau"
 
 #. module: program
-#: code:addons/program/program_result_level.py:35
-#: code:addons/program/program_result_level.py:44
-#, python-format
-msgid "Depth must be greater than or equal to 0."
-msgstr "Le niveau doit être plus grand ou égal à 0."
+#: view:program.result:0
+msgid "Result Schedule"
+msgstr "Horaire des Résultats"
 
 #. module: program
 #: model:ir.ui.menu,name:program.menu_program_configuration_target
@@ -259,13 +258,6 @@ msgid "Search Result Levels"
 msgstr "Rechercher dans les niveaux de résultats"
 
 #. module: program
-#: code:addons/program/program_result_level.py:34
-#: code:addons/program/program_result_level.py:43
-#, python-format
-msgid "Error!"
-msgstr "Erreur!"
-
-#. module: program
 #: field:program.result,depth:0
 msgid "Depth"
 msgstr "Profondeur"
@@ -280,6 +272,12 @@ msgstr "Résultat contribuant à %s"
 #: field:program.result,message_summary:0
 msgid "Summary"
 msgstr "Résumé"
+
+#. module: program
+#: code:addons/program/program_result_level.py:67
+#, python-format
+msgid "Error! You can not create recursive Levels."
+msgstr "Erreur ! Vous ne pouvez pas créer de niveaux récursifs."
 
 #. module: program
 #: field:program.result,target_audience:0
@@ -352,6 +350,11 @@ msgid "Result"
 msgstr "Résultat"
 
 #. module: program
+#: model:ir.model,name:program.model_program_result_target
+msgid "program.result.target"
+msgstr ""
+
+#. module: program
 #: model:res.groups,comment:program.program_user
 msgid "Program Users"
 msgstr "Utilisateurs de la programmation"
@@ -365,6 +368,12 @@ msgstr "Date de début"
 #: view:program.result:0
 msgid "Targets"
 msgstr "Cibles"
+
+#~ msgid "Depth must be greater than or equal to 0."
+#~ msgstr "Le niveau doit être plus grand ou égal à 0."
+
+#~ msgid "Error!"
+#~ msgstr "Erreur!"
 
 #~ msgid "Program C"
 #~ msgstr "Programme C"
