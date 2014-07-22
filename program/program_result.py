@@ -45,24 +45,37 @@ class program_result(orm.Model):
             res[result.id] = child_list
         return res
 
+    def _get_parent_id(self, cr, uid, ids, name=None, args=None, context=None):
+        return {
+            result.id: result.parent_id.id
+            for result in self.browse(cr, uid, ids, context=context)
+        }
+
     _columns = {
         'name': fields.char(
             'Name', required=True, select=True, translate=True),
         'long_name': fields.char('Long name', translate=True),
         'parent_id': fields.many2one(
             'program.result', string='Parent', select=True),
+        'parent_id2': fields.function(
+            _get_parent_id, type='many2one', relation='program.result',
+            string='Parent', readonly=True),
         'child_ids': fields.one2many(
             'program.result', 'parent_id', string='Child Results'),
         'descendant_ids': fields.function(
             _get_descendants, type='one2many', relation='program.result',
             string='Descendant', readonly=True),
-        'is_transversal': fields.boolean('Transversal'),
         'transverse_ids': fields.many2many(
             'program.result', 'transverse_rel', 'from_id', 'to_id',
-            string='Transverse'),
+            string='Contributes to'),
+        'transverse_rev_ids': fields.many2many(
+            'program.result', 'transverse_rel', 'to_id', 'from_id',
+            string='Contributed by'),
         'code': fields.char('Code', size=32),
         'result_level_id': fields.many2one(
             'program.result.level', string='Level', select=True),
+        'depth': fields.related(
+            'result_level_id', 'depth', type="integer", string='Depth'),
         'date_from': fields.date('Start Date'),
         'date_to': fields.date('End Date'),
         'description': fields.text('Description', translate=True),

@@ -47,10 +47,6 @@
             </group>
 
             <group colspan="4" col="2">
-              <field name="is_transversal" />
-            </group>
-
-            <group colspan="4" col="2">
               <field name="description" />
             </group>
 
@@ -64,24 +60,44 @@
               </page>
 
               <page name="children" string="Results">
-                <group col="1">
-                  <label for="child_ids" />
-                  <field name="child_ids" nolabel="1" context="{'default_parent_id': id}">
-                    <tree>
-                      <field name="result_level_id" />
-                      <field name="name" />
-                    </tree>
-                  </field>
-                </group>
 
-                <group col="1" attrs="{'invisible': [('is_transversal', '=', False)]}">
-                  <label for="transverse_ids" />
-                  <field name="transverse_ids" nolabel="1" domain="[('id', '!=', id), ('result_level_id.depth', '=', 1)]">
-                    <tree>
-                      <field name="result_level_id" />
-                      <field name="name" />
-                    </tree>
-                  </field>
+                <group col="2">
+                  <group col="1">
+                    <label for="parent_id2" />
+                    <field name="parent_id2" nolabel="1"/>
+                    <field name="depth" invisible="1"/>
+                  </group>
+
+                  <group col="1">
+                    <label for="transverse_ids" />
+                    <field name="transverse_ids" nolabel="1" domain="[('id', '!=', id), ('depth', '&lt;', depth)]" attrs="{'readonly': [('depth', '==', 0)]}">
+                      <tree>
+                        <field name="result_level_id" />
+                        <field name="name" />
+                      </tree>
+                    </field>
+                  </group>
+
+                  <group col="1">
+                    <label for="child_ids" />
+                    <field name="child_ids" nolabel="1" context="{'default_parent_id': id}">
+                      <tree>
+                        <field name="result_level_id" />
+                        <field name="name" />
+                      </tree>
+                    </field>
+                  </group>
+
+                  <group col="1">
+                    <label for="transverse_rev_ids" />
+                    <field name="transverse_rev_ids" nolabel="1" domain="[('id', '!=', id), ('depth', '&gt;', depth)]" attrs="{'readonly': [('depth', '==', 0)]}">
+                      <tree>
+                        <field name="result_level_id" />
+                        <field name="name" />
+                      </tree>
+                    </field>
+                  </group>
+
                 </group>
 
               </page>
