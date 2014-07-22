@@ -41,7 +41,7 @@ Contributors
     'website': 'http://www.savoirfairelinux.com',
     'license': 'AGPL-3',
     'depends': [
-        'base',
+        'mail',
     ],
     'data': [
         'security/program_security.xml',

@@ -27,6 +27,7 @@ from openerp.tools.translate import _
 class program_result(orm.Model):
 
     _name = 'program.result'
+    _inherit = ['mail.thread']
     _parent_name = 'parent_id'
 
     def _get_descendants(self, cr, uid, ids, name=None, args=None,
@@ -75,15 +76,23 @@ class program_result(orm.Model):
 
     _columns = {
         'name': fields.char(
-            'Name', required=True, select=True, translate=True),
-        'long_name': fields.char('Long name', translate=True),
+            'Name', required=True, select=True, translate=True,
+            track_visibility='onchange',
+        ),
+        'long_name': fields.char(
+            'Long name', translate=True, track_visibility='onchange',
+        ),
         'parent_id': fields.many2one(
-            'program.result', string='Parent', select=True),
+            'program.result', string='Parent', select=True,
+            track_visibility='onchange',
+        ),
         'parent_id2': fields.function(
             _get_parent_id, type='many2one', relation='program.result',
             string='Parent', readonly=True),
         'child_ids': fields.one2many(
-            'program.result', 'parent_id', string='Child Results'),
+            'program.result', 'parent_id', string='Child Results',
+            track_visibility='onchange',
+        ),
         'descendant_ids': fields.function(
             _get_descendants, type='one2many', relation='program.result',
             string='Descendant', readonly=True),
@@ -91,20 +100,24 @@ class program_result(orm.Model):
             _transverse_label, type='char', string='Contributes to Label'),
         'transverse_ids': fields.many2many(
             'program.result', 'transverse_rel', 'from_id', 'to_id',
-            string='Contributes to'),
+            string='Contributes to', track_visibility='onchange',
+        ),
         'transverse_inv_label': fields.function(
             _transverse_inv_label, type='char',
             string='Contributed by label'),
         'transverse_inv_ids': fields.many2many(
             'program.result', 'transverse_rel', 'to_id', 'from_id',
-            string='Contributed by'),
-        'code': fields.char('Code', size=32),
+            string='Contributed by', track_visibility='onchange',
+        ),
+        'code': fields.char('Code', size=32, track_visibility='onchange'),
         'result_level_id': fields.many2one(
-            'program.result.level', string='Level', select=True),
+            'program.result.level', string='Level', select=True,
+            track_visibility='onchange',
+        ),
         'depth': fields.related(
             'result_level_id', 'depth', type="integer", string='Depth'),
-        'date_from': fields.date('Start Date'),
-        'date_to': fields.date('End Date'),
+        'date_from': fields.date('Start Date', track_visibility='onchange'),
+        'date_to': fields.date('End Date', track_visibility='onchange'),
         'description': fields.text('Description', translate=True),
         'target_audience': fields.text('Target Audience', translate=True),
         'target_audience_type_ids': fields.many2many(
