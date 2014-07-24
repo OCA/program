@@ -10,7 +10,8 @@
           <field name="department_id" />
         </field>
 
-        <page name="children" position="before">
+        <page name="target" position="after">
+
           <page name="team" string="Team">
             <group colspan="4" col="2">
               <field name="team_department_ids">
@@ -55,6 +56,7 @@
 
             </group>
           </page>
+
         </page>
 
       </field>

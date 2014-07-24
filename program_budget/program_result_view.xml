@@ -6,9 +6,11 @@
     <record id="view_program_result_form" model="ir.ui.view">
       <field name="model">program.result</field>
       <field name="inherit_id" ref="program.view_program_result_form" />
+      <field name="priority" eval="60"/>
       <field name="arch" type="xml">
 
         <notebook>
+
           <page name="budget" string="Budget">
 
             <field name="currency_id" invisible="1"/>
@@ -69,6 +71,7 @@
             </group>
 
           </page>
+
         </notebook>
 
         <field name="target_audience" position="before">

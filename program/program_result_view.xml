@@ -51,6 +51,7 @@
             </group>
 
             <notebook>
+
               <page name="target" string="Targets">
                 <group colspan="4" col="2">
 
@@ -107,6 +108,7 @@
                 </group>
 
               </page>
+
             </notebook>
           </sheet>
 

@@ -3,9 +3,11 @@
     <record id="view_program_result_form" model="ir.ui.view">
       <field name="model">program.result</field>
       <field name="inherit_id" ref="program.view_program_result_form" />
+      <field name="priority" eval="100"/>
       <field name="arch" type="xml">
 
-        <page name="children" position="after">
+        <notebook>
+
           <page name="documents" string="Documents">
             <button name="%(document_multiple_records.action_view_document)s"
                     type="action"
@@ -20,7 +22,8 @@
               </tree>
             </field>
           </page>
-        </page>
+
+        </notebook>
 
       </field>
     </record>
