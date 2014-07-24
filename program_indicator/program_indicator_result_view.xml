@@ -27,6 +27,8 @@
           <field name="value_target" />
           <field name="value" />
           <field name="state" />
+          <field name="frequency" />
+          <field name="partner_id" />
         </tree>
 
       </field>

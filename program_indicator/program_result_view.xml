@@ -10,7 +10,7 @@
 
         <notebook>
 
-          <page name="result_indicators" string="Result indicators">
+          <page name="result_indicators" string="Indicators">
             <group col="1">
               <label for="result_indicator_ids" />
               <field name="result_indicator_ids" nolabel="1" context="{'from_result': True}"/>
