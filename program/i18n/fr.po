@@ -342,7 +342,7 @@ msgstr "Cibles de Résultats"
 #. module: program
 #: model:ir.model,name:program.model_program_result
 msgid "Email Thread"
-msgstr "Courriel"
+msgstr "Discussion par courriel"
 
 #. module: program
 #: view:program.result:0 field:program.result.level,result_ids:0
