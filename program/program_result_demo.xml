@@ -37,5 +37,39 @@
       <field name="result_level_id" ref="program.demo_result_level_re"/>
     </record>
 
+    <record id="demo_program_result_mi_F" model="program.result">
+      <field name="name">Mission F</field>
+      <field name="code">F</field>
+      <field name="result_level_id" ref="program.demo_result_level_mi"/>
+    </record>
+
+    <record id="demo_program_result_fr_G" model="program.result">
+      <field name="name">Final Result G</field>
+      <field name="code">G</field>
+      <field name="parent_id" ref="demo_program_result_mi_F"/>
+      <field name="result_level_id" ref="program.demo_result_level_fr"/>
+    </record>
+
+    <record id="demo_program_result_ir_H" model="program.result">
+      <field name="name">Intermediate Result H</field>
+      <field name="code">H</field>
+      <field name="parent_id" ref="demo_program_result_fr_G"/>
+      <field name="result_level_id" ref="program.demo_result_level_ir"/>
+    </record>
+
+    <record id="demo_program_result_imr_I" model="program.result">
+      <field name="name">Immediate Result I</field>
+      <field name="code">I</field>
+      <field name="parent_id" ref="demo_program_result_ir_H"/>
+      <field name="result_level_id" ref="program.demo_result_level_imr"/>
+    </record>
+
+    <record id="demo_program_result_re_J" model="program.result">
+      <field name="name">Realisation J</field>
+      <field name="code">J</field>
+      <field name="parent_id" ref="demo_program_result_imr_I"/>
+      <field name="result_level_id" ref="program.demo_result_level_re"/>
+    </record>
+
   </data>
 </openerp>

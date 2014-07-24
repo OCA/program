@@ -41,7 +41,6 @@ Contributors
         'program_budget',
     ],
     'data': [
-        'security/ir.model.access.csv',
         'program_crossovered_budget_summary_view.xml',
         'program_result_view.xml',
     ],

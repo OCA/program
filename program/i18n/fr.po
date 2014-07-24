@@ -127,7 +127,7 @@ msgstr "Parent"
 #. module: program
 #: field:program.result,transverse_parent_ids_label:0
 msgid "Contributed by label"
-msgstr "Résultat contribuant à (libellé)"
+msgstr "Résultats contribuant à (libellé)"
 
 #. module: program
 #: model:ir.ui.menu,name:program.menu_program
@@ -197,7 +197,7 @@ msgstr "Descendance"
 #. module: program
 #: field:program.result,transverse_parent_ids:0
 msgid "Contributed by"
-msgstr "Résultat contribuant à"
+msgstr "Résultats contribuant à"
 
 #. module: program
 #: field:program.result,date_to:0
@@ -266,7 +266,7 @@ msgstr "Profondeur"
 #: code:addons/program/program_result.py:69
 #, python-format
 msgid "Contributed by %s"
-msgstr "Résultat contribuant à %s"
+msgstr "Résultats contribuant à %s"
 
 #. module: program
 #: field:program.result,message_summary:0
