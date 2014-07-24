@@ -1,29 +1,30 @@
 # Translation of OpenERP Server.
 # This file contains the translation of the following modules:
-#	* program_purchase
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-24 19:55+0000\n"
-"PO-Revision-Date: 2014-07-24 19:55+0000\n"
-"Last-Translator: <>\n"
+"PO-Revision-Date: 2014-07-24 16:22-0500\n"
+"Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.6.5\n"
 
 #. module: program_purchase
 #: view:program.crossovered.budget.summary:0
 msgid "Program Budget Summary List"
-msgstr ""
+msgstr "Liste de somaires de budgets"
 
 #. module: program_purchase
 #: view:program.result:0
 msgid "Monitoring"
-msgstr ""
+msgstr "Suivi"
 
 #. module: program_purchase
 #: model:ir.model,name:program_purchase.model_program_crossovered_budget_summary
@@ -33,44 +34,44 @@ msgstr ""
 #. module: program_purchase
 #: view:program.result:0
 msgid "Summary of expenses"
-msgstr ""
+msgstr "Sommaire des dépenses"
 
 #. module: program_purchase
 #: field:program.result,budget_summary_ids:0
 msgid "Budget Summaries"
-msgstr ""
+msgstr "Somaire des budgets"
 
 #. module: program_purchase
 #: field:program.crossovered.budget.summary,theoretical_amount:0
 msgid "Theoretical Amount"
-msgstr ""
+msgstr "Montant Théorique"
 
 #. module: program_purchase
 #: field:program.crossovered.budget.summary,budget_id:0
 msgid "Budget"
-msgstr ""
+msgstr "Budget"
 
 #. module: program_purchase
 #: model:ir.model,name:program_purchase.model_program_result
 msgid "Email Thread"
-msgstr ""
+msgstr "Discussion par courriel"
 
 #. module: program_purchase
 #: field:program.result,crossovered_budget_ids:0
 msgid "Budgets"
-msgstr ""
+msgstr "Budgets"
 
 #. module: program_purchase
 #: field:program.crossovered.budget.summary,progress:0
 msgid "Progress"
-msgstr ""
+msgstr "Progrès"
 
 #. module: program_purchase
 #: field:program.crossovered.budget.summary,planned_amount:0
 msgid "Planned Amount"
-msgstr ""
+msgstr "Montant prévu"
 
 #. module: program_purchase
 #: field:program.crossovered.budget.summary,practical_amount:0
 msgid "Practical Amount"
-msgstr ""
+msgstr "Montant réel"
