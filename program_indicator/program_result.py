@@ -29,6 +29,6 @@ class program_result(orm.Model):
 
     _columns = {
         'result_indicator_ids': fields.one2many(
-            'program.indicator.result', 'result_id', 'Result Indicator',
+            'program.result.indicator', 'result_id', 'Result Indicator',
         ),
     }

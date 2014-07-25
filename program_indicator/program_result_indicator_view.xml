@@ -4,7 +4,7 @@
 
     <record id="view_program_program_indicator_result_search" model="ir.ui.view">
       <field name="name">Program Result Indicator Search</field>
-      <field name="model">program.indicator.result</field>
+      <field name="model">program.result.indicator</field>
       <field name="arch" type="xml">
 
         <search string="Search Result Indicators" version="7.0">
@@ -18,11 +18,10 @@
 
     <record id="view_program_program_indicator_result_tree" model="ir.ui.view">
       <field name="name">Program Result Indicator Tree</field>
-      <field name="model">program.indicator.result</field>
+      <field name="model">program.result.indicator</field>
       <field name="arch" type="xml">
 
         <tree string="Result Indicators" version="7.0">
-          <field name="indicator_id" />
           <field name="value_initial" />
           <field name="value_target" />
           <field name="value" />
@@ -36,14 +35,11 @@
 
     <record id="view_program_indicator_result_tree" model="ir.ui.view">
       <field name="name">Program Result Indicator Tree</field>
-      <field name="model">program.indicator.result</field>
+      <field name="model">program.result.indicator</field>
       <field name="arch" type="xml">
 
         <tree string="Result Indicators" version="7.0">
-          <field name="indicator_id" />
           <field name="result_id" />
-          <field name="verification_means" />
-          <field name="risk_hypothesis" />
           <field name="value_initial" />
           <field name="value_target" />
           <field name="value" />
@@ -57,7 +53,7 @@
 
     <record id="view_program_program_indicator_result_form" model="ir.ui.view">
       <field name="name">Program Result Indicator Form</field>
-      <field name="model">program.indicator.result</field>
+      <field name="model">program.result.indicator</field>
       <field name="arch" type="xml">
 
         <form string="Result Indicator" version="7.0">
@@ -99,8 +95,6 @@
 
           <sheet>
             <group>
-              <field name="indicator_id"
-                     on_change="change_indicator(indicator_id)" />
               <field name="result_id"
                      required="not context.get('from_result', False)"
                      invisible="context.get('from_result', False)" />
@@ -124,13 +118,19 @@
 
     <record id="action_program_program_indicator_result_tree" model="ir.actions.act_window">
       <field name="name">Result Indicators</field>
-      <field name="res_model">program.indicator.result</field>
+      <field name="res_model">program.result.indicator</field>
       <field name="view_type">form</field>
       <field name="view_mode">tree,form</field>
       <field name="view_id" ref="view_program_indicator_result_tree" />
       <field name="search_view_id" ref="view_program_program_indicator_result_search" />
       <field name="target">current</field>
     </record>
+
+    <menuitem id="menu_program_indicator_action"
+              name="Indicators"
+              parent="program.menu_program"
+              groups="program.program_user"
+              sequence="1" />
 
     <menuitem id="menu_program_indicator_result_action_action"
               name="Result Indicators"

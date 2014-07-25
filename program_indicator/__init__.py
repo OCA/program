@@ -22,6 +22,5 @@
 
 from . import (
     program_result,
-    program_indicator,
-    program_indicator_result,
+    program_result_indicator,
 )

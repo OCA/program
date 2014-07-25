@@ -45,8 +45,7 @@ Contributors
     'external_dependencies': {},
     'data': [
         'security/ir.model.access.csv',
-        'program_indicator_view.xml',
-        'program_indicator_result_view.xml',
+        'program_result_indicator_view.xml',
         'program_indicator_workflow.xml',
         'program_result_view.xml',
     ],

@@ -25,7 +25,7 @@ from openerp.osv import fields, orm
 
 class program_indicator_result(orm.Model):
 
-    _name = 'program.indicator.result'
+    _name = 'program.result.indicator'
     _columns = {
         'state': fields.selection([
             ('draft', 'Draft'),
@@ -35,9 +35,6 @@ class program_indicator_result(orm.Model):
             ('validated', 'Validated'),
             ('cancel', 'Cancelled'),
         ], 'Status', select=True, required=True, readonly=True),
-        'indicator_id': fields.many2one(
-            'program.indicator', 'Indicator', required=True
-        ),
         'result_id': fields.many2one(
             'program.result', 'Result', required=True
         ),
@@ -57,14 +54,3 @@ class program_indicator_result(orm.Model):
     _defaults = {
         'state': 'draft',
     }
-
-    def change_indicator(self, cr, uid, ids, indicator_id, context=None):
-        indicator = self.pool.get('program.indicator').browse(
-            cr, uid, indicator_id, context=context)
-
-        return {
-            'value': {
-                'verification_means': indicator.verification_means,
-                'risk_hypothesis': indicator.risk_hypothesis
-            }
-        }
