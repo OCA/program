@@ -35,7 +35,7 @@ class program_result(orm.Model):
             'result_id', string='Departments',
         ),
         'team_member_ids': fields.one2many(
-            'program.result.team.member', 'result_id', string='Members',
+            'program.result.team.member', 'result_id', string='Team Members',
         ),
         'team_partner_ids': fields.one2many(
             'program.result.team.partner', 'result_id', string='Partners',

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-02 21:16+0000\n"
-"PO-Revision-Date: 2014-07-02 17:45-0500\n"
+"POT-Creation-Date: 2014-07-25 17:38+0000\n"
+"PO-Revision-Date: 2014-07-25 13:38-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -23,6 +23,11 @@ msgid "Partners"
 msgstr "Partenaires"
 
 #. module: program_team
+#: field:program.result,team_member_ids:0
+msgid "Team Members"
+msgstr "Membres de l'équipe"
+
+#. module: program_team
 #: field:program.result,team_contact_ids:0
 msgid "Contacts"
 msgstr "Contacts"
@@ -33,7 +38,6 @@ msgid "Organisation"
 msgstr "Organisation"
 
 #. module: program_team
-#: model:_description:0
 #: model:ir.model,name:program_team.model_program_result_team_member
 msgid "program.result.team.member"
 msgstr ""
@@ -56,12 +60,11 @@ msgstr "Rôle"
 #. module: program_team
 #: model:ir.actions.act_window,name:program_team.action_program_result_team_role_tree
 #: model:ir.ui.menu,name:program_team.menu_configuration_result_team_role
-#: view:program.result.team.role:0
+#: view:program.result.team.partner.type:0 view:program.result.team.role:0
 msgid "Team Roles"
 msgstr "Rôles d'équipe"
 
 #. module: program_team
-#: model:_description:0
 #: model:ir.model,name:program_team.model_program_result_team_partner
 msgid "program.result.team.partner"
 msgstr ""
@@ -78,14 +81,12 @@ msgid "Search Team Roles"
 msgstr "Rechercher dans les rôles d'équipe"
 
 #. module: program_team
-#: model:_description:0
 #: model:ir.model,name:program_team.model_program_result_team_contact
 msgid "program.result.team.contact"
 msgstr ""
 
 #. module: program_team
 #: field:program.result.team.partner,type_id:0
-#: field:program.result.team.partner.type,name:0
 msgid "Type"
 msgstr "Type"
 
@@ -101,15 +102,15 @@ msgstr ""
 "Contribution arbitraire, habituellement non-financière ou inquantifiable."
 
 #. module: program_team
-#: model:_description:0
 #: model:ir.model,name:program_team.model_program_result_team_partner_type
 msgid "program.result.team.partner.type"
 msgstr ""
 
 #. module: program_team
-#: field:program.result,team_member_ids:0
-msgid "Members"
-msgstr "Membres"
+#: model:ir.actions.act_window,name:program_team.action_program_result_team_partner_type_tree
+#: model:ir.ui.menu,name:program_team.menu_configuration_result_team_partner_type
+msgid "Team Partner Types"
+msgstr "Types de partenaires"
 
 #. module: program_team
 #: field:program.result.team.partner.type,is_active:0
@@ -117,20 +118,15 @@ msgid "Active"
 msgstr "Actif"
 
 #. module: program_team
-#: model:_description:0
 #: model:ir.model,name:program_team.model_program_result_team_role
 msgid "program.result.team.role"
 msgstr ""
 
 #. module: program_team
+#: field:program.result.team.partner.type,name:0
 #: view:program.result.team.role:0 field:program.result.team.role,name:0
 msgid "Name"
 msgstr "Nom"
-
-#. module: program_team
-#: model:_description:0
-msgid "Model Program Document"
-msgstr "Modèle Program Document"
 
 #. module: program_team
 #: field:res.partner,is_not_employee:0
@@ -143,7 +139,6 @@ msgid "Departments"
 msgstr "Départements"
 
 #. module: program_team
-#: model:_description:0
 #: model:ir.model,name:program_team.model_program_result_team_department
 msgid "program.result.team.department"
 msgstr ""
@@ -175,11 +170,6 @@ msgid "Discard"
 msgstr "Annuler"
 
 #. module: program_team
-#: model:ir.model,name:program_team.model_program_result
-msgid "program.result"
-msgstr ""
-
-#. module: program_team
 #: view:program.result.team.role:0
 msgid "Team Role"
 msgstr "Rôle d'équipe"
@@ -190,6 +180,11 @@ msgid "Save and Close"
 msgstr "Enregistrer & fermer"
 
 #. module: program_team
+#: model:ir.model,name:program_team.model_program_result
+msgid "Email Thread"
+msgstr "Discussion par courriel"
+
+#. module: program_team
 #: field:program.result.team.contact,result_id:0
 #: field:program.result.team.department,result_id:0
 #: field:program.result.team.member,result_id:0
@@ -198,7 +193,7 @@ msgid "Result"
 msgstr "Résultat"
 
 #. module: program_team
-#: model:_description:0 model:ir.model,name:program_team.model_res_partner
+#: model:ir.model,name:program_team.model_res_partner
 #: field:program.result.team.role,is_partner:0
 msgid "Partner"
 msgstr "Partenaire"
@@ -207,6 +202,9 @@ msgstr "Partenaire"
 #: view:hr.department:0 view:hr.employee:0 view:res.partner:0
 msgid "or"
 msgstr "ou"
+
+#~ msgid "Model Program Document"
+#~ msgstr "Modèle Program Document"
 
 #~ msgid "Administrative Units"
 #~ msgstr "Unités administratives"

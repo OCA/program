@@ -107,7 +107,7 @@ msgstr "Planifiée"
 #. module: program_budget
 #: field:program.result,target_country:0
 msgid "Target Country"
-msgstr "Pay cible"
+msgstr "Pays cible"
 
 #. module: program_budget
 #: model:ir.actions.act_window,name:program_budget.action_program_result_region_tree
