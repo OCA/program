@@ -84,8 +84,37 @@ class program_result(orm.Model):
                 'transverse_parent_ids': [(6, False, [])],
             })
 
+    def _result_level_id(
+            self, cr, user, ids=False, parent_id=False, context=None):
+        if parent_id:
+            depth = self.read(cr, user, parent_id, ['depth'])['depth'] + 1
+        else:
+            depth = 1
+        level_pool = self.pool['program.result.level']
+        root_ids = level_pool.search(
+            cr, user, [('depth', '=', depth)], context=context
+        )
+        if root_ids:
+            return root_ids[0]
+        else:
+            return False
+
+    def onchange_parent_id(self, cr, user, ids, parent_id, context=None):
+        return {
+            'value': {
+                'result_level_id': self._result_level_id(
+                    cr, user, parent_id=parent_id, context=context
+                ),
+            }
+        }
+
     def write(self, cr, user, ids, vals, context=None):
         """Clear transversals if tree structure has changed"""
+        parent_id = vals.get('parent_id')
+        if parent_id:
+            vals['result_level_id'] = self._result_level_id(
+                cr, user, parent_id=parent_id, context=context
+            )
         res = super(program_result, self).write(
             cr, user, ids, vals, context=context
         )
@@ -133,10 +162,11 @@ class program_result(orm.Model):
         'code': fields.char('Code', size=32, track_visibility='onchange'),
         'result_level_id': fields.many2one(
             'program.result.level', string='Level', select=True,
-            track_visibility='onchange',
+            track_visibility='onchange', required=True,
         ),
         'depth': fields.related(
-            'result_level_id', 'depth', type="integer", string='Depth'),
+            'result_level_id', 'depth', type="integer", string='Depth',
+        ),
         'date_from': fields.date('Start Date', track_visibility='onchange'),
         'date_to': fields.date('End Date', track_visibility='onchange'),
         'description': fields.text('Description', translate=True),
@@ -153,6 +183,10 @@ class program_result(orm.Model):
         'transverse_parent_ids_label': (
             lambda self, cr, uid, context:
             self._transverse_inv_label(cr, uid, context=context)
+        ),
+        'result_level_id': (
+            lambda self, cr, uid, context:
+            self._result_level_id(cr, uid, context=context)
         ),
     }
 
