@@ -28,10 +28,12 @@ from openerp.tools.translate import _
 class program_result(orm.Model):
 
     _inherit = 'program.result'
-    _propagatable_fields = [
-        'name',
-        'code',
-    ]
+
+    def _get_propagatable_fields(self):
+        return {
+            'name',
+            'code',
+        }
 
     def _get_account_company(
             self, cr, uid, ids, name, args, context=None):
@@ -186,7 +188,7 @@ class program_result(orm.Model):
             if not result.account_analytic_id:
                 prop_vals = dict(self.read(
                     cr, uid, result.id,
-                    self._propagatable_fields,
+                    self._get_propagatable_fields(),
                     context=context).items() + vals.items())
                 account_id = self._create_related_account(
                     cr, uid, prop_vals, context=context)
@@ -195,8 +197,8 @@ class program_result(orm.Model):
                 result = result.browse(context=context)[0]
 
             propagated_fields = {
-                i: j
-                for i, j in vals.items() if i in self._propagatable_fields
+                i: j for i, j in vals.items()
+                if i in self._get_propagatable_fields()
             }
 
             if 'parent_id' in vals:
@@ -227,7 +229,7 @@ class program_result(orm.Model):
         account_pool = self.pool.get('account.analytic.account')
         propagated_fields = {
             i: j
-            for i, j in vals.items() if i in self._propagatable_fields
+            for i, j in vals.items() if i in self._get_propagatable_fields()
         }
 
         return account_pool.create(
