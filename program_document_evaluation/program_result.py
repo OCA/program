@@ -40,7 +40,8 @@ class program_result(orm.Model):
         for line in self.browse(cr, uid, ids, context=context):
             query = [
                 '&',
-                ('attachment_document_ids.res_model', '=', 'program.evaluation'),
+                ('attachment_document_ids.res_model', '=',
+                 'program.evaluation'),
                 ('attachment_document_ids.res_id', 'in',
                  [i.id for i in line.evaluation_ids]),
             ]
