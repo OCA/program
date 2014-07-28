@@ -108,10 +108,19 @@ class program_result(orm.Model):
             }
         }
 
+    def create(self, cr, user, vals, context=None):
+        parent_id = vals.get('parent_id')
+        if parent_id or parent_id is False:
+            vals['result_level_id'] = self._result_level_id(
+                cr, user, parent_id=parent_id, context=context
+            )
+        return super(program_result, self).create(
+            cr, user, vals, context=context)
+
     def write(self, cr, user, ids, vals, context=None):
         """Clear transversals if tree structure has changed"""
         parent_id = vals.get('parent_id')
-        if parent_id:
+        if parent_id or parent_id is False:
             vals['result_level_id'] = self._result_level_id(
                 cr, user, parent_id=parent_id, context=context
             )
