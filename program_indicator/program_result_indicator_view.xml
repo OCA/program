@@ -27,7 +27,6 @@
           <field name="value_target" />
           <field name="value" />
           <field name="state" />
-          <field name="frequency" />
           <field name="partner_id" />
         </tree>
 
@@ -46,7 +45,6 @@
           <field name="value_target" />
           <field name="value" />
           <field name="state" />
-          <field name="frequency" />
           <field name="partner_id" />
         </tree>
 
@@ -101,13 +99,9 @@
               <field name="result_id"
                      required="not context.get('from_result', False)"
                      invisible="context.get('from_result', False)" />
-              <field name="mandatory" />
-              <field name="verification_means" />
-              <field name="risk_hypothesis" />
               <field name="value_initial" />
               <field name="value_target" />
               <field name="value" />
-              <field name="frequency" />
               <field name="value_date" />
               <field name="partner_id"
                      domain="[('is_company', '=', False), ('contact_id', '=', False)]" />
