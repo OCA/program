@@ -19,6 +19,7 @@
       <field name="arch" type="xml">
         <form string="Result Level" version="7.0">
           <sheet>
+
             <div class="oe_title">
               <label for="name" class="oe_edit_only" />
               <h1>
@@ -26,13 +27,15 @@
               </h1>
             </div>
 
-            <group colspan="4" col="4">
-              <group>
+            <group col="4">
+              <group colspan="2">
                 <field name="code" />
                 <field name="parent_id" domain="[('child_id', '=', False), ('id', '!=', id)]"/>
                 <field name="depth" />
               </group>
+              <div colspan="2"/>
             </group>
+
           </sheet>
         </form>
       </field>

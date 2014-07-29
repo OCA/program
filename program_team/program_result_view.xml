@@ -6,9 +6,9 @@
       <field name="inherit_id" ref="program.view_program_result_form" />
       <field name="arch" type="xml">
 
-        <field name="parent_id" position="after">
+        <group name="general_info">
           <field name="department_id" />
-        </field>
+        </group>
 
         <page name="target" position="after">
 

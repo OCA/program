@@ -25,9 +25,13 @@
               </h1>
             </div>
 
-            <group>
-              <field name="active" />
+            <group col="4">
+              <group colspan="2">
+                <field name="active" />
+              </group>
+              <div colspan="2"/>
             </group>
+
           </sheet>
         </form>
       </field>

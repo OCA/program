@@ -27,6 +27,7 @@ from openerp.tools.translate import _
 class program_result(orm.Model):
 
     _name = 'program.result'
+    _description = 'Result'
     _inherit = ['mail.thread']
     _parent_name = 'parent_id'
 
@@ -182,6 +183,9 @@ class program_result(orm.Model):
         'target_audience': fields.text('Target Audience', translate=True),
         'target_audience_type_ids': fields.many2many(
             'program.result.target', string='Target Audience Types'
+        ),
+        'intervention_id': fields.many2one(
+            'program.result.intervention', string='Intervention Mode'
         ),
     }
     _defaults = {

@@ -27,6 +27,7 @@ from openerp.tools.translate import _
 class program_result_level(orm.Model):
 
     _name = 'program.result.level'
+    _description = 'Result Level'
     _parent_name = 'parent_id'
 
     def name_get(self, cr, uid, ids, context=None):

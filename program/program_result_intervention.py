@@ -20,42 +20,14 @@
 #
 ##############################################################################
 
-{
-    'name': 'Program',
-    'version': '0.4',
-    'category': 'Program',
-    'summary': 'Results Based Management',
-    'description': '''
-Program
-=======
+from openerp.osv import fields, orm
 
-Results Based Management
 
-Contributors
-------------
+class program_result_intervention(orm.Model):
 
-* Alexandre Boily (alexandre.boily@savoirfairelinux.com)
-* Sandy Carter (sandy.carter@savoirfairelinux.com)
-''',
-    'author': 'Savoir-faire Linux',
-    'website': 'http://www.savoirfairelinux.com',
-    'license': 'AGPL-3',
-    'depends': [
-        'mail',
-    ],
-    'data': [
-        'security/program_security.xml',
-        'security/ir.model.access.csv',
-        'program_result_view.xml',
-        'program_result_level_view.xml',
-        'program_result_target_view.xml',
-        'program_result_intervention_view.xml',
-    ],
-    'test': [],
-    'demo': [
-        'program_result_level_demo.xml',
-        'program_result_demo.xml',
-    ],
-    'auto_install': False,
-    'installable': True,
-}
+    _name = 'program.result.intervention'
+    _description = 'Intervention Method'
+    _columns = {
+        'name': fields.char('Name', required=True, translate=True),
+        'code': fields.char('Code', translate=True),
+    }

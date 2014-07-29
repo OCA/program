@@ -35,10 +35,11 @@
             </group>
 
             <group colspan="4" col="4">
-              <group>
+              <group name="general_info">
                 <field name="code" />
                 <field name="result_level_id" readonly="1"/>
                 <field name="parent_id" domain="[('id', '!=', id)]" on_change="onchange_parent_id(parent_id)"/>
+                <field name="intervention_id"/>
               </group>
 
               <group>

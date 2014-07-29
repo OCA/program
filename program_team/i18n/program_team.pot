@@ -1,13 +1,13 @@
 # Translation of OpenERP Server.
 # This file contains the translation of the following modules:
-#	* program_team
+#	* program
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-25 17:38+0000\n"
-"PO-Revision-Date: 2014-07-25 17:38+0000\n"
+"POT-Creation-Date: 2014-07-29 15:16+0000\n"
+"PO-Revision-Date: 2014-07-29 15:16+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,197 +15,410 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: program_team
-#: field:program.result,team_partner_ids:0
-#: view:res.partner:0
-msgid "Partners"
+#. module: program
+#: model:program.result.level,name:program.demo_result_level_re
+msgid "Realisation"
 msgstr ""
 
-#. module: program_team
-#: field:program.result,team_member_ids:0
-msgid "Team Members"
+#. module: program
+#: view:program.result:0
+msgid "Search Results"
 msgstr ""
 
-#. module: program_team
-#: field:program.result,team_contact_ids:0
-msgid "Contacts"
+#. module: program
+#: model:program.result.level,code:program.demo_result_level_fr
+msgid "FR"
 msgstr ""
 
-#. module: program_team
-#: field:program.result.team.partner,organisation_id:0
-msgid "Organisation"
+#. module: program
+#: model:program.result,name:program.demo_program_result_imr_D
+msgid "Immediate Result D"
 msgstr ""
 
-#. module: program_team
-#: model:ir.model,name:program_team.model_program_result_team_member
-msgid "program.result.team.member"
+#. module: program
+#: model:ir.model,name:program.model_program_result_level
+msgid "program.result.level"
 msgstr ""
 
-#. module: program_team
-#: field:program.result,department_id:0
-#: field:program.result.team.department,department_id:0
-#: field:program.result.team.role,is_department:0
-msgid "Department"
+#. module: program
+#: model:program.result.level,name:program.demo_result_level_fr
+msgid "Final Result"
 msgstr ""
 
-#. module: program_team
-#: field:program.result.team.contact,role_id:0
-#: field:program.result.team.department,role_id:0
-#: field:program.result.team.member,role_id:0
-#: field:program.result.team.partner,role_id:0
-msgid "Role"
+#. module: program
+#: model:program.result,name:program.demo_program_result_imr_I
+msgid "Immediate Result I"
 msgstr ""
 
-#. module: program_team
-#: model:ir.actions.act_window,name:program_team.action_program_result_team_role_tree
-#: model:ir.ui.menu,name:program_team.menu_configuration_result_team_role
-#: view:program.result.team.partner.type:0
-#: view:program.result.team.role:0
-msgid "Team Roles"
+#. module: program
+#: code:addons/program/program_result.py:206
+#, python-format
+msgid "Error! You can not create recursive Results."
 msgstr ""
 
-#. module: program_team
-#: model:ir.model,name:program_team.model_program_result_team_partner
-msgid "program.result.team.partner"
+#. module: program
+#: field:program.result,long_name:0
+msgid "Long name"
 msgstr ""
 
-#. module: program_team
-#: view:hr.employee:0
-#: field:program.result.team.member,employee_id:0
-#: field:program.result.team.role,is_employee:0
-msgid "Employee"
+#. module: program
+#: field:program.result,intervention_id:0
+msgid "Intervention Mode"
 msgstr ""
 
-#. module: program_team
-#: view:program.result.team.role:0
-msgid "Search Team Roles"
+#. module: program
+#: model:program.result.level,name:program.demo_result_level_ir
+msgid "Intermediate Result"
 msgstr ""
 
-#. module: program_team
-#: model:ir.model,name:program_team.model_program_result_team_contact
-msgid "program.result.team.contact"
+#. module: program
+#: view:program.result.target:0
+msgid "Result Target"
 msgstr ""
 
-#. module: program_team
-#: field:program.result.team.partner,type_id:0
-msgid "Type"
+#. module: program
+#: model:program.result,name:program.demo_program_result_mi_A
+msgid "Mission A"
 msgstr ""
 
-#. module: program_team
-#: field:program.result.team.partner,contribution:0
-msgid "Non-Financial Contribution"
+#. module: program
+#: field:program.result,message_follower_ids:0
+msgid "Followers"
 msgstr ""
 
-#. module: program_team
-#: help:program.result.team.partner,contribution:0
-msgid "Arbitrary contribution, usually a non-financial or unquantifiable one."
+#. module: program
+#: field:program.result,transverse_child_ids_label:0
+msgid "Contributes to Label"
 msgstr ""
 
-#. module: program_team
-#: model:ir.model,name:program_team.model_program_result_team_partner_type
-msgid "program.result.team.partner.type"
+#. module: program
+#: code:addons/program/program_result.py:59
+#, python-format
+msgid "%s contributes to"
 msgstr ""
 
-#. module: program_team
-#: model:ir.actions.act_window,name:program_team.action_program_result_team_partner_type_tree
-#: model:ir.ui.menu,name:program_team.menu_configuration_result_team_partner_type
-msgid "Team Partner Types"
+#. module: program
+#: model:program.result,name:program.demo_program_result_ir_H
+msgid "Intermediate Result H"
 msgstr ""
 
-#. module: program_team
-#: field:program.result.team.partner.type,is_active:0
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_form
+#: model:ir.actions.act_window,name:program.action_program_result_list
+#: model:ir.ui.menu,name:program.menu_program_result
+#: model:ir.ui.menu,name:program.menu_program_result_result
+#: view:program.result:0
+msgid "Results"
+msgstr ""
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_ir_C
+msgid "Intermediate Result C"
+msgstr ""
+
+#. module: program
+#: view:program.result.intervention:0
+msgid "Result Intervention Method"
+msgstr ""
+
+#. module: program
+#: field:program.result,description:0
+msgid "Description"
+msgstr ""
+
+#. module: program
+#: view:program.result:0
+#: field:program.result,parent_id:0
+#: field:program.result,parent_id2:0
+#: field:program.result.level,parent_id:0
+msgid "Parent"
+msgstr ""
+
+#. module: program
+#: field:program.result,transverse_parent_ids_label:0
+msgid "Contributed by label"
+msgstr ""
+
+#. module: program
+#: model:ir.ui.menu,name:program.menu_program
+msgid "Programs"
+msgstr ""
+
+#. module: program
+#: field:program.result,transverse_child_ids:0
+msgid "Contributes to"
+msgstr ""
+
+#. module: program
+#: help:program.result,message_ids:0
+msgid "Messages and communication history"
+msgstr ""
+
+#. module: program
+#: model:program.result.level,code:program.demo_result_level_re
+msgid "RE"
+msgstr ""
+
+#. module: program
+#: model:program.result.level,name:program.demo_result_level_imr
+msgid "Immediate Result"
+msgstr ""
+
+#. module: program
+#: model:program.result.level,code:program.demo_result_level_imr
+msgid "ImR"
+msgstr ""
+
+#. module: program
+#: field:program.result,message_is_follower:0
+msgid "Is a Follower"
+msgstr ""
+
+#. module: program
+#: field:program.result,target_audience_type_ids:0
+msgid "Target Audience Types"
+msgstr ""
+
+#. module: program
+#: view:program.result.level:0
+msgid "Result Level"
+msgstr ""
+
+#. module: program
+#: field:program.result.level,child_id:0
+msgid "Child"
+msgstr ""
+
+#. module: program
+#: field:program.result.target,active:0
 msgid "Active"
 msgstr ""
 
-#. module: program_team
-#: model:ir.model,name:program_team.model_program_result_team_role
-msgid "program.result.team.role"
+#. module: program
+#: model:ir.ui.menu,name:program.menu_program_configuration
+msgid "Configuration"
 msgstr ""
 
-#. module: program_team
-#: field:program.result.team.partner.type,name:0
-#: view:program.result.team.role:0
-#: field:program.result.team.role,name:0
+#. module: program
+#: view:program.result.target:0
+msgid "Search Result Targets"
+msgstr ""
+
+#. module: program
+#: model:ir.ui.menu,name:program.menu_program_configuration_target
+msgid "Result Target Types"
+msgstr ""
+
+#. module: program
+#: field:program.result,descendant_ids:0
+msgid "Descendant"
+msgstr ""
+
+#. module: program
+#: field:program.result,transverse_parent_ids:0
+msgid "Contributed by"
+msgstr ""
+
+#. module: program
+#: field:program.result,date_to:0
+msgid "End Date"
+msgstr ""
+
+#. module: program
+#: view:program.result.intervention:0
+msgid "Search Intervention Modes"
+msgstr ""
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_re_E
+msgid "Realisation E"
+msgstr ""
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_re_J
+msgid "Realisation J"
+msgstr ""
+
+#. module: program
+#: view:program.result:0
+#: field:program.result,name:0
+#: field:program.result.intervention,name:0
+#: field:program.result.level,name:0
+#: field:program.result.target,name:0
 msgid "Name"
 msgstr ""
 
-#. module: program_team
-#: field:res.partner,is_not_employee:0
-msgid "Not Employee"
+#. module: program
+#: field:program.result,result_level_id:0
+#: field:program.result.level,depth:0
+msgid "Level"
 msgstr ""
 
-#. module: program_team
-#: field:program.result,team_department_ids:0
-msgid "Departments"
+#. module: program
+#: model:res.groups,name:program.program_user
+msgid "Program User"
 msgstr ""
 
-#. module: program_team
-#: model:ir.model,name:program_team.model_program_result_team_department
-msgid "program.result.team.department"
-msgstr ""
-
-#. module: program_team
-#: view:hr.department:0
-msgid "department"
-msgstr ""
-
-#. module: program_team
-#: field:program.result.team.contact,contact_id:0
-#: field:program.result.team.role,is_contact:0
-msgid "Contact"
-msgstr ""
-
-#. module: program_team
-#: view:program.result.team.partner.type:0
-msgid "Partner Type"
-msgstr ""
-
-#. module: program_team
+#. module: program
 #: view:program.result:0
-msgid "Team"
+msgid "Result Schedule"
 msgstr ""
 
-#. module: program_team
-#: view:hr.department:0
-#: view:hr.employee:0
-#: view:res.partner:0
-msgid "Discard"
+#. module: program
+#: model:program.result,name:program.demo_program_result_fr_G
+msgid "Final Result G"
 msgstr ""
 
-#. module: program_team
-#: view:program.result.team.role:0
-msgid "Team Role"
+#. module: program
+#: model:program.result.level,code:program.demo_result_level_ir
+msgid "IR"
 msgstr ""
 
-#. module: program_team
-#: view:hr.department:0
-#: view:hr.employee:0
-#: view:res.partner:0
-msgid "Save and Close"
+#. module: program
+#: field:program.result,message_ids:0
+msgid "Messages"
 msgstr ""
 
-#. module: program_team
-#: model:ir.model,name:program_team.model_program_result
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_tree
+#: model:ir.ui.menu,name:program.menu_program_result_chain
+msgid "Result Chain"
+msgstr ""
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_mi_F
+msgid "Mission F"
+msgstr ""
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_fr_B
+msgid "Final Result B"
+msgstr ""
+
+#. module: program
+#: view:program.result.level:0
+msgid "Search Result Levels"
+msgstr ""
+
+#. module: program
+#: field:program.result,depth:0
+msgid "Depth"
+msgstr ""
+
+#. module: program
+#: code:addons/program/program_result.py:69
+#, python-format
+msgid "Contributed by %s"
+msgstr ""
+
+#. module: program
+#: field:program.result,message_summary:0
+msgid "Summary"
+msgstr ""
+
+#. module: program
+#: code:addons/program/program_result_level.py:67
+#, python-format
+msgid "Error! You can not create recursive Levels."
+msgstr ""
+
+#. module: program
+#: field:program.result,target_audience:0
+msgid "Target Audience"
+msgstr ""
+
+#. module: program
+#: help:program.result,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr ""
+
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_level_tree
+#: model:ir.ui.menu,name:program.menu_program_configuration_level
+msgid "Result Levels"
+msgstr ""
+
+#. module: program
+#: model:program.result.level,name:program.demo_result_level_mi
+msgid "Mission"
+msgstr ""
+
+#. module: program
+#: field:program.result,code:0
+#: field:program.result.intervention,code:0
+#: field:program.result.level,code:0
+msgid "Code"
+msgstr ""
+
+#. module: program
+#: field:program.result,child_ids:0
+msgid "Child Results"
+msgstr ""
+
+#. module: program
+#: field:program.result,message_unread:0
+msgid "Unread Messages"
+msgstr ""
+
+#. module: program
+#: model:program.result.level,code:program.demo_result_level_mi
+msgid "MI"
+msgstr ""
+
+#. module: program
+#: model:ir.model,name:program.model_program_result_intervention
+msgid "Intervention Method"
+msgstr ""
+
+#. module: program
+#: view:program.result:0
+msgid "Group by..."
+msgstr ""
+
+#. module: program
+#: help:program.result,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr ""
+
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_target_tree
+msgid "Result Targets"
+msgstr ""
+
+#. module: program
+#: model:ir.model,name:program.model_program_result
 msgid "Email Thread"
 msgstr ""
 
-#. module: program_team
-#: field:program.result.team.contact,result_id:0
-#: field:program.result.team.department,result_id:0
-#: field:program.result.team.member,result_id:0
-#: field:program.result.team.partner,result_id:0
+#. module: program
+#: view:program.result:0
+#: field:program.result.level,result_ids:0
+#: field:program.result.target,result:0
 msgid "Result"
 msgstr ""
 
-#. module: program_team
-#: model:ir.model,name:program_team.model_res_partner
-#: field:program.result.team.role,is_partner:0
-msgid "Partner"
+#. module: program
+#: model:ir.model,name:program.model_program_result_target
+msgid "program.result.target"
 msgstr ""
 
-#. module: program_team
-#: view:hr.department:0
-#: view:hr.employee:0
-#: view:res.partner:0
-msgid "or"
+#. module: program
+#: model:res.groups,comment:program.program_user
+msgid "Program Users"
+msgstr ""
+
+#. module: program
+#: field:program.result,date_from:0
+msgid "Start Date"
+msgstr ""
+
+#. module: program
+#: view:program.result:0
+msgid "Targets"
+msgstr ""
+
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_intervention_tree
+#: model:ir.ui.menu,name:program.menu_program_configuration_intervention
+msgid "Intervention Modes"
 msgstr ""

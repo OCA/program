@@ -26,11 +26,10 @@ from openerp.osv import fields, orm
 class program_result_target(orm.Model):
 
     _name = 'program.result.target'
+    _description = 'Result Target'
     _columns = {
-        'name': fields.char(
-            'Name', required=True, select=True, translate=True),
-        'result': fields.many2one(
-            'program.result', string='Level', select=True),
+        'name': fields.char('Name', required=True, translate=True),
+        'result': fields.many2one('program.result', string='Result'),
         'active': fields.boolean('Active'),
     }
     _defaults = {
