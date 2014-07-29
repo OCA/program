@@ -67,8 +67,8 @@ msgid "program.crossovered.budget.lines"
 msgstr ""
 
 #. module: program_budget
-#: field:program.result,target_region:0
-msgid "Target Region"
+#: field:program.result,target_region_ids:0
+msgid "Target Regions"
 msgstr ""
 
 #. module: program_budget
@@ -104,8 +104,8 @@ msgid "Planned"
 msgstr ""
 
 #. module: program_budget
-#: field:program.result,target_country:0
-msgid "Target Country"
+#: field:program.result,target_country_ids:0
+msgid "Target Countries"
 msgstr ""
 
 #. module: program_budget

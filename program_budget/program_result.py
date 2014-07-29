@@ -94,11 +94,11 @@ class program_result(orm.Model):
         'account_analytic_id': fields.many2one(
             'account.analytic.account', string='Analytic account',
             select=True),
-        'target_country': fields.many2many(
-            'res.country', string='Target Country'
+        'target_country_ids': fields.many2many(
+            'res.country', string='Target Countries'
         ),
-        'target_region': fields.many2many(
-            'program.result.region', string='Target Region'
+        'target_region_ids': fields.many2many(
+            'program.result.region', string='Target Regions'
         ),
         'budget_total': fields.function(
             _get_budget_total, string='Total', type='float',

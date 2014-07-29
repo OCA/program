@@ -75,8 +75,8 @@
         </notebook>
 
         <field name="target_audience" position="before">
-          <field name="target_country" />
-          <field name="target_region" />
+          <field name="target_country_ids" />
+          <field name="target_region_ids" />
         </field>
 
       </field>

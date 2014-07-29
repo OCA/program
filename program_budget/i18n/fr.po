@@ -70,9 +70,9 @@ msgid "program.crossovered.budget.lines"
 msgstr ""
 
 #. module: program_budget
-#: field:program.result,target_region:0
-msgid "Target Region"
-msgstr "Région cible"
+#: field:program.result,target_region_ids:0
+msgid "Target Regions"
+msgstr "Région cibles"
 
 #. module: program_budget
 #: view:program.result:0
@@ -105,9 +105,9 @@ msgid "Planned"
 msgstr "Planifiée"
 
 #. module: program_budget
-#: field:program.result,target_country:0
-msgid "Target Country"
-msgstr "Pays cible"
+#: field:program.result,target_country_ids:0
+msgid "Target Countries"
+msgstr "Pays cibles"
 
 #. module: program_budget
 #: model:ir.actions.act_window,name:program_budget.action_program_result_region_tree

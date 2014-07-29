@@ -136,7 +136,7 @@ msgstr "N'est pas un employé"
 #. module: program_team
 #: field:program.result,team_department_ids:0
 msgid "Departments"
-msgstr "Départements"
+msgstr "Unités administratives"
 
 #. module: program_team
 #: model:ir.model,name:program_team.model_program_result_team_department
