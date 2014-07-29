@@ -205,7 +205,7 @@ class program_result(orm.Model):
     }
 
     def _rec_message(self, cr, uid, ids, context=None):
-        return _('Error! You can not create recursive Results.')
+        return "\n\n" + _('Error! You can not create recursive Results.')
 
     _constraints = [
         (orm.Model._check_recursion, _rec_message, ['parent_id']),

@@ -27,6 +27,7 @@ from openerp.addons import decimal_precision as dp
 class program_crossovered_budget_summary(orm.TransientModel):
 
     _name = 'program.crossovered.budget.summary'
+    _description = "Budget Summary"
     _columns = {
         'budget_id': fields.many2one('crossovered.budget', 'Budget'),
         'planned_amount': fields.float(

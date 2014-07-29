@@ -20,7 +20,12 @@
 #
 ##############################################################################
 
+from __future__ import division
+from datetime import date, datetime
+
 from openerp.osv import fields, orm
+from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
+from openerp.tools.translate import _
 
 
 class program_result(orm.Model):
@@ -50,9 +55,10 @@ class program_result(orm.Model):
         if theoretical_amount == 0.00:
             return 0.00
         else:
-            return practical_amount / theoretical_amount
+            return practical_amount / theoretical_amount * 100.0
 
-    def _get_budget_summaries(self, cr, uid, ids, name, args, context=None):
+    def _get_budget_summaries(
+            self, cr, uid, ids, name=None, args=None, context=None):
         res = {}
         for result in self.browse(cr, uid, ids, context=context):
             res[result.id] = [result.build_budget_summary(budget_id.id)
@@ -68,6 +74,64 @@ class program_result(orm.Model):
             })
         return res
 
+    def __prgs_cap(self, val, minimum=0.0, maximum=100.0):
+        return min(max(val, minimum), maximum)
+
+    def _get_prgs_time(self, cr, uid, ids, name, args, context=None):
+        """Return ratio of now between start and end date of result
+        (capped between 0 and 100)
+        """
+        today = date.today()
+
+        def get_progress(start, end):
+            if not start or not end:
+                return 0.0
+            start = datetime.strptime(start, DEFAULT_SERVER_DATE_FORMAT).date()
+            end = datetime.strptime(end, DEFAULT_SERVER_DATE_FORMAT).date()
+            return self.__prgs_cap(
+                (today - start).days / (end - start).days * 100.0
+            )
+
+        if type(ids) is not list:
+            ids = [ids]
+        return {
+            i['id']: get_progress(i['date_from'], i['date_to']) for i in
+            self.read(cr, uid, ids, ['date_from', 'date_to'], context=context)
+        }
+
+    def _get_prgs_budget(self, cr, uid, ids, name, args, context=None):
+        """Return ratio of practical_amount between 0 and theoretical_amount of
+         result (capped between 0 and 100)
+        """
+        res = {}
+        for result in self.browse(cr, uid, ids, context=context):
+            summaries = result._get_budget_summaries()[result.id]
+            practical = sum(i['practical_amount'] for i in summaries)
+            theoretical = sum(i['theoretical_amount'] for i in summaries)
+            if theoretical == 0.0:
+                res[result.id] = 0.0
+            else:
+                res[result.id] = self.__prgs_cap(practical/theoretical)
+        return res
+
+    def _get_prgs_realisation(self, cr, uid, ids, name, args, context=None):
+        """Return realisation (capped between 0 and 100)"""
+        if type(ids) is not list:
+            ids = [ids]
+        return {
+            i['id']: self.__prgs_cap(i['realisation']) for i in
+            self.read(cr, uid, ids, ['realisation'], context=context)
+        }
+
+    def _check_realisation(self, cr, uid, ids, context=None):
+        return not any(
+            self.search(
+                cr, uid,
+                ['|', ('realisation', '<', 0), ('realisation', '>', 100)],
+                limit=1, context=None
+            )
+        )
+
     _columns = {
         'budget_summary_ids': fields.function(
             _get_budget_summaries, type="one2many",
@@ -77,5 +141,36 @@ class program_result(orm.Model):
         ),
         'crossovered_budget_ids': fields.function(
             _get_crossovered_budgets, type='many2many',
-            obj='crossovered.budget', string='Budgets'),
+            obj='crossovered.budget', string='Budgets',
+        ),
+        'prgs_time': fields.function(
+            _get_prgs_time, type='float', string='Time',
+        ),
+        'comment_time': fields.char(
+            string='Comments', help='Comments for Time Progress',
+        ),
+        'prgs_budget': fields.function(
+            # using lambda to allow overwriting
+            lambda self, *a: self._get_prgs_budget(*a),
+            type='float', string='Budget',
+        ),
+        'comment_budget': fields.char(
+            string='Comments', help='Comments for Budget Progress',
+        ),
+        'realisation': fields.float(
+            string='Realisation', track_visibility='onchange',
+        ),
+        'prgs_realisation': fields.function(
+            _get_prgs_realisation, type='float', string='Realisation',
+        ),
+        'comment_realisation': fields.char(
+            string='Comments', help='Comments for Realisation Progress',
+        ),
     }
+
+    def _rec_message(self, cr, uid, ids, context=None):
+        return '\n\n' + _('Error! Realisation should be between 0 and 100.')
+
+    _constraints = [
+        (_check_realisation, _rec_message, ['realisation']),
+    ]

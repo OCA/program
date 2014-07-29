@@ -13,6 +13,20 @@
 
           <page name="monitoring" string="Monitoring">
 
+            <group string="Progression" col="4">
+              <field name="prgs_time" widget="progressbar"/>
+              <div/>
+              <field name="comment_time" nolabel="1" placeholder="Comments..."/>
+
+              <field name="prgs_budget" widget="progressbar"/>
+              <div/>
+              <field name="comment_budget" nolabel="1" placeholder="Comments..."/>
+
+              <field name="prgs_realisation" widget="progressbar" readonly="False"/>
+              <field name="realisation" nolabel="1"/>
+              <field name="comment_realisation" nolabel="1" placeholder="Comments..."/>
+            </group>
+
             <group string="Summary of expenses">
               <field name="budget_summary_ids" nolabel="1"/>
             </group>

@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-24 19:55+0000\n"
-"PO-Revision-Date: 2014-07-24 16:22-0500\n"
+"POT-Creation-Date: 2014-07-29 19:46+0000\n"
+"PO-Revision-Date: 2014-07-29 15:46-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -17,19 +17,44 @@ msgstr ""
 "X-Generator: Poedit 1.6.5\n"
 
 #. module: program_purchase
+#: field:program.result,prgs_realisation:0 field:program.result,realisation:0
+msgid "Realisation"
+msgstr "Réalisation estimée"
+
+#. module: program_purchase
+#: model:ir.model,name:program_purchase.model_program_crossovered_budget_summary
+msgid "Budget Summary"
+msgstr "Somaire de budget"
+
+#. module: program_purchase
 #: view:program.crossovered.budget.summary:0
 msgid "Program Budget Summary List"
 msgstr "Liste de somaires de budgets"
 
 #. module: program_purchase
 #: view:program.result:0
-msgid "Monitoring"
-msgstr "Suivi"
+msgid "Comments..."
+msgstr "Commentaires..."
 
 #. module: program_purchase
-#: model:ir.model,name:program_purchase.model_program_crossovered_budget_summary
-msgid "program.crossovered.budget.summary"
-msgstr ""
+#: help:program.result,comment_realisation:0
+msgid "Comments for Realisation Progress"
+msgstr "Commentaires pour l'avencement de la réalisation estimée"
+
+#. module: program_purchase
+#: field:program.result,prgs_time:0
+msgid "Time"
+msgstr "Temps"
+
+#. module: program_purchase
+#: view:program.result:0
+msgid "Progression"
+msgstr "Avancement"
+
+#. module: program_purchase
+#: help:program.result,comment_budget:0
+msgid "Comments for Budget Progress"
+msgstr "Commentaires pour l'avencement du budget"
 
 #. module: program_purchase
 #: view:program.result:0
@@ -48,23 +73,22 @@ msgstr "Montant Théorique"
 
 #. module: program_purchase
 #: field:program.crossovered.budget.summary,budget_id:0
+#: field:program.result,prgs_budget:0
 msgid "Budget"
 msgstr "Budget"
 
 #. module: program_purchase
-#: model:ir.model,name:program_purchase.model_program_result
-msgid "Email Thread"
-msgstr "Discussion par courriel"
+#: field:program.result,comment_budget:0
+#: field:program.result,comment_realisation:0
+#: field:program.result,comment_time:0
+msgid "Comments"
+msgstr "Commentaires"
 
 #. module: program_purchase
-#: field:program.result,crossovered_budget_ids:0
-msgid "Budgets"
-msgstr "Budgets"
-
-#. module: program_purchase
-#: field:program.crossovered.budget.summary,progress:0
-msgid "Progress"
-msgstr "Progrès"
+#: code:addons/program_purchase/program_result.py:163
+#, python-format
+msgid "Error! Realisation should be between 0 and 100."
+msgstr "Erreure ! L'estimation de réalisation doit être entre 0 et 100."
 
 #. module: program_purchase
 #: field:program.crossovered.budget.summary,planned_amount:0
@@ -72,6 +96,34 @@ msgid "Planned Amount"
 msgstr "Montant prévu"
 
 #. module: program_purchase
+#: field:program.result,crossovered_budget_ids:0
+msgid "Budgets"
+msgstr "Budgets"
+
+#. module: program_purchase
+#: model:ir.model,name:program_purchase.model_program_result
+msgid "Result"
+msgstr "Résultat"
+
+#. module: program_purchase
+#: field:program.crossovered.budget.summary,progress:0
+msgid "Progress"
+msgstr "Progrès"
+
+#. module: program_purchase
+#: view:program.result:0
+msgid "Monitoring"
+msgstr "Suivi"
+
+#. module: program_purchase
 #: field:program.crossovered.budget.summary,practical_amount:0
 msgid "Practical Amount"
 msgstr "Montant réel"
+
+#. module: program_purchase
+#: help:program.result,comment_time:0
+msgid "Comments for Time Progress"
+msgstr "Commentaires pour l'avencement du temps"
+
+#~ msgid "Email Thread"
+#~ msgstr "Discussion par courriel"
