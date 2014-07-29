@@ -22,6 +22,7 @@
       <field name="arch" type="xml">
 
         <tree string="Result Indicators" version="7.0">
+          <field name="name" />
           <field name="value_initial" />
           <field name="value_target" />
           <field name="value" />
@@ -39,6 +40,7 @@
       <field name="arch" type="xml">
 
         <tree string="Result Indicators" version="7.0">
+          <field name="name" />
           <field name="result_id" />
           <field name="value_initial" />
           <field name="value_target" />
@@ -95,6 +97,7 @@
 
           <sheet>
             <group>
+              <field name="name" />
               <field name="result_id"
                      required="not context.get('from_result', False)"
                      invisible="context.get('from_result', False)" />

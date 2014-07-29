@@ -27,6 +27,7 @@ class program_indicator_result(orm.Model):
 
     _name = 'program.result.indicator'
     _columns = {
+        'name': fields.char('Name'),
         'state': fields.selection([
             ('draft', 'Draft'),
             ('pending', 'Pending'),

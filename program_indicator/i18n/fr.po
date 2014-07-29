@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-25 18:33+0000\n"
-"PO-Revision-Date: 2014-07-25 14:34-0500\n"
+"POT-Creation-Date: 2014-07-29 13:49+0000\n"
+"PO-Revision-Date: 2014-07-29 09:49-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -67,6 +67,11 @@ msgstr "Responsable de suivi"
 #: help:program.result.indicator,frequency:0
 msgid "Delay between two checks of the indicator."
 msgstr "Delai entre deux suivis de l'indicateur."
+
+#. module: program_indicator
+#: field:program.result.indicator,name:0
+msgid "Name"
+msgstr "Libellé"
 
 #. module: program_indicator
 #: view:program.result.indicator:0 selection:program.result.indicator,state:0
@@ -163,9 +168,6 @@ msgstr "Risques et hypothèses"
 
 #~ msgid "Risk Hypothesis"
 #~ msgstr "Risques et hypothèses"
-
-#~ msgid "Name"
-#~ msgstr "Libellé"
 
 #~ msgid "User"
 #~ msgstr "Utilisateur"

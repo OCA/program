@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-25 18:33+0000\n"
-"PO-Revision-Date: 2014-07-25 18:33+0000\n"
+"POT-Creation-Date: 2014-07-29 13:49+0000\n"
+"PO-Revision-Date: 2014-07-29 13:49+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -66,6 +66,11 @@ msgstr ""
 #. module: program_indicator
 #: help:program.result.indicator,frequency:0
 msgid "Delay between two checks of the indicator."
+msgstr ""
+
+#. module: program_indicator
+#: field:program.result.indicator,name:0
+msgid "Name"
 msgstr ""
 
 #. module: program_indicator
