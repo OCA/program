@@ -111,7 +111,7 @@ class program_result(orm.Model):
             if theoretical == 0.0:
                 res[result.id] = 0.0
             else:
-                res[result.id] = self.__prgs_cap(practical/theoretical)
+                res[result.id] = self.__prgs_cap(practical / theoretical)
         return res
 
     def _get_prgs_realisation(self, cr, uid, ids, name, args, context=None):
