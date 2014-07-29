@@ -39,7 +39,7 @@
                 <field name="code" />
                 <field name="result_level_id" readonly="1"/>
                 <field name="parent_id" domain="[('id', '!=', id)]" on_change="onchange_parent_id(parent_id)"/>
-                <field name="intervention_id"/>
+                <field name="intervention_id" widget="selection"/>
               </group>
 
               <group>
