@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-29 15:20+0000\n"
-"PO-Revision-Date: 2014-07-29 11:24-0500\n"
+"POT-Creation-Date: 2014-07-29 17:22+0000\n"
+"PO-Revision-Date: 2014-07-29 13:23-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -48,7 +48,7 @@ msgid "Immediate Result I"
 msgstr "Résultat Immédiat I"
 
 #. module: program
-#: code:addons/program/program_result.py:207
+#: code:addons/program/program_result.py:208
 #, python-format
 msgid "Error! You can not create recursive Results."
 msgstr "Erreur ! Vous ne pouvez pas créer de résultats récursifs"
@@ -57,6 +57,11 @@ msgstr "Erreur ! Vous ne pouvez pas créer de résultats récursifs"
 #: field:program.result,long_name:0
 msgid "Long name"
 msgstr "Nom long"
+
+#. module: program
+#: view:program.result.tag:0
+msgid "Search Result Tag"
+msgstr "Rechercher les étiquettes"
 
 #. module: program
 #: field:program.result,intervention_id:0
@@ -70,7 +75,7 @@ msgstr "Résultat intermédiaire"
 
 #. module: program
 #: model:ir.model,name:program.model_program_result_target
-#: view:program.result.target:0
+#: view:program.result.tag:0 view:program.result.target:0
 msgid "Result Target"
 msgstr "Cible de Résultat"
 
@@ -115,9 +120,25 @@ msgid "Intermediate Result C"
 msgstr "Résultat intermédiaire C"
 
 #. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_intervention_tree
+#: model:ir.ui.menu,name:program.menu_program_configuration_intervention
+msgid "Intervention Methods"
+msgstr "Modes d'intervention"
+
+#. module: program
+#: view:program.result.intervention:0
+msgid "Search Intervention Methods"
+msgstr "Rechercher les modes d'intervention"
+
+#. module: program
 #: view:program.result.intervention:0
 msgid "Result Intervention Method"
 msgstr "Modes d'intervention de résultat"
+
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_tag_tree
+msgid "Result Tags"
+msgstr "Étiquettes de résultats"
 
 #. module: program
 #: field:program.result,description:0
@@ -129,6 +150,12 @@ msgstr "Description"
 #: field:program.result,parent_id2:0 field:program.result.level,parent_id:0
 msgid "Parent"
 msgstr "Parent"
+
+#. module: program
+#: model:ir.ui.menu,name:program.menu_program_configuration_tag
+#: field:program.result,tag_ids:0
+msgid "Tags"
+msgstr "Étiquettes"
 
 #. module: program
 #: field:program.result,transverse_parent_ids_label:0
@@ -187,9 +214,15 @@ msgid "Child"
 msgstr "Enfant"
 
 #. module: program
-#: field:program.result.target,active:0
+#: field:program.result.tag,active:0 field:program.result.target,active:0
 msgid "Active"
 msgstr "Actif"
+
+#. module: program
+#: model:ir.model,name:program.model_program_result_tag
+#: view:program.result.tag:0
+msgid "Result Tag"
+msgstr "Étiquette de résultat"
 
 #. module: program
 #: model:ir.ui.menu,name:program.menu_program_configuration
@@ -222,11 +255,6 @@ msgid "End Date"
 msgstr "Date de fin"
 
 #. module: program
-#: view:program.result.intervention:0
-msgid "Search Intervention Methods"
-msgstr "Rechercher les modes d'intervention"
-
-#. module: program
 #: model:program.result,name:program.demo_program_result_re_E
 msgid "Realisation E"
 msgstr "Extrant / Réalisation E"
@@ -239,7 +267,7 @@ msgstr "Extrant / Réalisation J"
 #. module: program
 #: view:program.result:0 field:program.result,name:0
 #: field:program.result.intervention,name:0 field:program.result.level,name:0
-#: field:program.result.target,name:0
+#: field:program.result.tag,name:0 field:program.result.target,name:0
 msgid "Name"
 msgstr "Nom"
 
@@ -278,11 +306,6 @@ msgstr "Messages"
 #: model:ir.ui.menu,name:program.menu_program_result_chain
 msgid "Result Chain"
 msgstr "Chaîne de résultats"
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_mi_F
-msgid "Mission F"
-msgstr "Mission F"
 
 #. module: program
 #: model:program.result,name:program.demo_program_result_fr_B
@@ -405,10 +428,9 @@ msgid "Targets"
 msgstr "Cibles"
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_intervention_tree
-#: model:ir.ui.menu,name:program.menu_program_configuration_intervention
-msgid "Intervention Methods"
-msgstr "Modes d'intervention"
+#: model:program.result,name:program.demo_program_result_mi_F
+msgid "Mission F"
+msgstr "Mission F"
 
 #~ msgid "Intervention Modes"
 #~ msgstr "Modes d'intervention"

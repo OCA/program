@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-29 15:20+0000\n"
-"PO-Revision-Date: 2014-07-29 15:20+0000\n"
+"POT-Creation-Date: 2014-07-29 17:22+0000\n"
+"PO-Revision-Date: 2014-07-29 17:22+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgid "Immediate Result I"
 msgstr ""
 
 #. module: program
-#: code:addons/program/program_result.py:207
+#: code:addons/program/program_result.py:208
 #, python-format
 msgid "Error! You can not create recursive Results."
 msgstr ""
@@ -54,6 +54,11 @@ msgstr ""
 #. module: program
 #: field:program.result,long_name:0
 msgid "Long name"
+msgstr ""
+
+#. module: program
+#: view:program.result.tag:0
+msgid "Search Result Tag"
 msgstr ""
 
 #. module: program
@@ -68,6 +73,7 @@ msgstr ""
 
 #. module: program
 #: model:ir.model,name:program.model_program_result_target
+#: view:program.result.tag:0
 #: view:program.result.target:0
 msgid "Result Target"
 msgstr ""
@@ -113,8 +119,24 @@ msgid "Intermediate Result C"
 msgstr ""
 
 #. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_intervention_tree
+#: model:ir.ui.menu,name:program.menu_program_configuration_intervention
+msgid "Intervention Methods"
+msgstr ""
+
+#. module: program
+#: view:program.result.intervention:0
+msgid "Search Intervention Methods"
+msgstr ""
+
+#. module: program
 #: view:program.result.intervention:0
 msgid "Result Intervention Method"
+msgstr ""
+
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_tag_tree
+msgid "Result Tags"
 msgstr ""
 
 #. module: program
@@ -128,6 +150,12 @@ msgstr ""
 #: field:program.result,parent_id2:0
 #: field:program.result.level,parent_id:0
 msgid "Parent"
+msgstr ""
+
+#. module: program
+#: model:ir.ui.menu,name:program.menu_program_configuration_tag
+#: field:program.result,tag_ids:0
+msgid "Tags"
 msgstr ""
 
 #. module: program
@@ -187,8 +215,15 @@ msgid "Child"
 msgstr ""
 
 #. module: program
+#: field:program.result.tag,active:0
 #: field:program.result.target,active:0
 msgid "Active"
+msgstr ""
+
+#. module: program
+#: model:ir.model,name:program.model_program_result_tag
+#: view:program.result.tag:0
+msgid "Result Tag"
 msgstr ""
 
 #. module: program
@@ -222,11 +257,6 @@ msgid "End Date"
 msgstr ""
 
 #. module: program
-#: view:program.result.intervention:0
-msgid "Search Intervention Methods"
-msgstr ""
-
-#. module: program
 #: model:program.result,name:program.demo_program_result_re_E
 msgid "Realisation E"
 msgstr ""
@@ -241,6 +271,7 @@ msgstr ""
 #: field:program.result,name:0
 #: field:program.result.intervention,name:0
 #: field:program.result.level,name:0
+#: field:program.result.tag,name:0
 #: field:program.result.target,name:0
 msgid "Name"
 msgstr ""
@@ -280,11 +311,6 @@ msgstr ""
 #: model:ir.actions.act_window,name:program.action_program_result_tree
 #: model:ir.ui.menu,name:program.menu_program_result_chain
 msgid "Result Chain"
-msgstr ""
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_mi_F
-msgid "Mission F"
 msgstr ""
 
 #. module: program
@@ -406,7 +432,6 @@ msgid "Targets"
 msgstr ""
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_intervention_tree
-#: model:ir.ui.menu,name:program.menu_program_configuration_intervention
-msgid "Intervention Methods"
+#: model:program.result,name:program.demo_program_result_mi_F
+msgid "Mission F"
 msgstr ""

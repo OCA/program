@@ -187,6 +187,7 @@ class program_result(orm.Model):
         'intervention_id': fields.many2one(
             'program.result.intervention', string='Intervention Mode'
         ),
+        'tag_ids': fields.many2many('program.result.tag', string='Tags'),
     }
     _defaults = {
         'transverse_child_ids_label': (

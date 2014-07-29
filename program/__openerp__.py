@@ -50,6 +50,7 @@ Contributors
         'program_result_level_view.xml',
         'program_result_target_view.xml',
         'program_result_intervention_view.xml',
+        'program_result_tag_view.xml',
     ],
     'test': [],
     'demo': [

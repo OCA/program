@@ -32,6 +32,7 @@
 
             <group colspan="4" col="2">
               <field name="long_name"/>
+              <field name="tag_ids" widget="many2many_tags"/>
             </group>
 
             <group colspan="4" col="4">

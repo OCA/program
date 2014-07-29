@@ -20,10 +20,17 @@
 #
 ##############################################################################
 
-from . import (
-    program_result,
-    program_result_level,
-    program_result_target,
-    program_result_intervention,
-    program_result_tag,
-)
+from openerp.osv import fields, orm
+
+
+class program_result_tag(orm.Model):
+
+    _name = 'program.result.tag'
+    _description = 'Result Tag'
+    _columns = {
+        'name': fields.char('Name', required=True, translate=True),
+        'active': fields.boolean('Active'),
+    }
+    _defaults = {
+        'active': True,
+    }
