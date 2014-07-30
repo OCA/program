@@ -16,23 +16,6 @@
       </field>
     </record>
 
-    <record id="view_program_program_indicator_result_tree" model="ir.ui.view">
-      <field name="name">Program Result Indicator Tree</field>
-      <field name="model">program.result.indicator</field>
-      <field name="arch" type="xml">
-
-        <tree string="Result Indicators" version="7.0">
-          <field name="name" />
-          <field name="value_initial" />
-          <field name="value_target" />
-          <field name="value" />
-          <field name="state" />
-          <field name="partner_id" />
-        </tree>
-
-      </field>
-    </record>
-
     <record id="view_program_indicator_result_tree" model="ir.ui.view">
       <field name="name">Program Result Indicator Tree</field>
       <field name="model">program.result.indicator</field>
@@ -44,8 +27,8 @@
           <field name="value_initial" />
           <field name="value_target" />
           <field name="value" />
-          <field name="state" />
           <field name="partner_id" />
+          <field name="value_uid" />
         </tree>
 
       </field>
@@ -57,41 +40,6 @@
       <field name="arch" type="xml">
 
         <form string="Result Indicator" version="7.0">
-         <header>
-           <button string="Pending"
-                   name="pending"
-                   states="draft"
-                   type="workflow"
-                   class="oe_highlight"/>
-
-           <button string="Open"
-                   name="open"
-                   states="pending"
-                   type="workflow"
-                   class="oe_highlight"/>
-
-           <button string="Submitted"
-                   name="submitted"
-                   states="open"
-                   type="workflow"
-                   class="oe_highlight"/>
-
-           <button string="Validated"
-                   name="validated"
-                   states="submitted"
-                   type="workflow"
-                   class="oe_highlight"/>
-
-           <button string="Cancel"
-                   name="cancel"
-                   states="draft,pending,open,submitted"
-                   type="workflow"
-                   class="oe_highlight"/>
-
-           <field name="state"
-                  widget="statusbar"
-                  statusbar_visible="draft,pending,open,submitted,validated"/>
-         </header>
 
           <sheet>
             <group>
@@ -102,12 +50,29 @@
               <field name="value_initial" />
               <field name="value_target" />
               <field name="value" />
-              <field name="value_date" />
               <field name="partner_id"
                      domain="[('is_company', '=', False), ('contact_id', '=', False)]" />
               <field name="comment" />
             </group>
+
           </sheet>
+
+          <sheet>
+            <group string="Indicator Values">
+              <field name="value_logged_ids" nolabel="1" readonly="1">
+                <tree>
+                  <field name="name"/>
+                  <field name="value"/>
+                  <field name="uid"/>
+                  <field name="state"/>
+                  <button name="signal_validate" type="workflow" states="draft" icon="gtk-apply" groups="program.program_user"/>
+                  <button name="signal_done" type="workflow" states="validated" icon="gtk-apply" groups="travel.group_basic_travel_user"/>
+                  <button name="signal_cancel" type="workflow" states="draft" icon="gtk-cancel"/>
+                </tree>
+              </field>
+            </group>
+          </sheet>
+
         </form>
 
       </field>

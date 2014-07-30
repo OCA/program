@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-29 13:49+0000\n"
-"PO-Revision-Date: 2014-07-29 13:49+0000\n"
+"POT-Creation-Date: 2014-07-30 16:27+0000\n"
+"PO-Revision-Date: 2014-07-30 16:27+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,13 +16,28 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: program_indicator
+#: field:program.result.indicator.value,indicator_id:0
+msgid "Indicator"
+msgstr ""
+
+#. module: program_indicator
+#: field:program.result.indicator.value,uid:0
+msgid "Author"
+msgstr ""
+
+#. module: program_indicator
+#: field:program.result.indicator,value_logged_ids:0
+msgid "Logged Values"
+msgstr ""
+
+#. module: program_indicator
 #: field:program.result,result_indicator_ids:0
 #: view:program.result.indicator:0
 msgid "Result Indicator"
 msgstr ""
 
 #. module: program_indicator
-#: selection:program.result.indicator,state:0
+#: selection:program.result.indicator.value,state:0
 msgid "Draft"
 msgstr ""
 
@@ -33,13 +48,7 @@ msgid "Indicators"
 msgstr ""
 
 #. module: program_indicator
-#: view:program.result.indicator:0
-#: selection:program.result.indicator,state:0
-msgid "Pending"
-msgstr ""
-
-#. module: program_indicator
-#: field:program.result.indicator,state:0
+#: field:program.result.indicator.value,state:0
 msgid "Status"
 msgstr ""
 
@@ -54,7 +63,7 @@ msgid "Search Result Indicators"
 msgstr ""
 
 #. module: program_indicator
-#: field:program.result.indicator,value_date:0
+#: field:program.result.indicator.value,name:0
 msgid "Date"
 msgstr ""
 
@@ -64,8 +73,18 @@ msgid "Manager of follow-up"
 msgstr ""
 
 #. module: program_indicator
-#: help:program.result.indicator,frequency:0
-msgid "Delay between two checks of the indicator."
+#: model:ir.model,name:program_indicator.model_program_result_indicator_value
+msgid "Result Indicator Value"
+msgstr ""
+
+#. module: program_indicator
+#: view:program.result.indicator:0
+msgid "Indicator Values"
+msgstr ""
+
+#. module: program_indicator
+#: field:program.result.indicator,value_uid:0
+msgid "Last Modified by"
 msgstr ""
 
 #. module: program_indicator
@@ -74,24 +93,14 @@ msgid "Name"
 msgstr ""
 
 #. module: program_indicator
-#: view:program.result.indicator:0
-#: selection:program.result.indicator,state:0
-msgid "Submitted"
-msgstr ""
-
-#. module: program_indicator
 #: field:program.result.indicator,value:0
+#: field:program.result.indicator.value,value:0
 msgid "Value"
 msgstr ""
 
 #. module: program_indicator
-#: selection:program.result.indicator,state:0
+#: selection:program.result.indicator.value,state:0
 msgid "Cancelled"
-msgstr ""
-
-#. module: program_indicator
-#: field:program.result.indicator,value_target:0
-msgid "Target Value"
 msgstr ""
 
 #. module: program_indicator
@@ -107,8 +116,8 @@ msgid "Result Indicators"
 msgstr ""
 
 #. module: program_indicator
-#: field:program.result.indicator,mandatory:0
-msgid "Mandatory"
+#: field:program.result.indicator,value_target:0
+msgid "Target Value"
 msgstr ""
 
 #. module: program_indicator
@@ -122,44 +131,18 @@ msgid "Group by..."
 msgstr ""
 
 #. module: program_indicator
-#: field:program.result.indicator,frequency:0
-msgid "Frequency"
+#: selection:program.result.indicator.value,state:0
+msgid "Done"
 msgstr ""
 
 #. module: program_indicator
 #: model:ir.model,name:program_indicator.model_program_result
-msgid "Email Thread"
-msgstr ""
-
-#. module: program_indicator
 #: view:program.result.indicator:0
 #: field:program.result.indicator,result_id:0
 msgid "Result"
 msgstr ""
 
 #. module: program_indicator
-#: view:program.result.indicator:0
-msgid "Cancel"
-msgstr ""
-
-#. module: program_indicator
-#: field:program.result.indicator,verification_means:0
-msgid "Verification Means"
-msgstr ""
-
-#. module: program_indicator
-#: view:program.result.indicator:0
-#: selection:program.result.indicator,state:0
+#: selection:program.result.indicator.value,state:0
 msgid "Validated"
-msgstr ""
-
-#. module: program_indicator
-#: view:program.result.indicator:0
-#: selection:program.result.indicator,state:0
-msgid "Open"
-msgstr ""
-
-#. module: program_indicator
-#: field:program.result.indicator,risk_hypothesis:0
-msgid "Risk hypothesis"
 msgstr ""

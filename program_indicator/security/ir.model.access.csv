@@ -1,2 +1,3 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
 access_result_indicator,access_result_indicator,model_program_result_indicator,program.program_user,1,1,1,1
+access_result_indicator_value,access_result_indicator_value,model_program_result_indicator_value,program.program_user,1,1,1,1

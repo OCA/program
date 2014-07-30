@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-29 13:49+0000\n"
-"PO-Revision-Date: 2014-07-29 09:49-0500\n"
+"POT-Creation-Date: 2014-07-30 16:27+0000\n"
+"PO-Revision-Date: 2014-07-30 12:30-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -18,12 +18,27 @@ msgstr ""
 "X-Generator: Poedit 1.6.5\n"
 
 #. module: program_indicator
+#: field:program.result.indicator.value,indicator_id:0
+msgid "Indicator"
+msgstr "Indicateur"
+
+#. module: program_indicator
+#: field:program.result.indicator.value,uid:0
+msgid "Author"
+msgstr "Auteur"
+
+#. module: program_indicator
+#: field:program.result.indicator,value_logged_ids:0
+msgid "Logged Values"
+msgstr "Valeurs proposées"
+
+#. module: program_indicator
 #: field:program.result,result_indicator_ids:0 view:program.result.indicator:0
 msgid "Result Indicator"
 msgstr "Indicateurs de résultats"
 
 #. module: program_indicator
-#: selection:program.result.indicator,state:0
+#: selection:program.result.indicator.value,state:0
 msgid "Draft"
 msgstr "Brouillon"
 
@@ -34,12 +49,7 @@ msgid "Indicators"
 msgstr "Indicateurs"
 
 #. module: program_indicator
-#: view:program.result.indicator:0 selection:program.result.indicator,state:0
-msgid "Pending"
-msgstr "En attente"
-
-#. module: program_indicator
-#: field:program.result.indicator,state:0
+#: field:program.result.indicator.value,state:0
 msgid "Status"
 msgstr "État"
 
@@ -54,7 +64,7 @@ msgid "Search Result Indicators"
 msgstr "Rechercher"
 
 #. module: program_indicator
-#: field:program.result.indicator,value_date:0
+#: field:program.result.indicator.value,name:0
 msgid "Date"
 msgstr "Date"
 
@@ -64,9 +74,19 @@ msgid "Manager of follow-up"
 msgstr "Responsable de suivi"
 
 #. module: program_indicator
-#: help:program.result.indicator,frequency:0
-msgid "Delay between two checks of the indicator."
-msgstr "Delai entre deux suivis de l'indicateur."
+#: model:ir.model,name:program_indicator.model_program_result_indicator_value
+msgid "Result Indicator Value"
+msgstr "Valeurs d'indicateurs de résultats"
+
+#. module: program_indicator
+#: view:program.result.indicator:0
+msgid "Indicator Values"
+msgstr "Valeurs de l'indicateur"
+
+#. module: program_indicator
+#: field:program.result.indicator,value_uid:0
+msgid "Last Modified by"
+msgstr "Dernière modification par"
 
 #. module: program_indicator
 #: field:program.result.indicator,name:0
@@ -74,24 +94,15 @@ msgid "Name"
 msgstr "Libellé"
 
 #. module: program_indicator
-#: view:program.result.indicator:0 selection:program.result.indicator,state:0
-msgid "Submitted"
-msgstr "Soumis"
-
-#. module: program_indicator
 #: field:program.result.indicator,value:0
+#: field:program.result.indicator.value,value:0
 msgid "Value"
 msgstr "Valeur"
 
 #. module: program_indicator
-#: selection:program.result.indicator,state:0
+#: selection:program.result.indicator.value,state:0
 msgid "Cancelled"
 msgstr "Annulé"
-
-#. module: program_indicator
-#: field:program.result.indicator,value_target:0
-msgid "Target Value"
-msgstr "Valeur cible"
 
 #. module: program_indicator
 #: field:program.result.indicator,comment:0
@@ -106,9 +117,9 @@ msgid "Result Indicators"
 msgstr "Indicateurs de résultats"
 
 #. module: program_indicator
-#: field:program.result.indicator,mandatory:0
-msgid "Mandatory"
-msgstr "Obligatoire"
+#: field:program.result.indicator,value_target:0
+msgid "Target Value"
+msgstr "Valeur cible"
 
 #. module: program_indicator
 #: model:ir.model,name:program_indicator.model_program_result_indicator
@@ -121,47 +132,50 @@ msgid "Group by..."
 msgstr "Grouper par..."
 
 #. module: program_indicator
-#: field:program.result.indicator,frequency:0
-msgid "Frequency"
-msgstr "Periodicité"
+#: selection:program.result.indicator.value,state:0
+msgid "Done"
+msgstr "Terminé"
 
 #. module: program_indicator
 #: model:ir.model,name:program_indicator.model_program_result
-msgid "Email Thread"
-msgstr "Discussion par courriel"
-
-#. module: program_indicator
 #: view:program.result.indicator:0 field:program.result.indicator,result_id:0
 msgid "Result"
 msgstr "Résultat"
 
 #. module: program_indicator
-#: view:program.result.indicator:0
-msgid "Cancel"
-msgstr "Annuler"
-
-#. module: program_indicator
-#: field:program.result.indicator,verification_means:0
-msgid "Verification Means"
-msgstr "Moyens de vérification"
-
-#. module: program_indicator
-#: view:program.result.indicator:0 selection:program.result.indicator,state:0
+#: selection:program.result.indicator.value,state:0
 msgid "Validated"
 msgstr "Validé"
 
-#. module: program_indicator
-#: view:program.result.indicator:0 selection:program.result.indicator,state:0
-msgid "Open"
-msgstr "Ouvert"
+#~ msgid "Pending"
+#~ msgstr "En attente"
 
-#. module: program_indicator
-#: field:program.result.indicator,risk_hypothesis:0
-msgid "Risk hypothesis"
-msgstr "Risques et hypothèses"
+#~ msgid "Delay between two checks of the indicator."
+#~ msgstr "Delai entre deux suivis de l'indicateur."
 
-#~ msgid "Indicator"
-#~ msgstr "Indicateur"
+#~ msgid "Submitted"
+#~ msgstr "Soumis"
+
+#~ msgid "Mandatory"
+#~ msgstr "Obligatoire"
+
+#~ msgid "Frequency"
+#~ msgstr "Periodicité"
+
+#~ msgid "Email Thread"
+#~ msgstr "Discussion par courriel"
+
+#~ msgid "Cancel"
+#~ msgstr "Annuler"
+
+#~ msgid "Verification Means"
+#~ msgstr "Moyens de vérification"
+
+#~ msgid "Open"
+#~ msgstr "Ouvert"
+
+#~ msgid "Risk hypothesis"
+#~ msgstr "Risques et hypothèses"
 
 #~ msgid "Generic"
 #~ msgstr "Générique"
