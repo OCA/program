@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-29 17:22+0000\n"
-"PO-Revision-Date: 2014-07-29 13:23-0500\n"
+"POT-Creation-Date: 2014-07-30 20:34+0000\n"
+"PO-Revision-Date: 2014-07-30 16:35-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -370,6 +370,11 @@ msgstr "Code"
 #: field:program.result,child_ids:0
 msgid "Child Results"
 msgstr "Résultats fils"
+
+#. module: program
+#: view:program.result:0
+msgid "Tag"
+msgstr "Étiquette"
 
 #. module: program
 #: field:program.result,message_unread:0

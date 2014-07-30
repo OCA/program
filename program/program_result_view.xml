@@ -11,6 +11,7 @@
           <field name="result_level_id" />
           <field name="code" />
           <field name="name" />
+          <field name="tag_ids" widget="many2many_tags"/>
           <field name="date_from" />
           <field name="date_to" />
         </tree>
@@ -141,6 +142,7 @@
       <field name="arch" type="xml">
         <search string="Search Results" version="7.0">
           <field name="name" string="Name" />
+          <field name="tag_ids" string="Tag" />
 
           <group expand="0" string="Group by...">
             <filter string="Parent" name="parent_id" context="{'group_by': 'parent_id'}" />

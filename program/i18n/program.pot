@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-29 17:22+0000\n"
-"PO-Revision-Date: 2014-07-29 17:22+0000\n"
+"POT-Creation-Date: 2014-07-30 20:34+0000\n"
+"PO-Revision-Date: 2014-07-30 20:34+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -376,6 +376,11 @@ msgstr ""
 #. module: program
 #: field:program.result,child_ids:0
 msgid "Child Results"
+msgstr ""
+
+#. module: program
+#: view:program.result:0
+msgid "Tag"
 msgstr ""
 
 #. module: program

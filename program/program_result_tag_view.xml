@@ -63,7 +63,7 @@
       parent="menu_program_configuration"
       action="action_program_result_tag_tree"
       groups="program_user"
-      sequence="10" />
+      sequence="100" />
 
   </data>
 </openerp>
