@@ -72,7 +72,7 @@ msgstr ""
 #. module: program_budget
 #: field:program.result,target_region_ids:0
 msgid "Target Regions"
-msgstr "Région cibles"
+msgstr "Régions cibles"
 
 #. module: program_budget
 #: view:program.result:0
