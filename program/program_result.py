@@ -139,6 +139,16 @@ class program_result(orm.Model):
             'Name', required=True, select=True, translate=True,
             track_visibility='onchange',
         ),
+        'state': fields.selection(
+            [
+                ('draft', 'Draft'),
+                ('validated', 'Validated'),
+                ('opened', 'Opened'),
+                ('closed', 'Closed'),
+                ('cancel', 'Cancelled'),
+            ],
+            'Status', select=True, required=True, readonly=True,
+        ),
         'long_name': fields.char(
             'Long name', translate=True, track_visibility='onchange',
         ),
@@ -190,6 +200,7 @@ class program_result(orm.Model):
         'tag_ids': fields.many2many('program.result.tag', string='Tags'),
     }
     _defaults = {
+        'state': 'draft',
         'transverse_child_ids_label': (
             lambda self, cr, uid, context:
             self._transverse_label(cr, uid, context=context)

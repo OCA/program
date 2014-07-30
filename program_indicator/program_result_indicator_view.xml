@@ -66,8 +66,8 @@
                   <field name="uid"/>
                   <field name="state"/>
                   <button name="signal_validate" type="workflow" states="draft" icon="gtk-apply" groups="program.program_user"/>
-                  <button name="signal_done" type="workflow" states="validated" icon="gtk-apply" groups="travel.group_basic_travel_user"/>
-                  <button name="signal_cancel" type="workflow" states="draft" icon="gtk-cancel"/>
+                  <button name="signal_done" type="workflow" states="validated" icon="gtk-apply" groups="program.program_user"/>
+                  <button name="signal_cancel" type="workflow" states="draft" icon="gtk-cancel" groups="program.program_user"/>
                 </tree>
               </field>
             </group>

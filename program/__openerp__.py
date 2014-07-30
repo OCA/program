@@ -51,6 +51,7 @@ Contributors
         'program_result_target_view.xml',
         'program_result_intervention_view.xml',
         'program_result_tag_view.xml',
+        'program_result_workflow.xml',
     ],
     'test': [],
     'demo': [

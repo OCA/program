@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-30 20:34+0000\n"
-"PO-Revision-Date: 2014-07-30 16:35-0500\n"
+"POT-Creation-Date: 2014-07-30 23:17+0000\n"
+"PO-Revision-Date: 2014-07-30 19:19-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -18,81 +18,14 @@ msgstr ""
 "X-Generator: Poedit 1.6.5\n"
 
 #. module: program
-#: model:program.result.level,name:program.demo_result_level_re
-msgid "Realisation"
-msgstr "Extrant / Réalisation"
-
-#. module: program
 #: view:program.result:0
 msgid "Search Results"
 msgstr "Rechercher les Résultats : "
 
 #. module: program
-#: model:program.result.level,code:program.demo_result_level_fr
-msgid "FR"
-msgstr "RF"
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_imr_D
-msgid "Immediate Result D"
-msgstr "Résultat Immédiat D"
-
-#. module: program
 #: model:program.result.level,name:program.demo_result_level_fr
 msgid "Final Result"
 msgstr "Résultat final"
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_imr_I
-msgid "Immediate Result I"
-msgstr "Résultat Immédiat I"
-
-#. module: program
-#: code:addons/program/program_result.py:208
-#, python-format
-msgid "Error! You can not create recursive Results."
-msgstr "Erreur ! Vous ne pouvez pas créer de résultats récursifs"
-
-#. module: program
-#: field:program.result,long_name:0
-msgid "Long name"
-msgstr "Nom long"
-
-#. module: program
-#: view:program.result.tag:0
-msgid "Search Result Tag"
-msgstr "Rechercher les étiquettes"
-
-#. module: program
-#: field:program.result,intervention_id:0
-msgid "Intervention Mode"
-msgstr "Mode d'intervention"
-
-#. module: program
-#: model:program.result.level,name:program.demo_result_level_ir
-msgid "Intermediate Result"
-msgstr "Résultat intermédiaire"
-
-#. module: program
-#: model:ir.model,name:program.model_program_result_target
-#: view:program.result.tag:0 view:program.result.target:0
-msgid "Result Target"
-msgstr "Cible de Résultat"
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_mi_A
-msgid "Mission A"
-msgstr "Mission A"
-
-#. module: program
-#: field:program.result,message_follower_ids:0
-msgid "Followers"
-msgstr "Abonnés"
-
-#. module: program
-#: field:program.result,transverse_child_ids_label:0
-msgid "Contributes to Label"
-msgstr "Contribue à (Libellé)"
 
 #. module: program
 #: code:addons/program/program_result.py:60
@@ -101,49 +34,9 @@ msgid "%s contributes to"
 msgstr "%s contribue à"
 
 #. module: program
-#: model:program.result,name:program.demo_program_result_ir_H
-msgid "Intermediate Result H"
-msgstr "Résultat intermédiaire H"
-
-#. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_form
-#: model:ir.actions.act_window,name:program.action_program_result_list
-#: model:ir.ui.menu,name:program.menu_program_result
-#: model:ir.ui.menu,name:program.menu_program_result_result
-#: view:program.result:0
-msgid "Results"
-msgstr "Résultats"
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_ir_C
-msgid "Intermediate Result C"
-msgstr "Résultat intermédiaire C"
-
-#. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_intervention_tree
-#: model:ir.ui.menu,name:program.menu_program_configuration_intervention
-msgid "Intervention Methods"
-msgstr "Modes d'intervention"
-
-#. module: program
 #: view:program.result.intervention:0
 msgid "Search Intervention Methods"
 msgstr "Rechercher les modes d'intervention"
-
-#. module: program
-#: view:program.result.intervention:0
-msgid "Result Intervention Method"
-msgstr "Modes d'intervention de résultat"
-
-#. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_tag_tree
-msgid "Result Tags"
-msgstr "Étiquettes de résultats"
-
-#. module: program
-#: field:program.result,description:0
-msgid "Description"
-msgstr "Description"
 
 #. module: program
 #: view:program.result:0 field:program.result,parent_id:0
@@ -152,30 +45,9 @@ msgid "Parent"
 msgstr "Parent"
 
 #. module: program
-#: model:ir.ui.menu,name:program.menu_program_configuration_tag
-#: field:program.result,tag_ids:0
-msgid "Tags"
-msgstr "Étiquettes"
-
-#. module: program
-#: field:program.result,transverse_parent_ids_label:0
-msgid "Contributed by label"
-msgstr "Résultats contribuant à (libellé)"
-
-#. module: program
-#: model:ir.ui.menu,name:program.menu_program
-msgid "Programs"
-msgstr "Programmes"
-
-#. module: program
-#: field:program.result,transverse_child_ids:0
-msgid "Contributes to"
-msgstr "Contribue à"
-
-#. module: program
-#: help:program.result,message_ids:0
-msgid "Messages and communication history"
-msgstr "Historique des messages et des communications"
+#: field:program.result,message_unread:0
+msgid "Unread Messages"
+msgstr "Messages non-lus"
 
 #. module: program
 #: model:program.result.level,code:program.demo_result_level_re
@@ -186,6 +58,218 @@ msgstr "RE"
 #: model:program.result.level,name:program.demo_result_level_imr
 msgid "Immediate Result"
 msgstr "Résultat Immédiat"
+
+#. module: program
+#: model:ir.model,name:program.model_program_result_tag
+#: view:program.result.tag:0
+msgid "Result Tag"
+msgstr "Étiquette de résultat"
+
+#. module: program
+#: view:program.result:0
+msgid "Validate"
+msgstr "Valider"
+
+#. module: program
+#: model:ir.ui.menu,name:program.menu_program
+msgid "Programs"
+msgstr "Programmes"
+
+#. module: program
+#: field:program.result,message_ids:0
+msgid "Messages"
+msgstr "Messages"
+
+#. module: program
+#: view:program.result.level:0
+msgid "Search Result Levels"
+msgstr "Rechercher dans les niveaux de résultats"
+
+#. module: program
+#: code:addons/program/program_result.py:70
+#, python-format
+msgid "Contributed by %s"
+msgstr "Résultats contribuant à %s"
+
+#. module: program
+#: selection:program.result,state:0
+msgid "Cancelled"
+msgstr "Annulé"
+
+#. module: program
+#: field:program.result,target_audience:0
+msgid "Target Audience"
+msgstr "Publics cibles"
+
+#. module: program
+#: help:program.result,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "Si coché, les nouveaux messages demanderont votre attention."
+
+#. module: program
+#: model:ir.ui.menu,name:program.menu_program_configuration
+msgid "Configuration"
+msgstr "Configuration"
+
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_level_tree
+#: model:ir.ui.menu,name:program.menu_program_configuration_level
+msgid "Result Levels"
+msgstr "Niveaux de résultats"
+
+#. module: program
+#: model:ir.model,name:program.model_program_result_intervention
+msgid "Intervention Method"
+msgstr "Mode d'intervention"
+
+#. module: program
+#: help:program.result,message_summary:0
+msgid ""
+"Holds the Chatter summary (number of messages, ...). This summary is "
+"directly in html format in order to be inserted in kanban views."
+msgstr ""
+"Contient le résumé de la discussion (nombre de messages, ...). Ce résumé est "
+"au format HTML pour permettre son utilisation dans les vues kanban."
+
+#. module: program
+#: view:program.result:0
+msgid "Tag"
+msgstr "Étiquette"
+
+#. module: program
+#: view:program.result.tag:0
+msgid "Search Result Tag"
+msgstr "Rechercher les étiquettes"
+
+#. module: program
+#: field:program.result,message_follower_ids:0
+msgid "Followers"
+msgstr "Abonnés"
+
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_intervention_tree
+#: model:ir.ui.menu,name:program.menu_program_configuration_intervention
+msgid "Intervention Methods"
+msgstr "Modes d'intervention"
+
+#. module: program
+#: field:program.result,transverse_parent_ids_label:0
+msgid "Contributed by label"
+msgstr "Résultats contribuant à (libellé)"
+
+#. module: program
+#: view:program.result.intervention:0
+msgid "Result Intervention Method"
+msgstr "Modes d'intervention de résultat"
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_fr_G
+msgid "Final Result G"
+msgstr "Résultat final G"
+
+#. module: program
+#: model:program.result.level,code:program.demo_result_level_ir
+msgid "IR"
+msgstr "RI"
+
+#. module: program
+#: view:program.result:0
+msgid "Result Schedule"
+msgstr "Horaire des Résultats"
+
+#. module: program
+#: model:ir.ui.menu,name:program.menu_program_configuration_target
+msgid "Result Target Types"
+msgstr "Types de publics cibles"
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_fr_B
+msgid "Final Result B"
+msgstr "Résultat final B"
+
+#. module: program
+#: field:program.result,child_ids:0
+msgid "Child Results"
+msgstr "Résultats fils"
+
+#. module: program
+#: model:program.result.level,code:program.demo_result_level_mi
+msgid "MI"
+msgstr "MI"
+
+#. module: program
+#: field:program.result,intervention_id:0
+msgid "Intervention Mode"
+msgstr "Mode d'intervention"
+
+#. module: program
+#: view:program.result:0
+msgid "Group by..."
+msgstr "Grouper par..."
+
+#. module: program
+#: model:ir.model,name:program.model_program_result view:program.result:0
+#: field:program.result.level,result_ids:0
+#: field:program.result.target,result:0
+msgid "Result"
+msgstr "Résultat"
+
+#. module: program
+#: field:program.result,date_from:0
+msgid "Start Date"
+msgstr "Date de début"
+
+#. module: program
+#: model:program.result.level,name:program.demo_result_level_re
+msgid "Realisation"
+msgstr "Extrant / Réalisation"
+
+#. module: program
+#: model:program.result.level,code:program.demo_result_level_fr
+msgid "FR"
+msgstr "RF"
+
+#. module: program
+#: selection:program.result,state:0
+msgid "Opened"
+msgstr "Ouvert"
+
+#. module: program
+#: code:addons/program/program_result.py:219
+#, python-format
+msgid "Error! You can not create recursive Results."
+msgstr "Erreur ! Vous ne pouvez pas créer de résultats récursifs"
+
+#. module: program
+#: selection:program.result,state:0
+msgid "Draft"
+msgstr "Brouillon"
+
+#. module: program
+#: selection:program.result,state:0
+msgid "Closed"
+msgstr "Fermé"
+
+#. module: program
+#: field:program.result,state:0
+msgid "Status"
+msgstr "État"
+
+#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_tag_tree
+msgid "Result Tags"
+msgstr "Étiquettes de résultats"
+
+#. module: program
+#: model:ir.ui.menu,name:program.menu_program_configuration_tag
+#: field:program.result,tag_ids:0
+msgid "Tags"
+msgstr "Étiquettes"
+
+#. module: program
+#: field:program.result,transverse_child_ids:0
+msgid "Contributes to"
+msgstr "Contribue à"
 
 #. module: program
 #: model:program.result.level,code:program.demo_result_level_imr
@@ -203,15 +287,9 @@ msgid "Target Audience Types"
 msgstr "Types de publics cibles"
 
 #. module: program
-#: model:ir.model,name:program.model_program_result_level
-#: view:program.result.level:0
-msgid "Result Level"
-msgstr "Niveau de résultats"
-
-#. module: program
-#: field:program.result.level,child_id:0
-msgid "Child"
-msgstr "Enfant"
+#: model:program.result.level,name:program.demo_result_level_ir
+msgid "Intermediate Result"
+msgstr "Résultat intermédiaire"
 
 #. module: program
 #: field:program.result.tag,active:0 field:program.result.target,active:0
@@ -219,30 +297,9 @@ msgid "Active"
 msgstr "Actif"
 
 #. module: program
-#: model:ir.model,name:program.model_program_result_tag
-#: view:program.result.tag:0
-msgid "Result Tag"
-msgstr "Étiquette de résultat"
-
-#. module: program
-#: model:ir.ui.menu,name:program.menu_program_configuration
-msgid "Configuration"
-msgstr "Configuration"
-
-#. module: program
 #: view:program.result.target:0
 msgid "Search Result Targets"
 msgstr "Rechercher dans les résultats cibles"
-
-#. module: program
-#: model:ir.ui.menu,name:program.menu_program_configuration_target
-msgid "Result Target Types"
-msgstr "Types de publics cibles"
-
-#. module: program
-#: field:program.result,descendant_ids:0
-msgid "Descendant"
-msgstr "Descendance"
 
 #. module: program
 #: field:program.result,transverse_parent_ids:0
@@ -250,14 +307,127 @@ msgid "Contributed by"
 msgstr "Résultats contribuant à"
 
 #. module: program
+#: model:ir.model,name:program.model_program_result_level
+#: view:program.result.level:0
+msgid "Result Level"
+msgstr "Niveau de résultats"
+
+#. module: program
+#: model:ir.model,name:program.model_program_result_target
+#: view:program.result.tag:0 view:program.result.target:0
+msgid "Result Target"
+msgstr "Cible de Résultat"
+
+#. module: program
+#: field:program.result,message_summary:0
+msgid "Summary"
+msgstr "Résumé"
+
+#. module: program
+#: model:res.groups,name:program.program_user
+msgid "Program User"
+msgstr "Utilisateur de la programmation"
+
+#. module: program
+#: field:program.result,code:0 field:program.result.intervention,code:0
+#: field:program.result.level,code:0
+msgid "Code"
+msgstr "Code"
+
+#. module: program
+#: field:program.result.level,child_id:0
+msgid "Child"
+msgstr "Enfant"
+
+#. module: program
+#: view:program.result:0
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: program
+#: view:program.result:0
+msgid "Close"
+msgstr "Fermer"
+
+#. module: program
+#: selection:program.result,state:0
+msgid "Validated"
+msgstr "Validé"
+
+#. module: program
+#: view:program.result:0
+msgid "Open"
+msgstr "Ouvrir"
+
+#. module: program
+#: view:program.result:0
+msgid "Targets"
+msgstr "Cibles"
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_mi_F
+msgid "Mission F"
+msgstr "Mission F"
+
+#. module: program
+#: field:program.result,long_name:0
+msgid "Long name"
+msgstr "Nom long"
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_imr_D
+msgid "Immediate Result D"
+msgstr "Résultat Immédiat D"
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_imr_I
+msgid "Immediate Result I"
+msgstr "Résultat Immédiat I"
+
+#. module: program
+#: model:program.result.level,name:program.demo_result_level_mi
+msgid "Mission"
+msgstr "Mission"
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_mi_A
+msgid "Mission A"
+msgstr "Mission A"
+
+#. module: program
+#: field:program.result,transverse_child_ids_label:0
+msgid "Contributes to Label"
+msgstr "Contribue à (Libellé)"
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_ir_H
+msgid "Intermediate Result H"
+msgstr "Résultat intermédiaire H"
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_ir_C
+msgid "Intermediate Result C"
+msgstr "Résultat intermédiaire C"
+
+#. module: program
+#: field:program.result,description:0
+msgid "Description"
+msgstr "Description"
+
+#. module: program
+#: field:program.result,result_level_id:0 field:program.result.level,depth:0
+msgid "Level"
+msgstr "Niveau"
+
+#. module: program
+#: field:program.result,descendant_ids:0
+msgid "Descendant"
+msgstr "Descendance"
+
+#. module: program
 #: field:program.result,date_to:0
 msgid "End Date"
 msgstr "Date de fin"
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_re_E
-msgid "Realisation E"
-msgstr "Extrant / Réalisation E"
 
 #. module: program
 #: model:program.result,name:program.demo_program_result_re_J
@@ -272,66 +442,14 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: program
-#: field:program.result,result_level_id:0 field:program.result.level,depth:0
-msgid "Level"
-msgstr "Niveau"
-
-#. module: program
-#: model:res.groups,name:program.program_user
-msgid "Program User"
-msgstr "Utilisateur de la programmation"
-
-#. module: program
-#: view:program.result:0
-msgid "Result Schedule"
-msgstr "Horaire des Résultats"
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_fr_G
-msgid "Final Result G"
-msgstr "Résultat final G"
-
-#. module: program
-#: model:program.result.level,code:program.demo_result_level_ir
-msgid "IR"
-msgstr "RI"
-
-#. module: program
-#: field:program.result,message_ids:0
-msgid "Messages"
-msgstr "Messages"
-
-#. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_tree
-#: model:ir.ui.menu,name:program.menu_program_result_chain
-msgid "Result Chain"
-msgstr "Chaîne de résultats"
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_fr_B
-msgid "Final Result B"
-msgstr "Résultat final B"
-
-#. module: program
-#: view:program.result.level:0
-msgid "Search Result Levels"
-msgstr "Rechercher dans les niveaux de résultats"
+#: model:program.result,name:program.demo_program_result_re_E
+msgid "Realisation E"
+msgstr "Extrant / Réalisation E"
 
 #. module: program
 #: field:program.result,depth:0
 msgid "Depth"
 msgstr "Profondeur"
-
-#. module: program
-#: code:addons/program/program_result.py:70
-#, python-format
-msgid "Contributed by %s"
-msgstr "Résultats contribuant à %s"
-
-#. module: program
-#: field:program.result,message_summary:0
-msgid "Summary"
-msgstr "Résumé"
 
 #. module: program
 #: code:addons/program/program_result_level.py:68
@@ -340,70 +458,24 @@ msgid "Error! You can not create recursive Levels."
 msgstr "Erreur ! Vous ne pouvez pas créer de niveaux récursifs."
 
 #. module: program
-#: field:program.result,target_audience:0
-msgid "Target Audience"
-msgstr "Publics cibles"
+#: help:program.result,message_ids:0
+msgid "Messages and communication history"
+msgstr "Historique des messages et des communications"
 
 #. module: program
-#: help:program.result,message_unread:0
-msgid "If checked new messages require your attention."
-msgstr "Si coché, les nouveaux messages demanderont votre attention."
+#: model:ir.actions.act_window,name:program.action_program_result_tree
+#: model:ir.ui.menu,name:program.menu_program_result_chain
+msgid "Result Chain"
+msgstr "Chaîne de résultats"
 
 #. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_level_tree
-#: model:ir.ui.menu,name:program.menu_program_configuration_level
-msgid "Result Levels"
-msgstr "Niveaux de résultats"
-
-#. module: program
-#: model:program.result.level,name:program.demo_result_level_mi
-msgid "Mission"
-msgstr "Mission"
-
-#. module: program
-#: field:program.result,code:0 field:program.result.intervention,code:0
-#: field:program.result.level,code:0
-msgid "Code"
-msgstr "Code"
-
-#. module: program
-#: field:program.result,child_ids:0
-msgid "Child Results"
-msgstr "Résultats fils"
-
-#. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_form
+#: model:ir.actions.act_window,name:program.action_program_result_list
+#: model:ir.ui.menu,name:program.menu_program_result
+#: model:ir.ui.menu,name:program.menu_program_result_result
 #: view:program.result:0
-msgid "Tag"
-msgstr "Étiquette"
-
-#. module: program
-#: field:program.result,message_unread:0
-msgid "Unread Messages"
-msgstr "Messages non-lus"
-
-#. module: program
-#: model:program.result.level,code:program.demo_result_level_mi
-msgid "MI"
-msgstr "MI"
-
-#. module: program
-#: model:ir.model,name:program.model_program_result_intervention
-msgid "Intervention Method"
-msgstr "Mode d'intervention"
-
-#. module: program
-#: view:program.result:0
-msgid "Group by..."
-msgstr "Grouper par..."
-
-#. module: program
-#: help:program.result,message_summary:0
-msgid ""
-"Holds the Chatter summary (number of messages, ...). This summary is "
-"directly in html format in order to be inserted in kanban views."
-msgstr ""
-"Contient le résumé de la discussion (nombre de messages, ...). Ce résumé est "
-"au format HTML pour permettre son utilisation dans les vues kanban."
+msgid "Results"
+msgstr "Résultats"
 
 #. module: program
 #: model:ir.actions.act_window,name:program.action_program_result_target_tree
@@ -411,31 +483,9 @@ msgid "Result Targets"
 msgstr "Cibles de Résultats"
 
 #. module: program
-#: model:ir.model,name:program.model_program_result view:program.result:0
-#: field:program.result.level,result_ids:0
-#: field:program.result.target,result:0
-msgid "Result"
-msgstr "Résultat"
-
-#. module: program
 #: model:res.groups,comment:program.program_user
 msgid "Program Users"
 msgstr "Utilisateurs de la programmation"
-
-#. module: program
-#: field:program.result,date_from:0
-msgid "Start Date"
-msgstr "Date de début"
-
-#. module: program
-#: view:program.result:0
-msgid "Targets"
-msgstr "Cibles"
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_mi_F
-msgid "Mission F"
-msgstr "Mission F"
 
 #~ msgid "Intervention Modes"
 #~ msgstr "Modes d'intervention"

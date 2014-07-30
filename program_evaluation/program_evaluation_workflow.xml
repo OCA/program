@@ -2,7 +2,7 @@
 <openerp>
   <data>
     <record id="program_evaluation_workflow" model="workflow">
-      <field name="name">program.evaluation.workflow</field>
+      <field name="name">Program Evaluation Workflow</field>
       <field name="osv">program.evaluation</field>
       <field name="on_create">True</field>
     </record>
