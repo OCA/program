@@ -54,7 +54,7 @@ class res_partner(orm.Model):
 
     _columns = {
         'is_not_employee': fields.function(
-            lambda **x: True,
+            lambda *a, **kw: True,
             fnct_search=_is_not_employee_search,
             type='boolean',
             string='Not Employee',
