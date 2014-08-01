@@ -93,7 +93,7 @@
       id="menu_program_evaluation_action"
       name="Evaluations"
       parent="program.menu_program"
-      groups="program.program_user"
+      groups="program.group_program_basic_user"
       sequence="3" />
 
     <menuitem
@@ -101,7 +101,7 @@
       name="Evaluations"
       parent="menu_program_evaluation_action"
       action="action_program_evaluation_tree"
-      groups="program.program_user"
+      groups="program.group_program_basic_user"
       sequence="1" />    
 
   </data>

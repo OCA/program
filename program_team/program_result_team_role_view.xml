@@ -69,7 +69,7 @@
               name="Team Roles"
               parent="program.menu_program_configuration"
               action="action_program_result_team_role_tree"
-              groups="program.program_user"
+              groups="program.group_program_manager"
               sequence="40" />
 
   </data>

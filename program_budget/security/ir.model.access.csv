@@ -1,3 +1,3 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
-access_program_result_region_user,access_program_result_region_user,model_program_result_region,program.program_user,1,1,1,1
-access_program_crossovered_budget_lines,access_program_crossovered_budget_lines,model_program_crossovered_budget_lines,program.program_user,1,1,1,1
+access_program_result_region_user,access_program_result_region_user,model_program_result_region,program.group_program_basic_user,1,1,1,1
+access_program_crossovered_budget_lines,access_program_crossovered_budget_lines,model_program_crossovered_budget_lines,program.group_program_basic_user,1,1,1,1

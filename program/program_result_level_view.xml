@@ -67,7 +67,7 @@
       name="Result Levels"
       parent="menu_program_configuration"
       action="action_program_result_level_tree"
-      groups="program_user"
+      groups="group_program_manager"
       sequence="1" />
   </data>
 </openerp>

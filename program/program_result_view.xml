@@ -30,24 +30,24 @@
                     states="draft"
                     string="Validate"
                     class="oe_highlight"
-                    groups="program.program_user"/>
+                    groups="program.group_program_director"/>
             <button name="signal_open"
                     type="workflow"
                     states="validated"
                     string="Open"
                     class="oe_highlight"
-                    groups="program.program_user"/>
+                    groups="program.group_program_director"/>
             <button name="signal_close"
                     type="workflow"
                     states="opened"
                     string="Close"
                     class="oe_highlight"
-                    groups="program.program_user"/>
+                    groups="program.group_program_director"/>
             <button name="signal_cancel"
                     type="workflow"
                     states="draft"
                     string="Cancel"
-                    groups="program.program_user"/>
+                    groups="program.group_program_basic_user"/>
             <field name="state"
                    widget="statusbar"
                    statusbar_visible="draft,validated,opened,closed"/>
@@ -233,14 +233,14 @@
     <menuitem
       id="menu_program"
       name="Programs"
-      groups="program_user"
+      groups="group_program_basic_user"
       sequence="12" />
 
     <menuitem
       id="menu_program_result"
       name="Results"
       parent="menu_program"
-      groups="program_user"
+      groups="group_program_basic_user"
       sequence="1" />
 
     <menuitem
@@ -248,7 +248,7 @@
       name="Results"
       parent="menu_program_result"
       action="action_program_result_list"
-      groups="program_user"
+      groups="group_program_basic_user"
       sequence="1" />
 
 
@@ -257,14 +257,14 @@
       name="Result Chain"
       parent="menu_program_result"
       action="action_program_result_tree"
-      groups="program_user"
+      groups="group_program_basic_user"
       sequence="2" />
 
     <menuitem
       id="menu_program_configuration"
       name="Configuration"
       parent="menu_program"
-      groups="program_user"
+      groups="group_program_manager"
       sequence="10" />
   </data>
 </openerp>

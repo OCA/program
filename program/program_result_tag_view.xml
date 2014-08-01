@@ -62,7 +62,7 @@
       name="Tags"
       parent="menu_program_configuration"
       action="action_program_result_tag_tree"
-      groups="program_user"
+      groups="group_program_manager"
       sequence="100" />
 
   </data>

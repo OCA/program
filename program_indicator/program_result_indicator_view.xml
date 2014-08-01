@@ -65,9 +65,9 @@
                   <field name="value"/>
                   <field name="uid"/>
                   <field name="state"/>
-                  <button name="signal_validate" type="workflow" states="draft" icon="gtk-apply" groups="program.program_user"/>
-                  <button name="signal_done" type="workflow" states="validated" icon="gtk-apply" groups="program.program_user"/>
-                  <button name="signal_cancel" type="workflow" states="draft" icon="gtk-cancel" groups="program.program_user"/>
+                  <button name="signal_validate" type="workflow" states="draft" icon="gtk-apply" groups="program.group_program_basic_user"/>
+                  <button name="signal_done" type="workflow" states="validated" icon="gtk-apply" groups="program.group_program_basic_user"/>
+                  <button name="signal_cancel" type="workflow" states="draft" icon="gtk-cancel" groups="program.group_program_basic_user"/>
                 </tree>
               </field>
             </group>
@@ -91,14 +91,14 @@
     <menuitem id="menu_program_indicator_action"
               name="Indicators"
               parent="program.menu_program"
-              groups="program.program_user"
+              groups="program.group_program_basic_user"
               sequence="1" />
 
     <menuitem id="menu_program_indicator_result_action_action"
               name="Result Indicators"
               parent="menu_program_indicator_action"
               action="action_program_program_indicator_result_tree"
-              groups="program.program_user"
+              groups="program.group_program_basic_user"
               sequence="1" />
 
   </data>

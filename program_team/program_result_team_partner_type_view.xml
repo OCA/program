@@ -57,7 +57,7 @@
               name="Team Partner Types"
               parent="program.menu_program_configuration"
               action="action_program_result_team_partner_type_tree"
-              groups="program.program_user"
+              groups="program.group_program_manager"
               sequence="50" />
 
   </data>

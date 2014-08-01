@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE openerp SYSTEM "openerp.dtd">
+
 <openerp>
-  <data noupdate="0">
-    <record id="program_user" model="res.groups">
-      <field name="name">Program User</field>
-      <field name="category_id" ref="base.module_category_accounting_and_finance" />
-      <field name="users" eval="[(4, ref('base.user_root'))]" />
-      <field name="comment">Program Users</field>
+  <data>
+
+    <!-- Category -->
+
+    <record id="module_category_program" model="ir.module.category">
+      <field name="name">Program</field>
+      <field name="sequence">600</field>
     </record>
+
+    <!-- Groups -->
+
+    <record id="group_program_basic_user" model="res.groups">
+      <field name="name">Basic User</field>
+      <field name="category_id" ref="module_category_program" />
+      <field name="comment">Basic Program Users</field>
+    </record>
+
+    <record id="group_program_director" model="res.groups">
+      <field name="name">Director</field>
+      <field name="category_id" ref="module_category_program" />
+      <field name="implied_ids" eval="[(4, ref('group_program_basic_user'))]"/>
+      <field name="comment">Program Directors can validate results</field>
+    </record>
+
+    <record id="group_program_manager" model="res.groups">
+      <field name="name">Manager</field>
+      <field name="category_id" ref="module_category_program" />
+      <field name="users" eval="[(4, ref('base.user_root'))]" />
+      <field name="implied_ids" eval="[(4, ref('group_program_director'))]"/>
+      <field name="comment">Program Managers have full access to configuration</field>
+    </record>
+
+
   </data>
 </openerp>

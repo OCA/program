@@ -57,7 +57,7 @@
       name="Result Regions"
       parent="program.menu_program_configuration"
       action="action_program_result_region_tree"
-      groups="program.program_user"
+      groups="program.group_program_manager"
       sequence="3" />
 
   </data>

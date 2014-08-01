@@ -62,7 +62,7 @@
       name="Result Target Types"
       parent="menu_program_configuration"
       action="action_program_result_target_tree"
-      groups="program_user"
+      groups="group_program_manager"
       sequence="2" />
   </data>
 </openerp>
