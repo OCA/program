@@ -1,3 +1,7 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
-access_program_evaluation,access_program_evaluation,model_program_evaluation,program.group_program_basic_user,1,1,1,1
-access_program_recommendation,access_program_recommendation,model_program_recommendation,program.group_program_basic_user,1,1,1,1
+
+access_program_evaluation_basic_user,access_program_evaluation,model_program_evaluation,program.group_program_basic_user,1,0,0,0
+access_program_recommendation_basic_user,access_program_recommendation,model_program_recommendation,program.group_program_basic_user,1,0,0,0
+
+access_program_evaluation_evaluator,access_program_evaluation,model_program_evaluation,group_program_evaluator,1,1,1,0
+access_program_recommendation_evaluator,access_program_recommendation,model_program_recommendation,group_program_evaluator,1,1,1,0
