@@ -20,8 +20,21 @@
 #
 ##############################################################################
 
+import re
+
 from openerp.osv import fields, orm
 from openerp.tools.translate import _
+
+
+RE_GROUP_FROM = [
+    re.compile("\[\('state', '!=', 'draft'\)\]"),
+    re.compile("\[\[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;\]\]"),
+]
+RE_GROUP_TO = [
+    "[('state', 'not in', ('draft', 'validated'))]",
+    "[[&quot;state&quot;, &quot;not in&quot;, "
+    "[&quot;draft&quot;, &quot;validated&quot;]]]",
+]
 
 
 class program_result(orm.Model):
@@ -132,6 +145,25 @@ class program_result(orm.Model):
         if 'parent_id' in vals and not context.get('install_mode'):
             self._clear_transversal(cr, user, ids, context=context)
 
+        return res
+
+    def fields_view_get(
+            self, cr, uid, view_id=None, view_type='form', context=None,
+            toolbar=False, submenu=False):
+        """Change the readonly fields depending on the groups
+
+        Look for the strings "[('state', '!=', 'draft')]"
+        exactly in the xml view and replace it with
+        "[('state', 'not in', ('draft', 'validated'))]"
+        """
+        user_pool = self.pool['res.users']
+        res = super(program_result, self).fields_view_get(
+            cr, uid, view_id, view_type, context, toolbar, submenu
+        )
+        if (user_pool.has_group(cr, uid, 'program.group_program_director')
+                and view_type == 'form'):
+            for FROM, TO in zip(RE_GROUP_FROM, RE_GROUP_TO):
+                res['arch'] = FROM.sub(TO, res['arch'])
         return res
 
     _columns = {

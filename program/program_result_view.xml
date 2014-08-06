@@ -57,13 +57,13 @@
               <label for="name" class="oe_edit_only" />
               <h1>
                 <field name="name"
-                       attrs="{'readonly': [('state', 'not in', ('draft', 'validated'))]}"/>
+                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
               </h1>
             </div>
 
             <group colspan="4" col="2">
               <field name="long_name"
-                     attrs="{'readonly': [('state', 'not in', ('draft', 'validated'))]}"/>
+                     attrs="{'readonly': [('state', '!=', 'draft')]}"/>
               <field name="tag_ids"
                      widget="many2many_tags"/>
             </group>
@@ -71,16 +71,16 @@
             <group colspan="4" col="4">
               <group name="general_info">
                 <field name="code"
-                       attrs="{'readonly': [('state', 'not in', ('draft', 'validated'))]}"/>
+                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
                 <field name="result_level_id"
                        readonly="1"/>
                 <field name="parent_id"
                        domain="[('id', '!=', id)]"
                        on_change="onchange_parent_id(parent_id)"
-                       attrs="{'readonly': [('state', 'not in', ('draft', 'validated'))]}"/>
+                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
                 <field name="intervention_id"
                        widget="selection"
-                       attrs="{'readonly': [('state', 'not in', ('draft', 'validated'))]}"/>
+                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
               </group>
 
               <group>

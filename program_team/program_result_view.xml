@@ -9,7 +9,7 @@
         <group name="general_info">
           <field name="department_id"
                  domain="[('department_rule', '=', uid)]"
-                 attrs="{'readonly': [('state', 'not in', ('draft', 'validated'))]}"/>
+                 attrs="{'readonly': [('state', '!=', 'draft')]}"/>
         </group>
 
         <page name="target" position="after">
