@@ -33,7 +33,6 @@ class program_crossovered_budget_summary(orm.TransientModel):
         'planned_amount': fields.float(
             'Planned Amount', digits_compute=dp.get_precision('Account'),
         ),
-        'progress': fields.float('Progress'),
         'practical_amount': fields.float(
             'Practical Amount', digits_compute=dp.get_precision('Account'),
         ),

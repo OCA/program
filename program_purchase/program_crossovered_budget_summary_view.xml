@@ -10,7 +10,6 @@
 
         <tree string="Program Budget Summary List" version="7.0">
           <field name="budget_id"/>
-          <field name="progress" widget="progressbar"/>
           <field name="planned_amount"/>
           <field name="theoretical_amount"/>
           <field name="practical_amount"/>

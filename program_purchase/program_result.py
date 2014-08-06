@@ -41,21 +41,7 @@ class program_result(orm.Model):
             'planned_amount': sum(i.planned_amount for i in cbls),
             'practical_amount': sum(i.practical_amount for i in cbls),
             'theoretical_amount': sum(i.theoritical_amount for i in cbls),
-            'progress': self.get_budget_progress(
-                cr, uid, ids, budget_id, context=context
-            ),
         }
-
-    def get_budget_progress(self, cr, uid, ids, budget_id, context=None):
-        budget_pool = self.pool['crossovered.budget']
-        budget = budget_pool.browse(cr, uid, budget_id, context=context)
-        cbls = budget.crossovered_budget_line
-        practical_amount = sum(i.practical_amount for i in cbls) or 0.0
-        theoretical_amount = sum(i.theoritical_amount for i in cbls) or 0.0
-        if theoretical_amount == 0.00:
-            return 0.00
-        else:
-            return practical_amount / theoretical_amount * 100.0
 
     def _get_budget_summaries(
             self, cr, uid, ids, name=None, args=None, context=None):
