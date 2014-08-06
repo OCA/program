@@ -26,6 +26,7 @@ from openerp.osv import fields, orm
 class program_result_team_contact(orm.Model):
 
     _name = 'program.result.team.contact'
+    _description = "Team Contact"
     _columns = {
         'result_id': fields.many2one(
             'program.result', string='Result', select=True,

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-30 16:27+0000\n"
-"PO-Revision-Date: 2014-07-30 16:27+0000\n"
+"POT-Creation-Date: 2014-08-06 20:18+0000\n"
+"PO-Revision-Date: 2014-08-06 20:18+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -31,6 +31,7 @@ msgid "Logged Values"
 msgstr ""
 
 #. module: program_indicator
+#: model:ir.model,name:program_indicator.model_program_result_indicator
 #: field:program.result,result_indicator_ids:0
 #: view:program.result.indicator:0
 msgid "Result Indicator"
@@ -118,11 +119,6 @@ msgstr ""
 #. module: program_indicator
 #: field:program.result.indicator,value_target:0
 msgid "Target Value"
-msgstr ""
-
-#. module: program_indicator
-#: model:ir.model,name:program_indicator.model_program_result_indicator
-msgid "program.result.indicator"
 msgstr ""
 
 #. module: program_indicator

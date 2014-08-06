@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-02 21:30+0000\n"
-"PO-Revision-Date: 2014-07-02 21:30+0000\n"
+"POT-Creation-Date: 2014-08-06 20:05+0000\n"
+"PO-Revision-Date: 2014-08-06 20:05+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -56,9 +56,13 @@ msgid "Evaluations"
 msgstr ""
 
 #. module: program_evaluation
-#: model:_description:0
 #: model:ir.model,name:program_evaluation.model_program_recommendation
 msgid "program.recommendation"
+msgstr ""
+
+#. module: program_evaluation
+#: model:res.groups,comment:program_evaluation.group_program_evaluator
+msgid "Evaluators can View all evaluations but cannot delete them"
 msgstr ""
 
 #. module: program_evaluation
@@ -73,7 +77,6 @@ msgid "Name"
 msgstr ""
 
 #. module: program_evaluation
-#: model:_description:0
 #: model:ir.model,name:program_evaluation.model_program_evaluation
 msgid "program.evaluation"
 msgstr ""
@@ -82,11 +85,6 @@ msgstr ""
 #: view:program.evaluation:0
 #: selection:program.evaluation,state:0
 msgid "Setup"
-msgstr ""
-
-#. module: program_evaluation
-#: model:_description:0
-msgid "Model Program Document"
 msgstr ""
 
 #. module: program_evaluation
@@ -111,12 +109,8 @@ msgid "Cancelled"
 msgstr ""
 
 #. module: program_evaluation
-#: model:ir.model,name:program_evaluation.model_program_result
-msgid "program.result"
-msgstr ""
-
-#. module: program_evaluation
 #: field:program.evaluation,evaluator_ids:0
+#: model:res.groups,name:program_evaluation.group_program_evaluator
 msgid "Evaluator"
 msgstr ""
 
@@ -142,6 +136,7 @@ msgid "Done"
 msgstr ""
 
 #. module: program_evaluation
+#: model:ir.model,name:program_evaluation.model_program_result
 #: field:program.evaluation,result_id:0
 msgid "Result"
 msgstr ""

@@ -26,6 +26,7 @@ from openerp.osv import fields, orm
 class program_result_team_partner_type(orm.Model):
 
     _name = 'program.result.team.partner.type'
+    _description = "Team Partner Type"
     _columns = {
         'name': fields.char('Name'),
         'is_active': fields.boolean('Active', default=True),

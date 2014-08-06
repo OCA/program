@@ -33,5 +33,6 @@ class hr_department(orm.Model):
             fnct_search=_department_rule_search,
             type='boolean',
             method=True,
+            string="Department Rule",
         ),
     }

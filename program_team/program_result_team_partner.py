@@ -26,7 +26,7 @@ from openerp.osv import fields, orm
 class program_result_team_partner(orm.Model):
 
     _name = 'program.result.team.partner'
-
+    _description = "Team Partner"
     _columns = {
         'result_id': fields.many2one('program.result', string='Result'),
         'organisation_id': fields.many2one(

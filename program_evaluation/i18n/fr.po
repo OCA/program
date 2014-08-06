@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-02 21:30+0000\n"
-"PO-Revision-Date: 2014-07-02 17:35-0500\n"
+"POT-Creation-Date: 2014-08-06 20:05+0000\n"
+"PO-Revision-Date: 2014-08-06 16:07-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -57,10 +57,16 @@ msgid "Evaluations"
 msgstr "Évaluations"
 
 #. module: program_evaluation
-#: model:_description:0
 #: model:ir.model,name:program_evaluation.model_program_recommendation
 msgid "program.recommendation"
 msgstr "program.recommendation"
+
+#. module: program_evaluation
+#: model:res.groups,comment:program_evaluation.group_program_evaluator
+msgid "Evaluators can View all evaluations but cannot delete them"
+msgstr ""
+"Les évaluateurs de la programmation peuvent voir toutes les évaluations, "
+"mais ils ne peuvent pas les supprimer."
 
 #. module: program_evaluation
 #: field:program.evaluation,state:0
@@ -73,7 +79,6 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: program_evaluation
-#: model:_description:0
 #: model:ir.model,name:program_evaluation.model_program_evaluation
 msgid "program.evaluation"
 msgstr "program.evaluation"
@@ -82,11 +87,6 @@ msgstr "program.evaluation"
 #: view:program.evaluation:0 selection:program.evaluation,state:0
 msgid "Setup"
 msgstr "En élaboration"
-
-#. module: program_evaluation
-#: model:_description:0
-msgid "Model Program Document"
-msgstr "Modèle Program Document"
 
 #. module: program_evaluation
 #: view:program.evaluation:0 selection:program.evaluation,state:0
@@ -109,12 +109,8 @@ msgid "Cancelled"
 msgstr "Annulée"
 
 #. module: program_evaluation
-#: model:ir.model,name:program_evaluation.model_program_result
-msgid "program.result"
-msgstr ""
-
-#. module: program_evaluation
 #: field:program.evaluation,evaluator_ids:0
+#: model:res.groups,name:program_evaluation.group_program_evaluator
 msgid "Evaluator"
 msgstr "Évaluateur"
 
@@ -139,6 +135,7 @@ msgid "Done"
 msgstr "Terminée"
 
 #. module: program_evaluation
+#: model:ir.model,name:program_evaluation.model_program_result
 #: field:program.evaluation,result_id:0
 msgid "Result"
 msgstr "Résultat"
@@ -152,6 +149,9 @@ msgstr "Recommandation"
 #: view:program.evaluation:0
 msgid "Cancel"
 msgstr "Annuler"
+
+#~ msgid "Model Program Document"
+#~ msgstr "Modèle Program Document"
 
 #~ msgid "Action"
 #~ msgstr "Action"

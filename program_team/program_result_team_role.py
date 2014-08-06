@@ -26,6 +26,7 @@ from openerp.osv import fields, orm
 class program_result_team_role(orm.Model):
 
     _name = 'program.result.team.role'
+    _description = "Team Role"
     _columns = {
         'name': fields.char('Name', required=True, select=True),
         'is_employee': fields.boolean('Employee'),
