@@ -175,6 +175,9 @@ class program_result(orm.Model):
             [
                 ('draft', 'Draft'),
                 ('validated', 'Validated'),
+                ('visa_director', "Director's Visa"),
+                ('visa_dpe', "DPE's Visa"),
+                ('visa_admin', "Admin's Visa"),
                 ('opened', 'Opened'),
                 ('closed', 'Closed'),
                 ('cancel', 'Cancelled'),

@@ -26,11 +26,25 @@
       <field name="comment">Program Directors can validate results</field>
     </record>
 
+    <record id="group_program_dpe" model="res.groups">
+      <field name="name">Evaluation and Planing Director</field>
+      <field name="category_id" ref="program.module_category_program" />
+      <field name="implied_ids" eval="[(4, ref('program.group_program_director'))]"/>
+      <field name="comment">Evaluation and Planing Director</field>
+    </record>
+
+    <record id="group_program_administrator" model="res.groups">
+      <field name="name">Administrator</field>
+      <field name="category_id" ref="program.module_category_program" />
+      <field name="implied_ids" eval="[(4, ref('group_program_dpe'))]"/>
+      <field name="comment">Administrator</field>
+    </record>
+
     <record id="group_program_manager" model="res.groups">
       <field name="name">Manager</field>
       <field name="category_id" ref="module_category_program" />
       <field name="users" eval="[(4, ref('base.user_root'))]" />
-      <field name="implied_ids" eval="[(4, ref('group_program_director'))]"/>
+      <field name="implied_ids" eval="[(4, ref('group_program_administrator'))]"/>
       <field name="comment">Program Managers have full access to configuration</field>
     </record>
 

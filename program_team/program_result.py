@@ -39,9 +39,12 @@ def _department_rule_search(
         user = args
     if type(user) is int:
         user = user_pool.browse(cr, uid, user, context=context)
+    if user_pool.has_group(cr, user.id, 'program.group_program_dpe'):
+        return []
     ids = [
         employee.department_id.id
         for employee in user.employee_ids
+        if employee.department_id
     ]
     ids.append(False)
     if self._name != 'hr.department':

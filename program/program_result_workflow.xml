@@ -8,6 +8,8 @@
       <field name="on_create">True</field>
     </record>
 
+     <!-- Activities -->
+
     <record id="act_draft" model="workflow.activity">
       <field name="wkf_id" ref="program_result_workflow"/>
       <field name="name">draft</field>
@@ -19,6 +21,28 @@
       <field name="name">validated</field>
       <field name="kind">function</field>
       <field name="action">write({'state': 'validated'})</field>
+    </record>
+
+    <record id="act_visa_director" model="workflow.activity">
+      <field name="wkf_id" ref="program.program_result_workflow"/>
+      <field name="name">visa_director</field>
+      <field name="kind">function</field>
+      <field name="action">write({'state': 'visa_director'})</field>
+    </record>
+
+    <record id="act_visa_dpe" model="workflow.activity">
+      <field name="wkf_id" ref="program.program_result_workflow"/>
+      <field name="name">visa_dpe</field>
+      <field name="kind">function</field>
+      <field name="action">write({'state': 'visa_dpe'})</field>
+    </record>
+
+
+    <record id="act_visa_admin" model="workflow.activity">
+      <field name="wkf_id" ref="program.program_result_workflow"/>
+      <field name="name">visa_admin</field>
+      <field name="kind">function</field>
+      <field name="action">write({'state': 'visa_admin'})</field>
     </record>
 
     <record id="act_opened" model="workflow.activity">
@@ -43,15 +67,35 @@
       <field name="flow_stop">True</field>
     </record>
 
+    <!-- Transitions -->
+
     <record id="trans_draft_validated" model="workflow.transition">
       <field name="act_from" ref="act_draft" />
       <field name="act_to" ref="act_validated" />
       <field name="signal">signal_validate</field>
     </record>
 
-    <record id="trans_validated_opened" model="workflow.transition">
+    <record id="trans_validated_visa_director" model="workflow.transition">
       <field name="act_from" ref="act_validated" />
-      <field name="act_to" ref="act_opened" />
+      <field name="act_to" ref="act_visa_director" />
+      <field name="signal">signal_visa_director</field>
+    </record>
+
+    <record id="trans_visa_director_visa_dpe" model="workflow.transition">
+      <field name="act_from" ref="act_visa_director" />
+      <field name="act_to" ref="act_visa_dpe" />
+      <field name="signal">signal_visa_dpe</field>
+    </record>
+
+    <record id="trans_visa_dpe_visa_admin" model="workflow.transition">
+      <field name="act_from" ref="act_visa_dpe" />
+      <field name="act_to" ref="act_visa_admin" />
+      <field name="signal">signal_visa_admin</field>
+    </record>
+
+    <record id="trans_visa_admin_opened" model="workflow.transition">
+      <field name="act_from" ref="act_visa_admin" />
+      <field name="act_to" ref="program.act_opened" />
       <field name="signal">signal_open</field>
     </record>
 
