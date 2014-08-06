@@ -20,42 +20,18 @@
 #
 ##############################################################################
 
-{
-    'name': 'Program Team',
-    'version': '0.4',
-    'category': 'Program',
-    'summary': 'Team Management on RBM',
-    'description': '''
-Program Team
-============
+from openerp.osv import fields, orm
+from program_result import _department_rule, _department_rule_search
 
-Team Management on Results Based Management
 
-Contributors
-------------
+class hr_department(orm.Model):
 
-* Alexandre Boily (alexandre.boily@savoirfairelinux.com)
-* Sandy Carter (sandy.carter@savoirfairelinux.com)
-''',
-    'author': 'Savoir-faire Linux',
-    'website': 'http://www.savoirfairelinux.com',
-    'license': 'AGPL-3',
-    'depends': [
-        'hr',
-        'program',
-    ],
-    'data': [
-        'security/ir.model.access.csv',
-        'security/ir_rule.xml',
-        'program_result_team_role_view.xml',
-        'hr_employee_view.xml',
-        'hr_department_view.xml',
-        'res_partner_view.xml',
-        'program_result_team_partner_type_view.xml',
-        'program_result_view.xml',
-    ],
-    'test': [],
-    'demo': [],
-    'auto_install': False,
-    'installable': True,
-}
+    _inherit = 'hr.department'
+    _columns = {
+        'department_rule': fields.function(
+            _department_rule,
+            fnct_search=_department_rule_search,
+            type='boolean',
+            method=True,
+        ),
+    }

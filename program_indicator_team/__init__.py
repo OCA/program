@@ -1,9 +1,9 @@
-# -*- coding: utf-8 -*-
-
+# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2014 Savoir-faire Linux (<www.savoirfairelinux.com>).
+#    This module copyright (C) 2014 Savoir-faire Linux
+#    (<http://www.savoirfairelinux.com>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -21,13 +21,5 @@
 ##############################################################################
 
 from . import (
-    res_partner,
-    hr_department,
-    program_result,
-    program_result_team_department,
-    program_result_team_member,
-    program_result_team_partner,
-    program_result_team_partner_type,
-    program_result_team_role,
-    program_result_team_contact,
+    program_result_indicator,
 )

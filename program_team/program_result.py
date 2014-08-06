@@ -23,24 +23,67 @@
 from openerp.osv import fields, orm
 
 
+def _department_rule(self, cr, uid, ids, name, args, context=None):
+    if isinstance(ids, (int, long)):
+        ids = [ids]
+    return {i: True for i in ids}
+
+
+def _department_rule_search(
+        self, cr, uid, obj=None, name=None, args=None, context=None):
+    user_pool = self.pool['res.users']
+    if type(args) is list:
+        # uid lies, so get current user from arguments
+        user = args[0][2]
+    else:
+        user = args
+    if type(user) is int:
+        user = user_pool.browse(cr, uid, user, context=context)
+    ids = [
+        employee.department_id.id
+        for employee in user.employee_ids
+    ]
+    ids.append(False)
+    if self._name != 'hr.department':
+        ids = self.search(
+            cr, uid, [('department_id', 'in', ids)], context=context
+        )
+    return [('id', 'in', ids)]
+
+
 class program_result(orm.Model):
 
     _inherit = 'program.result'
     _columns = {
         'department_id': fields.many2one(
-            'hr.department', string="Department", select=True
+            'hr.department',
+            string="Department",
+            select=True
         ),
         'team_department_ids': fields.one2many(
             'program.result.team.department',
-            'result_id', string='Departments',
+            'result_id',
+            string='Departments',
         ),
         'team_member_ids': fields.one2many(
-            'program.result.team.member', 'result_id', string='Team Members',
+            'program.result.team.member',
+            'result_id',
+            string='Team Members',
         ),
         'team_partner_ids': fields.one2many(
-            'program.result.team.partner', 'result_id', string='Partners',
+            'program.result.team.partner',
+            'result_id',
+            string='Partners',
         ),
         'team_contact_ids': fields.one2many(
-            'program.result.team.contact', 'result_id', string='Contacts',
+            'program.result.team.contact',
+            'result_id',
+            string='Contacts',
+        ),
+        'department_rule': fields.function(
+            _department_rule,
+            fnct_search=_department_rule_search,
+            type='boolean',
+            method=True,
         ),
     }
