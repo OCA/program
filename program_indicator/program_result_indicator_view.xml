@@ -59,17 +59,7 @@
 
           <sheet>
             <group string="Indicator Values">
-              <field name="value_logged_ids" nolabel="1" readonly="1">
-                <tree>
-                  <field name="name"/>
-                  <field name="value"/>
-                  <field name="uid"/>
-                  <field name="state"/>
-                  <button name="signal_validate" type="workflow" states="draft" icon="gtk-apply" groups="program.group_program_basic_user"/>
-                  <button name="signal_done" type="workflow" states="validated" icon="gtk-apply" groups="program.group_program_basic_user"/>
-                  <button name="signal_cancel" type="workflow" states="draft" icon="gtk-cancel" groups="program.group_program_basic_user"/>
-                </tree>
-              </field>
+              <field name="value_logged_ids" nolabel="1" readonly="1"/>
             </group>
           </sheet>
 

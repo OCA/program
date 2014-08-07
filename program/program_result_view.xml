@@ -7,7 +7,9 @@
       <field name="model">program.result</field>
       <field name="field_parent">child_ids</field>
       <field name="arch" type="xml">
-        <tree string="Results" version="7.0">
+        <tree string="Results"
+              colors="blue:state == 'draft';grey:state == 'cancel';"
+              version="7.0">
           <field name="result_level_id" />
           <field name="code" />
           <field name="name" />

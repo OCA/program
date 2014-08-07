@@ -46,6 +46,7 @@ Contributors
     'data': [
         'security/ir.model.access.csv',
         'program_result_indicator_view.xml',
+        'program_result_indicator_value_view.xml',
         'program_indicator_value_workflow.xml',
         'program_result_view.xml',
     ],
