@@ -46,8 +46,9 @@ Contributors
         'program_result_view.xml',
         'program_result_region_view.xml',
     ],
-    'test': [],
-    'demo': [],
+    'demo': [
+        'program_result_demo.xml',
+    ],
     'auto_install': False,
     'installable': True,
 }

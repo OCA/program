@@ -183,7 +183,7 @@ class program_result(orm.Model):
 
         if context.get('account_written'):
             return res
-
+        account_pool = self.pool.get('account.analytic.account')
         for result in self.browse(cr, uid, ids, context=context):
             if not result.account_analytic_id:
                 prop_vals = dict(self.read(
@@ -209,7 +209,6 @@ class program_result(orm.Model):
                 propagated_fields['parent_id'] = parent_account_id
 
             if propagated_fields:
-                account_pool = self.pool.get('account.analytic.account')
                 account_pool.write(
                     cr, uid, result.account_analytic_id.id,
                     propagated_fields,
