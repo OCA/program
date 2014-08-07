@@ -13,7 +13,6 @@
           <field name="result_level_id" />
           <field name="code" />
           <field name="name" />
-          <field name="tag_ids" widget="many2many_tags"/>
           <field name="date_from" />
           <field name="date_to" />
           <field name="state"/>
