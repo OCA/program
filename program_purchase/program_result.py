@@ -32,15 +32,51 @@ class program_result(orm.Model):
 
     _inherit = 'program.result'
 
+    def _get_result_clb_ids(self, cr, uid, ids, budget_id, context=None):
+        """Find associated accounts and descendants"""
+        line_pool = self.pool['crossovered.budget.lines']
+
+        def get_child_account_ids(account_obj):
+            res = set()
+
+            def recur(o):
+                map(recur, o.child_ids)
+                res.add(o.id)
+
+            recur(account_obj)
+            return res
+
+        if not ids:
+            return {}
+
+        if type(ids) is list:
+            ids = ids[0]
+        result = self.browse(cr, uid, ids, context=context)
+
+        account = result.account_analytic_id
+        account_ids = list(get_child_account_ids(account))
+        return line_pool.search(
+            cr, uid,
+            [
+                '&',
+                ('analytic_account_id', 'in', account_ids),
+                ('crossovered_budget_id', '=', budget_id)
+            ],
+            context=context
+        )
+
     def build_budget_summary(self, cr, uid, ids, budget_id, context=None):
-        budget_pool = self.pool['crossovered.budget']
-        budget = budget_pool.browse(cr, uid, budget_id, context=context)
-        cbls = budget.crossovered_budget_line
+        line_pool = self.pool['crossovered.budget.lines']
+        cbl_ids = self._get_result_clb_ids(
+            cr, uid, ids, budget_id, context=context
+        )
+        cbls = line_pool.browse(cr, uid, cbl_ids, context=context)
         return {
-            'budget_id': budget.id,
+            'budget_id': budget_id,
             'planned_amount': sum(i.planned_amount for i in cbls),
             'practical_amount': sum(i.practical_amount for i in cbls),
             'theoretical_amount': sum(i.theoritical_amount for i in cbls),
+            'cbl_ids': cbl_ids,
         }
 
     def _get_budget_summaries(
