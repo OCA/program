@@ -97,7 +97,7 @@ class program_result(orm.Model):
             if theoretical == 0.0:
                 res[result.id] = 0.0
             else:
-                res[result.id] = self.__prgs_cap(practical / theoretical)
+                res[result.id] = self.__prgs_cap(practical / theoretical * 100)
         return res
 
     def _get_prgs_realisation(self, cr, uid, ids, name, args, context=None):
@@ -137,7 +137,7 @@ class program_result(orm.Model):
         ),
         'prgs_budget': fields.function(
             # using lambda to allow overwriting
-            lambda self, *a: self._get_prgs_budget(*a),
+            lambda self, *a, **kw: self._get_prgs_budget(*a, **kw),
             type='float', string='Budget',
         ),
         'comment_budget': fields.char(
