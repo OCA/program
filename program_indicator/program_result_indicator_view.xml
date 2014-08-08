@@ -43,12 +43,12 @@
 
           <sheet>
             <group>
-              <field name="name" />
+              <field name="name"/>
               <field name="result_id"
                      required="not context.get('from_result', False)"
-                     invisible="context.get('from_result', False)" />
-              <field name="value_initial" />
-              <field name="value_target" />
+                     invisible="context.get('from_result', False)"/>
+              <field name="value_initial" attrs="{'readonly': [('value_initial', 'not in', [0.0, False])]}"/>
+              <field name="value_target" attrs="{'readonly': [('value_target', 'not in', [0.0, False])]}"/>
               <field name="value" />
               <field name="partner_id"
                      domain="[('is_company', '=', False), ('contact_id', '=', False)]" />
@@ -64,6 +64,23 @@
           </sheet>
 
         </form>
+
+      </field>
+    </record>
+
+    <record id="view_program_program_indicator_result_manager_form" model="ir.ui.view">
+      <field name="model">program.result.indicator</field>
+      <field name="inherit_id" ref="view_program_program_indicator_result_form"/>
+      <field name="groups_id" eval="[(6, 0, [ref('program.group_program_manager') ])]"/>
+      <field name="arch" type="xml">
+
+        <field name="value_initial" position="attributes">
+          <attribute name="attrs" eval="{'readonly': []}"/>
+        </field>
+
+        <field name="value_target" position="attributes">
+          <attribute name="attrs" eval="{'readonly': []}"/>
+        </field>
 
       </field>
     </record>

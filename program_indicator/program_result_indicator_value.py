@@ -32,7 +32,7 @@ class program_indicator_result_value(orm.Model):
     _description = 'Result Indicator Value'
     _columns = {
         'name': fields.date('Date', required=True),
-        'value': fields.char('Value', required=True),
+        'value': fields.float('Value', required=True, digits=(1, 2)),
         'uid': fields.many2one('res.users', 'Author', required=True),
         'state': fields.selection(
             [

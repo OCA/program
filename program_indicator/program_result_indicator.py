@@ -73,20 +73,29 @@ class program_indicator_result(orm.Model):
     _columns = {
         'name': fields.char('Name'),
         'result_id': fields.many2one(
-            'program.result', 'Result', required=True
+            'program.result',
+            'Result',
+            required=True
         ),
-        'value_initial': fields.char('Initial Value'),
-        'value_target': fields.char('Target Value'),
+        'value_initial': fields.float('Initial Value', digits=(1, 2)),
+        'value_target': fields.float('Target Value', digits=(1, 2)),
         'value': fields.function(
-            _current_value, fnct_inv=_current_value_inv,
-            type='char', string='Value',
+            lambda self, *a, **kw: self._current_value(*a, **kw),
+            fnct_inv=lambda self, *a, **kw: self._current_value_inv(*a, **kw),
+            type='float',
+            string='Value',
+            digits=(1, 2),
         ),
         'value_uid': fields.function(
-            _current_value, type='many2one', obj='res.users',
+            lambda self, *a, **kw: self._current_value(*a, **kw),
+            type='many2one',
+            obj='res.users',
             string='Last Modified by',
         ),
         'value_logged_ids': fields.one2many(
-            'program.result.indicator.value', 'indicator_id', 'Logged Values'
+            'program.result.indicator.value',
+            'indicator_id',
+            'Logged Values',
         ),
         'partner_id': fields.many2one('res.partner', 'Manager of follow-up'),
         'comment': fields.text('Comment'),
