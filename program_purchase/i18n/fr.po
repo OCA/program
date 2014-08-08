@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-29 19:46+0000\n"
-"PO-Revision-Date: 2014-07-29 15:46-0500\n"
+"POT-Creation-Date: 2014-08-08 20:56+0000\n"
+"PO-Revision-Date: 2014-08-08 16:56-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -17,9 +17,10 @@ msgstr ""
 "X-Generator: Poedit 1.6.5\n"
 
 #. module: program_purchase
-#: field:program.result,prgs_realisation:0 field:program.result,realisation:0
-msgid "Realisation"
-msgstr "Réalisation estimée"
+#: code:addons/program_purchase/program_result.py:194
+#, python-format
+msgid "Error! Appreciation should be between 0 and 100."
+msgstr "Erreure ! L'estimation de appréciation doit être entre 0 et 100."
 
 #. module: program_purchase
 #: model:ir.model,name:program_purchase.model_program_crossovered_budget_summary
@@ -37,9 +38,9 @@ msgid "Comments..."
 msgstr "Commentaires..."
 
 #. module: program_purchase
-#: help:program.result,comment_realisation:0
-msgid "Comments for Realisation Progress"
-msgstr "Commentaires pour l'avencement de la réalisation estimée"
+#: view:program.result:0
+msgid "Monitoring"
+msgstr "Suivi"
 
 #. module: program_purchase
 #: field:program.result,prgs_time:0
@@ -55,11 +56,6 @@ msgstr "Avancement"
 #: help:program.result,comment_budget:0
 msgid "Comments for Budget Progress"
 msgstr "Commentaires pour l'avencement du budget"
-
-#. module: program_purchase
-#: view:program.result:0
-msgid "Summary of expenses"
-msgstr "Sommaire des dépenses"
 
 #. module: program_purchase
 #: field:program.result,budget_summary_ids:0
@@ -78,17 +74,16 @@ msgid "Budget"
 msgstr "Budget"
 
 #. module: program_purchase
-#: field:program.result,comment_budget:0
-#: field:program.result,comment_realisation:0
-#: field:program.result,comment_time:0
+#: field:program.result,comment_appreciation:0
+#: field:program.result,comment_budget:0 field:program.result,comment_time:0
 msgid "Comments"
 msgstr "Commentaires"
 
 #. module: program_purchase
-#: code:addons/program_purchase/program_result.py:163
-#, python-format
-msgid "Error! Realisation should be between 0 and 100."
-msgstr "Erreure ! L'estimation de réalisation doit être entre 0 et 100."
+#: field:program.result,appreciation:0
+#: field:program.result,prgs_appreciation:0
+msgid "Appreciation"
+msgstr "Appréciation estimée"
 
 #. module: program_purchase
 #: field:program.crossovered.budget.summary,planned_amount:0
@@ -106,14 +101,14 @@ msgid "Result"
 msgstr "Résultat"
 
 #. module: program_purchase
-#: field:program.crossovered.budget.summary,progress:0
-msgid "Progress"
-msgstr "Progrès"
+#: help:program.result,comment_appreciation:0
+msgid "Comments for Appreciation Progress"
+msgstr "Commentaires pour l'avencement de l'appréciation estimée"
 
 #. module: program_purchase
 #: view:program.result:0
-msgid "Monitoring"
-msgstr "Suivi"
+msgid "Summary of expenses"
+msgstr "Sommaire des dépenses"
 
 #. module: program_purchase
 #: field:program.crossovered.budget.summary,practical_amount:0
@@ -124,6 +119,9 @@ msgstr "Montant réel"
 #: help:program.result,comment_time:0
 msgid "Comments for Time Progress"
 msgstr "Commentaires pour l'avencement du temps"
+
+#~ msgid "Progress"
+#~ msgstr "Progrès"
 
 #~ msgid "Email Thread"
 #~ msgstr "Discussion par courriel"

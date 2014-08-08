@@ -23,6 +23,10 @@
 from openerp.osv import fields, orm
 
 
+def prgs_cap(val, minimum=0.0, maximum=100.0):
+    return min(max(val, minimum), maximum)
+
+
 class program_indicator_result(orm.Model):
 
     _name = 'program.result.indicator'
@@ -56,6 +60,15 @@ class program_indicator_result(orm.Model):
                 res[i] = value_read[0][field]
         return res
 
+    def _value_progress(self, cr, uid, ids, name, arg, context=None):
+        fdls = ['value_initial', 'value_target', 'value']
+        return {
+            i['id']: prgs_cap((i['value'] - i['value_initial']) /
+                              (i['value_target'] - i['value_initial']) * 100.0)
+            if i['value_target'] - i['value_initial'] != 0 else 0
+            for i in self.read(cr, uid, ids, fdls, context=context)
+        }
+
     def _current_value_inv(self, cr, uid, ids, name, val, arg, context=None):
         """Log changes to value as new indicator values"""
         if name != 'value' or not val:
@@ -84,6 +97,12 @@ class program_indicator_result(orm.Model):
             fnct_inv=lambda self, *a, **kw: self._current_value_inv(*a, **kw),
             type='float',
             string='Value',
+            digits=(1, 2),
+        ),
+        'value_progress': fields.function(
+            lambda self, *a, **kw: self._value_progress(*a, **kw),
+            type='float',
+            string='Value Progress',
             digits=(1, 2),
         ),
         'value_uid': fields.function(

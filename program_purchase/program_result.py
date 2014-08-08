@@ -28,6 +28,10 @@ from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
 from openerp.tools.translate import _
 
 
+def prgs_cap(val, minimum=0.0, maximum=100.0):
+    return min(max(val, minimum), maximum)
+
+
 class program_result(orm.Model):
 
     _inherit = 'program.result'
@@ -85,9 +89,6 @@ class program_result(orm.Model):
             })
         return res
 
-    def __prgs_cap(self, val, minimum=0.0, maximum=100.0):
-        return min(max(val, minimum), maximum)
-
     def _get_prgs_time(self, cr, uid, ids, name, args, context=None):
         """Return ratio of now between start and end date of result
         (capped between 0 and 100)
@@ -99,9 +100,7 @@ class program_result(orm.Model):
                 return 0.0
             start = datetime.strptime(start, DEFAULT_SERVER_DATE_FORMAT).date()
             end = datetime.strptime(end, DEFAULT_SERVER_DATE_FORMAT).date()
-            return self.__prgs_cap(
-                (today - start).days / (end - start).days * 100.0
-            )
+            return prgs_cap((today - start).days / (end - start).days * 100.0)
 
         if type(ids) is not list:
             ids = [ids]
@@ -122,23 +121,23 @@ class program_result(orm.Model):
             if theoretical == 0.0:
                 res[result.id] = 0.0
             else:
-                res[result.id] = self.__prgs_cap(practical / theoretical * 100)
+                res[result.id] = prgs_cap(practical / theoretical * 100)
         return res
 
-    def _get_prgs_realisation(self, cr, uid, ids, name, args, context=None):
-        """Return realisation (capped between 0 and 100)"""
+    def _get_prgs_appreciation(self, cr, uid, ids, name, args, context=None):
+        """Return appreciation (capped between 0 and 100)"""
         if type(ids) is not list:
             ids = [ids]
         return {
-            i['id']: self.__prgs_cap(i['realisation']) for i in
-            self.read(cr, uid, ids, ['realisation'], context=context)
+            i['id']: prgs_cap(i['appreciation']) for i in
+            self.read(cr, uid, ids, ['appreciation'], context=context)
         }
 
-    def _check_realisation(self, cr, uid, ids, context=None):
+    def _check_appreciation(self, cr, uid, ids, context=None):
         return not any(
             self.search(
                 cr, uid,
-                ['|', ('realisation', '<', 0), ('realisation', '>', 100)],
+                ['|', ('appreciation', '<', 0), ('appreciation', '>', 100)],
                 limit=1, context=None
             )
         )
@@ -176,24 +175,24 @@ class program_result(orm.Model):
             string='Comments',
             help='Comments for Budget Progress',
         ),
-        'realisation': fields.float(
-            string='Realisation',
+        'appreciation': fields.float(
+            string='Appreciation',
             track_visibility='onchange',
         ),
-        'prgs_realisation': fields.function(
-            lambda self, *a, **kw: self._get_prgs_realisation(*a, **kw),
+        'prgs_appreciation': fields.function(
+            lambda self, *a, **kw: self._get_prgs_appreciation(*a, **kw),
             type='float',
-            string='Realisation',
+            string='Appreciation',
         ),
-        'comment_realisation': fields.char(
+        'comment_appreciation': fields.char(
             string='Comments',
-            help='Comments for Realisation Progress',
+            help='Comments for Appreciation Progress',
         ),
     }
 
     def _rec_message(self, cr, uid, ids, context=None):
-        return '\n\n' + _('Error! Realisation should be between 0 and 100.')
+        return '\n\n' + _('Error! Appreciation should be between 0 and 100.')
 
     _constraints = [
-        (_check_realisation, _rec_message, ['realisation']),
+        (_check_appreciation, _rec_message, ['appreciation']),
     ]

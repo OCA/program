@@ -24,6 +24,7 @@
         <tree string="Result Indicators" version="7.0">
           <field name="name" />
           <field name="result_id" />
+          <field name="value_progress" widget="progressbar"/>
           <field name="value_initial" />
           <field name="value_target" />
           <field name="value" />
@@ -47,6 +48,7 @@
               <field name="result_id"
                      required="not context.get('from_result', False)"
                      invisible="context.get('from_result', False)"/>
+              <field name="value_progress" widget="progressbar"/>
               <field name="value_initial" attrs="{'readonly': [('value_initial', 'not in', [0.0, False])]}"/>
               <field name="value_target" attrs="{'readonly': [('value_target', 'not in', [0.0, False])]}"/>
               <field name="value" />
