@@ -16,6 +16,7 @@ install:
   - travis_install_nightly
   - git clone https://github.com/OCA/knowledge.git ${HOME}/knowledge -b ${VERSION}
   - git clone https://github.com/OCA/vertical-travel.git ${HOME}/vertical-travel -b ${VERSION}
+  - git clone https://github.com/OCA/partner-contact ${HOME}/partner-contact -b ${VERSION}
 
 script:
   - travis_run_flake8
