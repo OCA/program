@@ -36,16 +36,6 @@ class program_result(orm.Model):
         """Find associated accounts and descendants"""
         line_pool = self.pool['crossovered.budget.lines']
 
-        def get_child_account_ids(account_obj):
-            res = set()
-
-            def recur(o):
-                map(recur, o.child_ids)
-                res.add(o.id)
-
-            recur(account_obj)
-            return res
-
         if not ids:
             return {}
 
@@ -53,8 +43,7 @@ class program_result(orm.Model):
             ids = ids[0]
         result = self.browse(cr, uid, ids, context=context)
 
-        account = result.account_analytic_id
-        account_ids = list(get_child_account_ids(account))
+        account_ids = [a.id for a in result.child_account_ids]
         return line_pool.search(
             cr, uid,
             [

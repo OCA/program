@@ -45,6 +45,37 @@ class program_result(orm.Model):
             res[result.id] = company.id
         return res
 
+    def _get_child_account_ids(
+            self, cr, uid, ids, name, args, context=None):
+        """Return associated account and its children"""
+        def get_child_account_ids(result_obj):
+            account_ids = set()
+
+            def recur(o):
+                map(recur, o.child_ids)
+                account_ids.add(o.id)
+
+            account_obj = result_obj.account_analytic_id
+            if not account_obj:
+                return []
+            recur(account_obj)
+            return list(account_ids)
+
+        return {
+            result.id: get_child_account_ids(result)
+            for result in self.browse(cr, uid, ids, context=context)
+        }
+
+    def get_child_account_ids(account_obj):
+        res = set()
+
+        def recur(o):
+            map(recur, o.child_ids)
+            res.add(o.id)
+
+        recur(account_obj)
+        return res
+
     def _get_crossovered_budget_lines(
             self, cr, uid, ids, name, args, context=None):
         res = {}
@@ -94,6 +125,13 @@ class program_result(orm.Model):
         'account_analytic_id': fields.many2one(
             'account.analytic.account', string='Analytic account',
             select=True),
+        'child_account_ids': fields.function(
+            lambda self, *a, **kw: self._get_child_account_ids(*a, **kw),
+            obj='account.analytic.account',
+            type='many2many',
+            string='Analytic account',
+            help="Get associated accounts and its descendants"
+        ),
         'target_country_ids': fields.many2many(
             'res.country', string='Target Countries'
         ),
