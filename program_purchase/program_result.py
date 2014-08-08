@@ -156,37 +156,49 @@ class program_result(orm.Model):
 
     _columns = {
         'budget_summary_ids': fields.function(
-            _get_budget_summaries, type="one2many",
+            lambda self, *a, *kw: self._get_budget_summaries(*a, **kw),
+            type="one2many",
             obj='program.crossovered.budget.summary',
             string="Budget Summaries",
             readonly=True,
         ),
         'crossovered_budget_ids': fields.function(
-            _get_crossovered_budgets, type='many2many',
-            obj='crossovered.budget', string='Budgets',
+            lambda self, *a, *kw: self._get_crossovered_budgets(*a, **kw),
+            type='many2many',
+            obj='crossovered.budget',
+            string='Budgets',
         ),
         'prgs_time': fields.function(
-            _get_prgs_time, type='float', string='Time',
+            lambda self, *a, *kw: self._get_prgs_time(*a, **kw),
+            type='float',
+            string='Time',
         ),
         'comment_time': fields.char(
-            string='Comments', help='Comments for Time Progress',
+            string='Comments',
+            help='Comments for Time Progress',
         ),
         'prgs_budget': fields.function(
             # using lambda to allow overwriting
             lambda self, *a, **kw: self._get_prgs_budget(*a, **kw),
-            type='float', string='Budget',
+            type='float',
+            string='Budget',
         ),
         'comment_budget': fields.char(
-            string='Comments', help='Comments for Budget Progress',
+            string='Comments',
+            help='Comments for Budget Progress',
         ),
         'realisation': fields.float(
-            string='Realisation', track_visibility='onchange',
+            string='Realisation',
+            track_visibility='onchange',
         ),
         'prgs_realisation': fields.function(
-            _get_prgs_realisation, type='float', string='Realisation',
+            lambda self, *a, **kw: self._get_prgs_realisation(*a, **kw),
+            type='float',
+            string='Realisation',
         ),
         'comment_realisation': fields.char(
-            string='Comments', help='Comments for Realisation Progress',
+            string='Comments',
+            help='Comments for Realisation Progress',
         ),
     }
 
