@@ -156,20 +156,20 @@ class program_result(orm.Model):
 
     _columns = {
         'budget_summary_ids': fields.function(
-            lambda self, *a, *kw: self._get_budget_summaries(*a, **kw),
+            lambda self, *a, **kw: self._get_budget_summaries(*a, **kw),
             type="one2many",
             obj='program.crossovered.budget.summary',
             string="Budget Summaries",
             readonly=True,
         ),
         'crossovered_budget_ids': fields.function(
-            lambda self, *a, *kw: self._get_crossovered_budgets(*a, **kw),
+            lambda self, *a, **kw: self._get_crossovered_budgets(*a, **kw),
             type='many2many',
             obj='crossovered.budget',
             string='Budgets',
         ),
         'prgs_time': fields.function(
-            lambda self, *a, *kw: self._get_prgs_time(*a, **kw),
+            lambda self, *a, **kw: self._get_prgs_time(*a, **kw),
             type='float',
             string='Time',
         ),
