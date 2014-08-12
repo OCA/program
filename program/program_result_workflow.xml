@@ -99,6 +99,36 @@
       <field name="signal">signal_open</field>
     </record>
 
+    <record id="trans_draft_mass_validate" model="workflow.transition">
+      <field name="act_from" ref="act_draft" />
+      <field name="act_to" ref="act_validated" />
+      <field name="signal">signal_mass_validate</field>
+    </record>
+
+    <record id="trans_validated_mass_validate" model="workflow.transition">
+      <field name="act_from" ref="act_validated" />
+      <field name="act_to" ref="act_visa_director" />
+      <field name="signal">signal_mass_validate</field>
+    </record>
+
+    <record id="trans_visa_director_mass_validate" model="workflow.transition">
+      <field name="act_from" ref="act_visa_director" />
+      <field name="act_to" ref="act_visa_dpe" />
+      <field name="signal">signal_mass_validate</field>
+    </record>
+
+    <record id="trans_visa_dpe_mass_validate" model="workflow.transition">
+      <field name="act_from" ref="act_visa_dpe" />
+      <field name="act_to" ref="act_visa_admin" />
+      <field name="signal">signal_mass_validate</field>
+    </record>
+
+    <record id="trans_visa_admin_mass_validate" model="workflow.transition">
+      <field name="act_from" ref="act_visa_admin" />
+      <field name="act_to" ref="program.act_opened" />
+      <field name="signal">signal_mass_validate</field>
+    </record>
+
     <record id="trans_opened_closed" model="workflow.transition">
       <field name="act_from" ref="act_opened" />
       <field name="act_to" ref="act_closed" />

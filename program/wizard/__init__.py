@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-
+# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
@@ -21,10 +20,6 @@
 ##############################################################################
 
 from . import (
-    program_result,
-    program_result_level,
-    program_result_target,
-    program_result_intervention,
-    program_result_tag,
-    wizard,
+    program_result_validation,
+    program_result_validation_line,
 )

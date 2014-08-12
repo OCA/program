@@ -230,6 +230,14 @@
       <field name="target">current</field>
     </record>
 
+    <act_window id="action_program_result_multi_validate"
+                name="Validate"
+                res_model="program.result.validation"
+                src_model="program.result"
+                view_mode="form"
+                target="new"
+                key2="client_action_multi"/>
+
     <!-- Action to open list and forms of item (view_type=tree) -->
     <record model="ir.actions.act_window" id="action_program_result_form">
         <field name="type">ir.actions.act_window</field>

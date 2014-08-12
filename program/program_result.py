@@ -24,6 +24,7 @@ import re
 
 from openerp.osv import fields, orm
 from openerp.tools.translate import _
+from openerp import netsvc
 
 
 RE_GROUP_FROM = [
@@ -34,6 +35,17 @@ RE_GROUP_TO = [
     "[('state', 'not in', ('draft', 'validated'))]",
     "[[&quot;state&quot;, &quot;not in&quot;, "
     "[&quot;draft&quot;, &quot;validated&quot;]]]",
+]
+
+STATES = [
+    ('draft', _('Draft')),
+    ('validated', _('Validated')),
+    ('visa_director', _("Director's Visa")),
+    ('visa_dpe', _("DPE's Visa")),
+    ('visa_admin', _("Admin's Visa")),
+    ('opened', _('Opened')),
+    ('closed', _('Closed')),
+    ('cancel', _('Cancelled')),
 ]
 
 
@@ -147,6 +159,13 @@ class program_result(orm.Model):
 
         return res
 
+    def mass_validate(self, cr, user, ids, context=None):
+        wf_service = netsvc.LocalService("workflow")
+        for i in ids:
+            wf_service.trg_validate(
+                user, self._name, i, 'signal_mass_validate', cr
+            )
+
     def fields_view_get(
             self, cr, uid, view_id=None, view_type='form', context=None,
             toolbar=False, submenu=False):
@@ -172,17 +191,11 @@ class program_result(orm.Model):
             track_visibility='onchange',
         ),
         'state': fields.selection(
-            [
-                ('draft', 'Draft'),
-                ('validated', 'Validated'),
-                ('visa_director', "Director's Visa"),
-                ('visa_dpe', "DPE's Visa"),
-                ('visa_admin', "Admin's Visa"),
-                ('opened', 'Opened'),
-                ('closed', 'Closed'),
-                ('cancel', 'Cancelled'),
-            ],
-            'Status', select=True, required=True, readonly=True,
+            STATES,
+            'Status',
+            select=True,
+            required=True,
+            readonly=True,
         ),
         'long_name': fields.char(
             'Long name', translate=True, track_visibility='onchange',

@@ -46,6 +46,7 @@ Contributors
     'data': [
         'security/program_security.xml',
         'security/ir.model.access.csv',
+        'wizard/program_result_validation.xml',
         'program_result_view.xml',
         'program_result_level_view.xml',
         'program_result_target_view.xml',
