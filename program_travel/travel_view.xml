@@ -9,7 +9,7 @@
       <field name="arch" type="xml">
 
         <notebook name="Info" position="inside">
-          <page name="results" string="Results">
+          <page name="results" string="Programming">
             <field name="result_ids" domain="[('state', 'not in', ['closed', 'cancel'])]"/>
           </page>
         </notebook>

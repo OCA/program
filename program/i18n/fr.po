@@ -73,7 +73,7 @@ msgstr "RE"
 #. module: program
 #: model:program.result.level,name:program.demo_result_level_imr
 msgid "Immediate Result"
-msgstr "Résultat Immédiat"
+msgstr "Résultat immédiat"
 
 #. module: program
 #: model:ir.model,name:program.model_program_result_tag
@@ -222,7 +222,7 @@ msgstr "Extrant / Réalisation E"
 #. module: program
 #: view:program.result:0
 msgid "Result Schedule"
-msgstr "Horaire des Résultats"
+msgstr "Horaire des résultats"
 
 #. module: program
 #: model:ir.ui.menu,name:program.menu_program_configuration_target
