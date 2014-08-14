@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-06 20:18+0000\n"
-"PO-Revision-Date: 2014-08-06 20:18+0000\n"
+"POT-Creation-Date: 2014-08-14 14:47+0000\n"
+"PO-Revision-Date: 2014-08-14 14:47+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -43,6 +43,11 @@ msgid "Draft"
 msgstr ""
 
 #. module: program_indicator
+#: view:program.result.indicator.value:0
+msgid "Erase Value"
+msgstr ""
+
+#. module: program_indicator
 #: model:ir.ui.menu,name:program_indicator.menu_program_indicator_action
 #: view:program.result:0
 msgid "Indicators"
@@ -51,6 +56,16 @@ msgstr ""
 #. module: program_indicator
 #: field:program.result.indicator.value,state:0
 msgid "Status"
+msgstr ""
+
+#. module: program_indicator
+#: view:program.result.indicator.value:0
+msgid "Result Indicator Values"
+msgstr ""
+
+#. module: program_indicator
+#: view:program.result.indicator.value:0
+msgid "Confirm Value"
 msgstr ""
 
 #. module: program_indicator
@@ -91,6 +106,16 @@ msgstr ""
 #. module: program_indicator
 #: field:program.result.indicator,name:0
 msgid "Name"
+msgstr ""
+
+#. module: program_indicator
+#: view:program.result.indicator.value:0
+msgid "Validate Value"
+msgstr ""
+
+#. module: program_indicator
+#: field:program.result.indicator,value_progress:0
+msgid "Value Progress"
 msgstr ""
 
 #. module: program_indicator
