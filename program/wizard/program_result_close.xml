@@ -1,0 +1,33 @@
+<?xml version = "1.0" encoding="utf-8"?>
+<!DOCTYPE openerp SYSTEM "openerp.dtd">
+<openerp>
+  <data>
+
+    <record id="program_result_multi_close" model="ir.ui.view">
+      <field name="name">Result Multi Close Form</field>
+      <field name="model">program.result.close</field>
+      <field name="arch" type="xml">
+
+        <form string="Closing Multiple Results" version="7.0">
+
+          <field name="line_ids" readonly="1">
+            <tree colors="red:is_closable == False;">
+              <field name="is_closable" invisible="1"/>
+              <field name="name" readonly="1"/>
+              <field name="state" readonly="1"/>
+            </tree>
+          </field>
+
+          <footer>
+            <button name="run" string="Close" type="object" class="oe_highlight"/>
+            or
+            <button class="oe_link" special="cancel" string="Cancel"/>
+          </footer>
+
+        </form>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>

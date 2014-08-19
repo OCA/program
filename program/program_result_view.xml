@@ -238,6 +238,15 @@
                 target="new"
                 key2="client_action_multi"/>
 
+    <act_window id="action_program_result_multi_close"
+                name="Close"
+                res_model="program.result.close"
+                src_model="program.result"
+                view_mode="form"
+                target="new"
+                groups="program.group_program_dpe"
+                key2="client_action_multi"/>
+
     <!-- Action to open list and forms of item (view_type=tree) -->
     <record model="ir.actions.act_window" id="action_program_result_form">
         <field name="type">ir.actions.act_window</field>

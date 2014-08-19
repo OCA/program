@@ -22,4 +22,6 @@
 from . import (
     program_result_validation,
     program_result_validation_line,
+    program_result_close,
+    program_result_close_line,
 )

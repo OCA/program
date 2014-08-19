@@ -135,6 +135,12 @@
       <field name="signal">signal_close</field>
     </record>
 
+    <record id="trans_visa_admin_mass_close" model="workflow.transition">
+      <field name="act_from" ref="act_opened" />
+      <field name="act_to" ref="program.act_closed" />
+      <field name="signal">signal_mass_close</field>
+    </record>
+
     <record id="trans_draft_cancel" model="workflow.transition">
       <field name="act_from" ref="act_draft" />
       <field name="act_to" ref="act_cancel" />

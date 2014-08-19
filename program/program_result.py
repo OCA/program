@@ -166,6 +166,13 @@ class program_result(orm.Model):
                 user, self._name, i, 'signal_mass_validate', cr
             )
 
+    def mass_close(self, cr, user, ids, context=None):
+        wf_service = netsvc.LocalService("workflow")
+        for i in ids:
+            wf_service.trg_validate(
+                user, self._name, i, 'signal_mass_close', cr
+            )
+
     def fields_view_get(
             self, cr, uid, view_id=None, view_type='form', context=None,
             toolbar=False, submenu=False):
