@@ -84,7 +84,7 @@ class program_indicator_result(orm.Model):
             indicator.write({'value_logged_ids': [(4, value_id)]})
 
     _columns = {
-        'name': fields.char('Name'),
+        'name': fields.char('Name', required=True),
         'result_id': fields.many2one(
             'program.result',
             'Result',
