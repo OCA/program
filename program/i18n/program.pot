@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-12 22:09+0000\n"
-"PO-Revision-Date: 2014-08-12 22:09+0000\n"
+"POT-Creation-Date: 2014-08-19 22:39+0000\n"
+"PO-Revision-Date: 2014-08-19 22:39+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -89,7 +89,7 @@ msgid "Validate"
 msgstr ""
 
 #. module: program
-#: code:addons/program/program_result.py:267
+#: code:addons/program/program_result.py:274
 #, python-format
 msgid "Error! You can not create recursive Results."
 msgstr ""
@@ -118,6 +118,7 @@ msgstr ""
 #. module: program
 #: code:addons/program/program_result.py:48
 #: selection:program.result,state:0
+#: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
 msgid "Cancelled"
@@ -155,13 +156,14 @@ msgid "Holds the Chatter summary (number of messages, ...). This summary is dire
 msgstr ""
 
 #. module: program
-#: view:program.result:0
-msgid "Tag"
+#: model:ir.module.category,name:program.module_category_program
+msgid "Program"
 msgstr ""
 
 #. module: program
 #: code:addons/program/program_result.py:44
 #: selection:program.result,state:0
+#: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
 msgid "DPE's Visa"
@@ -178,6 +180,7 @@ msgid "Search Result Tag"
 msgstr ""
 
 #. module: program
+#: field:program.result.close.line,state:0
 #: field:program.result.validation.line,state:0
 msgid "State"
 msgstr ""
@@ -199,8 +202,8 @@ msgid "Contributed by label"
 msgstr ""
 
 #. module: program
-#: model:program.result,name:program.demo_program_result_imr_I
-msgid "Immediate Result I"
+#: view:program.result:0
+msgid "Tag"
 msgstr ""
 
 #. module: program
@@ -209,8 +212,8 @@ msgid "Result Intervention Method"
 msgstr ""
 
 #. module: program
-#: model:program.result,name:program.demo_program_result_fr_G
-msgid "Final Result G"
+#: model:ir.ui.menu,name:program.menu_program_configuration_target
+msgid "Result Target Types"
 msgstr ""
 
 #. module: program
@@ -219,13 +222,18 @@ msgid "Realisation E"
 msgstr ""
 
 #. module: program
+#: model:ir.model,name:program.model_program_result_close_line
+msgid "Result Mass Closer Line"
+msgstr ""
+
+#. module: program
 #: view:program.result:0
 msgid "Result Schedule"
 msgstr ""
 
 #. module: program
-#: model:ir.ui.menu,name:program.menu_program_configuration_target
-msgid "Result Target Types"
+#: model:program.result,name:program.demo_program_result_fr_G
+msgid "Final Result G"
 msgstr ""
 
 #. module: program
@@ -241,6 +249,7 @@ msgstr ""
 #. module: program
 #: code:addons/program/program_result.py:45
 #: selection:program.result,state:0
+#: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
 msgid "Admin's Visa"
@@ -285,6 +294,7 @@ msgid "Start Date"
 msgstr ""
 
 #. module: program
+#: view:program.result.close:0
 #: view:program.result.validation:0
 msgid "or"
 msgstr ""
@@ -302,12 +312,14 @@ msgstr ""
 #. module: program
 #: code:addons/program/program_result.py:46
 #: selection:program.result,state:0
+#: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
 msgid "Opened"
 msgstr ""
 
 #. module: program
+#: field:program.result.close.line,is_closable:0
 #: field:program.result.validation.line,is_validatable:0
 msgid "Can be Validated"
 msgstr ""
@@ -318,13 +330,21 @@ msgid "Basic User"
 msgstr ""
 
 #. module: program
-#: model:ir.module.category,name:program.module_category_program
-msgid "Program"
+#: model:ir.model,name:program.model_program_result_target
+#: view:program.result.tag:0
+#: view:program.result.target:0
+msgid "Result Target"
+msgstr ""
+
+#. module: program
+#: model:ir.model,name:program.model_program_result_close
+msgid "Result Mass Closer"
 msgstr ""
 
 #. module: program
 #: code:addons/program/program_result.py:41
 #: selection:program.result,state:0
+#: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
 msgid "Draft"
@@ -333,6 +353,7 @@ msgstr ""
 #. module: program
 #: code:addons/program/program_result.py:47
 #: selection:program.result,state:0
+#: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
 msgid "Closed"
@@ -360,6 +381,14 @@ msgid "Contributes to"
 msgstr ""
 
 #. module: program
+#: code:addons/program/wizard/program_result_close.py:77
+#, python-format
+msgid "The following results cannot be closed or you don't have the required permissions:\n"
+"\n"
+"%s"
+msgstr ""
+
+#. module: program
 #: model:program.result.level,code:program.demo_result_level_imr
 msgid "ImR"
 msgstr ""
@@ -375,10 +404,8 @@ msgid "Target Audience Types"
 msgstr ""
 
 #. module: program
-#: model:ir.model,name:program.model_program_result_target
-#: view:program.result.tag:0
-#: view:program.result.target:0
-msgid "Result Target"
+#: model:program.result,name:program.demo_program_result_imr_I
+msgid "Immediate Result I"
 msgstr ""
 
 #. module: program
@@ -414,9 +441,15 @@ msgid "Summary"
 msgstr ""
 
 #. module: program
+#: code:addons/program/wizard/program_result_close.py:76
 #: code:addons/program/wizard/program_result_validation.py:76
 #, python-format
 msgid "Error"
+msgstr ""
+
+#. module: program
+#: view:program.result.close:0
+msgid "Closing Multiple Results"
 msgstr ""
 
 #. module: program
@@ -441,18 +474,22 @@ msgstr ""
 
 #. module: program
 #: view:program.result:0
+#: view:program.result.close:0
 #: view:program.result.validation:0
 msgid "Cancel"
 msgstr ""
 
 #. module: program
+#: model:ir.actions.act_window,name:program.action_program_result_multi_close
 #: view:program.result:0
+#: view:program.result.close:0
 msgid "Close"
 msgstr ""
 
 #. module: program
 #: code:addons/program/program_result.py:42
 #: selection:program.result,state:0
+#: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
 msgid "Validated"
@@ -499,6 +536,8 @@ msgstr ""
 #: model:ir.ui.menu,name:program.menu_program_result
 #: model:ir.ui.menu,name:program.menu_program_result_result
 #: view:program.result:0
+#: field:program.result.close,line_ids:0
+#: field:program.result.close.line,result_id:0
 #: field:program.result.validation,line_ids:0
 #: field:program.result.validation.line,result_id:0
 msgid "Results"
@@ -544,6 +583,7 @@ msgstr ""
 #. module: program
 #: code:addons/program/program_result.py:43
 #: selection:program.result,state:0
+#: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
 msgid "Director's Visa"
@@ -567,6 +607,7 @@ msgstr ""
 #. module: program
 #: view:program.result:0
 #: field:program.result,name:0
+#: field:program.result.close.line,name:0
 #: field:program.result.intervention,name:0
 #: field:program.result.level,name:0
 #: field:program.result.tag,name:0
