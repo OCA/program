@@ -516,8 +516,8 @@ msgid "Mission F"
 msgstr ""
 
 #. module: program
-#: field:program.result,long_name:0
-msgid "Long name"
+#: field:program.result,statement:0
+msgid "Statement of result"
 msgstr ""
 
 #. module: program

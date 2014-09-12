@@ -81,7 +81,7 @@
             </div>
 
             <group colspan="4" col="2">
-              <field name="long_name"
+              <field name="statement"
                      attrs="{'readonly': [('state', '!=', 'draft')]}"/>
               <field name="tag_ids"
                      widget="many2many_tags"/>

@@ -204,8 +204,8 @@ class program_result(orm.Model):
             required=True,
             readonly=True,
         ),
-        'long_name': fields.char(
-            'Long name', translate=True, track_visibility='onchange',
+        'statement': fields.char(
+            'Statement of result', translate=True, track_visibility='onchange',
         ),
         'parent_id': fields.many2one(
             'program.result', string='Parent', select=True,

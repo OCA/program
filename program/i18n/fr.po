@@ -519,9 +519,9 @@ msgid "Mission F"
 msgstr "Mission F"
 
 #. module: program
-#: field:program.result,long_name:0
-msgid "Long name"
-msgstr "Nom long"
+#: field:program.result,statement:0
+msgid "Statement of result"
+msgstr "Enoncé de résultat"
 
 #. module: program
 #: model:program.result,name:program.demo_program_result_imr_D
