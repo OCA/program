@@ -43,10 +43,6 @@
             </group>
 
             <notebook>
-              <page name="evaluators" string="Evaluators">
-                <field name="evaluator_ids"
-                       domain="[('is_company', '=', False), ('contact_id', '=', False)]"/>
-              </page>
               <page name="recommendations" string="Recommendations">
                 <field name="recommendation_ids"
                        context="{ 'default_evaluation_id': active_id }"/>

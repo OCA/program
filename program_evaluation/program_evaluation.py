@@ -45,9 +45,6 @@ class program_evaluation(orm.Model):
         'result_id': fields.many2one('program.result', 'Result'),
         'date_start': fields.date('Start date'),
         'date_end': fields.date('End date'),
-        'evaluator_ids': fields.many2many(
-            'res.partner', 'evaluators_rel', 'from_id', 'to_id',
-            string='Evaluator'),
         'recommendation_ids': fields.one2many(
             'program.recommendation', 'evaluation_id', 'Recommendation'),
     }

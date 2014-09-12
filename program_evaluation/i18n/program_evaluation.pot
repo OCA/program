@@ -109,12 +109,6 @@ msgid "Cancelled"
 msgstr ""
 
 #. module: program_evaluation
-#: field:program.evaluation,evaluator_ids:0
-#: model:res.groups,name:program_evaluation.group_program_evaluator
-msgid "Evaluator"
-msgstr ""
-
-#. module: program_evaluation
 #: field:program.evaluation,date_end:0
 msgid "End date"
 msgstr ""
