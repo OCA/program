@@ -2,7 +2,7 @@
 ############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    This module copyright (C) 2013 Savoir-faire Linux
+#    This module copyright (C) 2014 Savoir-faire Linux
 #    (<http://www.savoirfairelinux.com>).
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,7 @@
 ############################################################################
 
 {
-    'name': 'Program Evaluation',
+    'name': 'Program Evaluation - Team',
     'version': '1.1',
     'author': 'Savoir-faire Linux',
     'maintainer': 'Savoir-faire Linux',
@@ -30,28 +30,22 @@
     'license': 'AGPL-3',
     'summary': 'Program Evaluation',
     'description': """
-Program Evaluation
-==================
+Program Evaluation - Team bindings
+==================================
+
+Add department to recommendation
 
 Contributors
 -------------
-* David Cormier (david.cormier@savoirfairelinux.com)
 * Sandy Carter (sandy.carter@savoirfairelinux.com)
 """,
     'depends': [
-        'program'
+        'program_evaluation',
+        'program_team',
     ],
-    'external_dependencies': {},
     'data': [
-        'security/program_evaluation_security.xml',
-        'security/ir.model.access.csv',
-        'program_evaluation_view.xml',
         'program_recommendation_view.xml',
-        'program_evaluation_workflow.xml',
-        'program_result_view.xml'
     ],
-    'demo': [
-    ],
-    'test': [],
     'installable': True,
+    'auto_install': True,
 }

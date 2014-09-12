@@ -5,30 +5,27 @@
     <record id="view_program_evaluation_recommendation_tree" model="ir.ui.view">
       <field name="name">Program Evaluation Recommendation Tree</field>
       <field name="model">program.recommendation</field>
+      <field name="inherit_id" ref="program_evaluation.view_program_evaluation_recommendation_tree"/>
       <field name="arch" type="xml">
-        <tree string="Recommendation" version="7.0">
-          <field name="code" />
-          <field name="name" />
-        </tree>
+
+        <field name="name" position="after">
+          <field name="department_id"/>
+        </field>
+
       </field>
     </record>
 
     <record id="view_program_evaluation_recommendation_form" model="ir.ui.view">
       <field name="name">Program Evaluation Recommendation Form</field>
       <field name="model">program.recommendation</field>
+      <field name="inherit_id" ref="program_evaluation.view_program_evaluation_recommendation_form"/>
       <field name="arch" type="xml">
 
-        <form string="Recommendation" version="7.0">
-          <sheet>
-            <group col="4">
-              <field name="name" />
-              <div colspan="2"/>
-              <field name="code" />
-              <div colspan="2"/>
-              <field name="description" colspan="4"/>
-            </group>
-          </sheet>
-        </form>
+        <field name="description" position="before">
+          <field name="department_id"/>
+          <div colspan="2"/>
+        </field>
+
       </field>
     </record>
 
