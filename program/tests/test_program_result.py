@@ -66,6 +66,26 @@ class test_program_result(TransactionCase):
             self.cr, self.uid, self.result_id, context=self.context)
         self.assertEquals(result.name, vals['name'])
 
+    def test_name_get_program_result(self):
+        self.assertEqual(
+            self.program_result_model.name_get(
+                self.cr, self.uid, self.result_id, context=self.context
+            )[0][1],
+            "%s-%s" % (self.vals['code'], self.vals['name'])
+        )
+        vals = {
+            'code': False,
+        }
+        self.program_result_model.write(
+            self.cr, self.uid, self.result_id, vals, context=self.context
+        )
+        self.assertEqual(
+            self.program_result_model.name_get(
+                self.cr, self.uid, self.result_id, context=self.context
+            )[0][1],
+            self.vals['name']
+        )
+
     def test_get_descendants_program_result(self):
         parent_result = self.program_result_model.browse(
             self.cr, self.uid, self.parent_id, context=self.context)

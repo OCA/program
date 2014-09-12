@@ -192,6 +192,18 @@ class program_result(orm.Model):
                 res['arch'] = FROM.sub(TO, res['arch'])
         return res
 
+    def name_get(self, cr, user, ids, context=None):
+        """Format name as code-name or one or the other if the
+        other doesn't exist
+        """
+        fields = ['code', 'name']
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        return [
+            (r['id'], '-'.join(filter(None, (r[f] for f in fields))))
+            for r in self.read(cr, user, ids, fields, context=context)
+        ]
+
     _columns = {
         'name': fields.char(
             'Name', required=True, select=True, translate=True,
