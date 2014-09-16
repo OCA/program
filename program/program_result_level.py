@@ -30,6 +30,77 @@ class program_result_level(orm.Model):
     _description = 'Result Level'
     _parent_name = 'parent_id'
 
+    def create(self, cr, user, vals, context=None):
+        """Create a menu entry for each level
+
+        Clone regular result view
+        Clone regular result view action
+        Redirect link through ir.values so new view links to new action
+        """
+        # Get pools
+        menu_pool = self.pool['ir.ui.menu']
+        values_pool = self.pool['ir.values']
+        act_pool = self.pool['ir.actions.act_window']
+        # Get xml_id with references
+        template_menu_id = self.pool['ir.model.data'].get_object_reference(
+            cr, user, 'program', 'menu_program_result_result'
+        )[1]
+        template_action_id = self.pool['ir.model.data'].get_object_reference(
+            cr, user, 'program', 'action_program_result_list'
+        )[1]
+        # Clone objects
+        act_id = act_pool.copy(cr, user, template_action_id, context=context)
+        menu_id = menu_pool.copy(cr, user, template_menu_id, context=context)
+        # Set menu entry name
+        menu_pool.write(
+            cr, user, menu_id,
+            {'name': vals['name']},
+            context=context
+        )
+        # Link action in menu
+        values_id = self.pool['ir.values'].search(
+            cr, user, [('res_id', '=', menu_id)], context=context
+        )
+        values_pool.write(
+            cr, user, values_id,
+            {'value': 'ir.actions.act_window,%d' % act_id},
+            context=context
+        )
+        # Create level with menu ref
+        vals['menu_id'] = menu_id
+        res = super(program_result_level, self).create(
+            cr, user, vals, context=context
+        )
+        # Set domain to be only this level
+        act_pool.write(
+            cr, user, act_id,
+            {'domain': [('result_level_id', '=', res)]},
+            context=context
+        )
+        return res
+
+    def write(self, cr, user, ids, vals, context=None):
+        """Update menu entry for each level"""
+        name = vals.get('name')
+        if name:
+            for level in self.browse(cr, user, ids, context=context):
+                level.menu_id.write({'name': name})
+        return super(program_result_level, self).write(
+            cr, user, ids, vals, context=context
+        )
+
+    def unlink(self, cr, uid, ids, context=None):
+        menu_pool = self.pool['ir.ui.menu']
+        menu_ids = set(
+            l['menu_id'][0]
+            for l in self.read(cr, uid, ids, ['menu_id'], context=context)
+        )
+        res = super(program_result_level, self).unlink(
+            cr, uid, ids, context=context
+        )
+        res &= menu_pool.unlink(cr, uid, list(menu_ids), context=context)
+        return res
+
     def name_get(self, cr, uid, ids, context=None):
         if not isinstance(ids, list):
             ids = [ids]
@@ -62,6 +133,7 @@ class program_result_level(orm.Model):
         'depth': fields.function(
             _get_depth, type='integer', string='Level', store=True
         ),
+        'menu_id': fields.many2one('ir.ui.menu', 'Menu', required=True),
     }
 
     def _rec_message(self, cr, uid, ids, context=None):
