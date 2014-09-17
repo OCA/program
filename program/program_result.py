@@ -36,6 +36,7 @@ RE_GROUP_TO = [
     "[[&quot;state&quot;, &quot;not in&quot;, "
     "[&quot;draft&quot;, &quot;validated&quot;]]]",
 ]
+RE_INTERVENTION_ID = re.compile('<field name="intervention_id".*/>')
 
 STATES = [
     ('draft', _('Draft')),
@@ -214,6 +215,22 @@ class program_result(orm.Model):
         res = {}
         if parent_depth == -1:
             res['domain'] = {'parent_id': []}
+        return res
+
+    def fields_view_get(
+            self, cr, user, view_id=None, view_type='form', context=None,
+            toolbar=False, submenu=False):
+        """Remove intervention_id from all but last level results"""
+        res = super(program_result, self).fields_view_get(
+            cr, user, view_id, view_type, context, toolbar, submenu
+        )
+        if view_type == 'form':
+            lower_level = self.pool['program.result.level'].search(
+                cr, user, [], order='depth desc', limit=1, context=context
+            )
+            parent_depth = context.get('default_parent_depth')
+            if lower_level and lower_level[0] - 1 != parent_depth:
+                res['arch'] = RE_INTERVENTION_ID.sub('', res['arch'])
         return res
 
     _columns = {
