@@ -150,6 +150,12 @@ class program_result(orm.Model):
             vals['result_level_id'] = self._result_level_id(
                 cr, user, parent_id=parent_id, context=context
             )
+            if parent_id is False:
+                vals['parent_depth'] = 0
+            elif parent_id:
+                vals['parent_depth'] = self.read(
+                    cr, user, parent_id, ['depth'], context=context
+                )['depth']
         res = super(program_result, self).write(
             cr, user, ids, vals, context=context
         )
@@ -204,6 +210,12 @@ class program_result(orm.Model):
             for r in self.read(cr, user, ids, fields, context=context)
         ]
 
+    def onchange_parent_depth(self, cr, user, ids, parent_depth, context=None):
+        res = {}
+        if parent_depth == -1:
+            res['domain'] = {'parent_id': []}
+        return res
+
     _columns = {
         'name': fields.char(
             'Name', required=True, select=True, translate=True,
@@ -220,12 +232,17 @@ class program_result(orm.Model):
             'Statement of result', translate=True, track_visibility='onchange',
         ),
         'parent_id': fields.many2one(
-            'program.result', string='Parent', select=True,
+            'program.result',
+            string='Parent',
+            select=True,
             track_visibility='onchange',
+            domain="[('id', '!=', id), "
+                   "('depth', '=', parent_depth or parent_id.depth)]",
         ),
         'parent_id2': fields.function(
             _get_parent_id, type='many2one', relation='program.result',
             string='Parent', readonly=True),
+        'parent_depth': fields.integer('Parent Depth'),
         'child_ids': fields.one2many(
             'program.result', 'parent_id', string='Child Results',
             track_visibility='onchange',
@@ -280,6 +297,7 @@ class program_result(orm.Model):
             lambda self, cr, uid, context:
             self._result_level_id(cr, uid, context=context)
         ),
+        'parent_depth': -1,
     }
 
     def _rec_message(self, cr, uid, ids, context=None):

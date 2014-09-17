@@ -38,6 +38,7 @@ class program_result_level(orm.Model):
         Redirect link through ir.values so new view links to new action
         """
         # Get pools
+        trans_pool = self.pool['ir.translation']
         menu_pool = self.pool['ir.ui.menu']
         values_pool = self.pool['ir.values']
         act_pool = self.pool['ir.actions.act_window']
@@ -51,6 +52,11 @@ class program_result_level(orm.Model):
         # Clone objects
         act_id = act_pool.copy(cr, user, template_action_id, context=context)
         menu_id = menu_pool.copy(cr, user, template_menu_id, context=context)
+        # Fix duplication of translation
+        trans_ids = trans_pool.search(
+            cr, user, [('res_id', 'in', [act_id, menu_id])], context=context
+        )
+        trans_pool.unlink(cr, user, trans_ids, context=context)
         # Set menu entry name
         menu_pool.write(
             cr, user, menu_id,
@@ -72,19 +78,36 @@ class program_result_level(orm.Model):
             cr, user, vals, context=context
         )
         # Set domain to be only this level
-        act_pool.write(
-            cr, user, act_id,
-            {'domain': [('result_level_id', '=', res)]},
-            context=context
-        )
+        act_vals = {'domain': [('result_level_id', '=', res)]}
+        parent_id = vals.get('parent_id')
+        if parent_id:
+            depth = self.read(
+                cr, user, parent_id, ['depth'], context=context
+            )['depth']
+            act_vals['context'] = {'default_parent_depth': depth}
+        else:
+            act_vals['context'] = {'default_parent_depth': -1}
+        act_pool.write(cr, user, act_id, act_vals, context=context)
         return res
 
     def write(self, cr, user, ids, vals, context=None):
         """Update menu entry for each level"""
         name = vals.get('name')
-        if name:
-            for level in self.browse(cr, user, ids, context=context):
+        parent_id = vals.get('parent_id')
+
+        for level in self.browse(cr, user, ids, context=context):
+            if name:
                 level.menu_id.write({'name': name})
+            if parent_id is not None:
+                depth = self.read(
+                    cr, user, parent_id, ['depth'], context=context
+                )['depth']
+                if parent_id is False:
+                    level.menu_id.action({'context': False})
+                else:
+                    level.menu_id.action.write({
+                        'context': {'default_parent_depth': depth}
+                    })
         return super(program_result_level, self).write(
             cr, user, ids, vals, context=context
         )
