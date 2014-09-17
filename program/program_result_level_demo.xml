@@ -31,5 +31,11 @@
       <field name="parent_id" ref="demo_result_level_imr"/>
     </record>
 
+    <record id="demo_result_level_act" model="program.result.level">
+      <field name="name">Activity</field>
+      <field name="code">AC</field>
+      <field name="parent_id" ref="demo_result_level_re"/>
+    </record>
+
   </data>
 </openerp>
