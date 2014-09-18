@@ -95,6 +95,7 @@ class program_result_level(orm.Model):
             act_vals['context'] = {'default_parent_depth': depth}
         else:
             act_vals['context'] = {'default_parent_depth': -1}
+        act_vals['context'].update({'default_result_level_id': res})
         act_pool.write(cr, user, act_id, act_vals, context=context)
         return res
 
