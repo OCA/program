@@ -21,10 +21,13 @@
 ##############################################################################
 
 import re
+from lxml import etree
 
 from openerp.osv import fields, orm
+from openerp.tools.safe_eval import safe_eval
 from openerp.tools.translate import _
 from openerp import netsvc
+import simplejson
 
 
 RE_GROUP_FROM = [
@@ -36,7 +39,6 @@ RE_GROUP_TO = [
     "[[&quot;state&quot;, &quot;not in&quot;, "
     "[&quot;draft&quot;, &quot;validated&quot;]]]",
 ]
-RE_INTERVENTION_ID = re.compile('<field name="intervention_id".*/>')
 
 STATES = [
     ('draft', _('Draft')),
@@ -181,22 +183,59 @@ class program_result(orm.Model):
             )
 
     def fields_view_get(
-            self, cr, uid, view_id=None, view_type='form', context=None,
+            self, cr, user, view_id=None, view_type='form', context=None,
             toolbar=False, submenu=False):
         """Change the readonly fields depending on the groups
+        and the settings of the levels
 
         Look for the strings "[('state', '!=', 'draft')]"
         exactly in the xml view and replace it with
         "[('state', 'not in', ('draft', 'validated'))]"
+
+        Hide intervention_id in all but last level results
+        Hide pages and fields according to the config parameters of
+        the level
         """
-        user_pool = self.pool['res.users']
+        def hide_elem(elem, invisible="true"):
+            modifiers = safe_eval(elem.attrib.get('modifiers', "{}"))
+            modifiers['invisible'] = invisible
+            elem.attrib['modifiers'] = simplejson.dumps(modifiers)
+
         res = super(program_result, self).fields_view_get(
-            cr, uid, view_id, view_type, context, toolbar, submenu
+            cr, user, view_id, view_type, context, toolbar, submenu
         )
-        if (user_pool.has_group(cr, uid, 'program.group_program_director')
-                and view_type == 'form'):
-            for FROM, TO in zip(RE_GROUP_FROM, RE_GROUP_TO):
-                res['arch'] = FROM.sub(TO, res['arch'])
+
+        if view_type == 'form':
+            user_pool = self.pool['res.users']
+            level_pool = self.pool['program.result.level']
+            # Change the readonly fields depending on the groups
+            if user_pool.has_group(cr, user, 'program.group_program_director'):
+                for FROM, TO in zip(RE_GROUP_FROM, RE_GROUP_TO):
+                    res['arch'] = FROM.sub(TO, res['arch'])
+
+            arch = etree.fromstring(res['arch'])
+
+            # Hide intervention_id from all but last level of results
+            lower_level = self.pool['program.result.level'].search(
+                cr, user, [], order='depth desc', limit=1, context=context
+            )
+            parent_depth = context.get('default_parent_depth')
+            if lower_level and lower_level[0] - 1 != parent_depth:
+                map(hide_elem, arch.xpath("//field[@name='intervention_id']"))
+
+            # Hide pages according to level specification
+            for column in level_pool._columns:
+                m = re.match('^fvg_show_([^_]*)_([^_]*)', column)
+                if not m:
+                    continue
+                xpath = "//%s[@name='%s']" % (m.group(1), m.group(2))
+                hidden_levels = level_pool.search(
+                    cr, user, [(column, '=', False)], context=context
+                )
+                for elem in arch.xpath(xpath):
+                    hide_elem(elem, [('result_level_id', 'in', hidden_levels)])
+
+            res['arch'] = etree.tostring(arch)
         return res
 
     def name_get(self, cr, user, ids, context=None):
@@ -217,22 +256,6 @@ class program_result(orm.Model):
             res['domain'] = {'parent_id': []}
         return res
 
-    def fields_view_get(
-            self, cr, user, view_id=None, view_type='form', context=None,
-            toolbar=False, submenu=False):
-        """Remove intervention_id from all but last level results"""
-        res = super(program_result, self).fields_view_get(
-            cr, user, view_id, view_type, context, toolbar, submenu
-        )
-        if view_type == 'form':
-            lower_level = self.pool['program.result.level'].search(
-                cr, user, [], order='depth desc', limit=1, context=context
-            )
-            parent_depth = context.get('default_parent_depth')
-            if lower_level and lower_level[0] - 1 != parent_depth:
-                res['arch'] = RE_INTERVENTION_ID.sub('', res['arch'])
-        return res
-
     _columns = {
         'name': fields.char(
             'Name', required=True, select=True, translate=True,
@@ -246,7 +269,7 @@ class program_result(orm.Model):
             readonly=True,
         ),
         'statement': fields.char(
-            'Statement of result', translate=True, track_visibility='onchange',
+            'Statement of Result', translate=True, track_visibility='onchange',
         ),
         'parent_id': fields.many2one(
             'program.result',

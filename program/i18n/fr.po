@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-19 22:39+0000\n"
-"PO-Revision-Date: 2014-08-19 18:41-0500\n"
+"POT-Creation-Date: 2014-09-18 16:43+0000\n"
+"PO-Revision-Date: 2014-09-18 12:45-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -15,17 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #. module: program
-#: model:program.result.level,name:program.demo_result_level_re
-msgid "Realisation"
-msgstr "Extrant / Réalisation"
-
-#. module: program
-#: model:program.result.level,name:program.demo_result_level_fr
-msgid "Final Result"
-msgstr "Résultat final"
+#: view:program.result:0
+msgid "Search Results"
+msgstr "Rechercher les Résultats : "
 
 #. module: program
 #: model:res.groups,comment:program.group_program_dpe
@@ -34,7 +29,7 @@ msgid "Evaluation and Planing Directorate"
 msgstr "Direction Planification et Evaluation (DPE)"
 
 #. module: program
-#: code:addons/program/program_result.py:85
+#: code:addons/program/program_result.py:88
 #, python-format
 msgid "%s contributes to"
 msgstr "%s contribue à"
@@ -66,16 +61,6 @@ msgid "Director"
 msgstr "Directeur"
 
 #. module: program
-#: model:program.result.level,code:program.demo_result_level_re
-msgid "RE"
-msgstr "RE"
-
-#. module: program
-#: model:program.result.level,name:program.demo_result_level_imr
-msgid "Immediate Result"
-msgstr "Résultat immédiat"
-
-#. module: program
 #: model:ir.model,name:program.model_program_result_tag
 #: view:program.result.tag:0
 msgid "Result Tag"
@@ -88,7 +73,7 @@ msgid "Validate"
 msgstr "Valider"
 
 #. module: program
-#: code:addons/program/program_result.py:274
+#: code:addons/program/program_result.py:344
 #, python-format
 msgid "Error! You can not create recursive Results."
 msgstr "Erreur ! Vous ne pouvez pas créer de résultats récursifs"
@@ -109,13 +94,13 @@ msgid "Search Result Levels"
 msgstr "Rechercher dans les niveaux de résultats"
 
 #. module: program
-#: code:addons/program/program_result.py:95
+#: code:addons/program/program_result.py:98
 #, python-format
 msgid "Contributed by %s"
 msgstr "Résultats contribuant à %s"
 
 #. module: program
-#: code:addons/program/program_result.py:48 selection:program.result,state:0
+#: code:addons/program/program_result.py:51 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
@@ -133,9 +118,9 @@ msgid "If checked new messages require your attention."
 msgstr "Si coché, les nouveaux messages demanderont votre attention."
 
 #. module: program
-#: model:ir.ui.menu,name:program.menu_program_configuration
-msgid "Configuration"
-msgstr "Configuration"
+#: view:program.result.intervention:0
+msgid "Result Intervention Method"
+msgstr "Modes d'intervention de résultat"
 
 #. module: program
 #: model:ir.actions.act_window,name:program.action_program_result_level_tree
@@ -158,12 +143,12 @@ msgstr ""
 "au format HTML pour permettre son utilisation dans les vues kanban."
 
 #. module: program
-#: model:ir.module.category,name:program.module_category_program
-msgid "Program"
-msgstr "Programme"
+#: view:program.result:0
+msgid "Tag"
+msgstr "Étiquette"
 
 #. module: program
-#: code:addons/program/program_result.py:44 selection:program.result,state:0
+#: code:addons/program/program_result.py:47 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
@@ -203,24 +188,9 @@ msgid "Contributed by label"
 msgstr "Résultats contribuant à (libellé)"
 
 #. module: program
-#: view:program.result:0
-msgid "Tag"
-msgstr "Étiquette"
-
-#. module: program
-#: view:program.result.intervention:0
-msgid "Result Intervention Method"
-msgstr "Modes d'intervention de résultat"
-
-#. module: program
-#: model:ir.ui.menu,name:program.menu_program_configuration_target
-msgid "Result Target Types"
-msgstr "Types de publics cibles"
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_re_E
-msgid "Realisation E"
-msgstr "Extrant / Réalisation E"
+#: model:ir.ui.menu,name:program.menu_program_configuration
+msgid "Configuration"
+msgstr "Configuration"
 
 #. module: program
 #: model:ir.model,name:program.model_program_result_close_line
@@ -233,9 +203,9 @@ msgid "Result Schedule"
 msgstr "Horaire des résultats"
 
 #. module: program
-#: model:program.result,name:program.demo_program_result_fr_G
-msgid "Final Result G"
-msgstr "Résultat final G"
+#: model:ir.ui.menu,name:program.menu_program_configuration_target
+msgid "Result Target Types"
+msgstr "Types de publics cibles"
 
 #. module: program
 #: model:ir.model,name:program.model_program_result_validation
@@ -243,12 +213,7 @@ msgid "Result Mass Validator"
 msgstr "Validateur de masse de résultat"
 
 #. module: program
-#: model:program.result,name:program.demo_program_result_fr_B
-msgid "Final Result B"
-msgstr "Résultat final B"
-
-#. module: program
-#: code:addons/program/program_result.py:45 selection:program.result,state:0
+#: code:addons/program/program_result.py:48 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
@@ -259,11 +224,6 @@ msgstr "Visa Admin"
 #: field:program.result,child_ids:0
 msgid "Child Results"
 msgstr "Résultats fils"
-
-#. module: program
-#: model:program.result.level,code:program.demo_result_level_mi
-msgid "MI"
-msgstr "MI"
 
 #. module: program
 #: field:program.result,intervention_id:0
@@ -298,6 +258,11 @@ msgid "or"
 msgstr "ou"
 
 #. module: program
+#: field:program.result.level,fvg_show_page_target:0
+msgid "Show \"Targets\" Tab"
+msgstr "Montrer l'onglet « Cibles »"
+
+#. module: program
 #: model:res.groups,comment:program.group_program_manager
 msgid "Program Managers have full access to configuration"
 msgstr ""
@@ -305,12 +270,7 @@ msgstr ""
 "configuration"
 
 #. module: program
-#: model:program.result.level,code:program.demo_result_level_fr
-msgid "FR"
-msgstr "RF"
-
-#. module: program
-#: code:addons/program/program_result.py:46 selection:program.result,state:0
+#: code:addons/program/program_result.py:49 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
@@ -324,15 +284,14 @@ msgid "Can be Validated"
 msgstr "Peut être validé"
 
 #. module: program
+#: field:program.result,statement:0
+msgid "Statement of Result"
+msgstr "Enoncé de résultat"
+
+#. module: program
 #: model:res.groups,name:program.group_program_basic_user
 msgid "Basic User"
 msgstr "Utilisateur de base"
-
-#. module: program
-#: model:ir.model,name:program.model_program_result_target
-#: view:program.result.tag:0 view:program.result.target:0
-msgid "Result Target"
-msgstr "Cible de Résultat"
 
 #. module: program
 #: model:ir.model,name:program.model_program_result_close
@@ -340,7 +299,7 @@ msgid "Result Mass Closer"
 msgstr "Fermeture de masse de résultat"
 
 #. module: program
-#: code:addons/program/program_result.py:41 selection:program.result,state:0
+#: code:addons/program/program_result.py:44 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
@@ -348,12 +307,22 @@ msgid "Draft"
 msgstr "Brouillon"
 
 #. module: program
-#: code:addons/program/program_result.py:47 selection:program.result,state:0
+#: code:addons/program/program_result.py:50 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
 msgid "Closed"
 msgstr "Fermé"
+
+#. module: program
+#: model:ir.module.category,name:program.module_category_program
+msgid "Program"
+msgstr "Programme"
+
+#. module: program
+#: field:program.result,parent_depth:0
+msgid "Parent Depth"
+msgstr "Profondeur du parent"
 
 #. module: program
 #: field:program.result,state:0
@@ -391,11 +360,6 @@ msgstr ""
 "%s"
 
 #. module: program
-#: model:program.result.level,code:program.demo_result_level_imr
-msgid "ImR"
-msgstr "RIm"
-
-#. module: program
 #: field:program.result,message_is_follower:0
 msgid "Is a Follower"
 msgstr "Est abonné"
@@ -406,9 +370,9 @@ msgid "Target Audience Types"
 msgstr "Types de publics cibles"
 
 #. module: program
-#: model:program.result,name:program.demo_program_result_imr_I
-msgid "Immediate Result I"
-msgstr "Résultat Immédiat I"
+#: field:program.result.level,child_id:0
+msgid "Child"
+msgstr "Enfant"
 
 #. module: program
 #: field:program.result.tag,active:0 field:program.result.target,active:0
@@ -432,9 +396,10 @@ msgid "Result Level"
 msgstr "Niveau de résultats"
 
 #. module: program
-#: field:program.result.level,child_id:0
-msgid "Child"
-msgstr "Enfant"
+#: model:ir.model,name:program.model_program_result_target
+#: view:program.result.tag:0 view:program.result.target:0
+msgid "Result Target"
+msgstr "Cible de Résultat"
 
 #. module: program
 #: field:program.result,message_summary:0
@@ -447,6 +412,11 @@ msgstr "Résumé"
 #, python-format
 msgid "Error"
 msgstr "Erreur"
+
+#. module: program
+#: field:program.result.level,fvg_show_field_statement:0
+msgid "Show \"Statement of Result\" Field"
+msgstr "Montrer le champs « Enoncé de résultat »"
 
 #. module: program
 #: view:program.result.close:0
@@ -491,7 +461,7 @@ msgid "Close"
 msgstr "Fermer"
 
 #. module: program
-#: code:addons/program/program_result.py:42 selection:program.result,state:0
+#: code:addons/program/program_result.py:45 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
@@ -509,61 +479,14 @@ msgid "Targets"
 msgstr "Cibles"
 
 #. module: program
-#: view:program.result:0
-msgid "Search Results"
-msgstr "Rechercher les Résultats : "
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_mi_F
-msgid "Mission F"
-msgstr "Mission F"
-
-#. module: program
-#: field:program.result,statement:0
-msgid "Statement of result"
-msgstr "Enoncé de résultat"
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_imr_D
-msgid "Immediate Result D"
-msgstr "Résultat Immédiat D"
-
-#. module: program
-#: model:program.result.level,name:program.demo_result_level_ir
-msgid "Intermediate Result"
-msgstr "Résultat intermédiaire"
-
-#. module: program
-#: model:ir.actions.act_window,name:program.action_program_result_form
-#: model:ir.actions.act_window,name:program.action_program_result_list
-#: model:ir.ui.menu,name:program.menu_program_result
-#: model:ir.ui.menu,name:program.menu_program_result_result
-#: view:program.result:0 field:program.result.close,line_ids:0
-#: field:program.result.close.line,result_id:0
-#: field:program.result.validation,line_ids:0
-#: field:program.result.validation.line,result_id:0
-msgid "Results"
-msgstr "Résultats"
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_mi_A
-msgid "Mission A"
-msgstr "Mission A"
+#: field:program.result.level,menu_id:0
+msgid "Menu"
+msgstr "Menu"
 
 #. module: program
 #: field:program.result,transverse_child_ids_label:0
 msgid "Contributes to Label"
 msgstr "Contribue à (Libellé)"
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_ir_H
-msgid "Intermediate Result H"
-msgstr "Résultat intermédiaire H"
-
-#. module: program
-#: model:program.result,name:program.demo_program_result_ir_C
-msgid "Intermediate Result C"
-msgstr "Résultat intermédiaire C"
 
 #. module: program
 #: model:res.groups,comment:program.group_program_administrator
@@ -582,7 +505,12 @@ msgid "Level"
 msgstr "Niveau"
 
 #. module: program
-#: code:addons/program/program_result.py:43 selection:program.result,state:0
+#: view:program.result.level:0
+msgid "Visible Fields"
+msgstr "Champs visibles"
+
+#. module: program
+#: code:addons/program/program_result.py:46 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
@@ -600,11 +528,6 @@ msgid "End Date"
 msgstr "Date de fin"
 
 #. module: program
-#: model:program.result,name:program.demo_program_result_re_J
-msgid "Realisation J"
-msgstr "Extrant / Réalisation J"
-
-#. module: program
 #: view:program.result:0 field:program.result,name:0
 #: field:program.result.close.line,name:0
 #: field:program.result.intervention,name:0 field:program.result.level,name:0
@@ -614,17 +537,12 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: program
-#: model:program.result.level,code:program.demo_result_level_ir
-msgid "IR"
-msgstr "RI"
-
-#. module: program
 #: field:program.result,depth:0
 msgid "Depth"
 msgstr "Profondeur"
 
 #. module: program
-#: code:addons/program/program_result_level.py:68
+#: code:addons/program/program_result_level.py:179
 #, python-format
 msgid "Error! You can not create recursive Levels."
 msgstr "Erreur ! Vous ne pouvez pas créer de niveaux récursifs."
@@ -641,9 +559,16 @@ msgid "Result Chain"
 msgstr "Chaîne de résultats"
 
 #. module: program
-#: model:program.result.level,name:program.demo_result_level_mi
-msgid "Mission"
-msgstr "Mission"
+#: model:ir.actions.act_window,name:program.action_program_result_form
+#: model:ir.actions.act_window,name:program.action_program_result_list
+#: model:ir.ui.menu,name:program.menu_program_result
+#: model:ir.ui.menu,name:program.menu_program_result_result
+#: view:program.result:0 field:program.result.close,line_ids:0
+#: field:program.result.close.line,result_id:0
+#: field:program.result.validation,line_ids:0
+#: field:program.result.validation.line,result_id:0
+msgid "Results"
+msgstr "Résultats"
 
 #. module: program
 #: model:res.groups,name:program.group_program_manager
@@ -654,6 +579,66 @@ msgstr "Gestionnaire"
 #: model:ir.actions.act_window,name:program.action_program_result_target_tree
 msgid "Result Targets"
 msgstr "Cibles de Résultats"
+
+#~ msgid "Realisation"
+#~ msgstr "Extrant / Réalisation"
+
+#~ msgid "Final Result"
+#~ msgstr "Résultat final"
+
+#~ msgid "RE"
+#~ msgstr "RE"
+
+#~ msgid "Immediate Result"
+#~ msgstr "Résultat immédiat"
+
+#~ msgid "Realisation E"
+#~ msgstr "Extrant / Réalisation E"
+
+#~ msgid "Final Result G"
+#~ msgstr "Résultat final G"
+
+#~ msgid "Final Result B"
+#~ msgstr "Résultat final B"
+
+#~ msgid "MI"
+#~ msgstr "MI"
+
+#~ msgid "FR"
+#~ msgstr "RF"
+
+#~ msgid "ImR"
+#~ msgstr "RIm"
+
+#~ msgid "Immediate Result I"
+#~ msgstr "Résultat Immédiat I"
+
+#~ msgid "Mission F"
+#~ msgstr "Mission F"
+
+#~ msgid "Immediate Result D"
+#~ msgstr "Résultat Immédiat D"
+
+#~ msgid "Intermediate Result"
+#~ msgstr "Résultat intermédiaire"
+
+#~ msgid "Mission A"
+#~ msgstr "Mission A"
+
+#~ msgid "Intermediate Result H"
+#~ msgstr "Résultat intermédiaire H"
+
+#~ msgid "Intermediate Result C"
+#~ msgstr "Résultat intermédiaire C"
+
+#~ msgid "Realisation J"
+#~ msgstr "Extrant / Réalisation J"
+
+#~ msgid "IR"
+#~ msgstr "RI"
+
+#~ msgid "Mission"
+#~ msgstr "Mission"
 
 #~ msgid "Program User"
 #~ msgstr "Utilisateur de la programmation"

@@ -36,6 +36,19 @@
               <div colspan="2"/>
             </group>
 
+            <notebook>
+              <page name="fvg_show_page" string="Visible Fields">
+
+                <group name="fvg_show" col="4">
+
+                  <field name="fvg_show_field_statement"/>
+                  <field name="fvg_show_page_target"/>
+
+                </group>
+
+              </page>
+            </notebook>
+
           </sheet>
         </form>
       </field>

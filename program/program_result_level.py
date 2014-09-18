@@ -20,6 +20,14 @@
 #
 ##############################################################################
 
+"""Configuration of a level of result
+
+Boolean fields which start in fvg_show_page_ or fvg_show_field_ or
+any fvg_show_<type>_<name> will result in a configuration option to
+show or hide a certain element of <type> and <name> in the form view
+of a result.
+"""
+
 from openerp.osv import fields, orm
 from openerp.tools.translate import _
 
@@ -157,6 +165,14 @@ class program_result_level(orm.Model):
             _get_depth, type='integer', string='Level', store=True
         ),
         'menu_id': fields.many2one('ir.ui.menu', 'Menu', required=True),
+        'fvg_show_page_target': fields.boolean('Show "Targets" Tab'),
+        'fvg_show_field_statement': fields.boolean(
+            'Show "Statement of Result" Field',
+        ),
+    }
+    _defaults = {
+        'fvg_show_page_target': True,
+        'fvg_show_field_statement': True,
     }
 
     def _rec_message(self, cr, uid, ids, context=None):
