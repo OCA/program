@@ -268,6 +268,15 @@ class program_result(orm.Model):
             required=True,
             readonly=True,
         ),
+        'status': fields.selection(
+            [
+                ('realised', 'Realised'),
+                ('reported', 'Reported'),
+                ('abandoned', 'Abandoned'),
+            ],
+            'Status of Result',
+            select=True,
+        ),
         'statement': fields.char(
             'Statement of Result', translate=True, track_visibility='onchange',
         ),

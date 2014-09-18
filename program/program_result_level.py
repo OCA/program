@@ -170,10 +170,14 @@ class program_result_level(orm.Model):
         'fvg_show_field_statement': fields.boolean(
             'Show "Statement of Result" Field',
         ),
+        'fvg_show_field_status': fields.boolean(
+            'Show "Status of Result" Field',
+        ),
     }
     _defaults = {
         'fvg_show_page_target': True,
         'fvg_show_field_statement': True,
+        'fvg_show_field_status': False,
     }
 
     def _rec_message(self, cr, uid, ids, context=None):

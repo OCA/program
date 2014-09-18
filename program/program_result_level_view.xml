@@ -41,6 +41,7 @@
 
                 <group name="fvg_show" col="4">
 
+                  <field name="fvg_show_field_status"/>
                   <field name="fvg_show_field_statement"/>
                   <field name="fvg_show_page_target"/>
 

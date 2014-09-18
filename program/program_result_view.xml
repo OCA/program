@@ -104,6 +104,7 @@
                 <field name="intervention_id"
                        widget="selection"
                        attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                <field name="status"/>
               </group>
 
               <group>
