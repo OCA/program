@@ -23,6 +23,8 @@
 from . import (
     program_result,
     program_result_level,
+    program_result_country,
+    program_result_country_role,
     program_result_region,
     program_crossovered_budget_line,
     account_analytic_account,

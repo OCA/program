@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+
+    <record id="view_program_result_country_tree" model="ir.ui.view">
+      <field name="name">Program Result Country Tree</field>
+      <field name="model">program.result.country</field>
+      <field name="arch" type="xml">
+
+        <tree string="Result Countries" version="7.0">
+          <field name="name" />
+          <field name="code" />
+          <field name="role" />
+        </tree>
+
+      </field>
+    </record>
+
+    <record id="view_program_result_country_form" model="ir.ui.view">
+      <field name="name">Program Result Country Form</field>
+      <field name="model">program.result.country</field>
+      <field name="arch" type="xml">
+
+        <form string="Result Country" version="7.0">
+          <sheet>
+            <div class="oe_title">
+              <label for="name" class="oe_edit_only" />
+              <h1><field name="name"/></h1>
+              <group>
+                <field name="code" />
+                <field name="role" />
+              </group>
+            </div>
+          </sheet>
+        </form>
+
+      </field>
+    </record>
+
+    <record id="view_program_result_country_search" model="ir.ui.view">
+      <field name="name">Program Result Country Search</field>
+      <field name="model">program.result.country</field>
+      <field name="arch" type="xml">
+
+        <search string="Result Country" version="7.0">
+          <field name="name" string="Name" />
+          <field name="code" string="Code" />
+        </search>
+
+      </field>
+    </record>
+
+    <record id="action_program_result_country_tree" model="ir.actions.act_window">
+      <field name="name">Roles of Target Countries</field>
+      <field name="res_model">program.result.country</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="search_view_id" ref="view_program_result_country_search" />
+      <field name="target">current</field>
+    </record>
+
+    <menuitem
+      id="menu_program_configuration_country"
+      name="Roles of Target Countries"
+      parent="program.menu_program_configuration"
+      action="action_program_result_country_tree"
+      groups="program.group_program_manager"
+      sequence="3" />
+
+  </data>
+</openerp>

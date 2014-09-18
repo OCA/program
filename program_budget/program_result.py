@@ -133,7 +133,8 @@ class program_result(orm.Model):
             help="Get associated accounts and its descendants"
         ),
         'target_country_ids': fields.many2many(
-            'res.country', string='Target Countries'
+            'program.result.country',
+            string='Target Countries',
         ),
         'target_region_ids': fields.many2many(
             'program.result.region', string='Target Regions'

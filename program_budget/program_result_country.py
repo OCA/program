@@ -20,37 +20,26 @@
 #
 ##############################################################################
 
-{
-    'name': 'Program Budget',
-    'version': '1.1',
-    'author': 'Savoir-faire Linux',
-    'maintainer': 'Savoir-faire Linux',
-    'website': 'http://www.savoirfairelinux.com',
-    'license': 'AGPL-3',
-    'category': 'Account',
-    'summary': 'Account Budget bindings to Results',
-    'description': """
-Program Budget
-==============
+from openerp.osv import fields, orm
 
-Contributors
-------------
-* Sandy Carter (sandy.carter@savoirfairelinux.com)
-""",
-    'depends': [
-        'program',
-        'account_budget',
-    ],
-    'data': [
-        'security/ir.model.access.csv',
-        'program_result_view.xml',
-        'program_result_level_view.xml',
-        'program_result_country_view.xml',
-        'program_result_region_view.xml',
-    ],
-    'demo': [
-        'program_result_demo.xml',
-    ],
-    'auto_install': False,
-    'installable': True,
-}
+
+class program_result_country(orm.Model):
+
+    _name = 'program.result.country'
+    _columns = {
+        'name': fields.many2one(
+            'res.country',
+            string='Name',
+            select=True,
+            required=True,
+        ),
+        'code': fields.related(
+            'name',
+            'code',
+            type='char',
+            readonly=True,
+            string='Code',
+            select=True,
+        ),
+        'role': fields.many2one('program.result.country.role', string='Role'),
+    }
