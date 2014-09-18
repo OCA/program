@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 14:47+0000\n"
-"PO-Revision-Date: 2014-08-14 14:47+0000\n"
+"POT-Creation-Date: 2014-09-18 16:52+0000\n"
+"PO-Revision-Date: 2014-09-18 16:52+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -51,6 +51,11 @@ msgstr ""
 #: model:ir.ui.menu,name:program_indicator.menu_program_indicator_action
 #: view:program.result:0
 msgid "Indicators"
+msgstr ""
+
+#. module: program_indicator
+#: model:ir.model,name:program_indicator.model_program_result_level
+msgid "Result Level"
 msgstr ""
 
 #. module: program_indicator
@@ -144,6 +149,11 @@ msgstr ""
 #. module: program_indicator
 #: field:program.result.indicator,value_target:0
 msgid "Target Value"
+msgstr ""
+
+#. module: program_indicator
+#: field:program.result.level,fvg_show_page_indicators:0
+msgid "Show \"Indicator\" Tab"
 msgstr ""
 
 #. module: program_indicator

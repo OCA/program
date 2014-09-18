@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 14:47+0000\n"
-"PO-Revision-Date: 2014-08-14 10:49-0500\n"
+"POT-Creation-Date: 2014-09-18 16:52+0000\n"
+"PO-Revision-Date: 2014-09-18 12:53-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #. module: program_indicator
 #: field:program.result.indicator.value,indicator_id:0
@@ -55,9 +55,14 @@ msgid "Indicators"
 msgstr "Indicateurs"
 
 #. module: program_indicator
+#: model:ir.model,name:program_indicator.model_program_result_level
+msgid "Result Level"
+msgstr "Niveau de résultats"
+
+#. module: program_indicator
 #: field:program.result.indicator.value,state:0
 msgid "Status"
-msgstr "État"
+msgstr "Etat"
 
 #. module: program_indicator
 #: view:program.result.indicator.value:0
@@ -146,6 +151,11 @@ msgstr "Indicateurs de résultats"
 #: field:program.result.indicator,value_target:0
 msgid "Target Value"
 msgstr "Valeur cible"
+
+#. module: program_indicator
+#: field:program.result.level,fvg_show_page_indicators:0
+msgid "Show \"Indicator\" Tab"
+msgstr "Montrer l'onglet « Indicateur »"
 
 #. module: program_indicator
 #: view:program.result.indicator:0

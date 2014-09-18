@@ -24,6 +24,7 @@ from . import (
     res_partner,
     hr_department,
     program_result,
+    program_result_level,
     program_result_team_department,
     program_result_team_member,
     program_result_team_partner,

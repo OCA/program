@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-06 20:05+0000\n"
-"PO-Revision-Date: 2014-08-06 16:07-0500\n"
+"POT-Creation-Date: 2014-09-18 16:50+0000\n"
+"PO-Revision-Date: 2014-09-18 13:01-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #. module: program_evaluation
 #: selection:program.evaluation,state:0
@@ -31,12 +31,17 @@ msgstr "Date de début"
 #: view:program.evaluation:0 field:program.recommendation,evaluation_id:0
 #: view:program.result:0
 msgid "Evaluation"
-msgstr "Évaluation"
+msgstr "Evaluation"
 
 #. module: program_evaluation
-#: view:program.evaluation:0
-msgid "Evaluators"
-msgstr "Évaluateurs"
+#: field:program.evaluation,name:0 field:program.recommendation,name:0
+msgid "Name"
+msgstr "Nom"
+
+#. module: program_evaluation
+#: field:program.evaluation,state:0
+msgid "Status"
+msgstr "Statut"
 
 #. module: program_evaluation
 #: field:program.recommendation,description:0
@@ -69,14 +74,9 @@ msgstr ""
 "mais ils ne peuvent pas les supprimer."
 
 #. module: program_evaluation
-#: field:program.evaluation,state:0
-msgid "Status"
-msgstr "Statut"
-
-#. module: program_evaluation
-#: field:program.evaluation,name:0 field:program.recommendation,name:0
-msgid "Name"
-msgstr "Nom"
+#: model:ir.model,name:program_evaluation.model_program_result_level
+msgid "Result Level"
+msgstr "Niveau de résultats"
 
 #. module: program_evaluation
 #: model:ir.model,name:program_evaluation.model_program_evaluation
@@ -87,6 +87,11 @@ msgstr "program.evaluation"
 #: view:program.evaluation:0 selection:program.evaluation,state:0
 msgid "Setup"
 msgstr "En élaboration"
+
+#. module: program_evaluation
+#: field:program.result.level,fvg_show_page_evaluation:0
+msgid "Show \"Evaluation\" Tab"
+msgstr "Montrer l'onglet « Évaluation »"
 
 #. module: program_evaluation
 #: view:program.evaluation:0 selection:program.evaluation,state:0
@@ -107,6 +112,11 @@ msgstr "Recommandations"
 #: selection:program.evaluation,state:0
 msgid "Cancelled"
 msgstr "Annulée"
+
+#. module: program_evaluation
+#: model:res.groups,name:program_evaluation.group_program_evaluator
+msgid "Evaluator"
+msgstr "Évaluateur"
 
 #. module: program_evaluation
 #: field:program.evaluation,date_end:0

@@ -10,7 +10,7 @@
 
         <notebook>
 
-          <page name="result_travels" string="Travel">
+          <page name="travels" string="Travel">
             <group col="1">
               <label for="travel_ids" />
               <field name="travel_ids" nolabel="1"/>

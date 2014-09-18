@@ -21,7 +21,7 @@
 
 {
     'name': 'Program - Travel Bindings',
-    'version': '0.4',
+    'version': '1.1',
     'author': 'Savoir-faire Linux',
     'maintainer': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',
@@ -43,6 +43,7 @@ Contributors
     'license': 'AGPL-3',
     'data': [
         'program_result_view.xml',
+        'program_result_level_view.xml',
         'travel_view.xml',
     ],
     'installable': True,

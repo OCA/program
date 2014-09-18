@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-08 20:56+0000\n"
-"PO-Revision-Date: 2014-08-08 20:56+0000\n"
+"POT-Creation-Date: 2014-09-18 16:53+0000\n"
+"PO-Revision-Date: 2014-09-18 16:53+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,44 +16,8 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: program_purchase
-#: code:addons/program_purchase/program_result.py:194
-#, python-format
-msgid "Error! Appreciation should be between 0 and 100."
-msgstr ""
-
-#. module: program_purchase
-#: model:ir.model,name:program_purchase.model_program_crossovered_budget_summary
-msgid "Budget Summary"
-msgstr ""
-
-#. module: program_purchase
 #: view:program.crossovered.budget.summary:0
 msgid "Program Budget Summary List"
-msgstr ""
-
-#. module: program_purchase
-#: view:program.result:0
-msgid "Comments..."
-msgstr ""
-
-#. module: program_purchase
-#: view:program.result:0
-msgid "Monitoring"
-msgstr ""
-
-#. module: program_purchase
-#: field:program.result,prgs_time:0
-msgid "Time"
-msgstr ""
-
-#. module: program_purchase
-#: view:program.result:0
-msgid "Progression"
-msgstr ""
-
-#. module: program_purchase
-#: help:program.result,comment_budget:0
-msgid "Comments for Budget Progress"
 msgstr ""
 
 #. module: program_purchase
@@ -62,14 +26,18 @@ msgid "Budget Summaries"
 msgstr ""
 
 #. module: program_purchase
-#: field:program.crossovered.budget.summary,theoretical_amount:0
-msgid "Theoretical Amount"
+#: view:program.result:0
+msgid "Monitoring"
 msgstr ""
 
 #. module: program_purchase
-#: field:program.crossovered.budget.summary,budget_id:0
-#: field:program.result,prgs_budget:0
-msgid "Budget"
+#: help:program.result,comment_budget:0
+msgid "Comments for Budget Progress"
+msgstr ""
+
+#. module: program_purchase
+#: help:program.result,comment_appreciation:0
+msgid "Comments for Appreciation Progress"
 msgstr ""
 
 #. module: program_purchase
@@ -77,6 +45,11 @@ msgstr ""
 #: field:program.result,comment_budget:0
 #: field:program.result,comment_time:0
 msgid "Comments"
+msgstr ""
+
+#. module: program_purchase
+#: field:program.result.level,fvg_show_page_monitoring:0
+msgid "Show \"Monitoring\" Tab"
 msgstr ""
 
 #. module: program_purchase
@@ -91,18 +64,34 @@ msgid "Planned Amount"
 msgstr ""
 
 #. module: program_purchase
+#: field:program.crossovered.budget.summary,practical_amount:0
+msgid "Practical Amount"
+msgstr ""
+
+#. module: program_purchase
+#: model:ir.model,name:program_purchase.model_program_result_level
+msgid "Result Level"
+msgstr ""
+
+#. module: program_purchase
+#: view:program.result:0
+msgid "Progression"
+msgstr ""
+
+#. module: program_purchase
+#: field:program.crossovered.budget.summary,budget_id:0
+#: field:program.result,prgs_budget:0
+msgid "Budget"
+msgstr ""
+
+#. module: program_purchase
 #: field:program.result,crossovered_budget_ids:0
 msgid "Budgets"
 msgstr ""
 
 #. module: program_purchase
-#: model:ir.model,name:program_purchase.model_program_result
-msgid "Result"
-msgstr ""
-
-#. module: program_purchase
-#: help:program.result,comment_appreciation:0
-msgid "Comments for Appreciation Progress"
+#: field:program.result,prgs_time:0
+msgid "Time"
 msgstr ""
 
 #. module: program_purchase
@@ -111,8 +100,29 @@ msgid "Summary of expenses"
 msgstr ""
 
 #. module: program_purchase
-#: field:program.crossovered.budget.summary,practical_amount:0
-msgid "Practical Amount"
+#: code:addons/program_purchase/program_result.py:194
+#, python-format
+msgid "Error! Appreciation should be between 0 and 100."
+msgstr ""
+
+#. module: program_purchase
+#: model:ir.model,name:program_purchase.model_program_crossovered_budget_summary
+msgid "Budget Summary"
+msgstr ""
+
+#. module: program_purchase
+#: view:program.result:0
+msgid "Comments..."
+msgstr ""
+
+#. module: program_purchase
+#: field:program.crossovered.budget.summary,theoretical_amount:0
+msgid "Theoretical Amount"
+msgstr ""
+
+#. module: program_purchase
+#: model:ir.model,name:program_purchase.model_program_result
+msgid "Result"
 msgstr ""
 
 #. module: program_purchase

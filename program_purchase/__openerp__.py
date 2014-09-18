@@ -22,7 +22,7 @@
 
 {
     'name': 'Program Purchase',
-    'version': '0.4',
+    'version': '1.1',
     'category': 'Program',
     'summary': 'Purchase bindings to Results',
     'description': '''
@@ -43,9 +43,7 @@ Contributors
     'data': [
         'program_crossovered_budget_summary_view.xml',
         'program_result_view.xml',
-    ],
-    'test': [],
-    'demo': [
+        'program_result_level_view.xml',
     ],
     'auto_install': False,
     'installable': True,

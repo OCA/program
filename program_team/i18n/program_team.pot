@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-06 20:14+0000\n"
-"PO-Revision-Date: 2014-08-06 20:14+0000\n"
+"POT-Creation-Date: 2014-09-18 16:56+0000\n"
+"PO-Revision-Date: 2014-09-18 16:56+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,6 @@ msgstr ""
 
 #. module: program_team
 #: field:program.result,team_partner_ids:0
-#: view:res.partner:0
 msgid "Partners"
 msgstr ""
 
@@ -77,7 +76,6 @@ msgid "Team Partner Type"
 msgstr ""
 
 #. module: program_team
-#: view:hr.employee:0
 #: field:program.result.team.member,employee_id:0
 #: field:program.result.team.role,is_employee:0
 msgid "Employee"
@@ -94,8 +92,8 @@ msgid "Type"
 msgstr ""
 
 #. module: program_team
-#: field:program.result.team.partner,contribution:0
-msgid "Non-Financial Contribution"
+#: model:ir.model,name:program_team.model_program_result_level
+msgid "Result Level"
 msgstr ""
 
 #. module: program_team
@@ -120,6 +118,11 @@ msgid "Team Partner"
 msgstr ""
 
 #. module: program_team
+#: field:program.result.level,fvg_show_page_team:0
+msgid "Show \"Team\" Tab"
+msgstr ""
+
+#. module: program_team
 #: field:program.result.team.partner.type,name:0
 #: view:program.result.team.role:0
 #: field:program.result.team.role,name:0
@@ -134,11 +137,6 @@ msgstr ""
 #. module: program_team
 #: field:program.result,team_department_ids:0
 msgid "Departments"
-msgstr ""
-
-#. module: program_team
-#: view:hr.department:0
-msgid "department"
 msgstr ""
 
 #. module: program_team
@@ -158,13 +156,6 @@ msgid "Team"
 msgstr ""
 
 #. module: program_team
-#: view:hr.department:0
-#: view:hr.employee:0
-#: view:res.partner:0
-msgid "Discard"
-msgstr ""
-
-#. module: program_team
 #: model:ir.model,name:program_team.model_program_result_team_member
 msgid "Team Member"
 msgstr ""
@@ -181,13 +172,6 @@ msgid "Team Role"
 msgstr ""
 
 #. module: program_team
-#: view:hr.department:0
-#: view:hr.employee:0
-#: view:res.partner:0
-msgid "Save and Close"
-msgstr ""
-
-#. module: program_team
 #: model:ir.model,name:program_team.model_program_result
 #: field:program.result.team.contact,result_id:0
 #: field:program.result.team.department,result_id:0
@@ -197,14 +181,12 @@ msgid "Result"
 msgstr ""
 
 #. module: program_team
-#: model:ir.model,name:program_team.model_res_partner
-#: field:program.result.team.role,is_partner:0
-msgid "Partner"
+#: field:program.result.team.partner,contribution:0
+msgid "Non-Financial Contribution"
 msgstr ""
 
 #. module: program_team
-#: view:hr.department:0
-#: view:hr.employee:0
-#: view:res.partner:0
-msgid "or"
+#: model:ir.model,name:program_team.model_res_partner
+#: field:program.result.team.role,is_partner:0
+msgid "Partner"
 msgstr ""

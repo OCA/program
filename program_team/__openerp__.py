@@ -22,7 +22,7 @@
 
 {
     'name': 'Program Team',
-    'version': '0.4',
+    'version': '1.1',
     'category': 'Program',
     'summary': 'Team Management on RBM',
     'description': '''
@@ -50,6 +50,7 @@ Contributors
         'program_result_team_role_view.xml',
         'program_result_team_partner_type_view.xml',
         'program_result_view.xml',
+        'program_result_level_view.xml',
     ],
     'test': [],
     'demo': [],

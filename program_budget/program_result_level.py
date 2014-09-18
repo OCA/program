@@ -20,7 +20,14 @@
 #
 ##############################################################################
 
-from . import (
-    program_result,
-    program_result_level,
-)
+from openerp.osv import fields, orm
+
+
+class program_result_level(orm.Model):
+    _inherit = 'program.result.level'
+    _columns = {
+        'fvg_show_page_budget': fields.boolean('Show "Budget" Tab'),
+    }
+    _defaults = {
+        'fvg_show_page_budget': True,
+    }

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-10 21:22+0000\n"
-"PO-Revision-Date: 2014-07-10 21:22+0000\n"
+"POT-Creation-Date: 2014-09-18 16:46+0000\n"
+"PO-Revision-Date: 2014-09-18 16:46+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,23 +16,35 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: program_budget
+#: code:addons/program_budget/program_result.py:259
+#, python-format
+msgid "Deletion of Results has been disabled"
+msgstr ""
+
+#. module: program_budget
 #: view:program.result:0
 msgid "Partners"
 msgstr ""
 
 #. module: program_budget
 #: field:program.result,account_analytic_id:0
+#: field:program.result,child_account_ids:0
 msgid "Analytic account"
-msgstr ""
-
-#. module: program_budget
-#: model:ir.model,name:program_budget.model_program_result
-msgid "program.result"
 msgstr ""
 
 #. module: program_budget
 #: field:program.result,foreign_budget_lines:0
 msgid "Foreign Budgets"
+msgstr ""
+
+#. module: program_budget
+#: model:ir.model,name:program_budget.model_program_result_level
+msgid "Result Level"
+msgstr ""
+
+#. module: program_budget
+#: field:program.result.level,fvg_show_page_budget:0
+msgid "Show \"Budget\" Tab"
 msgstr ""
 
 #. module: program_budget
@@ -56,19 +68,28 @@ msgid "Total Foreign Budgets"
 msgstr ""
 
 #. module: program_budget
+#: field:program.result,target_region_ids:0
+msgid "Target Regions"
+msgstr ""
+
+#. module: program_budget
 #: field:program.result,crossovered_budgets_modified_total:0
 msgid "Total Company Budget"
 msgstr ""
 
 #. module: program_budget
-#: model:_description:0
+#: help:program.result,child_account_ids:0
+msgid "Get associated accounts and its descendants"
+msgstr ""
+
+#. module: program_budget
 #: model:ir.model,name:program_budget.model_program_crossovered_budget_lines
 msgid "program.crossovered.budget.lines"
 msgstr ""
 
 #. module: program_budget
-#: field:program.result,target_region_ids:0
-msgid "Target Regions"
+#: model:ir.model,name:program_budget.model_program_result_region
+msgid "program.result.region"
 msgstr ""
 
 #. module: program_budget
@@ -80,11 +101,6 @@ msgstr ""
 #: view:program.result.region:0
 #: field:program.result.region,name:0
 msgid "Name"
-msgstr ""
-
-#. module: program_budget
-#: model:_description:0
-msgid "Model Program Document"
 msgstr ""
 
 #. module: program_budget
@@ -104,8 +120,10 @@ msgid "Planned"
 msgstr ""
 
 #. module: program_budget
-#: field:program.result,target_country_ids:0
-msgid "Target Countries"
+#: code:addons/program_budget/account_analytic_account.py:162
+#: code:addons/program_budget/program_result.py:258
+#, python-format
+msgid "Error"
 msgstr ""
 
 #. module: program_budget
@@ -116,14 +134,24 @@ msgid "Result Regions"
 msgstr ""
 
 #. module: program_budget
-#: model:_description:0
-#: model:ir.model,name:program_budget.model_program_result_region
-msgid "program.result.region"
+#: field:program.result,target_country_ids:0
+msgid "Target Countries"
+msgstr ""
+
+#. module: program_budget
+#: code:addons/program_budget/account_analytic_account.py:163
+#, python-format
+msgid "Account still associated with a Program Result"
 msgstr ""
 
 #. module: program_budget
 #: field:program.crossovered.budget.lines,currency_amount:0
 msgid "Amount in Currency"
+msgstr ""
+
+#. module: program_budget
+#: model:ir.model,name:program_budget.model_account_analytic_account
+msgid "Analytic Account"
 msgstr ""
 
 #. module: program_budget
@@ -133,8 +161,14 @@ msgid "Currency"
 msgstr ""
 
 #. module: program_budget
+#: model:ir.model,name:program_budget.model_program_result
 #: field:program.crossovered.budget.lines,result_id:0
 msgid "Result"
+msgstr ""
+
+#. module: program_budget
+#: field:program.result,crossovered_budget_line_ids:0
+msgid "Budget Lines"
 msgstr ""
 
 #. module: program_budget
@@ -145,9 +179,4 @@ msgstr ""
 #. module: program_budget
 #: field:program.result,budget_total:0
 msgid "Total"
-msgstr ""
-
-#. module: program_budget
-#: field:program.result,crossovered_budget_ids:0
-msgid "Budgets"
 msgstr ""

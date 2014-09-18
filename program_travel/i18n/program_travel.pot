@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-13 20:34+0000\n"
-"PO-Revision-Date: 2014-08-13 20:34+0000\n"
+"POT-Creation-Date: 2014-09-18 17:02+0000\n"
+"PO-Revision-Date: 2014-09-18 17:02+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: program_travel
-#: field:program.result,travel_ids:0
-msgid "Travels"
+#: field:program.result.level,fvg_show_page_travels:0
+msgid "Show \"Travel\" Tab"
 msgstr ""
 
 #. module: program_travel
@@ -32,11 +32,21 @@ msgid "Programming"
 msgstr ""
 
 #. module: program_travel
+#: field:travel.travel,result_ids:0
+msgid "Results"
+msgstr ""
+
+#. module: program_travel
+#: field:program.result,travel_ids:0
+msgid "Travels"
+msgstr ""
+
+#. module: program_travel
 #: model:ir.model,name:program_travel.model_program_result
 msgid "Result"
 msgstr ""
 
 #. module: program_travel
-#: field:travel.travel,result_ids:0
-msgid "Results"
+#: model:ir.model,name:program_travel.model_program_result_level
+msgid "Result Level"
 msgstr ""
