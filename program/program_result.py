@@ -267,6 +267,7 @@ class program_result(orm.Model):
             select=True,
             required=True,
             readonly=True,
+            track_visibility='onchange',
         ),
         'status': fields.selection(
             [
@@ -276,6 +277,7 @@ class program_result(orm.Model):
             ],
             'Status of Result',
             select=True,
+            track_visibility='onchange',
         ),
         'statement': fields.char(
             'Statement of Result', translate=True, track_visibility='onchange',

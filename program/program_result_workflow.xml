@@ -14,6 +14,8 @@
       <field name="wkf_id" ref="program_result_workflow"/>
       <field name="name">draft</field>
       <field name="flow_start">True</field>
+      <field name="kind">function</field>
+      <field name="action">write({'state': 'draft'})</field>
     </record>
 
     <record id="act_validated" model="workflow.activity">
@@ -68,6 +70,30 @@
     </record>
 
     <!-- Transitions -->
+
+    <record id="trans_validated_draft" model="workflow.transition">
+      <field name="act_from" ref="act_validated" />
+      <field name="act_to" ref="act_draft" />
+      <field name="signal">signal_validate_draft</field>
+    </record>
+
+    <record id="trans_director_draft" model="workflow.transition">
+      <field name="act_from" ref="act_visa_director" />
+      <field name="act_to" ref="act_draft" />
+      <field name="signal">signal_visa_director_draft</field>
+    </record>
+
+    <record id="trans_visa_dpe_draft" model="workflow.transition">
+      <field name="act_from" ref="act_visa_dpe" />
+      <field name="act_to" ref="act_draft" />
+      <field name="signal">signal_visa_dpe_draft</field>
+    </record>
+
+    <record id="trans_visa_admin_draft" model="workflow.transition">
+      <field name="act_from" ref="act_visa_admin" />
+      <field name="act_to" ref="act_draft" />
+      <field name="signal">signal_visa_admin</field>
+    </record>
 
     <record id="trans_draft_validated" model="workflow.transition">
       <field name="act_from" ref="act_draft" />
