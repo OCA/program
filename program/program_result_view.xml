@@ -309,7 +309,7 @@
       name="Results"
       parent="menu_program_result"
       action="action_program_result_list"
-      groups="group_program_basic_user"
+      groups="base.group_no_one"
       sequence="1" />
 
 

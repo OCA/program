@@ -46,15 +46,16 @@ class program_result_level(orm.Model):
         Redirect link through ir.values so new view links to new action
         """
         # Get pools
+        model_pool = self.pool['ir.model.data']
         trans_pool = self.pool['ir.translation']
         menu_pool = self.pool['ir.ui.menu']
         values_pool = self.pool['ir.values']
         act_pool = self.pool['ir.actions.act_window']
         # Get xml_id with references
-        template_menu_id = self.pool['ir.model.data'].get_object_reference(
+        template_menu_id = model_pool.get_object_reference(
             cr, user, 'program', 'menu_program_result_result'
         )[1]
-        template_action_id = self.pool['ir.model.data'].get_object_reference(
+        template_action_id = model_pool.get_object_reference(
             cr, user, 'program', 'action_program_result_list'
         )[1]
         # Clone objects
@@ -65,10 +66,22 @@ class program_result_level(orm.Model):
             cr, user, [('res_id', 'in', [act_id, menu_id])], context=context
         )
         trans_pool.unlink(cr, user, trans_ids, context=context)
+
+        if not vals.get('menu_title'):
+            vals['menu_title'] = vals['name']
+
         # Set menu entry name
         menu_pool.write(
             cr, user, menu_id,
-            {'name': vals['name']},
+            {
+                'name': vals['menu_title'],
+                'groups_id': [(6, 0, [
+                    model_pool.get_object_reference(
+                        cr, user, 'program', 'group_program_basic_user'
+                    )[1]
+                ])],
+                'sequence': 20,
+            },
             context=context
         )
         # Link action in menu
@@ -96,17 +109,19 @@ class program_result_level(orm.Model):
         else:
             act_vals['context'] = {'default_parent_depth': -1}
         act_vals['context'].update({'default_result_level_id': res})
+        act_vals['name'] = vals['menu_title']
         act_pool.write(cr, user, act_id, act_vals, context=context)
         return res
 
     def write(self, cr, user, ids, vals, context=None):
         """Update menu entry for each level"""
-        name = vals.get('name')
+        menu_title = vals.get('menu_title')
         parent_id = vals.get('parent_id')
 
         for level in self.browse(cr, user, ids, context=context):
-            if name:
-                level.menu_id.write({'name': name})
+            if menu_title:
+                level.menu_id.write({'name': menu_title})
+                level.menu_id.action.write({'name': vals['menu_title']})
             if parent_id is not None:
                 depth = self.read(
                     cr, user, parent_id, ['depth'], context=context
@@ -139,6 +154,12 @@ class program_result_level(orm.Model):
         return [(line.id, (line.code and line.code + ' - ' or '') + line.name)
                 for line in self.browse(cr, uid, ids, context=context)]
 
+    def onchange_name(self, cr, uid, ids, name, context=None):
+        res = {}
+        if not ids:
+            res['value'] = {'menu_title': name}
+        return res
+
     def _get_depth(
             self, cr, uid, ids=None, name=None, args=None, context=None):
         if type(ids) is not list:
@@ -166,6 +187,7 @@ class program_result_level(orm.Model):
             _get_depth, type='integer', string='Level', store=True
         ),
         'menu_id': fields.many2one('ir.ui.menu', 'Menu', required=True),
+        'menu_title': fields.char('Menu Title', required=True),
         'fvg_show_page_target': fields.boolean('Show "Targets" Tab'),
         'fvg_show_field_statement': fields.boolean(
             'Show "Statement of Result" Field',
