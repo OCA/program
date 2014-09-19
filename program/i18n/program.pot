@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-19 16:29+0000\n"
-"PO-Revision-Date: 2014-09-19 16:29+0000\n"
+"POT-Creation-Date: 2014-09-19 19:08+0000\n"
+"PO-Revision-Date: 2014-09-19 19:08+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -161,8 +161,8 @@ msgid "Holds the Chatter summary (number of messages, ...). This summary is dire
 msgstr ""
 
 #. module: program
-#: model:ir.module.category,name:program.module_category_program
-msgid "Program"
+#: model:ir.model,name:program.model_program_result_close
+msgid "Result Mass Closer"
 msgstr ""
 
 #. module: program
@@ -214,6 +214,11 @@ msgstr ""
 #. module: program
 #: view:program.result:0
 msgid "Tag"
+msgstr ""
+
+#. module: program
+#: view:program.result.level:0
+msgid "Interface"
 msgstr ""
 
 #. module: program
@@ -362,8 +367,8 @@ msgid "Result Target"
 msgstr ""
 
 #. module: program
-#: model:ir.model,name:program.model_program_result_close
-msgid "Result Mass Closer"
+#: model:ir.module.category,name:program.module_category_program
+msgid "Program"
 msgstr ""
 
 #. module: program
@@ -626,11 +631,6 @@ msgid "Level"
 msgstr ""
 
 #. module: program
-#: view:program.result.level:0
-msgid "Visible Fields"
-msgstr ""
-
-#. module: program
 #: code:addons/program/program_result.py:46
 #: selection:program.result,state:0
 #: selection:program.result.close.line,state:0
@@ -692,7 +692,7 @@ msgid "Activity"
 msgstr ""
 
 #. module: program
-#: code:addons/program/program_result_level.py:184
+#: code:addons/program/program_result_level.py:206
 #, python-format
 msgid "Error! You can not create recursive Levels."
 msgstr ""
@@ -721,4 +721,9 @@ msgstr ""
 #. module: program
 #: model:ir.actions.act_window,name:program.action_program_result_target_tree
 msgid "Result Targets"
+msgstr ""
+
+#. module: program
+#: field:program.result.level,menu_title:0
+msgid "Menu Title"
 msgstr ""
