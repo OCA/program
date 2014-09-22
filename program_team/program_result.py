@@ -78,11 +78,6 @@ class program_result(orm.Model):
             'result_id',
             string='Partners',
         ),
-        'team_contact_ids': fields.one2many(
-            'program.result.team.contact',
-            'result_id',
-            string='Contacts',
-        ),
         'department_rule': fields.function(
             _department_rule,
             fnct_search=_department_rule_search,

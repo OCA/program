@@ -49,13 +49,6 @@
                 </tree>
               </field>
 
-              <field name="team_contact_ids">
-                <tree editable="bottom">
-                  <field name="contact_id" domain="[('is_not_employee', '=', True)]" />
-                  <field name="role_id" domain="[('is_contact', '=', True)]" />
-                </tree>
-              </field>
-
             </group>
           </page>
 

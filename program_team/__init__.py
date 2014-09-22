@@ -30,5 +30,4 @@ from . import (
     program_result_team_partner,
     program_result_team_partner_type,
     program_result_team_role,
-    program_result_team_contact,
 )
