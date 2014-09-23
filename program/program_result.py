@@ -279,6 +279,15 @@ class program_result(orm.Model):
             select=True,
             track_visibility='onchange',
         ),
+        'execution': fields.selection(
+            [
+                ('realised', 'Realised'),
+                ('unrealised', 'Unrealised'),
+            ],
+            'Execution',
+            select=True,
+            track_visibility='onchange',
+        ),
         'statement': fields.char(
             'Statement of Result', translate=True, track_visibility='onchange',
         ),

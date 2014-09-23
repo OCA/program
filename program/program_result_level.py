@@ -198,12 +198,16 @@ class program_result_level(orm.Model):
         'fvg_show_field_status': fields.boolean(
             'Show "Status of Result" Field',
         ),
+        'fvg_show_field_execution': fields.boolean(
+            'Show "Execution" Field',
+        ),
     }
     _defaults = {
         'fvg_show_page_risk': True,
         'fvg_show_page_target': True,
         'fvg_show_field_statement': True,
         'fvg_show_field_status': False,
+        'fvg_show_field_execution': False,
     }
 
     def _rec_message(self, cr, uid, ids, context=None):
