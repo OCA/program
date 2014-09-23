@@ -28,12 +28,10 @@ class test_program_result(test_program_result.test_program_result):
 
     def setUp(self):
         super(test_program_result, self).setUp()
-        partner_model = self.registry("res.partner")
         account_model = self.registry("account.analytic.account")
         account_post_model = self.registry("account.budget.post")
         budget_model = self.registry("crossovered.budget")
         cbl_model = self.registry("crossovered.budget.lines")
-        pcbl_model = self.registry("program.crossovered.budget.lines")
 
         cr, uid, context = self.cr, self.uid, self.context
 
@@ -76,23 +74,16 @@ class test_program_result(test_program_result.test_program_result):
                 'account_analytic_id': self.account_analytic_id,
             }, context=context)
 
-    def test_get_crossovered_budget_lines(self):
-        cr, uid, context = self.cr, self.uid, self.context
-        parent_result = self.program_result_model.browse(
-            cr, uid, self.parent_id, context=context)
-        cb_ids = parent_result.crossovered_budget_line_ids
-        self.assertEquals([i.id for i in cb_ids], [self.cbl_id])
-
     def test_get_budget_total(self):
         cr, uid, context = self.cr, self.uid, self.context
 
         parent_result = self.program_result_model.browse(
             cr, uid, self.parent_id, context=context)
-        self.assertEquals(parent_result.budget_total, 120.0)
+        self.assertEquals(parent_result.budget_total, 100.0)
 
         result = self.program_result_model.browse(
             cr, uid, self.result_id, context=context)
-        self.assertEquals(result.budget_total, 120.0)
+        self.assertEquals(result.budget_total, 100.0)
 
 
 class test_program_result_impact_account(TransactionCase):
