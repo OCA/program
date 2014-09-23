@@ -55,7 +55,7 @@ class program_result_team_partner(orm.Model):
         ),
     }
     _sql_constraints = [
-        ('unique_partner', 'UNIQUE(partner_id)', _rec_message),
+        ('unique_partner', 'UNIQUE(result_id, partner_id)', _rec_message),
     ]
 
     def action_partner_form_view(self, cr, uid, ids, context=None):

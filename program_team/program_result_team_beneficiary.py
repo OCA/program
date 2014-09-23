@@ -53,5 +53,5 @@ class program_result_team_beneficiary(orm.Model):
         ),
     }
     _sql_constraints = [
-        ('unique_partner', 'UNIQUE(partner_id)', _rec_message),
+        ('unique_partner', 'UNIQUE(result_id, partner_id)', _rec_message),
     ]
