@@ -10,7 +10,6 @@
           <field name="name" />
           <field name="is_department" />
           <field name="is_employee" />
-          <field name="is_partner" />
           <field name="is_contact" />
         </tree>
 
@@ -34,7 +33,6 @@
             <group colspan="4" col="4">
               <field name="is_department" />
               <field name="is_employee" />
-              <field name="is_partner" />
               <field name="is_contact" />
             </group>
           </sheet>

@@ -31,6 +31,5 @@ class program_result_team_role(orm.Model):
         'name': fields.char('Name', required=True, select=True),
         'is_employee': fields.boolean('Employee'),
         'is_department': fields.boolean('Department'),
-        'is_partner': fields.boolean('Partner'),
         'is_contact': fields.boolean('Contact'),
     }

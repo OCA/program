@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+
+    <record id="view_program_team_partner_tree" model="ir.ui.view">
+      <field name="name">Program Team Partner Tree</field>
+      <field name="model">program.result.team.partner</field>
+      <field name="inherit_id" ref="program_team.view_program_team_partner_tree"/>
+      <field name="arch" type="xml">
+
+        <tree string="Team Roles">
+
+          <field name="contribution"/>
+          <field name="currency_id"/>
+          <field name="amount"/>
+
+        </tree>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>

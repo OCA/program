@@ -1,9 +1,9 @@
-# -*- coding: utf-8 -*-
-
+# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (C) 2014 Savoir-faire Linux (<www.savoirfairelinux.com>).
+#    This module copyright (C) 2010 - 2014 Savoir-faire Linux
+#    (<http://www.savoirfairelinux.com>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -20,16 +20,6 @@
 #
 ##############################################################################
 
-from openerp.osv import fields, orm
-
-
-class program_result_level(orm.Model):
-    _inherit = 'program.result.level'
-    _columns = {
-        'fvg_show_page_team': fields.boolean('Show "Team" Tab'),
-        'fvg_show_page_partner': fields.boolean('Show "Partners" Tab'),
-    }
-    _defaults = {
-        'fvg_show_page_team': True,
-        'fvg_show_page_partner': True,
-    }
+from . import (
+    program_result_team_partner,
+)

@@ -21,29 +21,42 @@
 ##############################################################################
 
 from openerp.osv import fields, orm
+from openerp.tools.translate import _
 
 
 class program_result_team_partner(orm.Model):
+
+    def _rec_message(self, cr, uid, ids, context=None):
+        return _('This partner is already part of the partner list.')
 
     _name = 'program.result.team.partner'
     _description = "Team Partner"
     _columns = {
         'result_id': fields.many2one('program.result', string='Result'),
-        'organisation_id': fields.many2one(
-            'res.partner', string='Organisation', required=True,
+        'partner_id': fields.many2one(
+            'res.partner',
+            string='Partner',
+            required=True,
         ),
-        'role_id': fields.many2one('program.result.team.role', string='Role'),
-        'type_id': fields.many2one(
-            'program.result.team.partner.type', string="Type"
+        'country_id': fields.related(
+            'partner_id',
+            'country_id',
+            type='many2one',
+            relation='res.country',
+            string='Country',
+            readonly=True,
         ),
-        'contribution': fields.text(
-            'Non-Financial Contribution',
-            help=(
-                'Arbitrary contribution, usually a non-financial or '
-                'unquantifiable one.'
-            ),
+        'type_id': fields.many2many(
+            'program.result.team.partner.type',
+            "program_result_team_partner_type_rel",
+            id1='partner_id',
+            id2='type_id',
+            string="Type"
         ),
     }
+    _sql_constraints = [
+        ('unique_partner', 'UNIQUE(partner_id)', _rec_message),
+    ]
 
     def action_partner_form_view(self, cr, uid, ids, context=None):
         """Pop-up partner form view for program.result.team.partner."""

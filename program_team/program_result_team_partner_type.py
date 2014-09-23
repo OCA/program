@@ -29,5 +29,4 @@ class program_result_team_partner_type(orm.Model):
     _description = "Team Partner Type"
     _columns = {
         'name': fields.char('Name'),
-        'is_active': fields.boolean('Active', default=True),
     }

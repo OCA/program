@@ -73,6 +73,7 @@ class program_result(orm.Model):
             'result_id',
             string='Team Members',
         ),
+        'team_has_partners': fields.boolean('Has Partners'),
         'team_partner_ids': fields.one2many(
             'program.result.team.partner',
             'result_id',
@@ -85,4 +86,7 @@ class program_result(orm.Model):
             method=True,
             string="Department Rule",
         ),
+    }
+    _defaults = {
+        'team_has_partners': True,
     }

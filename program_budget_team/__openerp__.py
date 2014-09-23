@@ -21,40 +21,29 @@
 ##############################################################################
 
 {
-    'name': 'Program Team',
+    'name': 'Program Budget - Team Bindings',
     'version': '1.1',
-    'category': 'Program',
-    'summary': 'Team Management on RBM',
-    'description': '''
-Program Team
-============
-
-Team Management on Results Based Management
+    'author': 'Savoir-faire Linux',
+    'maintainer': 'Savoir-faire Linux',
+    'website': 'http://www.savoirfairelinux.com',
+    'license': 'AGPL-3',
+    'category': 'Account',
+    'summary': 'Team Budget bindings to Results Budget',
+    'description': """
+Program Budget - Team Bindings
+==============================
 
 Contributors
 ------------
-
-* Alexandre Boily (alexandre.boily@savoirfairelinux.com)
 * Sandy Carter (sandy.carter@savoirfairelinux.com)
-''',
-    'author': 'Savoir-faire Linux',
-    'website': 'http://www.savoirfairelinux.com',
-    'license': 'AGPL-3',
+""",
     'depends': [
-        'hr',
-        'program',
+        'program_budget',
+        'program_team',
     ],
     'data': [
-        'security/ir.model.access.csv',
-        'security/ir_rule.xml',
-        'program_result_team_role_view.xml',
         'program_result_team_partner_view.xml',
-        'program_result_team_partner_type_view.xml',
-        'program_result_view.xml',
-        'program_result_level_view.xml',
     ],
-    'test': [],
-    'demo': [],
-    'auto_install': False,
+    'auto_install': True,
     'installable': True,
 }
