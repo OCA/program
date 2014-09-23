@@ -50,13 +50,13 @@ ALTER TABLE program_result_program_result_country_rel
 ADD COLUMN program_result_country_id integer
 """)
     cr.execute("""
-SELECT DISTINCT res_country_id_legacy_7_0_1_1
+SELECT DISTINCT program_result_id, res_country_id_legacy_7_0_1_1
 FROM program_result_program_result_country_rel
 """)
-    for line in cr.fetchall():
-        country_id = line[0]
+    for result_id, country_id in cr.fetchall():
         new_id = country_pool.create(
-            cr, uid, {'name': country_id}, context=context
+            cr, uid, {'name': country_id, 'result_id': result_id},
+            context=context
         )
         logged_query(cr, """
 UPDATE program_result_program_result_country_rel

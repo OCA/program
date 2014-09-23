@@ -42,6 +42,7 @@ Contributors
         'program_team',
     ],
     'data': [
+        'program_result_view.xml',
         'program_result_team_partner_view.xml',
     ],
     'auto_install': True,

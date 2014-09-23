@@ -102,20 +102,9 @@ class program_result(orm.Model):
             )
         return res
 
-    def _get_foreign_budgets_total(
-            self, cr, uid, ids, name, args, context=None):
-        res = {}
-        for result in self.browse(cr, uid, ids, context=context):
-            amount = sum(sum(l.amount for l in child.team_partner_ids)
-                         for child in result.descendant_ids + [result])
-            res[result.id] = amount
-        return res
-
     def _get_budget_total(self, cr, uid, ids, name, args, context=None):
         budgets = list()
         budgets.append(self._get_crossovered_budgets_modified_total(
-            cr, uid, ids, name, args, context=context))
-        budgets.append(self._get_foreign_budgets_total(
             cr, uid, ids, name, args, context=context))
         return reduce(
             lambda x, y: dict((k, v + y[k]) for k, v in x.iteritems()),
@@ -141,7 +130,9 @@ class program_result(orm.Model):
             'program.result.region', string='Target Regions'
         ),
         'budget_total': fields.function(
-            _get_budget_total, string='Total', type='float',
+            lambda self, *args, **kw: self._get_budget_total(*args, **kw),
+            string='Total',
+            type='float',
             digits_compute=dp.get_precision('Account'),
             readonly=True),
         'crossovered_budget_line_ids': fields.function(
@@ -157,10 +148,6 @@ class program_result(orm.Model):
             _get_crossovered_budgets_modified_total, type='float',
             digits_compute=dp.get_precision('Account'), readonly=True,
             string="Total Company Budget"),
-        'foreign_budget_total': fields.function(
-            _get_foreign_budgets_total, type='float',
-            digits_compute=dp.get_precision('Account'), readonly=True,
-            string="Total Foreign Budgets"),
     }
 
     def _get_parent_account_id(self, cr, uid, ids, vals=None, context=None):

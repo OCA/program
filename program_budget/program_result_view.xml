@@ -21,12 +21,6 @@
               <field name="crossovered_budgets_modified_total"
                      nolabel="1" widget="monetary"
                      options="{'currency_field': 'currency_id'}"/>
-
-              <b><label for="foreign_budget_total"/></b>
-              <field name="foreign_budget_total"
-                     nolabel="1"
-                     widget="monetary"
-                     options="{'currency_field': 'currency_id'}"/>
               <label for="budget_total" class="oe_subtotal_footer_separator"/>
               <field name="budget_total"
                      nolabel="1"
