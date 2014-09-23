@@ -39,6 +39,13 @@
             </group>
           </page>
 
+          <page name="beneficiary" string="Beneficiaries">
+
+              <label for="team_beneficiary_ids"/>
+              <field name="team_beneficiary_ids"/>
+
+          </page>
+
           <page name="partner" string="Partners">
             <group col="4">
 

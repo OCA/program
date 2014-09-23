@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-22 23:46+0000\n"
-"PO-Revision-Date: 2014-09-22 19:47-0500\n"
+"POT-Creation-Date: 2014-09-23 00:53+0000\n"
+"PO-Revision-Date: 2014-09-22 20:55-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -29,9 +29,12 @@ msgid "Department Rule"
 msgstr "Restriction départementale"
 
 #. module: program_team
-#: model:ir.model,name:program_team.model_program_result_team_partner_type
-msgid "Team Partner Type"
-msgstr "Types de partenaire"
+#: model:ir.actions.act_window,name:program_team.action_program_result_team_role_tree
+#: model:ir.ui.menu,name:program_team.menu_configuration_result_team_role
+#: view:program.result.team.partner:0 view:program.result.team.partner.type:0
+#: view:program.result.team.role:0
+msgid "Team Roles"
+msgstr "Rôles d'équipe"
 
 #. module: program_team
 #: field:program.result,team_member_ids:0
@@ -39,16 +42,19 @@ msgid "Team Members"
 msgstr "Membres de l'équipe"
 
 #. module: program_team
-#: field:program.result.team.member,employee_id:0
-#: field:program.result.team.role,is_employee:0
-msgid "Employee"
-msgstr "Employé"
+#: view:program.result.team.beneficiary.type:0
+msgid "Beneficiary Types"
+msgstr "Types de bénéficiaires"
 
 #. module: program_team
-#: field:program.result.team.department,role_id:0
-#: field:program.result.team.member,role_id:0
-msgid "Role"
-msgstr "Rôle"
+#: model:ir.model,name:program_team.model_program_result_team_beneficiary
+msgid "Team Beneficiary"
+msgstr "Bénéficiaires à l'équipe"
+
+#. module: program_team
+#: field:program.result.team.beneficiary,partner_id:0
+msgid "Beneficiary"
+msgstr "Bénéficiaire"
 
 #. module: program_team
 #: model:ir.model,name:program_team.model_hr_department
@@ -59,9 +65,26 @@ msgid "Department"
 msgstr "Unité Administrative"
 
 #. module: program_team
-#: model:ir.model,name:program_team.model_program_result_team_member
-msgid "Team Member"
-msgstr "Membre de l'équipe"
+#: field:program.result.level,fvg_show_page_beneficiary:0
+msgid "Show \"Beneficiaries\" Tab"
+msgstr "Montrer l'onglet « Bénéficiaires »"
+
+#. module: program_team
+#: field:program.result.team.department,role_id:0
+#: field:program.result.team.member,role_id:0
+msgid "Role"
+msgstr "Rôle"
+
+#. module: program_team
+#: model:ir.model,name:program_team.model_program_result_team_partner_type
+msgid "Team Partner Type"
+msgstr "Types de partenaire"
+
+#. module: program_team
+#: field:program.result.team.member,employee_id:0
+#: field:program.result.team.role,is_employee:0
+msgid "Employee"
+msgstr "Employé"
 
 #. module: program_team
 #: view:program.result.team.role:0
@@ -69,14 +92,32 @@ msgid "Search Team Roles"
 msgstr "Rechercher dans les rôles d'équipe"
 
 #. module: program_team
+#: field:program.result.team.beneficiary,type_id:0
 #: field:program.result.team.partner,type_id:0
 msgid "Type"
 msgstr "Type"
 
 #. module: program_team
+#: code:addons/program_team/program_result_team_beneficiary.py:30
+#, python-format
+msgid "This partner is already part of the beneficiary list."
+msgstr "Ce partenaire fait déjà partie de la liste de bénéficiaires."
+
+#. module: program_team
 #: model:ir.model,name:program_team.model_program_result_level
 msgid "Result Level"
 msgstr "Niveau de résultats"
+
+#. module: program_team
+#: view:program.result.team.beneficiary.type:0
+msgid "Beneficiary Type"
+msgstr "Type de bénéficiaires"
+
+#. module: program_team
+#: model:ir.actions.act_window,name:program_team.action_program_result_team_beneficiary_type_tree
+#: model:ir.ui.menu,name:program_team.menu_configuration_result_team_beneficiary_type
+msgid "Team Beneficiary Types"
+msgstr "Types de partenaires de l'équipe"
 
 #. module: program_team
 #: model:ir.actions.act_window,name:program_team.action_program_result_team_partner_type_tree
@@ -85,12 +126,9 @@ msgid "Team Partner Types"
 msgstr "Types de partenaires"
 
 #. module: program_team
-#: model:ir.actions.act_window,name:program_team.action_program_result_team_role_tree
-#: model:ir.ui.menu,name:program_team.menu_configuration_result_team_role
-#: view:program.result.team.partner:0 view:program.result.team.partner.type:0
-#: view:program.result.team.role:0
-msgid "Team Roles"
-msgstr "Rôles d'équipe"
+#: model:ir.model,name:program_team.model_program_result_team_beneficiary_type
+msgid "Team Beneficiary Type"
+msgstr "Partenaire de l'équipe"
 
 #. module: program_team
 #: model:ir.model,name:program_team.model_program_result_team_partner
@@ -103,12 +141,19 @@ msgid "Show \"Team\" Tab"
 msgstr "Montrer l'onglet « Équipe »"
 
 #. module: program_team
+#: field:program.result.level,fvg_show_page_partner:0
+msgid "Show \"Partners\" Tab"
+msgstr "Montrer l'onglet « Partenaires »"
+
+#. module: program_team
+#: field:program.result.team.beneficiary.type,name:0
 #: field:program.result.team.partner.type,name:0
 #: view:program.result.team.role:0 field:program.result.team.role,name:0
 msgid "Name"
 msgstr "Nom"
 
 #. module: program_team
+#: field:program.result.team.beneficiary,country_id:0
 #: field:program.result.team.partner,country_id:0
 msgid "Country"
 msgstr "Pays"
@@ -139,6 +184,11 @@ msgid "Team"
 msgstr "Équipe"
 
 #. module: program_team
+#: model:ir.model,name:program_team.model_program_result_team_member
+msgid "Team Member"
+msgstr "Membre de l'équipe"
+
+#. module: program_team
 #: code:addons/program_team/program_result_team_partner.py:30
 #, python-format
 msgid "This partner is already part of the partner list."
@@ -161,7 +211,14 @@ msgid "Has Partners"
 msgstr "A des partenaires"
 
 #. module: program_team
+#: view:program.result:0 field:program.result,team_beneficiary_ids:0
+#: view:program.result.team.beneficiary:0
+msgid "Beneficiaries"
+msgstr "Bénéficiaires"
+
+#. module: program_team
 #: model:ir.model,name:program_team.model_program_result
+#: field:program.result.team.beneficiary,result_id:0
 #: field:program.result.team.department,result_id:0
 #: field:program.result.team.member,result_id:0
 #: field:program.result.team.partner,result_id:0

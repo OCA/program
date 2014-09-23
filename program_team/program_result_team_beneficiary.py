@@ -21,19 +21,37 @@
 ##############################################################################
 
 from openerp.osv import fields, orm
+from openerp.tools.translate import _
 
 
-class program_result_level(orm.Model):
-    _inherit = 'program.result.level'
+class program_result_team_beneficiary(orm.Model):
+
+    def _rec_message(self, cr, uid, ids, context=None):
+        return _('This partner is already part of the beneficiary list.')
+
+    _name = 'program.result.team.beneficiary'
+    _description = "Team Beneficiary"
     _columns = {
-        'fvg_show_page_team': fields.boolean('Show "Team" Tab'),
-        'fvg_show_page_beneficiary': fields.boolean(
-            'Show "Beneficiaries" Tab',
+        'result_id': fields.many2one('program.result', string='Result'),
+        'partner_id': fields.many2one(
+            'res.partner',
+            string='Beneficiary',
+            required=True,
+            domain=[('is_company', '=', 'True')],
         ),
-        'fvg_show_page_partner': fields.boolean('Show "Partners" Tab'),
+        'country_id': fields.related(
+            'partner_id',
+            'country_id',
+            type='many2one',
+            relation='res.country',
+            string='Country',
+            readonly=True,
+        ),
+        'type_id': fields.many2one(
+            'program.result.team.beneficiary.type',
+            string="Type"
+        ),
     }
-    _defaults = {
-        'fvg_show_page_team': True,
-        'fvg_show_page_beneficiary': True,
-        'fvg_show_page_partner': True,
-    }
+    _sql_constraints = [
+        ('unique_partner', 'UNIQUE(partner_id)', _rec_message),
+    ]

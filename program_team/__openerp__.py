@@ -50,6 +50,8 @@ Contributors
         'program_result_team_role_view.xml',
         'program_result_team_partner_view.xml',
         'program_result_team_partner_type_view.xml',
+        'program_result_team_beneficiary_view.xml',
+        'program_result_team_beneficiary_type_view.xml',
         'program_result_view.xml',
         'program_result_level_view.xml',
     ],

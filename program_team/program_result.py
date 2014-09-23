@@ -73,6 +73,11 @@ class program_result(orm.Model):
             'result_id',
             string='Team Members',
         ),
+        'team_beneficiary_ids': fields.one2many(
+            'program.result.team.beneficiary',
+            'result_id',
+            string='Beneficiaries',
+        ),
         'team_has_partners': fields.boolean('Has Partners'),
         'team_partner_ids': fields.one2many(
             'program.result.team.partner',

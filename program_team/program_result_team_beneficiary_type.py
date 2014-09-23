@@ -20,16 +20,13 @@
 #
 ##############################################################################
 
-from . import (
-    res_partner,
-    hr_department,
-    program_result,
-    program_result_level,
-    program_result_team_department,
-    program_result_team_member,
-    program_result_team_partner,
-    program_result_team_partner_type,
-    program_result_team_beneficiary,
-    program_result_team_beneficiary_type,
-    program_result_team_role,
-)
+from openerp.osv import fields, orm
+
+
+class program_result_team_beneficiary_type(orm.Model):
+
+    _name = 'program.result.team.beneficiary.type'
+    _description = "Team Beneficiary Type"
+    _columns = {
+        'name': fields.char('Name'),
+    }
