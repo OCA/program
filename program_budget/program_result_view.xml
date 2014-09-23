@@ -75,7 +75,7 @@
         </notebook>
 
         <field name="target_audience" position="before">
-          <field name="target_country_ids" />
+          <field name="target_country_ids" widget="one2many"/>
           <field name="target_region_ids" />
         </field>
 

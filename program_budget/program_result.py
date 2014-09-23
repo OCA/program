@@ -132,8 +132,9 @@ class program_result(orm.Model):
             string='Analytic account',
             help="Get associated accounts and its descendants"
         ),
-        'target_country_ids': fields.many2many(
+        'target_country_ids': fields.one2many(
             'program.result.country',
+            'result_id',
             string='Target Countries',
         ),
         'target_region_ids': fields.many2many(

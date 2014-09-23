@@ -46,6 +46,7 @@ Contributors
         'program_result_view.xml',
         'program_result_level_view.xml',
         'program_result_country_view.xml',
+        'program_result_country_role_view.xml',
         'program_result_region_view.xml',
     ],
     'demo': [

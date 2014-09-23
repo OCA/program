@@ -21,12 +21,22 @@
 ##############################################################################
 
 from openerp.osv import fields, orm
+from openerp.tools.translate import _
 
 
 class program_result_country(orm.Model):
 
+    def _rec_message(self, cr, uid, ids, context=None):
+        return _('A country and role pair has been entered twice.')
+
     _name = 'program.result.country'
     _columns = {
+        'result_id': fields.many2one(
+            'program.result',
+            string='Result',
+            select=True,
+            required=True,
+        ),
         'name': fields.many2one(
             'res.country',
             string='Name',
@@ -43,3 +53,6 @@ class program_result_country(orm.Model):
         ),
         'role': fields.many2one('program.result.country.role', string='Role'),
     }
+    _sql_constraints = [
+        ('unique_country_role', 'UNIQUE(result_id, name, role)', _rec_message),
+    ]

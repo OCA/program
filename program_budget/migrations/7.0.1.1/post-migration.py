@@ -73,9 +73,35 @@ ALTER COLUMN res_country_id_legacy_7_0_1_1 DROP NOT NULL
 """)
 
 
+def m2m_to_o2m(cr, uid, pool, model, field, m2m_table, id1, id2, context):
+    pool1 = pool[model]
+    pool2 = pool[pool1._columns[field]._obj]
+    cr.execute("""
+SELECT %s, %s
+FROM %s
+""" % (id1, id2, m2m_table))
+    used_ids = []
+    for f1, f2 in cr.fetchall():
+        if f2 in used_ids:
+            f2 = pool2.copy(cr, uid, f2, {'result_id': f1}, context=context)
+        used_ids.append(f2)
+        pool1.write(cr, uid, f1, {field: [(4, f2)]}, context=context)
+
+
 def migrate(cr, version):
     if not version:
         return
     pool = pooler.get_pool(cr.dbname)
     context = pool['res.users'].context_get(cr, SUPERUSER_ID)
     restore_countries(cr, SUPERUSER_ID, pool, context)
+    m2m_to_o2m(
+        cr,
+        SUPERUSER_ID,
+        pool,
+        'program.result',
+        'target_country_ids',
+        'program_result_program_result_country_rel',
+        'program_result_id',
+        'program_result_country_id',
+        context,
+    )
