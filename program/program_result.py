@@ -325,6 +325,8 @@ class program_result(orm.Model):
         'date_from': fields.date('Start Date', track_visibility='onchange'),
         'date_to': fields.date('End Date', track_visibility='onchange'),
         'description': fields.text('Description', translate=True),
+        'assumptions': fields.text('Typology of Assumptions', translate=True),
+        'risks': fields.text('Typology of Risks', translate=True),
         'target_audience': fields.text('Target Audience', translate=True),
         'target_audience_type_ids': fields.many2many(
             'program.result.target', string='Target Audience Types'

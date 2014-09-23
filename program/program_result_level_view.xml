@@ -44,6 +44,7 @@
                   <div colspan="2"/>
                   <field name="fvg_show_field_status"/>
                   <field name="fvg_show_field_statement"/>
+                  <field name="fvg_show_page_risk"/>
                   <field name="fvg_show_page_target"/>
 
                 </group>

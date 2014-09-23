@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-19 19:08+0000\n"
-"PO-Revision-Date: 2014-09-19 15:09-0500\n"
+"POT-Creation-Date: 2014-09-23 01:11+0000\n"
+"PO-Revision-Date: 2014-09-22 21:12-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -51,6 +51,11 @@ msgid "Parent"
 msgstr "Parent"
 
 #. module: program
+#: field:program.result.level,fvg_show_page_risk:0
+msgid "Show \"Assumptions and Risks\" Tab"
+msgstr "Montrer l'onglet « Risques et hypothèses »"
+
+#. module: program
 #: field:program.result,message_unread:0
 msgid "Unread Messages"
 msgstr "Messages non-lus"
@@ -88,7 +93,7 @@ msgid "Validate"
 msgstr "Valider"
 
 #. module: program
-#: code:addons/program/program_result.py:355
+#: code:addons/program/program_result.py:357
 #, python-format
 msgid "Error! You can not create recursive Results."
 msgstr "Erreur ! Vous ne pouvez pas créer de résultats récursifs"
@@ -112,6 +117,11 @@ msgstr "Messages"
 #: view:program.result.level:0
 msgid "Search Result Levels"
 msgstr "Rechercher dans les niveaux de résultats"
+
+#. module: program
+#: view:program.result:0
+msgid "Assumptions and Risks"
+msgstr "Risques et hypothèses"
 
 #. module: program
 #: code:addons/program/program_result.py:98
@@ -166,6 +176,11 @@ msgstr ""
 #: model:ir.model,name:program.model_program_result_close
 msgid "Result Mass Closer"
 msgstr "Fermeture de masse de résultat"
+
+#. module: program
+#: field:program.result,assumptions:0
+msgid "Typology of Assumptions"
+msgstr "Typologie des hypothèses"
 
 #. module: program
 #: code:addons/program/program_result.py:47 selection:program.result,state:0
@@ -632,6 +647,11 @@ msgid "Level"
 msgstr "Niveau"
 
 #. module: program
+#: field:program.result,risks:0
+msgid "Typology of Risks"
+msgstr "Typologie des risques"
+
+#. module: program
 #: code:addons/program/program_result.py:46 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
@@ -689,7 +709,7 @@ msgid "Activity"
 msgstr "Activité"
 
 #. module: program
-#: code:addons/program/program_result_level.py:206
+#: code:addons/program/program_result_level.py:210
 #, python-format
 msgid "Error! You can not create recursive Levels."
 msgstr "Erreur ! Vous ne pouvez pas créer de niveaux récursifs."

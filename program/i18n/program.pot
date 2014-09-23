@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-19 19:08+0000\n"
-"PO-Revision-Date: 2014-09-19 19:08+0000\n"
+"POT-Creation-Date: 2014-09-23 01:11+0000\n"
+"PO-Revision-Date: 2014-09-23 01:11+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -51,6 +51,11 @@ msgid "Parent"
 msgstr ""
 
 #. module: program
+#: field:program.result.level,fvg_show_page_risk:0
+msgid "Show \"Assumptions and Risks\" Tab"
+msgstr ""
+
+#. module: program
 #: field:program.result,message_unread:0
 msgid "Unread Messages"
 msgstr ""
@@ -89,7 +94,7 @@ msgid "Validate"
 msgstr ""
 
 #. module: program
-#: code:addons/program/program_result.py:355
+#: code:addons/program/program_result.py:357
 #, python-format
 msgid "Error! You can not create recursive Results."
 msgstr ""
@@ -112,6 +117,11 @@ msgstr ""
 #. module: program
 #: view:program.result.level:0
 msgid "Search Result Levels"
+msgstr ""
+
+#. module: program
+#: view:program.result:0
+msgid "Assumptions and Risks"
 msgstr ""
 
 #. module: program
@@ -163,6 +173,11 @@ msgstr ""
 #. module: program
 #: model:ir.model,name:program.model_program_result_close
 msgid "Result Mass Closer"
+msgstr ""
+
+#. module: program
+#: field:program.result,assumptions:0
+msgid "Typology of Assumptions"
 msgstr ""
 
 #. module: program
@@ -631,6 +646,11 @@ msgid "Level"
 msgstr ""
 
 #. module: program
+#: field:program.result,risks:0
+msgid "Typology of Risks"
+msgstr ""
+
+#. module: program
 #: code:addons/program/program_result.py:46
 #: selection:program.result,state:0
 #: selection:program.result.close.line,state:0
@@ -692,7 +712,7 @@ msgid "Activity"
 msgstr ""
 
 #. module: program
-#: code:addons/program/program_result_level.py:206
+#: code:addons/program/program_result_level.py:210
 #, python-format
 msgid "Error! You can not create recursive Levels."
 msgstr ""

@@ -188,6 +188,9 @@ class program_result_level(orm.Model):
         ),
         'menu_id': fields.many2one('ir.ui.menu', 'Menu', required=True),
         'menu_title': fields.char('Menu Title', required=True),
+        'fvg_show_page_risk': fields.boolean(
+            'Show "Assumptions and Risks" Tab'
+        ),
         'fvg_show_page_target': fields.boolean('Show "Targets" Tab'),
         'fvg_show_field_statement': fields.boolean(
             'Show "Statement of Result" Field',
@@ -197,6 +200,7 @@ class program_result_level(orm.Model):
         ),
     }
     _defaults = {
+        'fvg_show_page_risk': True,
         'fvg_show_page_target': True,
         'fvg_show_field_statement': True,
         'fvg_show_field_status': False,

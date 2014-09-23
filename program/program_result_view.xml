@@ -196,6 +196,15 @@
 
               </page>
 
+              <page name="risk" string="Assumptions and Risks">
+
+                <label for="assumptions"/>
+                <field name="assumptions"/>
+                <label for="risks"/>
+                <field name="risks"/>
+
+              </page>
+
             </notebook>
           </sheet>
 
