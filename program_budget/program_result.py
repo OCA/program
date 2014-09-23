@@ -106,7 +106,7 @@ class program_result(orm.Model):
             self, cr, uid, ids, name, args, context=None):
         res = {}
         for result in self.browse(cr, uid, ids, context=context):
-            amount = sum(sum(l.amount for l in child.foreign_budget_lines)
+            amount = sum(sum(l.amount for l in child.team_partner_ids)
                          for child in result.descendant_ids + [result])
             res[result.id] = amount
         return res
@@ -157,9 +157,6 @@ class program_result(orm.Model):
             _get_crossovered_budgets_modified_total, type='float',
             digits_compute=dp.get_precision('Account'), readonly=True,
             string="Total Company Budget"),
-        'foreign_budget_lines': fields.one2many(
-            'program.crossovered.budget.lines', 'result_id',
-            string='Foreign Budgets'),
         'foreign_budget_total': fields.function(
             _get_foreign_budgets_total, type='float',
             digits_compute=dp.get_precision('Account'), readonly=True,

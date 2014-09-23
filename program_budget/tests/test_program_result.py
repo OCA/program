@@ -71,14 +71,6 @@ class test_program_result(test_program_result.test_program_result):
             'crossovered_budget_line': [(4, self.cbl_id)],
         }, context=context)
 
-        self.foreign_budget_lines = pcbl_model.create(cr, uid, {
-            'partner_id': partner_model.create(cr, uid, {'name': 'test'},
-                                               context=context),
-            'budget_id': self.budget_id,
-            'result_id': self.result_id,
-            'amount': 20.0,
-        }, context=self.context)
-
         self.program_result_model.write(
             cr, uid, self.result_id, {
                 'account_analytic_id': self.account_analytic_id,

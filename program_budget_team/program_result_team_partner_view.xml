@@ -11,10 +11,28 @@
         <tree string="Team Roles">
 
           <field name="contribution"/>
-          <field name="currency_id"/>
-          <field name="amount"/>
+          <field name="currency_id" invisible="1"/>
+          <field name="amount" invisible="1"/>
 
         </tree>
+
+      </field>
+    </record>
+
+    <record id="view_program_team_partner_tree_mc" model="ir.ui.view">
+      <field name="name">Program Team Partner Tree Multi Currency</field>
+      <field name="model">program.result.team.partner</field>
+      <field name="inherit_id" ref="view_program_team_partner_tree" />
+      <field name="groups_id" eval="[(6, 0, [ref('base.group_multi_currency')])]"/>
+      <field name="arch" type="xml">
+
+        <field name="currency_id" position="attributes">
+          <attribute name="invisible">0</attribute>
+        </field>
+
+        <field name="amount" position="attributes">
+          <attribute name="invisible">0</attribute>
+        </field>
 
       </field>
     </record>

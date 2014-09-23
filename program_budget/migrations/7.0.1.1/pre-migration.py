@@ -24,6 +24,10 @@ import logging
 
 logger = logging.getLogger('upgrade')
 
+xmlid_removes = [
+    'program_budget.view_program_result_form_mc',
+]
+
 table_renames = [
     ("program_result_res_country_rel",
      "program_result_program_result_country_rel"),
@@ -34,6 +38,18 @@ column_renames = {
         ('res_country_id', 'res_country_id_legacy_7_0_1_1')
     ],
 }
+
+
+def logged_query(cr, query, args=None):
+    """
+    Logs query and affected rows at level DEBUG
+    """
+    if args is None:
+        args = []
+    cr.execute(query, args)
+    logger.debug('Running %s', query % tuple(args))
+    logger.debug('%s rows affected', cr.rowcount)
+    return cr.rowcount
 
 
 def table_exists(cr, table):
@@ -74,8 +90,33 @@ def rename_columns(cr, column_spec):
                        % (table, old))
 
 
+def remove_xmlid(cr, xmlids_spec):
+    for xml_id in xmlids_spec:
+        try:
+            module, name = xml_id.split('.')
+            cr.execute("""
+SELECT res_id
+FROM ir_model_data
+WHERE module=%s AND name=%s
+""", (module, name))
+            res_id = cr.fetchone()[0]
+            logged_query(cr, """
+DELETE FROM ir_ui_view
+WHERE id=%s
+""", (res_id, ))
+            logged_query(cr, """
+DELETE FROM ir_model_data
+WHERE module=%s AND name=%s
+""", (module, name))
+        except ValueError:
+            logger.error(
+                'Cannot delete XMLID %s: need the module '
+                'reference to be specified in the IDs' % xml_id)
+
+
 def migrate(cr, version):
     if not version:
         return
+    remove_xmlid(cr, xmlid_removes)
     rename_tables(cr, table_renames)
     rename_columns(cr, column_renames)

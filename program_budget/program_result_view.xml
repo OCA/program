@@ -46,30 +46,6 @@
               </field>
             </group>
 
-            <group string="Partners" col="2">
-              <field name="foreign_budget_lines"
-                     nolabel="1"
-                     colspan="2"
-                     context="{'default_result_id': id}">
-                <tree editable="bottom">
-                  <field name="result_id" invisible="1"/>
-                  <field name="partner_id" domain="[('is_company', '=', True)]"/>
-                  <field name="budget_id"/>
-                  <field name="currency_amount"
-                         groups="base.group_multi_currency"
-                         attrs="{'required': True}"
-                         on_change="onchange_currency_amount(currency_amount, currency_id)"/>
-                  <field name="currency_id"
-                         groups="base.group_multi_currency"
-                         attrs="{'required': True}"
-                         on_change="onchange_currency_amount(currency_amount, currency_id)"/>
-                  <!-- In company's currency -->
-                  <field name="amount"
-                         sum="Total in Account Currency"/>
-                </tree>
-              </field>
-            </group>
-
           </page>
 
         </notebook>
@@ -77,19 +53,6 @@
         <field name="target_audience" position="before">
           <field name="target_country_ids" widget="one2many"/>
           <field name="target_region_ids" />
-        </field>
-
-      </field>
-    </record>
-
-    <record id="view_program_result_form_mc" model="ir.ui.view">
-      <field name="model">program.result</field>
-      <field name="inherit_id" ref="view_program_result_form" />
-      <field name="groups_id" eval="[(6, 0, [ref('base.group_multi_currency')])]"/>
-      <field name="arch" type="xml">
-
-        <field name="amount" position="attributes">
-          <attribute name="readonly">1</attribute>
         </field>
 
       </field>
