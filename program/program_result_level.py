@@ -115,6 +115,8 @@ class program_result_level(orm.Model):
 
     def write(self, cr, user, ids, vals, context=None):
         """Update menu entry for each level"""
+        if isinstance(ids, (int, long)):
+            ids = [ids]
         menu_title = vals.get('menu_title')
         parent_id = vals.get('parent_id')
 

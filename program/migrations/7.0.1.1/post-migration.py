@@ -48,7 +48,10 @@ def create_level_menus(cr, user, pool, context):
         # Set menu entry name
         menu_pool.write(
             cr, user, menu_id,
-            {'name': vals['name']},
+            {
+                'name': vals['name'],
+                'sequence': 20,
+            },
             context=context
         )
         # Link action in menu
@@ -61,7 +64,12 @@ def create_level_menus(cr, user, pool, context):
             context=context
         )
         # Create level with menu ref
-        vals['menu_id'] = menu_id
+        level_pool.write(cr, user, i, {
+            'menu_id': menu_id,
+        }, context=context)
+        level_pool.write(cr, user, i, {
+            'menu_title': vals['name'],
+        }, context=context)
         # Set domain to be only this level
         act_pool.write(
             cr, user, act_id,

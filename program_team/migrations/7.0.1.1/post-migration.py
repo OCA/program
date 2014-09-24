@@ -20,7 +20,7 @@
 #
 ##############################################################################
 
-from openerp import SUPERUSER_ID
+from openerp import SUPERUSER_ID, pooler
 
 import logging
 
@@ -52,13 +52,34 @@ def m2o_to_x2m(cr, model, table, field, source_field):
         model.write(cr, SUPERUSER_ID, row[0], {field: [(4, row[1])]})
 
 
+def remove_duplicates(cr, uid, pool):
+    cr.execute("""
+SELECT result_id, partner_id
+FROM (
+   SELECT COUNT(*) AS count, result_id, partner_id
+   FROM program_result_team_partner
+   GROUP BY result_id, partner_id
+) as A
+WHERE count > 1
+""")
+    team_partner_pool = pool['program.result.team.partner']
+    for result_id, partner_id in cr.fetchall():
+        duplicate_ids = team_partner_pool.search(
+            cr, uid,
+            [('result_id', '=', result_id), ('partner_id', '=', partner_id)],
+        )
+        team_partner_pool.unlink(cr, uid, duplicate_ids[1:])
+
+
 def migrate(cr, version):
     if not version:
         return
+    pool = pooler.get_pool(cr.dbname)
     m2o_to_x2m(
         cr,
-        'program.result.team.partner',
+        pool['program.result.team.partner'],
         'program_result_team_partner',
         'type_id',
         'legacy_update_1_1_type_id'
     )
+    remove_duplicates(cr, SUPERUSER_ID, pool)
