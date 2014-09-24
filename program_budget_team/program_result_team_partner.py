@@ -61,7 +61,7 @@ class program_result_team_partner(orm.Model):
             try:
                 rate = company_rate / partner.currency_id.rate
                 amount = partner.contribution * rate
-            except ZeroDivisionError:
+            except (ZeroDivisionError, TypeError):
                 amount = False
             res[partner.id] = {
                 'amount': amount,
