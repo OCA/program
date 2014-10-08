@@ -117,7 +117,7 @@ msgstr "Type de bénéficiaires"
 #: model:ir.actions.act_window,name:program_team.action_program_result_team_beneficiary_type_tree
 #: model:ir.ui.menu,name:program_team.menu_configuration_result_team_beneficiary_type
 msgid "Team Beneficiary Types"
-msgstr "Types de partenaires de l'équipe"
+msgstr "Types de bénéficaires"
 
 #. module: program_team
 #: model:ir.actions.act_window,name:program_team.action_program_result_team_partner_type_tree
