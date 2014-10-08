@@ -111,6 +111,7 @@
               <group name="general_info">
                 <field name="code"
                        attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                <field name="execution"/>
                 <field name="result_level_id"
                        invisible="context.get('default_parent_depth', False) is not False"
                        readonly="1"/>
