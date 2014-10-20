@@ -31,8 +31,12 @@ class program_result_level(orm.Model):
             'Show "Beneficiaries" Tab',
         ),
         'fvg_show_page_partner': fields.boolean('Show "Partners" Tab'),
+        'fvg_show_field_department_id': fields.boolean(
+            'Show "Department" Field',
+        ),
     }
     _defaults = {
+        'fvg_show_field_department_id': True,
         'fvg_show_page_team': True,
         'fvg_show_page_beneficiary': True,
         'fvg_show_page_partner': True,

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-23 00:53+0000\n"
-"PO-Revision-Date: 2014-09-22 20:55-0500\n"
+"POT-Creation-Date: 2014-10-20 20:58+0000\n"
+"PO-Revision-Date: 2014-10-20 17:00-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -62,7 +62,7 @@ msgstr "Bénéficiaire"
 #: field:program.result.team.department,department_id:0
 #: field:program.result.team.role,is_department:0
 msgid "Department"
-msgstr "Unité Administrative"
+msgstr "Unité administrative"
 
 #. module: program_team
 #: field:program.result.level,fvg_show_page_beneficiary:0
@@ -112,6 +112,11 @@ msgstr "Niveau de résultats"
 #: view:program.result.team.beneficiary.type:0
 msgid "Beneficiary Type"
 msgstr "Type de bénéficiaires"
+
+#. module: program_team
+#: field:program.result.level,fvg_show_field_department_id:0
+msgid "Show \"Department\" Field"
+msgstr "Montrer le champs «Unité administrative »"
 
 #. module: program_team
 #: model:ir.actions.act_window,name:program_team.action_program_result_team_beneficiary_type_tree

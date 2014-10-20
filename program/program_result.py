@@ -225,7 +225,7 @@ class program_result(orm.Model):
 
             # Hide pages according to level specification
             for column in level_pool._columns:
-                m = re.match('^fvg_show_([^_]*)_([^_]*)', column)
+                m = re.match('^fvg_show_([^_]*)_([^_]*(_id)?)', column)
                 if not m:
                     continue
                 xpath = "//%s[@name='%s']" % (m.group(1), m.group(2))
