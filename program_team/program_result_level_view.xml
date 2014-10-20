@@ -11,6 +11,8 @@
         <group name="fvg_show">
 
           <field name="fvg_show_page_team"/>
+          <field name="fvg_show_page_beneficiary"/>
+          <field name="fvg_show_page_partner"/>
 
         </group>
 
