@@ -31,7 +31,7 @@ msgstr "Date de début"
 #: view:program.evaluation:0 field:program.recommendation,evaluation_id:0
 #: view:program.result:0
 msgid "Evaluation"
-msgstr "Evaluation"
+msgstr "Évaluation"
 
 #. module: program_evaluation
 #: field:program.evaluation,name:0 field:program.recommendation,name:0

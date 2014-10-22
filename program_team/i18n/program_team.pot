@@ -94,7 +94,7 @@ msgstr ""
 #. module: program_team
 #: field:program.result.team.beneficiary,type_id:0
 #: field:program.result.team.partner,type_id:0
-msgid "Type"
+msgid "Category"
 msgstr ""
 
 #. module: program_team

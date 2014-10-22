@@ -340,8 +340,8 @@ msgstr "Non exécuté"
 
 #. module: program
 #: field:program.result,statement:0
-msgid "Statement of Result"
-msgstr "Enoncé de résultat"
+msgid "Title"
+msgstr "Titre"
 
 #. module: program
 #: model:res.groups,name:program.group_program_basic_user
@@ -475,8 +475,8 @@ msgstr "Erreur"
 
 #. module: program
 #: field:program.result.level,fvg_show_field_statement:0
-msgid "Show \"Statement of Result\" Field"
-msgstr "Montrer le champs « Enoncé de résultat »"
+msgid "Show \"Title\" Field"
+msgstr "Montrer le champs « Titre »"
 
 #. module: program
 #: selection:program.result,execution:0 selection:program.result,status:0

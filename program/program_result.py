@@ -289,7 +289,7 @@ class program_result(orm.Model):
             track_visibility='onchange',
         ),
         'statement': fields.char(
-            'Statement of Result', translate=True, track_visibility='onchange',
+            'Title', translate=True, track_visibility='onchange',
         ),
         'parent_id': fields.many2one(
             'program.result',

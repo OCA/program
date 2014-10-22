@@ -341,7 +341,7 @@ msgstr ""
 
 #. module: program
 #: field:program.result,statement:0
-msgid "Statement of Result"
+msgid "Title"
 msgstr ""
 
 #. module: program
@@ -474,7 +474,7 @@ msgstr ""
 
 #. module: program
 #: field:program.result.level,fvg_show_field_statement:0
-msgid "Show \"Statement of Result\" Field"
+msgid "Show \"Title\" Field"
 msgstr ""
 
 #. module: program

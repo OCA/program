@@ -199,7 +199,7 @@ class program_result_level(orm.Model):
             'Show Transversal fields',
         ),
         'fvg_show_field_statement': fields.boolean(
-            'Show "Statement of Result" Field',
+            'Show "Title" Field',
         ),
         'fvg_show_field_status': fields.boolean(
             'Show "Status of Result" Field',

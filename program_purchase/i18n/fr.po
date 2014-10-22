@@ -56,7 +56,7 @@ msgstr "Montrer l'onglet « Suivi »"
 #: field:program.result,appreciation:0
 #: field:program.result,prgs_appreciation:0
 msgid "Appreciation"
-msgstr "Appréciation estimée"
+msgstr "Mise en œuvre"
 
 #. module: program_purchase
 #: field:program.crossovered.budget.summary,planned_amount:0

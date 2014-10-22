@@ -51,7 +51,7 @@ class program_result_team_partner(orm.Model):
             "program_result_team_partner_type_rel",
             id1='partner_id',
             id2='type_id',
-            string="Type"
+            string="Category"
         ),
     }
     _sql_constraints = [

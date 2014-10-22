@@ -67,7 +67,7 @@ msgstr "Unité administrative"
 #. module: program_team
 #: field:program.result.level,fvg_show_page_beneficiary:0
 msgid "Show \"Beneficiaries\" Tab"
-msgstr "Montrer l'onglet « Bénéficiaires »"
+msgstr "Montrer l'onglet « Récipiendaires »"
 
 #. module: program_team
 #: field:program.result.team.department,role_id:0
@@ -94,8 +94,8 @@ msgstr "Rechercher dans les rôles d'équipe"
 #. module: program_team
 #: field:program.result.team.beneficiary,type_id:0
 #: field:program.result.team.partner,type_id:0
-msgid "Type"
-msgstr "Type"
+msgid "Category"
+msgstr "Catégorie"
 
 #. module: program_team
 #: code:addons/program_team/program_result_team_beneficiary.py:30
@@ -219,7 +219,7 @@ msgstr "A des partenaires"
 #: view:program.result:0 field:program.result,team_beneficiary_ids:0
 #: view:program.result.team.beneficiary:0
 msgid "Beneficiaries"
-msgstr "Bénéficiaires"
+msgstr "Récipiendaires"
 
 #. module: program_team
 #: model:ir.model,name:program_team.model_program_result
