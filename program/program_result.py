@@ -336,7 +336,6 @@ class program_result(orm.Model):
         'description': fields.text('Description', translate=True),
         'assumptions': fields.text('Typology of Assumptions', translate=True),
         'risks': fields.text('Typology of Risks', translate=True),
-        'target_audience': fields.text('Target Audience', translate=True),
         'target_audience_type_ids': fields.many2many(
             'program.result.target', string='Target Audience Types'
         ),

@@ -35,15 +35,6 @@ class program_result(orm.Model):
                 cr, uid, ids, ['result_indicator_ids'], context=context)
         }
 
-    def _get_prgs_realisation(self, cr, uid, ids, name, args, context=None):
-        """Return realisation (capped between 0 and 100)"""
-        if type(ids) is not list:
-            ids = [ids]
-        return {
-            i['id']: prgs_cap(i['realisation']) for i in
-            self.read(cr, uid, ids, ['realisation'], context=context)
-        }
-
     _columns = {
         'result_indicator_ids2': fields.function(
             lambda self, *a, **kw: self._get_indicator_ids(*a, **kw),
@@ -51,18 +42,5 @@ class program_result(orm.Model):
             obj='program.result.indicator',
             string="Indicators",
             readonly=True,
-        ),
-        'realisation': fields.float(
-            string='Realisation',
-            track_visibility='onchange',
-        ),
-        'prgs_realisation': fields.function(
-            lambda self, *a, **kw: self._get_prgs_realisation(*a, **kw),
-            type='float',
-            string='Realisation',
-        ),
-        'comment_realisation': fields.char(
-            string='Comments',
-            help='Comments for Realisation Progress',
         ),
     }

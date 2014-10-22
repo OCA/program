@@ -51,7 +51,6 @@ class test_program_result(TransactionCase):
             'date_from': str(time.localtime(time.time())[0] + 1) + '-01-01',
             'date_to': str(time.localtime(time.time())[0] + 1) + '-12-31',
             'description': 'Testing the program result object',
-            'target_audience': 'Unittest Framework',
         }
         self.result_id = self.program_result_model.create(
             self.cr, self.uid, self.vals, context=self.context)

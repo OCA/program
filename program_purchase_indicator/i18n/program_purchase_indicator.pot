@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-08 20:53+0000\n"
-"PO-Revision-Date: 2014-08-08 20:53+0000\n"
+"POT-Creation-Date: 2014-10-22 21:44+0000\n"
+"PO-Revision-Date: 2014-10-22 21:44+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,29 +16,9 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: program_purchase_indicator
-#: field:program.result,prgs_realisation:0
-#: field:program.result,realisation:0
-msgid "Realisation"
-msgstr ""
-
-#. module: program_purchase_indicator
-#: help:program.result,comment_realisation:0
-msgid "Comments for Realisation Progress"
-msgstr ""
-
-#. module: program_purchase_indicator
 #: view:program.result:0
-msgid "Progression"
-msgstr ""
-
-#. module: program_purchase_indicator
-#: view:program.result:0
-msgid "Comments..."
-msgstr ""
-
-#. module: program_purchase_indicator
-#: field:program.result,comment_realisation:0
-msgid "Comments"
+#: field:program.result,result_indicator_ids2:0
+msgid "Indicators"
 msgstr ""
 
 #. module: program_purchase_indicator
@@ -48,6 +28,5 @@ msgstr ""
 
 #. module: program_purchase_indicator
 #: view:program.result:0
-#: field:program.result,result_indicator_ids2:0
-msgid "Indicators"
+msgid "Progression"
 msgstr ""

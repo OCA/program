@@ -142,8 +142,6 @@
 
               <page name="target" string="Targets">
                 <group colspan="4" col="2">
-
-                  <field name="target_audience" />
                   <field name="target_audience_type_ids" domain="[('active', '=', True)]" />
                 </group>
               </page>

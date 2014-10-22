@@ -10,9 +10,6 @@
 
         <group string="Progression" position="after">
           <group string="Indicators" col="4">
-            <field name="prgs_realisation" widget="progressbar" readonly="False"/>
-            <field name="realisation" nolabel="1"/>
-            <field name="comment_realisation" nolabel="1" placeholder="Comments..."/>
             <field name="result_indicator_ids2" nolabel="1" colspan="4">
               <tree>
                 <field name="name"/>
