@@ -167,7 +167,8 @@
                   </field>
                 </group>
 
-                <group col="2">
+                <group name="transversals" col="2">
+
                   <b><field name="transverse_child_ids_label" nolabel="1"  colspan="2"/></b>
                   <field name="transverse_child_ids"
                          nolabel="1"
@@ -179,9 +180,7 @@
                       <field name="name" />
                     </tree>
                   </field>
-                </group>
 
-                <group col="2">
                   <b><field name="transverse_parent_ids_label" nolabel="1" colspan="2"/></b>
 
                   <field name="transverse_parent_ids"
@@ -193,6 +192,7 @@
                       <field name="name" />
                     </tree>
                   </field>
+
                 </group>
 
               </page>

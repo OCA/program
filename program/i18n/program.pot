@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-20 20:27+0000\n"
-"PO-Revision-Date: 2014-10-20 20:27+0000\n"
+"POT-Creation-Date: 2014-10-22 19:48+0000\n"
+"PO-Revision-Date: 2014-10-22 19:48+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -610,12 +610,17 @@ msgid "Show \"Status of Result\" Field"
 msgstr ""
 
 #. module: program
+#: field:program.result.level,fvg_show_group_transversals:0
+msgid "Show Transversal fields"
+msgstr ""
+
+#. module: program
 #: field:program.result,depth:0
 msgid "Depth"
 msgstr ""
 
 #. module: program
-#: code:addons/program/program_result_level.py:218
+#: code:addons/program/program_result_level.py:222
 #, python-format
 msgid "Error! You can not create recursive Levels."
 msgstr ""

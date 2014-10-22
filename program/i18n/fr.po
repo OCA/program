@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-20 20:27+0000\n"
-"PO-Revision-Date: 2014-10-20 16:28-0500\n"
+"POT-Creation-Date: 2014-10-22 19:48+0000\n"
+"PO-Revision-Date: 2014-10-22 15:50-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.6.10\n"
 
 #. module: program
 #: view:program.result:0
@@ -607,12 +607,17 @@ msgid "Show \"Status of Result\" Field"
 msgstr "Montrer le champs «Statut de l'extrant »"
 
 #. module: program
+#: field:program.result.level,fvg_show_group_transversals:0
+msgid "Show Transversal fields"
+msgstr "Montrer les champs transversaux"
+
+#. module: program
 #: field:program.result,depth:0
 msgid "Depth"
 msgstr "Profondeur"
 
 #. module: program
-#: code:addons/program/program_result_level.py:218
+#: code:addons/program/program_result_level.py:222
 #, python-format
 msgid "Error! You can not create recursive Levels."
 msgstr "Erreur ! Vous ne pouvez pas créer de niveaux récursifs."
@@ -747,9 +752,6 @@ msgstr "Libellé du menu"
 
 #~ msgid "Transverse"
 #~ msgstr "Contribue à"
-
-#~ msgid "Transversal"
-#~ msgstr "Transversal"
 
 #~ msgid "Domain B"
 #~ msgstr "Domaine B"

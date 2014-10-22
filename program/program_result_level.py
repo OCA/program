@@ -195,6 +195,9 @@ class program_result_level(orm.Model):
             'Show "Assumptions and Risks" Tab'
         ),
         'fvg_show_page_target': fields.boolean('Show "Targets" Tab'),
+        'fvg_show_group_transversals': fields.boolean(
+            'Show Transversal fields',
+        ),
         'fvg_show_field_statement': fields.boolean(
             'Show "Statement of Result" Field',
         ),
@@ -209,6 +212,7 @@ class program_result_level(orm.Model):
         'fvg_show_page_children': True,
         'fvg_show_page_risk': True,
         'fvg_show_page_target': True,
+        'fvg_show_group_transversals': True,
         'fvg_show_field_statement': True,
         'fvg_show_field_status': False,
         'fvg_show_field_execution': False,
