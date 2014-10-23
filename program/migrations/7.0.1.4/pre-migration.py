@@ -27,11 +27,11 @@ logger.setLevel(logging.DEBUG)
 
 column_renames = {
     'program_result': [
-        ('execution', None)
+        ('execution', None),
     ],
     'program_result_level': [
-        ('fvg_show_field_execution', None)
-        ('fvg_show_field_status', None)
+        ('fvg_show_field_execution', None),
+        ('fvg_show_field_status', None),
     ],
 }
 
