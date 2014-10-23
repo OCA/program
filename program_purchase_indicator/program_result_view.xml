@@ -9,7 +9,8 @@
       <field name="arch" type="xml">
 
         <group string="Progression" position="after">
-          <group string="Indicators" col="4">
+          <group name="indicators" col="4">
+            <label for="result_indicator_ids"/>
             <field name="result_indicator_ids2" nolabel="1" colspan="4">
               <tree>
                 <field name="name"/>
