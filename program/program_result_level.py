@@ -70,6 +70,9 @@ class program_result_level(orm.Model):
         if not vals.get('menu_title'):
             vals['menu_title'] = vals['name']
 
+        if not vals.get('status_label'):
+            vals['status_label'] = _("Status of the %s") % vals['name']
+
         # Set menu entry name
         menu_pool.write(
             cr, user, menu_id,
@@ -160,6 +163,7 @@ class program_result_level(orm.Model):
         res = {}
         if not ids:
             res['value'] = {'menu_title': name}
+            res['value'] = {'status_label': _("Status of the %s") % name}
         return res
 
     def _get_depth(
@@ -201,11 +205,18 @@ class program_result_level(orm.Model):
         'fvg_show_field_statement': fields.boolean(
             'Show "Title" Field',
         ),
-        'fvg_show_field_status': fields.boolean(
-            'Show "Status of Result" Field',
+        'fvg_show_group_status': fields.boolean(
+            'Show Status of Result Fields',
         ),
-        'fvg_show_field_execution': fields.boolean(
-            'Show "Execution" Field',
+        'status_label': fields.char(
+            'Label for Status',
+            translate=True,
+            help='Label to the Status Field.',
+        ),
+        'status_options': fields.char(
+            'Options for Status',
+            translate=True,
+            help='Comma-separated list of options for the Status Field.',
         ),
     }
     _defaults = {
@@ -213,9 +224,8 @@ class program_result_level(orm.Model):
         'fvg_show_page_risk': True,
         'fvg_show_page_target': True,
         'fvg_show_group_transversals': True,
+        'fvg_show_group_status': False,
         'fvg_show_field_statement': True,
-        'fvg_show_field_status': False,
-        'fvg_show_field_execution': False,
     }
 
     def _rec_message(self, cr, uid, ids, context=None):

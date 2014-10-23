@@ -256,6 +256,30 @@ class program_result(orm.Model):
             res['domain'] = {'parent_id': []}
         return res
 
+    def _get_status(self, cr, uid, context=None):
+        """Get statuses from level, technical name needs to be
+        untranslated, so context={} in that case.
+        The number of elements are truncated to the smallest list
+        using zip.
+        """
+        res = []
+        level_id = context.get('default_result_level_id')
+        if level_id:
+            level_pool = self.pool['program.result.level']
+            status_options_no_lang = level_pool.read(
+                cr, uid, level_id, ['status_options'], context={}
+            )['status_options']
+            status_options = level_pool.read(
+                cr, uid, level_id, ['status_options'], context=context
+            )['status_options']
+            if status_options_no_lang and status_options:
+                res = [
+                    (i.lower().strip(), j.strip())
+                    for i, j in zip(status_options_no_lang.split(','),
+                                    status_options.split(','))
+                ]
+        return res
+
     _columns = {
         'name': fields.char(
             'Name', required=True, select=True, translate=True,
@@ -263,28 +287,22 @@ class program_result(orm.Model):
         ),
         'state': fields.selection(
             STATES,
-            'Status',
+            'State',
             select=True,
             required=True,
             readonly=True,
             track_visibility='onchange',
         ),
-        'status': fields.selection(
-            [
-                ('realised', 'Realised'),
-                ('reported', 'Reported'),
-                ('abandoned', 'Abandoned'),
-            ],
-            'Status of Result',
-            select=True,
-            track_visibility='onchange',
+        'status_label': fields.related(
+            'result_level_id',
+            'status_label',
+            string='Label for Status',
+            type='char',
+            readonly=True,
         ),
-        'execution': fields.selection(
-            [
-                ('realised', 'Realised'),
-                ('unrealised', 'Unrealised'),
-            ],
-            'Execution',
+        'status': fields.selection(
+            lambda self, *a, **kw: self._get_status(*a, **kw),
+            string='Status of Result',
             select=True,
             track_visibility='onchange',
         ),
@@ -346,6 +364,7 @@ class program_result(orm.Model):
     }
     _defaults = {
         'state': 'draft',
+        'status_label': lambda self, cr, uid, context: _('Status'),
         'transverse_child_ids_label': (
             lambda self, cr, uid, context:
             self._transverse_label(cr, uid, context=context)
