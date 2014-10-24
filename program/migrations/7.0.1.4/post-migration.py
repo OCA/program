@@ -38,7 +38,7 @@ def merge_execution(cr, uid, pool, context):
         cr.execute("""\
 SELECT id, %s
 FROM %s
-""" % legacy_name, pool_obj._table)
+""" % (legacy_name, pool_obj._table))
         for obj_id, field in cr.fetchall():
             if not field:
                 continue
