@@ -21,7 +21,6 @@
 ##############################################################################
 
 from openerp.osv import fields, orm
-from openerp.addons.program_purchase.program_result import prgs_cap
 
 
 class program_result(orm.Model):
