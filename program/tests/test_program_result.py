@@ -41,7 +41,6 @@ class test_program_result(TransactionCase):
         result_level_id = self.program_result_level_model.create(
             self.cr, self.uid, {
                 'name': 'Test Level',
-                'depth': 0,
             }, context=self.context)
         self.vals = {
             'name': 'Test Result',

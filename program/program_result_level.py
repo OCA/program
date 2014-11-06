@@ -128,12 +128,12 @@ class program_result_level(orm.Model):
                 level.menu_id.write({'name': menu_title})
                 level.menu_id.action.write({'name': vals['menu_title']})
             if parent_id is not None:
-                depth = self.read(
-                    cr, user, parent_id, ['depth'], context=context
-                )['depth']
                 if parent_id is False:
-                    level.menu_id.action({'context': False})
+                    level.menu_id.action.write({'context': {}})
                 else:
+                    depth = self.read(
+                        cr, user, parent_id, ['depth'], context=context
+                    )['depth']
                     level.menu_id.action.write({
                         'context': {'default_parent_depth': depth}
                     })
