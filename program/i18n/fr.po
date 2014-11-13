@@ -317,7 +317,7 @@ msgstr "Montrer l'onglet « Cibles »"
 #: model:res.groups,comment:program.group_program_manager
 msgid "Program Managers have full access to configuration"
 msgstr ""
-"Les Gestionaires de la programmation ont les droits complets de la "
+"Les Gestionnaires de la programmation ont les droits complets de la "
 "configuration"
 
 #. module: program
