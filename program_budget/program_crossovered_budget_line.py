@@ -25,6 +25,7 @@ from openerp.addons import decimal_precision as dp
 
 
 class program_crossovered_budget_lines(orm.Model):
+
     """
     The financial resources budgeted by other partner organisation for a
     Result, for a specific year [i.e crossovered.budget (CB)].

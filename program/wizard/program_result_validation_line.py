@@ -25,6 +25,7 @@ from ..program_result import STATES
 
 
 class program_result_validation_line(orm.TransientModel):
+
     """Form to mass-validate results based on their
     states and user's group rights
     """

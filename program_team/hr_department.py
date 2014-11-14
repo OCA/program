@@ -21,7 +21,7 @@
 ##############################################################################
 
 from openerp.osv import fields, orm
-from program_result import _department_rule, _department_rule_search
+from .program_result import _department_rule, _department_rule_search
 
 
 class hr_department(orm.Model):
