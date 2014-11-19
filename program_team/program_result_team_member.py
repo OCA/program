@@ -46,7 +46,6 @@ class program_result_team_member(orm.Model):
         else:
             return {}
         member = self.browse(cr, uid, member_id, context=context)
-        model_data_pool = self.pool['ir.model.data']
         return {
             'name': member.employee_id.name_get()[0][1],
             'res_model': 'hr.employee',
@@ -55,6 +54,5 @@ class program_result_team_member(orm.Model):
             'target': 'new',
             'res_id': member.employee_id.id,
             'context': context,
-            'view_id': model_data_pool.get_object_reference(
-                cr, uid, 'program_team', 'view_employee_form')[1]
+            'flags': {'form': {'action_buttons': True}},
         }

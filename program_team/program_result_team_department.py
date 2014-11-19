@@ -46,7 +46,6 @@ class program_result_team_department(orm.Model):
         else:
             return {}
         department = self.browse(cr, uid, department_id, context=context)
-        model_data_pool = self.pool['ir.model.data']
         return {
             'name': department.department_id.name_get()[0][1],
             'res_model': 'hr.department',
@@ -55,6 +54,5 @@ class program_result_team_department(orm.Model):
             'target': 'new',
             'res_id': department.department_id.id,
             'context': context,
-            'view_id': model_data_pool.get_object_reference(
-                cr, uid, 'program_team', 'view_department_form')[1]
+            'flags': {'form': {'action_buttons': True}},
         }
