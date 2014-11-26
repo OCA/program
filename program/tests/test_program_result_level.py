@@ -71,6 +71,18 @@ class test_program_result_level(TransactionCase):
         self.assertEqual(self.result_level_3.depth, 3)
         self.assertEqual(self.result_level_4.depth, 1)
 
+    def test_root(self):
+        self.assertEqual(self.result_level_1.chain_root, self.result_level_1)
+        self.assertEqual(self.result_level_2.chain_root, self.result_level_1)
+        self.assertEqual(self.result_level_3.chain_root, self.result_level_1)
+        self.assertEqual(self.result_level_4.chain_root, self.result_level_4)
+
+    def test_tail(self):
+        self.assertEqual(self.result_level_1.chain_tail, self.result_level_3)
+        self.assertEqual(self.result_level_2.chain_tail, self.result_level_3)
+        self.assertEqual(self.result_level_3.chain_tail, self.result_level_3)
+        self.assertEqual(self.result_level_4.chain_tail, self.result_level_4)
+
     def test_orphan(self):
         # Clear the parent_id field, making this a top level
         self.result_level_2.write({'parent_id': False})

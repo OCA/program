@@ -178,6 +178,52 @@ class program_result_level(orm.Model):
             for level in self.browse(cr, uid, ids, context=context)
         }
 
+    def _search_chain_end(
+            self, cr, uid, model, name=None, args=None, context=None):
+        def search_root(level):
+            return self.search(
+                cr, uid, [('id', 'child_of', level.id)], context=context
+            )
+
+        def search_tail(level):
+            return search_root(level.chain_root)
+
+        find_chain_ids = search_root if name == 'chain_root' else search_tail
+        op = args[0][1]
+        ids = args[0][2]
+        if isinstance(ids, basestring):
+            ids = self.search(cr, uid, [('name', op, ids)], context=context)
+        elif isinstance(ids, (int, long)):
+            ids = [ids]
+        if op in ['=', 'ilike']:
+            op = 'in'
+        elif op in ['!=', 'not ilike']:
+            op = 'not in'
+        level_ids = []
+        for level in self.browse(cr, uid, ids, context=context):
+            if getattr(level, name).id == level.id:
+                level_ids += find_chain_ids(level)
+        return [('id', op, level_ids)]
+
+    def _get_chain_end(
+            self, cr, uid, ids=None, name=None, args=None, context=None):
+
+        def find_root(level):
+            return level.parent_id and find_root(level.parent_id) or level
+
+        def find_tail(level):
+            return level.child_id and find_tail(level.child_id[0]) or level
+
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+
+        find_end_id = find_root if args.get('find_root', True) else find_tail
+
+        return {
+            level.id: find_end_id(level).id
+            for level in self.browse(cr, uid, ids, context=context)
+        }
+
     _columns = {
         'name': fields.char(
             'Name', size=128, required=True, select=True, translate=True),
@@ -217,6 +263,26 @@ class program_result_level(orm.Model):
             'Options for Status',
             translate=True,
             help='Comma-separated list of options for the Status Field.',
+        ),
+        'chain_root': fields.function(
+            lambda self, *a, **kw: self._get_chain_end(*a, **kw),
+            fnct_search=lambda self, *a, **kw: self._search_chain_end(
+                *a, **kw
+            ),
+            arg={'find_root': True},
+            type='many2one',
+            relation='program.result.level',
+            string='Chain Root',
+        ),
+        'chain_tail': fields.function(
+            lambda self, *a, **kw: self._get_chain_end(*a, **kw),
+            fnct_search=lambda self, *a, **kw: self._search_chain_end(
+                *a, **kw
+            ),
+            arg={'find_root': False},
+            type='many2one',
+            relation='program.result.level',
+            string='Chain Tail',
         ),
     }
     _defaults = {
