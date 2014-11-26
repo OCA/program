@@ -65,6 +65,18 @@ class test_program_result_level(TransactionCase):
             self.cr, self.uid, result_level_4_id, context=self.context
         )
 
+    def test_parents(self):
+        self.assertFalse(self.result_level_1.parent_id)
+        self.assertEqual(self.result_level_2.parent_id, self.result_level_1)
+        self.assertEqual(self.result_level_3.parent_id, self.result_level_2)
+        self.assertFalse(self.result_level_4.parent_id)
+
+    def test_children(self):
+        self.assertEqual(self.result_level_1.child_id, [self.result_level_2])
+        self.assertEqual(self.result_level_2.child_id, [self.result_level_3])
+        self.assertEqual(self.result_level_3.child_id, [])
+        self.assertEqual(self.result_level_4.child_id, [])
+
     def test_depth(self):
         self.assertEqual(self.result_level_1.depth, 1)
         self.assertEqual(self.result_level_2.depth, 2)
