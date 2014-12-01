@@ -31,8 +31,10 @@ import simplejson
 
 
 RE_GROUP_FROM = [
-    re.compile("\[\('state', '!=', 'draft'\)\]"),
-    re.compile("\[\[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;\]\]"),
+    re.compile(r"\[\('state', '!=', 'draft'\)\]"),
+    re.compile(
+        r"\[\[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;\]\]"
+    ),
 ]
 RE_GROUP_TO = [
     "[('state', 'not in', ('draft', 'validated'))]",
@@ -242,12 +244,12 @@ class program_result(orm.Model):
         """Format name as code-name or one or the other if the
         other doesn't exist
         """
-        fields = ['code', 'name']
+        name_fields = ['code', 'name']
         if isinstance(ids, (int, long)):
             ids = [ids]
         return [
-            (r['id'], '-'.join(filter(None, (r[f] for f in fields))))
-            for r in self.read(cr, user, ids, fields, context=context)
+            (r['id'], '-'.join(filter(None, (r[f] for f in name_fields))))
+            for r in self.read(cr, user, ids, name_fields, context=context)
         ]
 
     def onchange_parent_depth(self, cr, user, ids, parent_depth, context=None):
