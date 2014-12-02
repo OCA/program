@@ -30,7 +30,7 @@ class program_result_level(orm.Model):
     _columns = {
         'top_level_menu': fields.boolean('Has Top Level Menu'),
         'top_level_menu_name': fields.char('Top Level Menu Name'),
-        # 'top_level_menu_id': fields.many2one('Top Level Menu'),
+        'top_level_menu_id': fields.many2one('ir.ui.menu', 'Top Level Menu'),
     }
 
     def validate_vals(self, vals):
@@ -53,12 +53,41 @@ class program_result_level(orm.Model):
                   'of a result chain')
             )
 
+    def create_menus(self, cr, user, vals, context=None):
+        model_data_pool = self.pool['ir.model.data']
+
+        top_level_menu_id = self.pool['ir.ui.menu'].create(
+            cr, user, {
+                'name': vals['top_level_menu_name'],
+                'sequence': model_data_pool.get_object(
+                    cr, user, 'program', 'menu_program'
+                ).sequence,
+            }, context=context
+        )
+        vals['top_level_menu_id'] = top_level_menu_id
+        parent_id = self._clone_ref(
+            cr, user,
+            'program.menu_program_result',
+            {'parent_id': top_level_menu_id},
+            context=context
+        )
+        return parent_id
+
     def create(self, cr, user, vals, context=None):
         self.validate_vals(vals)
+        parent_id = False
 
-        return super(program_result_level, self).create(
+        if vals.get('top_level_menu'):
+            parent_id = self.create_menus(cr, user, vals, context=context)
+
+        res = super(program_result_level, self).create(
             cr, user, vals, context=context
         )
+
+        self.post_write_menu_writes(cr, user, res, parent_id, vals,
+                                    context=context)
+
+        return res
 
     def write(self, cr, user, ids, vals, context=None):
         """Bubble up Top Menu configuration if chain root changes"""
@@ -78,6 +107,11 @@ class program_result_level(orm.Model):
                       'of a result chain')
                 )
 
+        parent_id = False
+
+        if vals.get('top_level_menu'):
+            parent_id = self.create_menus(cr, user, vals, context=context)
+
         res = super(program_result_level, self).write(
             cr, user, ids, vals, context=context
         )
@@ -85,7 +119,23 @@ class program_result_level(orm.Model):
         if 'parent_id' in vals:
             self._bubble_up_menu(cr, user, ids, context=context)
 
+        self.post_write_menu_writes(cr, user, ids, parent_id,
+                                    vals, context=context)
+
         return res
+
+    def post_write_menu_writes(self, cr, user, ids, parent_id,
+                               vals, context=None):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+
+        for level in self.browse(cr, user, ids, context=context):
+            if level.parent_id and level.chain_root.top_level_menu:
+                # Get the first submenu
+                parent_id = level.chain_root.top_level_menu_id.child_id[0].id
+
+            if parent_id or vals.get('top_level_menu'):
+                level.menu_id.write({'parent_id': parent_id})
 
     def _bubble_up_menu(self, cr, user, ids, context=None):
         """Bubble up Top Menu configuration to root of chain"""
@@ -96,13 +146,16 @@ class program_result_level(orm.Model):
                 continue
             top_level_menu = level.top_level_menu
             top_level_menu_name = level.top_level_menu_name
+            top_level_menu_id = level.top_level_menu_id.id
             level.write({
                 'top_level_menu': False,
                 'top_level_menu_name': False,
+                'top_level_menu_id': False,
             })
             root = level.chain_root
             if not root.top_level_menu:
                 root.write({
                     'top_level_menu': top_level_menu,
                     'top_level_menu_name': top_level_menu_name,
+                    'top_level_menu_id': top_level_menu_id,
                 })

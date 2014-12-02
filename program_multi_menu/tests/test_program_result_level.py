@@ -63,6 +63,19 @@ class test_program_result_level(TransactionCase):
             self.cr, self.uid, self.result_level_3_id, context=self.context
         )
 
+    def test_menu_id(self):
+        """Test creation of Menu
+        """
+        top_level_menu_id = self.result_level_1.top_level_menu_id
+        self.assertTrue(top_level_menu_id)
+        self.assertEqual(
+            top_level_menu_id.name,
+            self.result_level_1.top_level_menu_name
+        )
+        self.assertEqual(len(top_level_menu_id.child_id), 1)
+        result_submenu = top_level_menu_id.child_id[0]
+        self.assertEqual(len(result_submenu.child_id), 3)
+
     def test_root_menu_add(self):
         """Test Adding top menu configuration to a root level
         """
@@ -94,11 +107,14 @@ class test_program_result_level(TransactionCase):
 
         self.assertFalse(self.result_level_1.top_level_menu)
         self.assertFalse(self.result_level_1.top_level_menu_name)
+        self.assertFalse(self.result_level_1.top_level_menu_id)
         self.assertFalse(self.result_level_2.top_level_menu)
         self.assertFalse(self.result_level_2.top_level_menu_name)
+        self.assertFalse(self.result_level_2.top_level_menu_id)
         self.assertTrue(self.result_level_3.top_level_menu)
         self.assertEqual(self.result_level_3.top_level_menu_name,
                          'Test Menu Name')
+        self.assertTrue(self.result_level_3.top_level_menu_id)
 
     def test_reverse_new_name(self):
         """Test bubbling up of Top Menu Configuration with name change
@@ -114,7 +130,10 @@ class test_program_result_level(TransactionCase):
         self.result_level_1.write({'parent_id': self.result_level_2_id})
         self.result_level_1.refresh()
         self.assertTrue(self.result_level_3.top_level_menu)
+        self.assertTrue(self.result_level_3.top_level_menu_id)
         self.assertEqual(self.result_level_3.top_level_menu_name,
+                         'Custom Level 3 Menu Name')
+        self.assertEqual(self.result_level_3.top_level_menu_id.name,
                          'Custom Level 3 Menu Name')
 
     def test_create_new_root(self):
@@ -127,7 +146,10 @@ class test_program_result_level(TransactionCase):
             self.cr, self.uid, new_root_level_id, context=self.context
         )
         self.assertTrue(new_root_level.top_level_menu)
+        self.assertTrue(new_root_level.top_level_menu_id)
         self.assertEqual(new_root_level.top_level_menu_name, 'Test Menu Name')
+        self.assertEqual(new_root_level.top_level_menu_id.name,
+                         'Test Menu Name')
 
     def test_create_new_tail(self):
         """Testing creating a non-root level with menu information"""

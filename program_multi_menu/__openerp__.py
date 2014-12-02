@@ -50,5 +50,8 @@ Contributors
     'data': [
         'program_result_level_view.xml',
     ],
+    'demo': [
+        'program_result_level_demo.xml',
+    ],
     'installable': True,
 }

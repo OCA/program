@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data noupdate="1">
+
+    <record id="demo_result_level_op_mi" model="program.result.level">
+      <field name="name">Mission</field>
+      <field name="code">MI</field>
+      <field name="menu_title">Missions</field>
+      <field name="top_level_menu" eval="True"/>
+      <field name="top_level_menu_name">Operation</field>
+    </record>
+
+    <record id="demo_result_level_op_fr" model="program.result.level">
+      <field name="name">Final Result</field>
+      <field name="code">FR</field>
+      <field name="menu_title">Final Results</field>
+      <field name="parent_id" ref="demo_result_level_op_mi"/>
+    </record>
+
+    <record id="demo_result_level_op_ir" model="program.result.level">
+      <field name="name">Intermediate Result</field>
+      <field name="code">IR</field>
+      <field name="menu_title">Intermediate Results</field>
+      <field name="parent_id" ref="demo_result_level_op_fr"/>
+    </record>
+
+    <record id="demo_result_level_op_imr" model="program.result.level">
+      <field name="name">Immediate Result</field>
+      <field name="code">ImR</field>
+      <field name="menu_title">Immediate Results</field>
+      <field name="parent_id" ref="demo_result_level_op_ir"/>
+    </record>
+
+    <record id="demo_result_level_op_re" model="program.result.level">
+      <field name="name">Realisation</field>
+      <field name="code">RE</field>
+      <field name="menu_title">Realisations</field>
+      <field name="parent_id" ref="demo_result_level_op_imr"/>
+    </record>
+
+    <record id="demo_result_level_op_act" model="program.result.level">
+      <field name="name">Activity</field>
+      <field name="code">AC</field>
+      <field name="menu_title">Activities</field>
+      <field name="parent_id" ref="demo_result_level_op_re"/>
+    </record>
+
+    <record id="demo_result_level_inv_mi" model="program.result.level">
+      <field name="name">Mission</field>
+      <field name="code">MI</field>
+      <field name="menu_title">Missions</field>
+      <field name="top_level_menu" eval="True"/>
+      <field name="top_level_menu_name">Investments</field>
+    </record>
+
+    <record id="demo_result_level_inv_fr" model="program.result.level">
+      <field name="name">Final Result</field>
+      <field name="code">FR</field>
+      <field name="menu_title">Final Results</field>
+      <field name="parent_id" ref="demo_result_level_inv_mi"/>
+    </record>
+
+    <record id="demo_result_level_inv_ir" model="program.result.level">
+      <field name="name">Intermediate Result</field>
+      <field name="code">IR</field>
+      <field name="menu_title">Intermediate Results</field>
+      <field name="parent_id" ref="demo_result_level_inv_fr"/>
+    </record>
+
+    <record id="demo_result_level_inv_imr" model="program.result.level">
+      <field name="name">Immediate Result</field>
+      <field name="code">ImR</field>
+      <field name="menu_title">Immediate Results</field>
+      <field name="parent_id" ref="demo_result_level_inv_ir"/>
+    </record>
+
+    <record id="demo_result_level_inv_re" model="program.result.level">
+      <field name="name">Realisation</field>
+      <field name="code">RE</field>
+      <field name="menu_title">Realisations</field>
+      <field name="parent_id" ref="demo_result_level_inv_imr"/>
+    </record>
+
+    <record id="demo_result_level_inv_act" model="program.result.level">
+      <field name="name">Activity</field>
+      <field name="code">AC</field>
+      <field name="menu_title">Activities</field>
+      <field name="parent_id" ref="demo_result_level_inv_re"/>
+    </record>
+
+  </data>
+</openerp>
