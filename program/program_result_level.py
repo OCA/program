@@ -54,8 +54,10 @@ class program_result_level(orm.Model):
     def _clone_menu_action(self, cr, user,
                            menu_ref, action_ref,
                            menu_default=None, action_default=None,
+                           additional_domain=None,
                            context=None):
-        """Clone the pair of menu and action, then link them
+        """Clone the pair of menu and action, then link them,
+        add elements to the domain
         """
         # Clone
         new_menu_id = self._clone_ref(
@@ -74,6 +76,16 @@ class program_result_level(orm.Model):
             {'value': 'ir.actions.act_window,%d' % new_action_id},
             context=context
         )
+        # Tweak domain
+        if additional_domain:
+            action_pool = self.pool['ir.actions.act_window']
+            domain = eval(action_pool.read(
+                cr, user, new_action_id, ['domain'], context=context
+            )['domain'] or "[]")
+            domain += additional_domain
+            action_pool.write(
+                cr, user, new_action_id, {'domain': domain}, context=context
+            )
         return new_menu_id, new_action_id
 
     def create(self, cr, user, vals, context=None):

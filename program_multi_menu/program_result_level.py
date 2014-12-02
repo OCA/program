@@ -71,6 +71,17 @@ class program_result_level(orm.Model):
             {'parent_id': top_level_menu_id},
             context=context
         )
+        additional_domain = [
+            ('result_level_id.top_level_menu_id', '=', top_level_menu_id),
+        ]
+        self._clone_menu_action(
+            cr, user,
+            'program.menu_program_result_chain',
+            'program.action_program_result_tree',
+            menu_default={'parent_id': parent_id},
+            additional_domain=additional_domain,
+            context=context
+        )
         return parent_id
 
     def create(self, cr, user, vals, context=None):
