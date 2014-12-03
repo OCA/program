@@ -62,6 +62,24 @@ class test_program_result_level(TransactionCase):
         self.result_level_3 = self.program_result_level_model.browse(
             self.cr, self.uid, self.result_level_3_id, context=self.context
         )
+        self.int = self.registry("program.result.intervention").create(
+            self.cr, self.uid, {
+                'name': 'Test Intervention',
+                'top_level_menu_id': self.result_level_1.top_level_menu_id.id,
+            }, self.context
+        )
+        self.tag = self.registry("program.result.tag").create(
+            self.cr, self.uid, {
+                'name': 'Test Tag',
+                'top_level_menu_id': self.result_level_1.top_level_menu_id.id,
+            }, self.context
+        )
+        self.target = self.registry("program.result.target").create(
+            self.cr, self.uid, {
+                'name': 'Test Target',
+                'top_level_menu_id': self.result_level_1.top_level_menu_id.id,
+            }, self.context
+        )
 
     def test_menu_id(self):
         """Test creation of Menu
@@ -162,4 +180,188 @@ class test_program_result_level(TransactionCase):
                 'top_level_menu': True,
                 'top_level_menu_name': 'Custom New Tail Menu Name',
             }, context=self.context
+        )
+
+    def test_unlink1(self):
+        """Make sure menus and actions are deleted when the last member of the
+        chain is unlinked"""
+        top_level_menu = self.result_level_1.top_level_menu_id
+        result_menu, config_menu = top_level_menu.child_id
+        chain_menu = result_menu.child_id[0]
+        level_menu, target_menu, int_menu, tag_menu = config_menu.child_id
+        actions = [
+            top_level_menu.action.id,
+            result_menu.action.id,
+            config_menu.action.id,
+            chain_menu.action.id,
+            level_menu.action.id,
+            target_menu.action.id,
+            int_menu.action.id,
+            tag_menu.action.id,
+        ]
+        self.result_level_1.unlink()
+        self.result_level_2.unlink()
+        self.result_level_3.unlink()
+        self.assertFalse(
+            self.registry("ir.ui.menu").search(self.cr, self.uid, [
+                ('id', 'in', [
+                    top_level_menu.id,
+                    result_menu.id,
+                    config_menu.id,
+                    chain_menu.id,
+                    level_menu.id,
+                    target_menu.id,
+                    int_menu.id,
+                    tag_menu.id,
+                ])
+            ], context=self.context)
+        )
+        self.assertFalse(
+            self.registry("ir.actions.act_window").search(
+                self.cr, self.uid, [('id', 'in', actions)],
+                context=self.context
+            )
+        )
+        self.assertFalse(
+            self.registry("program.result.tag").search(
+                self.cr, self.uid, [('id', '=', self.tag)],
+                context=self.context
+            )
+        )
+        self.assertFalse(
+            self.registry("program.result.target").search(
+                self.cr, self.uid, [('id', '=', self.target)],
+                context=self.context
+            )
+        )
+        self.assertFalse(
+            self.registry("program.result.intervention").search(
+                self.cr, self.uid, [('id', '=', self.int)],
+                context=self.context
+            )
+        )
+
+    def test_unlink2(self):
+        """Make sure menus and actions are deleted when the last member of the
+        chain is unlinked"""
+        top_level_menu = self.result_level_1.top_level_menu_id
+        result_menu, config_menu = top_level_menu.child_id
+        chain_menu = result_menu.child_id[0]
+        level_menu, target_menu, int_menu, tag_menu = config_menu.child_id
+        actions = [
+            top_level_menu.action.id,
+            result_menu.action.id,
+            config_menu.action.id,
+            chain_menu.action.id,
+            level_menu.action.id,
+            target_menu.action.id,
+            int_menu.action.id,
+            tag_menu.action.id,
+        ]
+        self.result_level_3.unlink()
+        self.result_level_2.unlink()
+        self.result_level_1.unlink()
+        self.assertFalse(
+            self.registry("ir.ui.menu").search(self.cr, self.uid, [
+                ('id', 'in', [
+                    top_level_menu.id,
+                    result_menu.id,
+                    config_menu.id,
+                    chain_menu.id,
+                    level_menu.id,
+                    target_menu.id,
+                    int_menu.id,
+                    tag_menu.id,
+                ])
+            ], context=self.context)
+        )
+        self.assertFalse(
+            self.registry("ir.actions.act_window").search(
+                self.cr, self.uid, [('id', 'in', actions)],
+                context=self.context
+            )
+        )
+        self.assertFalse(
+            self.registry("program.result.tag").search(
+                self.cr, self.uid, [('id', '=', self.tag)],
+                context=self.context
+            )
+        )
+        self.assertFalse(
+            self.registry("program.result.target").search(
+                self.cr, self.uid, [('id', '=', self.target)],
+                context=self.context
+            )
+        )
+        self.assertFalse(
+            self.registry("program.result.intervention").search(
+                self.cr, self.uid, [('id', '=', self.int)],
+                context=self.context
+            )
+        )
+
+    def test_unlink3(self):
+        """Make sure menus and actions are deleted when the last member of the
+        chain is unlinked"""
+        top_level_menu = self.result_level_1.top_level_menu_id
+        result_menu, config_menu = top_level_menu.child_id
+        chain_menu = result_menu.child_id[0]
+        level_menu, target_menu, int_menu, tag_menu = config_menu.child_id
+        actions = [
+            top_level_menu.action.id,
+            result_menu.action.id,
+            config_menu.action.id,
+            chain_menu.action.id,
+            level_menu.action.id,
+            target_menu.action.id,
+            int_menu.action.id,
+            tag_menu.action.id,
+        ]
+        self.result_level_1._model.unlink(
+            self.cr,
+            self.uid,
+            [
+                self.result_level_1.id,
+                self.result_level_2.id,
+                self.result_level_3.id
+            ],
+            self.context
+        )
+        self.assertFalse(
+            self.registry("ir.ui.menu").search(self.cr, self.uid, [
+                ('id', 'in', [
+                    top_level_menu.id,
+                    result_menu.id,
+                    config_menu.id,
+                    chain_menu.id,
+                    level_menu.id,
+                    target_menu.id,
+                    int_menu.id,
+                    tag_menu.id,
+                ])
+            ], context=self.context)
+        )
+        self.assertFalse(
+            self.registry("ir.actions.act_window").search(
+                self.cr, self.uid, [('id', 'in', actions)],
+                context=self.context
+            )
+        )
+        self.assertFalse(
+            self.registry("program.result.tag").search(
+                self.cr, self.uid, [('id', '=', self.tag)],
+                context=self.context
+            )
+        )
+        self.assertFalse(
+            self.registry("program.result.target").search(
+                self.cr, self.uid, [('id', '=', self.target)],
+                context=self.context
+            )
+        )
+        self.assertFalse(
+            self.registry("program.result.intervention").search(
+                self.cr, self.uid, [('id', '=', self.int)],
+                context=self.context
+            )
         )

@@ -125,6 +125,40 @@ class program_result_level(orm.Model):
 
         return parent_id
 
+    def _destroy_menus(self, cr, user, top_level_menu_id, context=None):
+        """Delete any menu, actions and elements associated with menu"""
+        menu_pool = self.pool['ir.ui.menu']
+        action_pool = self.pool['ir.actions.act_window']
+        sub_menu_ids = menu_pool.search(
+            cr, user, [('id', 'child_of', top_level_menu_id)], context=context
+        )
+        action_ids = [
+            i['action'].split(',')[-1]
+            for i in menu_pool.read(cr, user, sub_menu_ids, ['action'],
+                                    context=context)
+            if i['action'] and ',' in i['action']
+        ]
+        self._destroy_menu_elements(
+            cr, user, top_level_menu_id, context=context
+        )
+        menu_pool.unlink(cr, user, sub_menu_ids, context=context)
+        action_pool.unlink(cr, user, action_ids, context=context)
+
+    def _destroy_menu_elements(
+            self,  cr, user, top_level_menu_id, context=None):
+        """Delete any remaining objects associated with menu_id"""
+        for model in [
+            'program.result.intervention',
+            'program.result.tag',
+            'program.result.target'
+        ]:
+            element_pool = self.pool[model]
+            element_ids = element_pool.search(
+                cr, user, [('top_level_menu_id', '=', top_level_menu_id)],
+                context=context
+            )
+            element_pool.unlink(cr, user, element_ids, context=context)
+
     def create(self, cr, user, vals, context=None):
         self.validate_vals(vals)
         parent_id = False
@@ -161,7 +195,7 @@ class program_result_level(orm.Model):
 
         parent_id = False
 
-        if vals.get('top_level_menu'):
+        if top_level_menu and not vals.get('top_level_menu_id'):
             parent_id = self.create_menus(cr, user, vals, context=context)
 
         res = super(program_result_level, self).write(
@@ -175,6 +209,41 @@ class program_result_level(orm.Model):
                                     vals, context=context)
 
         return res
+
+    def unlink(self, cr, uid, ids, context=None):
+        """If one of the extra RBM menu chains is removed,
+        remove menu and all other related models
+        """
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        for level in self.browse(cr, uid, ids, context=context):
+            # Refresh needed due to child writes after parent unlinks
+            level.refresh()
+            # Pre-store values
+            top_level_menu = level.top_level_menu
+            top_level_menu_name = level.top_level_menu_name
+            top_level_menu_id = level.top_level_menu_id.id
+            child_id = level.child_id
+            # Regular unlink
+            if not super(program_result_level, self).unlink(
+                    cr, uid, level.id, context=context
+            ):
+                return False
+            if top_level_menu:
+                # Extra work needed with menu
+                if child_id:
+                    child_id[0].write({
+                        'top_level_menu': top_level_menu,
+                        'top_level_menu_name': top_level_menu_name,
+                        'top_level_menu_id': top_level_menu_id,
+                        'parent_id': False,
+                    })
+                else:
+                    # Delete everything related to menu
+                    self._destroy_menus(
+                        cr, uid, top_level_menu_id, context=context
+                    )
+        return True
 
     def post_write_menu_writes(self, cr, user, ids, parent_id,
                                vals, context=None):

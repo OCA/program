@@ -180,6 +180,8 @@ class program_result_level(orm.Model):
         )
 
     def unlink(self, cr, uid, ids, context=None):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
         menu_pool = self.pool['ir.ui.menu']
         menu_ids = set(
             l['menu_id'][0]
