@@ -140,8 +140,14 @@ class program_result(orm.Model):
         }
 
     def create(self, cr, user, vals, context=None):
+        if context is None:
+            context = {}
         parent_id = vals.get('parent_id')
-        if parent_id or parent_id is False:
+        level_id = (
+            context.get('default_result_level_id') or
+            vals.get('result_level_id')
+        )
+        if not level_id and (parent_id or parent_id is False):
             vals['result_level_id'] = self._result_level_id(
                 cr, user, parent_id=parent_id, context=context
             )
