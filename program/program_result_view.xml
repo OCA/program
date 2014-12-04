@@ -122,7 +122,7 @@
                        invisible="context.get('default_parent_depth', False) == -1"
                        attrs="{'readonly': [('state', '!=', 'draft')], 'required': [('parent_depth', '>', 0)]}"/>
                 <field name="intervention_id"
-                       widget="selection"
+                       options="{'create': false, 'create_edit': false}"
                        attrs="{'readonly': [('state', '!=', 'draft')]}"/>
               </group>
 

@@ -48,6 +48,7 @@ Contributors
         'program',
     ],
     'data': [
+        'program_result_view.xml',
         'program_result_level_view.xml',
     ],
     'demo': [

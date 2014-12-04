@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE openerp SYSTEM "openerp.dtd">
+<openerp>
+  <data>
+
+    <record id="view_program_result_form" model="ir.ui.view">
+      <field name="model">program.result</field>
+      <field name="inherit_id" ref="program.view_program_result_form" />
+      <field name="arch" type="xml">
+
+        <field name="tag_ids" position="before">
+          <field name="top_level_menu_id" invisible="1"/>
+        </field>
+
+        <field name="tag_ids" position="attributes">
+          <attribute name="domain">[('top_level_menu_id', '=', top_level_menu_id)]</attribute>
+          <attribute name="context">{'default_top_level_menu_id': top_level_menu_id}</attribute>
+        </field>
+
+        <field name="target_audience_type_ids" position="attributes">
+          <attribute name="domain">[('active', '=', True), ('top_level_menu_id', '=', top_level_menu_id)]</attribute>
+          <attribute name="context">{'default_top_level_menu_id': top_level_menu_id}</attribute>
+        </field>
+
+        <field name="intervention_id" position="attributes">
+          <attribute name="domain">[('top_level_menu_id', '=', top_level_menu_id)]</attribute>
+          <attribute name="context">{'default_top_level_menu_id': top_level_menu_id}</attribute>
+        </field>
+
+        <field name="parent_id" position="attributes">
+          <attribute name="domain">[('id', '!=', id), ('depth', '=', parent_depth or parent_id.depth), ('top_level_menu_id', '=', top_level_menu_id)]</attribute>
+          <attribute name="context">{'default_result_level_id': context.get('default_result_level_id')}</attribute>
+        </field>
+
+        <field name="transverse_child_ids" position="attributes">
+          <attribute name="domain">[('id', '!=', parent_id), ('depth', '=', depth - 1), ('top_level_menu_id', '=', top_level_menu_id)]</attribute>
+        </field>
+
+        <field name="transverse_parent_ids" position="attributes">
+          <attribute name="domain">[('parent_id', '!=', id), ('depth', '=', depth + 1), ('top_level_menu_id', '=', top_level_menu_id)]</attribute>
+        </field>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>
