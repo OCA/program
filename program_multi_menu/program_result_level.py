@@ -53,6 +53,25 @@ class program_result_level(orm.Model):
                   'of a result chain')
             )
 
+    def _get_custom_domain(self, menu_ref, top_level_menu_id):
+        if menu_ref == 'program.menu_program_result_chain':
+            return [
+                ('result_level_id.top_level_menu_id', '=', top_level_menu_id),
+            ]
+        elif menu_ref == 'program.menu_program_configuration_level':
+            return [
+                ('chain_root.top_level_menu_id', '=', top_level_menu_id),
+            ]
+        return [
+            ('top_level_menu_id', '=', top_level_menu_id),
+        ]
+
+    def _get_custom_context(self, menu_ref, top_level_menu_id):
+        if menu_ref in ['program.menu_program_result_chain',
+                        'program.menu_program_configuration_level']:
+            return {}
+        return {'default_top_level_menu_id': top_level_menu_id}
+
     def create_menus(self, cr, user, vals, context=None):
         model_data_pool = self.pool['ir.model.data']
 
@@ -71,17 +90,39 @@ class program_result_level(orm.Model):
             {'parent_id': top_level_menu_id},
             context=context
         )
-        additional_domain = [
-            ('result_level_id.top_level_menu_id', '=', top_level_menu_id),
-        ]
         self._clone_menu_action(
             cr, user,
             'program.menu_program_result_chain',
             'program.action_program_result_tree',
             menu_default={'parent_id': parent_id},
-            additional_domain=additional_domain,
+            additional_domain=self._get_custom_domain(
+                'program.menu_program_result_chain', top_level_menu_id
+            ), context=context
+        )
+
+        # Configuration
+        menu_configuration_id = self._clone_ref(
+            cr, user,
+            'program.menu_program_configuration',
+            {'parent_id': top_level_menu_id},
             context=context
         )
+        for child_id in model_data_pool.get_object(
+            cr, user, 'program', 'menu_program_configuration'
+        ).child_id:
+            menu_ref = child_id.get_external_id()[child_id.id]
+            action_ref = child_id.action.get_external_id()[child_id.action.id]
+            self._clone_menu_action(
+                cr, user, menu_ref, action_ref,
+                menu_default={'parent_id': menu_configuration_id},
+                additional_domain=self._get_custom_domain(
+                    menu_ref, top_level_menu_id
+                ),
+                additional_context=self._get_custom_context(
+                    menu_ref, top_level_menu_id
+                ), context=context
+            )
+
         return parent_id
 
     def create(self, cr, user, vals, context=None):

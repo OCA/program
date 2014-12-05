@@ -72,7 +72,7 @@ class test_program_result_level(TransactionCase):
             top_level_menu_id.name,
             self.result_level_1.top_level_menu_name
         )
-        self.assertEqual(len(top_level_menu_id.child_id), 1)
+        self.assertEqual(len(top_level_menu_id.child_id), 2)
         result_submenu = top_level_menu_id.child_id[0]
         self.assertEqual(len(result_submenu.child_id), 3)
 

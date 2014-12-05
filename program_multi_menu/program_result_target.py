@@ -20,9 +20,12 @@
 #
 ##############################################################################
 
-from . import (
-    program_result_level,
-    program_result_intervention,
-    program_result_tag,
-    program_result_target,
-)
+from openerp.osv import fields, orm
+
+
+class program_result_target(orm.Model):
+
+    _inherit = 'program.result.target'
+    _columns = {
+        'top_level_menu_id': fields.many2one('ir.ui.menu', 'Top Level Menu'),
+    }
