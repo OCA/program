@@ -50,6 +50,7 @@ Contributors
     'data': [
         'program_result_view.xml',
         'program_result_level_view.xml',
+        'ir_actions_act_window_data.xml',
     ],
     'demo': [
         'program_result_level_demo.xml',

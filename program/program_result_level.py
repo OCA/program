@@ -91,6 +91,13 @@ class program_result_level(orm.Model):
                 cr, user, new_action_id, ['domain', 'context'], context=context
             )
             domain = eval(data['domain'] or "[]")
+            overwritten_domain_fields = [
+                i[0] for i in additional_domain if len(i) == 3
+            ]
+            domain = [
+                i for i in domain
+                if not (len(i) == 3 and i[0] in overwritten_domain_fields)
+            ]
             domain += additional_domain or []
             act_context = eval(data['context'] or "{}")
             act_context.update(additional_context or {})
