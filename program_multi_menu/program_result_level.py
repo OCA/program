@@ -251,6 +251,13 @@ class program_result_level(orm.Model):
                     _('Top level menus can only be set on the highest level '
                       'of a result chain')
                 )
+            if (vals.get('top_level_menu_name')
+                    and level.top_level_menu_id
+                    and level.depth == 1
+                    and top_level_menu is not False):
+                level.top_level_menu_id.write({
+                    'name': vals['top_level_menu_name'],
+                })
 
         parent_id = False
 

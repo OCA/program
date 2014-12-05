@@ -182,6 +182,14 @@ class test_program_result_level(TransactionCase):
             }, context=self.context
         )
 
+    def test_rename_menu(self):
+        self.result_level_1.write({'top_level_menu_name': 'New Name'})
+        self.result_level_1.refresh()
+        self.assertEqual(
+            self.result_level_1.top_level_menu_id.name,
+            self.result_level_1.top_level_menu_name,
+        )
+
     def test_unlink1(self):
         """Make sure menus and actions are deleted when the last member of the
         chain is unlinked"""
