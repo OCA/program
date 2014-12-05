@@ -92,7 +92,7 @@ class test_program_result_level(TransactionCase):
         )
         self.assertEqual(len(top_level_menu_id.child_id), 2)
         result_submenu = top_level_menu_id.child_id[0]
-        self.assertEqual(len(result_submenu.child_id), 3)
+        self.assertEqual(len(result_submenu.child_id), 4)
 
     def test_root_menu_add(self):
         """Test Adding top menu configuration to a root level

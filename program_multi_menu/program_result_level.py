@@ -88,6 +88,7 @@ class program_result_level(orm.Model):
             cr, user,
             'program.menu_program_result',
             {'parent_id': top_level_menu_id},
+            copy_name=True,
             context=context
         )
         self._clone_menu_action(
@@ -97,7 +98,9 @@ class program_result_level(orm.Model):
             menu_default={'parent_id': parent_id},
             additional_domain=self._get_custom_domain(
                 'program.menu_program_result_chain', top_level_menu_id
-            ), context=context
+            ),
+            copy_name=True,
+            context=context
         )
 
         # Configuration
@@ -105,6 +108,7 @@ class program_result_level(orm.Model):
             cr, user,
             'program.menu_program_configuration',
             {'parent_id': top_level_menu_id},
+            copy_name=True,
             context=context
         )
         for child_id in model_data_pool.get_object(
@@ -120,7 +124,9 @@ class program_result_level(orm.Model):
                 ),
                 additional_context=self._get_custom_context(
                     menu_ref, top_level_menu_id
-                ), context=context
+                ),
+                copy_name=True,
+                context=context
             )
 
         return parent_id

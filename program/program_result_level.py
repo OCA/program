@@ -38,7 +38,8 @@ class program_result_level(orm.Model):
     _description = 'Result Level'
     _parent_name = 'parent_id'
 
-    def _clone_ref(self, cr, user, ref, defaults=None, context=None):
+    def _clone_ref(self, cr, user, ref, defaults=None, copy_name=False,
+                   context=None):
         """Given a ref, copy it, write defaults and return the new id"""
         model_data_pool = self.pool['ir.model.data']
         module, res_name = ref.split('.')
@@ -47,6 +48,10 @@ class program_result_level(orm.Model):
         )
         ref_model = self.pool[model]
         new_id = ref_model.copy(cr, user, res_id, context=context)
+        if copy_name and not defaults.get('name'):
+            defaults['name'] = ref_model.read(
+                cr, user, res_id, ['name'], context=context
+            )['name']
         if defaults:
             ref_model.write(cr, user, new_id, defaults, context=context)
         return new_id
@@ -56,13 +61,15 @@ class program_result_level(orm.Model):
                            menu_default=None, action_default=None,
                            additional_domain=None,
                            additional_context=None,
+                           copy_name=False,
                            context=None):
         """Clone the pair of menu and action, then link them,
         add elements to the domain
         """
         # Clone
         new_menu_id = self._clone_ref(
-            cr, user, menu_ref, menu_default, context=context
+            cr, user, menu_ref, menu_default, copy_name=copy_name,
+            context=context
         )
         new_action_id = self._clone_ref(
             cr, user, action_ref, action_default, context=context
@@ -93,6 +100,23 @@ class program_result_level(orm.Model):
                     'context': act_context,
                 }, context=context
             )
+        if not copy_name:
+            # Fix duplication of translation
+            trans_pool = self.pool['ir.translation']
+            trans_ids = trans_pool.search(
+                cr, user,
+                [
+                    '|',
+                    '&',
+                    ('name', '=', 'ir.ui.menu,name'),
+                    ('res_id', '=', new_menu_id),
+                    '&',
+                    ('name', '=', 'ir.actions.act_window,name'),
+                    ('res_id', '=', new_action_id),
+                ],
+                context=context
+            )
+            trans_pool.unlink(cr, user, trans_ids, context=context)
         return new_menu_id, new_action_id
 
     def create(self, cr, user, vals, context=None):
@@ -103,8 +127,6 @@ class program_result_level(orm.Model):
         Redirect link through ir.values so new view links to new action
         """
         # Get pools
-        trans_pool = self.pool['ir.translation']
-        menu_pool = self.pool['ir.ui.menu']
         act_pool = self.pool['ir.actions.act_window']
 
         if not vals.get('menu_title'):
@@ -129,11 +151,6 @@ class program_result_level(orm.Model):
             },
             context=context
         )
-        # Fix duplication of translation
-        trans_ids = trans_pool.search(
-            cr, user, [('res_id', 'in', [act_id, menu_id])], context=context
-        )
-        trans_pool.unlink(cr, user, trans_ids, context=context)
         # Create level with menu ref
         vals['menu_id'] = menu_id
         res = super(program_result_level, self).create(
