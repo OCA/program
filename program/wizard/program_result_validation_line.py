@@ -22,6 +22,7 @@
 from openerp.osv import orm, fields
 
 from ..program_result import STATES
+from .. import _get_mapping_general, _get_wizard_validatable
 
 
 class program_result_validation_line(orm.TransientModel):
@@ -32,39 +33,18 @@ class program_result_validation_line(orm.TransientModel):
     _name = 'program.result.validation.line'
     _description = "Result Mass Validator Line"
 
-    def _get_mapping(self):
-        """
-        * program.group_program_basic_user: draft
-        * program.group_program_director: validated
-        * program.group_program_dpe: visa_director, visa_admin
-        * program.group_program_administrator: visa_dpe
-        """
-        return [
-            ('program.group_program_basic_user', ['draft']),
-            ('program.group_program_director', ['validated']),
-            ('program.group_program_dpe', ['visa_director', 'visa_admin']),
-            ('program.group_program_administrator', ['visa_dpe']),
-        ]
-
-    def _get_validatable(self, cr, uid, ids, name, args, context=None):
-        """Check the user's rights to change states based on
-        group and view_program_result_form's buttons
-        """
-        users_pool = self.pool['res.users']
-        res = {i: False for i in ids}
-        for group, states in self._get_mapping():
-            if users_pool.has_group(cr, uid, group):
-                res.update({i: True for i in self.search(
-                    cr, uid, [
-                        ('id', 'in', ids),
-                        ('state', 'in', states),
-                    ], context=context)
-                })
+    def _get_mapping(self, cr, uid, result_ids, context=None):
+        """Disallow validating opened states (closing)"""
+        res = _get_mapping_general(self, cr, uid, result_ids, context=context)
+        for line_id, mapping in res.iteritems():
+            for gui, states in mapping.iteritems():
+                states.discard('opened')
+            pass
         return res
 
     _columns = {
         'is_validatable': fields.function(
-            lambda self, *a, **kw: self._get_validatable(*a, **kw),
+            lambda *a, **kw: _get_wizard_validatable(*a, **kw),
             string='Can be Validated',
             type='boolean',
         ),

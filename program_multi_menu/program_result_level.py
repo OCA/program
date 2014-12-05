@@ -31,6 +31,10 @@ class program_result_level(orm.Model):
         'top_level_menu': fields.boolean('Has Top Level Menu'),
         'top_level_menu_name': fields.char('Top Level Menu Name'),
         'top_level_menu_id': fields.many2one('ir.ui.menu', 'Top Level Menu'),
+        'allowed_group_category_id': fields.many2one(
+            'ir.module.category',
+            'User Group Category'
+        ),
     }
 
     def validate_vals(self, vals):
@@ -71,6 +75,49 @@ class program_result_level(orm.Model):
                         'program.menu_program_configuration_level']:
             return {}
         return {'default_top_level_menu_id': top_level_menu_id}
+
+    def create_groups(self, cr, user, vals, context=None):
+        model_data_pool = self.pool['ir.model.data']
+        group_pool = self.pool['res.groups']
+        original_category = model_data_pool.get_object(
+            cr, user, 'program', 'module_category_program'
+        )
+        allowed_group_category_id = self.pool['ir.module.category'].create(
+            cr, user, {
+                'name': vals['top_level_menu_name'],
+                'sequence': original_category.sequence,
+            }, context=context
+        )
+        allowed_group_ids = group_pool.search(
+            cr, user,
+            [('category_id', '=', original_category.id)],
+            context=context
+        )
+        old_to_new = {}
+        for group_id in allowed_group_ids:
+            name = group_pool.read(
+                cr, user, group_id, ['name'], context=None
+            )['name']
+            new_id = group_pool.copy(
+                cr, user, group_id,
+                {'category_id': allowed_group_category_id},
+                context=context
+            )
+            group_pool.write(cr, user, new_id, {'name': name}, context=None)
+            old_to_new[group_id] = new_id
+
+        # Fix implied ids to use new ids
+        for group_id in allowed_group_ids:
+            new_id = old_to_new[group_id]
+            implied_ids = group_pool.read(
+                cr, user, group_id, ['implied_ids'], context=None
+            )['implied_ids']
+            new_implied_ids = [old_to_new.get(i, i) for i in implied_ids]
+            group_pool.write(
+                cr, user, [new_id],
+                {'implied_ids': [(6, 0, new_implied_ids)]},
+                context=None
+            )
 
     def create_menus(self, cr, user, vals, context=None):
         model_data_pool = self.pool['ir.model.data']
@@ -165,12 +212,18 @@ class program_result_level(orm.Model):
             )
             element_pool.unlink(cr, user, element_ids, context=context)
 
+    def _get_basic_user_id(self, cr, user, vals, context=None):
+        return self.pool['ir.model.data'].get_object_reference(
+            cr, user, 'program', 'group_program_basic_user'
+        )[1]
+
     def create(self, cr, user, vals, context=None):
         self.validate_vals(vals)
         parent_id = False
 
         if vals.get('top_level_menu'):
             parent_id = self.create_menus(cr, user, vals, context=context)
+            self.create_groups(cr, user, vals, context=context)
 
         res = super(program_result_level, self).create(
             cr, user, vals, context=context
@@ -229,6 +282,7 @@ class program_result_level(orm.Model):
             top_level_menu = level.top_level_menu
             top_level_menu_name = level.top_level_menu_name
             top_level_menu_id = level.top_level_menu_id.id
+            allowed_group_category_id = level.allowed_group_category_id.id
             child_id = level.child_id
             # Regular unlink
             if not super(program_result_level, self).unlink(
@@ -242,6 +296,7 @@ class program_result_level(orm.Model):
                         'top_level_menu': top_level_menu,
                         'top_level_menu_name': top_level_menu_name,
                         'top_level_menu_id': top_level_menu_id,
+                        'allowed_group_category_id': allowed_group_category_id,
                         'parent_id': False,
                     })
                 else:
@@ -274,10 +329,12 @@ class program_result_level(orm.Model):
             top_level_menu = level.top_level_menu
             top_level_menu_name = level.top_level_menu_name
             top_level_menu_id = level.top_level_menu_id.id
+            allowed_group_category_id = level.allowed_group_category_id.id
             level.write({
                 'top_level_menu': False,
                 'top_level_menu_name': False,
                 'top_level_menu_id': False,
+                'allowed_group_category_id': False
             })
             root = level.chain_root
             if not root.top_level_menu:
@@ -285,4 +342,5 @@ class program_result_level(orm.Model):
                     'top_level_menu': top_level_menu,
                     'top_level_menu_name': top_level_menu_name,
                     'top_level_menu_id': top_level_menu_id,
+                    'allowed_group_category_id': allowed_group_category_id,
                 })

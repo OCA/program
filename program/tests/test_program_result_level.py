@@ -31,6 +31,7 @@ class test_program_result_level(TransactionCase):
         # Get registries
         self.user_model = self.registry("res.users")
         self.program_result_level_model = self.registry("program.result.level")
+        self.spec_model = self.registry("program.result.validation.spec")
         # Get context
         self.context = self.user_model.context_get(self.cr, self.uid)
 
@@ -38,6 +39,13 @@ class test_program_result_level(TransactionCase):
             self.cr, self.uid, {
                 'name': 'Level 1',
             }, context=self.context)
+        self.spec_model.create(
+            self.cr, self.uid, {
+                'level_id': result_level_1_id,
+                'group_id': 1,
+                'states': "a,b,c",
+            }, context=self.context
+        )
         result_level_2_id = self.program_result_level_model.create(
             self.cr, self.uid, {
                 'name': 'Level 2',
@@ -113,3 +121,7 @@ class test_program_result_level(TransactionCase):
         self.assertEqual(self.result_level_1.depth, 3)
         self.assertEqual(self.result_level_2.depth, 2)
         self.assertEqual(self.result_level_3.depth, 1)
+        # Check bubbling up of spec_ids
+        self.assertTrue(self.result_level_3.validation_spec_ids)
+        self.assertFalse(self.result_level_2.validation_spec_ids)
+        self.assertFalse(self.result_level_1.validation_spec_ids)

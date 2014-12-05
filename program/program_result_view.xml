@@ -26,72 +26,64 @@
       <field name="arch" type="xml">
         <form string="Result" version="7.0">
           <header>
+            <!-- Groups for workflow has been replaced with logic in
+                 fields view get -->
             <button name="signal_validate"
                     type="workflow"
                     states="draft"
                     string="Validate"
-                    class="oe_highlight"
-                    groups="program.group_program_basic_user"/>
+                    class="oe_highlight"/>
             <button name="signal_visa_director"
                     type="workflow"
                     states="validated"
                     string="Validate"
-                    class="oe_highlight"
-                    groups="program.group_program_director"/>
+                    class="oe_highlight"/>
             <button name="signal_validate_draft"
                     type="workflow"
                     states="validated"
-                    string="Return to Draft"
-                    groups="program.group_program_director"/>
+                    string="Return to Draft"/>
             <button name="signal_visa_dpe"
                     type="workflow"
                     states="visa_director"
                     string="Validate"
-                    class="oe_highlight"
-                    groups="program.group_program_dpe"/>
+                    class="oe_highlight"/>
             <button name="signal_visa_director_draft"
                     type="workflow"
                     states="visa_director"
-                    string="Return to Draft"
-                    groups="program.group_program_dpe"/>
+                    string="Return to Draft"/>
             <button name="signal_visa_admin"
                     type="workflow"
                     states="visa_dpe"
                     string="Validate"
-                    class="oe_highlight"
-                    groups="program.group_program_administrator"/>
+                    class="oe_highlight"/>
             <button name="signal_visa_dpe_draft"
                     type="workflow"
                     states="visa_dpe"
-                    string="Return to Draft"
-                    groups="program.group_program_administrator"/>
-            <button name="signal_open"
+                    string="Return to Draft"/>
+            <button name="signal_opened"
                     type="workflow"
                     states="visa_admin"
                     string="Open"
-                    class="oe_highlight"
-                    groups="program.group_program_dpe"/>
+                    class="oe_highlight"/>
             <button name="signal_visa_admin_draft"
                     type="workflow"
                     states="visa_admin"
-                    string="Return to Draft"
-                    groups="program.group_program_dpe"/>
+                    string="Return to Draft"/>
             <button name="signal_close"
                     type="workflow"
                     states="opened"
                     string="Close"
-                    class="oe_highlight"
-                    groups="program.group_program_dpe"/>
+                    class="oe_highlight"/>
             <button name="signal_cancel"
                     type="workflow"
                     states="draft"
-                    string="Cancel"
-                    groups="program.group_program_basic_user"/>
+                    string="Cancel"/>
             <field name="state"
                    widget="statusbar"
                    statusbar_visible="draft,validated,visa_director,visa_dpe,visa_admin,opened,closed"/>
           </header>
           <sheet>
+            <field name="validation_domain" invisible="1"/>
             <div class="oe_title">
               <label for="name" class="oe_edit_only" />
               <h1>

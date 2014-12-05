@@ -24,11 +24,11 @@ import re
 from lxml import etree
 
 from openerp.osv import fields, orm
-from openerp.tools.safe_eval import safe_eval
 from openerp.tools.translate import _
 from openerp import netsvc
 import simplejson
 
+from . import _get_validatable
 
 RE_GROUP_FROM = [
     re.compile(r"\[\('state', '!=', 'draft'\)\]"),
@@ -205,7 +205,7 @@ class program_result(orm.Model):
         the level
         """
         def hide_elem(elem, invisible="true"):
-            modifiers = safe_eval(elem.attrib.get('modifiers', "{}"))
+            modifiers = simplejson.loads(elem.attrib.get('modifiers', "{}"))
             modifiers['invisible'] = invisible
             elem.attrib['modifiers'] = simplejson.dumps(modifiers)
 
@@ -242,6 +242,28 @@ class program_result(orm.Model):
                 )
                 for elem in arch.xpath(xpath):
                     hide_elem(elem, [('result_level_id', 'in', hidden_levels)])
+
+            spec_pool = self.pool['program.result.validation.spec']
+            states = spec_pool.get_all_states(cr, user, context=context)
+            for state in set(states):
+                match = arch.xpath(
+                    "//button[@states='%s' and @type='workflow']" % state
+                )
+                if not match:
+                    continue
+                button = match[0]
+                modifiers = simplejson.loads(
+                    button.attrib.get('modifiers', "{}")
+                )
+                invisible = modifiers.get('invisible', [])
+                if invisible is True:
+                    continue
+                if invisible:
+                    invisible.insert(0, '|')
+                invisible.insert(1, ('validation_domain', '!=', True))
+                if invisible:
+                    modifiers['invisible'] = invisible
+                button.attrib['modifiers'] = simplejson.dumps(modifiers)
 
             res['arch'] = etree.tostring(arch)
         return res
@@ -369,6 +391,11 @@ class program_result(orm.Model):
             'program.result.intervention', string='Intervention Mode'
         ),
         'tag_ids': fields.many2many('program.result.tag', string='Tags'),
+        'validation_domain': fields.function(
+            lambda *a, **kw: _get_validatable(*a, **kw),
+            type='boolean',
+            string="Validation Domain Search",
+        ),
     }
     _defaults = {
         'state': 'draft',

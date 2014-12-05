@@ -119,6 +119,25 @@ class program_result_level(orm.Model):
             trans_pool.unlink(cr, user, trans_ids, context=context)
         return new_menu_id, new_action_id
 
+    def _get_basic_user_id(self, cr, user, vals, context=None):
+        return self.pool['ir.model.data'].get_object_reference(
+            cr, user, 'program', 'group_program_basic_user'
+        )[1]
+
+    def _bubble_up_specs(self, cr, user, ids, context=None):
+        """Bubble up Specs to root of chain"""
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        spec_pool = self.pool['program.result.validation.spec']
+        for level in self.browse(cr, user, ids, context=context):
+            if not level.parent_id or not level.validation_spec_ids:
+                continue
+            new_level_id = level.chain_root.id
+            spec_ids = [s.id for s in level.validation_spec_ids]
+            spec_pool.write(cr, user, spec_ids, {
+                'level_id': new_level_id,
+            }, context=context)
+
     def create(self, cr, user, vals, context=None):
         """Create a menu entry for each level
 
@@ -143,9 +162,7 @@ class program_result_level(orm.Model):
             menu_default={
                 'name': vals['menu_title'],
                 'groups_id': [(6, 0, [
-                    self.pool['ir.model.data'].get_object_reference(
-                        cr, user, 'program', 'group_program_basic_user'
-                    )[1]
+                    self._get_basic_user_id(cr, user, vals, context)
                 ])],
                 'sequence': 20,
             },
@@ -192,9 +209,14 @@ class program_result_level(orm.Model):
                     level.menu_id.action.write({
                         'context': {'default_parent_depth': depth}
                     })
-        return super(program_result_level, self).write(
+        res = super(program_result_level, self).write(
             cr, user, ids, vals, context=context
         )
+
+        if 'parent_id' in vals:
+            self._bubble_up_specs(cr, user, ids, context=context)
+
+        return res
 
     def unlink(self, cr, uid, ids, context=None):
         if isinstance(ids, (int, long)):
@@ -320,6 +342,12 @@ class program_result_level(orm.Model):
             'Options for Status',
             translate=True,
             help='Comma-separated list of options for the Status Field.',
+        ),
+        'validation_spec_ids': fields.one2many(
+            'program.result.validation.spec',
+            'level_id',
+            string='Validation Specifications',
+            help='Configuration of which users can validate which states',
         ),
         'chain_root': fields.function(
             lambda self, *a, **kw: self._get_chain_end(*a, **kw),
