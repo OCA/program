@@ -242,6 +242,8 @@ class program_result_level(orm.Model):
         self.validate_vals(vals)
         top_level_menu = vals.get('top_level_menu')
 
+        no_menu = False
+
         for level in self.browse(cr, user, ids, context=context):
             if (vals.get('parent_id') is not False
                     and level.depth > 1
@@ -258,10 +260,12 @@ class program_result_level(orm.Model):
                 level.top_level_menu_id.write({
                     'name': vals['top_level_menu_name'],
                 })
+            if not level.top_level_menu_id:
+                no_menu = True
 
         parent_id = False
 
-        if top_level_menu and not vals.get('top_level_menu_id'):
+        if no_menu and top_level_menu and not vals.get('top_level_menu_id'):
             parent_id = self.create_menus(cr, user, vals, context=context)
 
         res = super(program_result_level, self).write(
@@ -271,8 +275,9 @@ class program_result_level(orm.Model):
         if 'parent_id' in vals:
             self._bubble_up_menu(cr, user, ids, context=context)
 
-        self.post_write_menu_writes(cr, user, ids, parent_id,
-                                    vals, context=context)
+        if no_menu:
+            self.post_write_menu_writes(cr, user, ids, parent_id,
+                                        vals, context=context)
 
         return res
 

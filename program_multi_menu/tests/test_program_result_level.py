@@ -190,6 +190,18 @@ class test_program_result_level(TransactionCase):
             self.result_level_1.top_level_menu_name,
         )
 
+    def test_double_init(self):
+        menu_id = self.result_level_1.top_level_menu_id.id
+        self.result_level_1.write({
+            'top_level_menu': True,
+            'top_level_menu_name': 'New Name',
+        })
+        self.result_level_1.refresh()
+        self.assertEqual(
+            self.result_level_1.top_level_menu_id.id,
+            menu_id,
+        )
+
     def test_unlink1(self):
         """Make sure menus and actions are deleted when the last member of the
         chain is unlinked"""
