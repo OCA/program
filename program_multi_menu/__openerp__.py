@@ -36,6 +36,8 @@ a menu will be added to the top OpenERP bar and will stay in sync with the root
 of the result chain even after chain re-organisation. If not supplied, result
 menus will be available in main Program menu.
 
+Creation of menus is only available to users with technical features enabled.
+
 Contributors
 ------------
 

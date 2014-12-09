@@ -10,8 +10,9 @@
 
         <page name="fvg_show_page" position="inside">
           <group attrs="{'invisible': [('depth', '>', 1)]}" col="4">
-            <field name="top_level_menu"/>
+            <field name="top_level_menu" groups="base.group_no_one"/>
             <field name="top_level_menu_name"
+                   groups="base.group_no_one"
                    attrs="{
                      'required': [('top_level_menu', '=', True)],
                      'invisible': [('top_level_menu', '=', False)],
