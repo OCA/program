@@ -30,6 +30,7 @@ class program_result_country(orm.Model):
         return _('A country and role pair has been entered twice.')
 
     _name = 'program.result.country'
+    _description = "Target Country"
     _columns = {
         'result_id': fields.many2one(
             'program.result',

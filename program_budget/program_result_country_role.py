@@ -26,6 +26,7 @@ from openerp.osv import fields, orm
 class program_result_country_role(orm.Model):
 
     _name = 'program.result.country.role'
+    _description = 'Target Country Role'
     _columns = {
         'name': fields.char('Name', required=True, select=True),
         'active': fields.boolean('Active'),
