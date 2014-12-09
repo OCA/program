@@ -181,6 +181,11 @@ class program_result(orm.Model):
                 cr, uid, vals, context=context
             )
 
+        if not vals.get('result_level_id'):
+            vals['result_level_id'] = self._result_level_id(
+                cr, uid, parent_id=vals.get('parent_id'), context=context
+            )
+
         vals['account_analytic_id'] = self._create_related_account(
             cr, uid, vals, context=context)
 
