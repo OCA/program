@@ -214,6 +214,7 @@ class program_result(orm.Model):
                     cr, uid, result.id,
                     self._get_propagatable_fields(),
                     context=context).items() + vals.items())
+                prop_vals['result_level_id'] = result.result_level_id.id
                 account_id = self._create_related_account(
                     cr, uid, prop_vals, context=context)
                 result.write({'account_analytic_id': account_id},

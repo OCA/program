@@ -118,17 +118,19 @@ class program_result(orm.Model):
     def _result_level_id(
             self, cr, user, ids=False, parent_id=False, context=None):
         if parent_id:
-            depth = self.read(cr, user, parent_id, ['depth'])['depth'] + 1
+            parent = self.browse(cr, user, parent_id, context=context)
+            parent_level = parent.result_level_id
+            if parent_level.child_id:
+                return parent_level.child_id[0].id
         else:
             depth = 1
-        level_pool = self.pool['program.result.level']
-        root_ids = level_pool.search(
-            cr, user, [('depth', '=', depth)], context=context
-        )
-        if root_ids:
-            return root_ids[0]
-        else:
-            return False
+            level_pool = self.pool['program.result.level']
+            root_ids = level_pool.search(
+                cr, user, [('depth', '=', depth)], context=context
+            )
+            if root_ids:
+                return root_ids[0]
+        return False
 
     def onchange_parent_id(self, cr, user, ids, parent_id, context=None):
         return {
