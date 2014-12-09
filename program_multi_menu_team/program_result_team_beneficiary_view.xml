@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+
+    <record id="view_program_team_beneficiary_tree" model="ir.ui.view">
+      <field name="model">program.result.team.beneficiary</field>
+      <field name="inherit_id" ref="program_team.view_program_team_beneficiary_tree"/>
+      <field name="arch" type="xml">
+
+        <field name="type_id" position="before">
+          <field name="top_level_menu_id" invisible="1"/>
+        </field>
+
+        <field name="type_id" position="attributes">
+          <attribute name="domain">[('top_level_menu_id', '=', top_level_menu_id)]</attribute>
+          <attribute name="context">{'default_top_level_menu_id': top_level_menu_id}</attribute>
+        </field>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>
