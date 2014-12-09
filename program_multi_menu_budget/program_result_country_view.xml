@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+
+    <record id="view_program_result_country_tree" model="ir.ui.view">
+      <field name="model">program.result.country</field>
+      <field name="inherit_id" ref="program_budget.view_program_result_country_tree" />
+      <field name="arch" type="xml">
+
+        <field name="role" position="before">
+          <field name="top_level_menu_id" invisible="1"/>
+        </field>
+
+        <field name="role" position="attributes">
+          <attribute name="domain">[('top_level_menu_id', '=', top_level_menu_id)]</attribute>
+        </field>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>
