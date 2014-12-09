@@ -163,6 +163,10 @@ class program_result_level(orm.Model):
         ).child_id:
             menu_ref = child_id.get_external_id()[child_id.id]
             action_ref = child_id.action.get_external_id()[child_id.action.id]
+            if child_id.action.res_model not in self.pool.models:
+                # Avoid complications when code is run without inheritance tree
+                # Such as unittests after DB is initialized with other modules
+                continue
             self._clone_menu_action(
                 cr, user, menu_ref, action_ref,
                 menu_default={'parent_id': menu_configuration_id},
