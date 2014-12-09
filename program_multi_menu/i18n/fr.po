@@ -1,0 +1,131 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* program_multi_menu
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-12-09 22:33+0000\n"
+"PO-Revision-Date: 2014-12-09 17:37-0500\n"
+"Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.6.11\n"
+
+#. module: program_multi_menu
+#: model:ir.model,name:program_multi_menu.model_program_result_level
+msgid "Result Level"
+msgstr "Niveau de résultats"
+
+#. module: program_multi_menu
+#: field:program.result.level,top_level_menu_name:0
+msgid "Top Level Menu Name"
+msgstr "Nom du menu dédié"
+
+#. module: program_multi_menu
+#: code:addons/program_multi_menu/program_result_level.py:50
+#, python-format
+msgid "No Menu Name provided"
+msgstr "Nom de menu manquant"
+
+#. module: program_multi_menu
+#: field:program.result,top_level_menu_id:0
+#: field:program.result.intervention,top_level_menu_id:0
+#: field:program.result.level,top_level_menu_id:0
+#: field:program.result.tag,top_level_menu_id:0
+#: field:program.result.target,top_level_menu_id:0
+msgid "Top Level Menu"
+msgstr "Menu dédié"
+
+#. module: program_multi_menu
+#: model:ir.model,name:program_multi_menu.model_program_result_intervention
+msgid "Intervention Method"
+msgstr "Mode d'intervention"
+
+#. module: program_multi_menu
+#: field:program.result.level,top_level_menu:0
+msgid "Has Top Level Menu"
+msgstr "A un menu dédié"
+
+#. module: program_multi_menu
+#: view:program.result:0
+msgid ""
+"[('id', '!=', parent_id), ('depth', '=', depth - 1), ('top_level_menu_id', "
+"'=', top_level_menu_id)]"
+msgstr ""
+
+#. module: program_multi_menu
+#: code:addons/program_multi_menu/program_result_level.py:56
+#: code:addons/program_multi_menu/program_result_level.py:257
+#, python-format
+msgid "Top level menus can only be set on the highest level of a result chain"
+msgstr ""
+"Les menus dédiés ne peuvent être déclarés que sur un niveau de résultat "
+"racine"
+
+#. module: program_multi_menu
+#: code:addons/program_multi_menu/program_result_level.py:49
+#: code:addons/program_multi_menu/program_result_level.py:55
+#: code:addons/program_multi_menu/program_result_level.py:256
+#, python-format
+msgid "Error!"
+msgstr "Erreur!"
+
+#. module: program_multi_menu
+#: view:program.result:0
+msgid "[('top_level_menu_id', '=', top_level_menu_id)]"
+msgstr ""
+
+#. module: program_multi_menu
+#: view:program.result:0
+msgid "[('active', '=', True), ('top_level_menu_id', '=', top_level_menu_id)]"
+msgstr ""
+
+#. module: program_multi_menu
+#: model:ir.model,name:program_multi_menu.model_program_result
+msgid "Result"
+msgstr "Résultat"
+
+#. module: program_multi_menu
+#: model:ir.model,name:program_multi_menu.model_program_result_target
+msgid "Result Target"
+msgstr "Cible du Résultat"
+
+#. module: program_multi_menu
+#: view:program.result:0
+msgid "{'default_top_level_menu_id': top_level_menu_id}"
+msgstr ""
+
+#. module: program_multi_menu
+#: model:ir.model,name:program_multi_menu.model_program_result_tag
+msgid "Result Tag"
+msgstr "Étiquette de résultat"
+
+#. module: program_multi_menu
+#: view:program.result:0
+msgid "{'default_result_level_id': context.get('default_result_level_id')}"
+msgstr ""
+
+#. module: program_multi_menu
+#: field:program.result.level,allowed_group_category_id:0
+msgid "User Group Category"
+msgstr "Catégorie du groupe d'utilisateur"
+
+#. module: program_multi_menu
+#: view:program.result:0
+msgid ""
+"[('id', '!=', id), ('depth', '=', parent_depth or parent_id.depth), "
+"('top_level_menu_id', '=', top_level_menu_id)]"
+msgstr ""
+
+#. module: program_multi_menu
+#: view:program.result:0
+msgid ""
+"[('parent_id', '!=', id), ('depth', '=', depth + 1), ('top_level_menu_id', "
+"'=', top_level_menu_id)]"
+msgstr ""
