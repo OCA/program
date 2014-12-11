@@ -140,6 +140,17 @@ class program_result_level(orm.Model):
         )
         self._clone_menu_action(
             cr, user,
+            'program.menu_program_result_result',
+            'program.action_program_result_list',
+            menu_default={'parent_id': parent_id},
+            additional_domain=self._get_custom_domain(
+                'program.menu_program_result_result', top_level_menu_id
+            ),
+            copy_name=True,
+            context=context
+        )
+        self._clone_menu_action(
+            cr, user,
             'program.menu_program_result_chain',
             'program.action_program_result_tree',
             menu_default={'parent_id': parent_id},
