@@ -29,7 +29,7 @@ class program_result_level(orm.Model):
 
     def create_menus(self, cr, user, vals, context=None):
         model_data_pool = self.pool['ir.model.data']
-        res = super(program_result_level, self).create(
+        res = super(program_result_level, self).create_menus(
             cr, user, vals, context=context
         )
         top_level_menu_id = vals['top_level_menu_id']

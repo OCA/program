@@ -29,7 +29,7 @@ class program_result_level(orm.Model):
 
     def create_menus(self, cr, user, vals, context=None):
         model_data_pool = self.pool['ir.model.data']
-        res = super(program_result_level, self).create(
+        res = super(program_result_level, self).create_menus(
             cr, user, vals, context=context
         )
         top_level_menu_id = vals['top_level_menu_id']
@@ -37,13 +37,13 @@ class program_result_level(orm.Model):
         # Clone Evaluation Menu
         menu_configuration_id = self._clone_ref(
             cr, user,
-            'program_indicator.menu_program_evaluation_action',
+            'program_evaluation.menu_program_evaluation_action',
             {'parent_id': top_level_menu_id},
             copy_name=True,
             context=context
         )
         for child_id in model_data_pool.get_object(
-            cr, user, 'program_indicator', 'menu_program_evaluation_action'
+            cr, user, 'program_evaluation', 'menu_program_evaluation_action'
         ).child_id:
             menu_ref = child_id.get_external_id()[child_id.id]
             action_ref = child_id.action.get_external_id()[child_id.action.id]
