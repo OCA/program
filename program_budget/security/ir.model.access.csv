@@ -1,7 +1,7 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
 access_program_result_region_user,access_program_result_region_user,model_program_result_region,program.group_program_basic_user,1,1,1,1
 access_program_crossovered_budget_lines,access_program_crossovered_budget_lines,model_program_crossovered_budget_lines,program.group_program_basic_user,1,1,1,1
-access_program_result_country,access_program_result_country,model_program_result_country,program.group_program_manager,1,0,0,0
+access_program_result_country,access_program_result_country,model_program_result_country,program.group_program_basic_user,1,0,0,0
 access_program_result_country_role,access_program_result_country_role,model_program_result_country_role,program.group_program_manager,1,0,0,0
 
 access_program_result_country_manager,access_program_result_country,model_program_result_country,program.group_program_manager,1,1,1,1
