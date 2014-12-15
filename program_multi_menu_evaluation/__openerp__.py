@@ -45,6 +45,7 @@ Contributors
     'license': 'AGPL-3',
     'external_dependencies': {},
     'data': [
+        'ir_actions_act_window_data.xml',
         'program_result_view.xml',
     ],
     'demo': [

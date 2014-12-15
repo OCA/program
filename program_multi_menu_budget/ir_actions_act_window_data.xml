@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+
+    <record id="program_budget.action_program_result_country_role_tree" model="ir.actions.act_window">
+      <field name="domain">[('top_level_menu_id', '=', False)]</field>
+    </record>
+
+    <record id="program_budget.action_program_result_region_tree" model="ir.actions.act_window">
+      <field name="domain">[('top_level_menu_id', '=', False)]</field>
+    </record>
+
+  </data>
+</openerp>

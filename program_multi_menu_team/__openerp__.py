@@ -44,6 +44,7 @@ Contributors
         'program_multi_menu',
     ],
     'data': [
+        'ir_actions_act_window_data.xml',
         'program_result_view.xml',
         'program_result_team_beneficiary_view.xml',
         'program_result_team_partner_view.xml',

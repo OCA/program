@@ -76,16 +76,7 @@
       <field name="target">current</field>
     </record>
 
-    <record id="action_program_evaluation_tree" model="ir.actions.act_window">
-      <field name="name">Evaluations</field>
-      <field name="res_model">program.evaluation</field>
-      <field name="view_type">form</field>
-      <field name="view_mode">tree,form</field>
-      <field name="view_id" ref="view_program_evaluation_tree" />
-      <field name="target">current</field>
-    </record>
-
-    <menuitem 
+    <menuitem
       id="menu_program_evaluation_action"
       name="Evaluations"
       parent="program.menu_program"
@@ -98,7 +89,7 @@
       parent="menu_program_evaluation_action"
       action="action_program_evaluation_tree"
       groups="program_evaluation.group_program_evaluator"
-      sequence="1" />    
+      sequence="1" />
 
   </data>
 </openerp>
