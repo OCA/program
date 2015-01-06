@@ -34,7 +34,7 @@ Program - Team Bindings
 Contributors
 ------------
 * Sandy Carter (sandy.carter@savoirfairelinux.com)
-
+* Joao Alfredo Gama Batista (joao.gama@savoirfairelinux.com)
 """,
     'depends': [
         'program',
@@ -42,6 +42,7 @@ Contributors
     ],
     'license': 'AGPL-3',
     'data': [
+        'security/ir.model.access.csv',
         'program_result_view.xml',
         'program_result_level_view.xml',
         'travel_view.xml',
