@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-12 22:00+0000\n"
-"PO-Revision-Date: 2014-03-12 22:00+0000\n"
+"POT-Creation-Date: 2014-09-18 16:52+0000\n"
+"PO-Revision-Date: 2014-09-18 16:52+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,189 +16,164 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: program_indicator
-#: code:addons/program_indicator/program.py:134
-#: view:program.indicator:0
-#: field:result.indicator,indicator_id:0
-#, python-format
+#: field:program.result.indicator.value,indicator_id:0
 msgid "Indicator"
 msgstr ""
 
 #. module: program_indicator
-#: field:program.indicator,generic:0
-msgid "Generic"
+#: field:program.result.indicator.value,uid:0
+msgid "Author"
 msgstr ""
 
 #. module: program_indicator
-#: field:program.indicator,risk_hypothesis:0
-msgid "Risk Hypothesis"
+#: field:program.result.indicator,value_logged_ids:0
+msgid "Logged Values"
 msgstr ""
 
 #. module: program_indicator
-#: field:program.result,result_indicator_id:0
-#: view:result.indicator:0
+#: model:ir.model,name:program_indicator.model_program_result_indicator
+#: field:program.result,result_indicator_ids:0
+#: view:program.result.indicator:0
 msgid "Result Indicator"
 msgstr ""
 
 #. module: program_indicator
-#: view:result.indicator:0
-#: field:result.indicator,action_id:0
-msgid "Action"
-msgstr ""
-
-#. module: program_indicator
-#: selection:result.indicator,state:0
+#: selection:program.result.indicator.value,state:0
 msgid "Draft"
 msgstr ""
 
 #. module: program_indicator
-#: model:ir.actions.act_window,name:program_indicator.action_program_indicator_tree
+#: view:program.result.indicator.value:0
+msgid "Erase Value"
+msgstr ""
+
+#. module: program_indicator
 #: model:ir.ui.menu,name:program_indicator.menu_program_indicator_action
-#: model:ir.ui.menu,name:program_indicator.menu_program_indicator_action_action
-#: view:program.action:0
+#: view:program.result:0
 msgid "Indicators"
 msgstr ""
 
 #. module: program_indicator
-#: field:program.indicator,verification_means:0
-#: field:result.indicator,verification_means:0
-msgid "Verification means"
+#: model:ir.model,name:program_indicator.model_program_result_level
+msgid "Result Level"
 msgstr ""
 
 #. module: program_indicator
-#: model:ir.model,name:program_indicator.model_program_action
-msgid "program.action"
-msgstr ""
-
-#. module: program_indicator
-#: view:result.indicator:0
-#: selection:result.indicator,state:0
-msgid "Pending"
-msgstr ""
-
-#. module: program_indicator
-#: field:result.indicator,state:0
+#: field:program.result.indicator.value,state:0
 msgid "Status"
 msgstr ""
 
 #. module: program_indicator
-#: field:result.indicator,risk_hypothesis:0
-msgid "Risk hypothesis"
+#: view:program.result.indicator.value:0
+msgid "Result Indicator Values"
 msgstr ""
 
 #. module: program_indicator
-#: view:result.indicator:0
+#: view:program.result.indicator.value:0
+msgid "Confirm Value"
+msgstr ""
+
+#. module: program_indicator
+#: field:program.result.indicator,value_initial:0
+msgid "Initial Value"
+msgstr ""
+
+#. module: program_indicator
+#: view:program.result.indicator:0
 msgid "Search Result Indicators"
 msgstr ""
 
 #. module: program_indicator
-#: field:result.indicator,partner_id:0
-msgid "User"
-msgstr ""
-
-#. module: program_indicator
-#: field:result.indicator,value_date:0
+#: field:program.result.indicator.value,name:0
 msgid "Date"
 msgstr ""
 
 #. module: program_indicator
-#: model:ir.model,name:program_indicator.model_result_indicator
-msgid "result.indicator"
+#: field:program.result.indicator,partner_id:0
+msgid "Manager of follow-up"
 msgstr ""
 
 #. module: program_indicator
-#: view:program.result:0
-msgid "Result indicators"
+#: model:ir.model,name:program_indicator.model_program_result_indicator_value
+msgid "Result Indicator Value"
 msgstr ""
 
 #. module: program_indicator
-#: code:addons/program_indicator/program.py:135
-#: field:result.indicator,value_target:0
-#, python-format
-msgid "Target value"
+#: view:program.result.indicator:0
+msgid "Indicator Values"
 msgstr ""
 
 #. module: program_indicator
-#: field:program.indicator,name:0
+#: field:program.result.indicator,value_uid:0
+msgid "Last Modified by"
+msgstr ""
+
+#. module: program_indicator
+#: field:program.result.indicator,name:0
 msgid "Name"
 msgstr ""
 
 #. module: program_indicator
-#: code:addons/program_indicator/program.py:133
-#: field:result.indicator,value_initial:0
-#, python-format
-msgid "Initial value"
+#: view:program.result.indicator.value:0
+msgid "Validate Value"
 msgstr ""
 
 #. module: program_indicator
-#: view:result.indicator:0
-#: selection:result.indicator,state:0
-msgid "Submitted"
+#: field:program.result.indicator,value_progress:0
+msgid "Value Progress"
 msgstr ""
 
 #. module: program_indicator
-#: code:addons/program_indicator/program.py:136
-#: field:result.indicator,value:0
-#, python-format
+#: field:program.result.indicator,value:0
+#: field:program.result.indicator.value,value:0
 msgid "Value"
 msgstr ""
 
 #. module: program_indicator
-#: selection:result.indicator,state:0
+#: selection:program.result.indicator.value,state:0
 msgid "Cancelled"
 msgstr ""
 
 #. module: program_indicator
-#: model:ir.model,name:program_indicator.model_program_result
-msgid "program.result"
-msgstr ""
-
-#. module: program_indicator
-#: field:result.indicator,comment:0
+#: field:program.result.indicator,comment:0
 msgid "Comment"
 msgstr ""
 
 #. module: program_indicator
-#: model:ir.actions.act_window,name:program_indicator.action_program_result_indicator_tree
-#: model:ir.ui.menu,name:program_indicator.menu_result_indicator_action_action
-#: view:result.indicator:0
+#: model:ir.actions.act_window,name:program_indicator.action_program_program_indicator_result_tree
+#: model:ir.ui.menu,name:program_indicator.menu_program_indicator_result_action_action
+#: view:program.result.indicator:0
 msgid "Result Indicators"
 msgstr ""
 
 #. module: program_indicator
-#: field:result.indicator,mandatory:0
-msgid "Mandatory"
+#: field:program.result.indicator,value_target:0
+msgid "Target Value"
 msgstr ""
 
 #. module: program_indicator
-#: model:ir.model,name:program_indicator.model_program_indicator
-msgid "program.indicator"
+#: field:program.result.level,fvg_show_page_indicators:0
+msgid "Show \"Indicator\" Tab"
 msgstr ""
 
 #. module: program_indicator
-#: view:result.indicator:0
+#: view:program.result.indicator:0
 msgid "Group by..."
 msgstr ""
 
 #. module: program_indicator
-#: view:result.indicator:0
-#: field:result.indicator,result_id:0
+#: selection:program.result.indicator.value,state:0
+msgid "Done"
+msgstr ""
+
+#. module: program_indicator
+#: model:ir.model,name:program_indicator.model_program_result
+#: view:program.result.indicator:0
+#: field:program.result.indicator,result_id:0
 msgid "Result"
 msgstr ""
 
 #. module: program_indicator
-#: view:result.indicator:0
-msgid "Cancel"
-msgstr ""
-
-#. module: program_indicator
-#: view:result.indicator:0
-#: selection:result.indicator,state:0
+#: selection:program.result.indicator.value,state:0
 msgid "Validated"
 msgstr ""
-
-#. module: program_indicator
-#: view:result.indicator:0
-#: selection:result.indicator,state:0
-msgid "Open"
-msgstr ""
-

@@ -22,7 +22,7 @@
 
 {
     'name': 'Program Indicator',
-    'version': '0.1',
+    'version': '1.1',
     'author': 'Savoir-faire Linux',
     'maintainer': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',
@@ -32,23 +32,24 @@
 Program Indicator
 =================
 
-Contributeurs
--------------
+Contributors
+------------
 * David Cormier (david.cormier@savoirfairelinux.com)
+* Sandy Carter (sandy.carter@savoirfairelinux.com)
 
 """,
     'depends': [
         'program',
-        'program_result',
     ],
     'license': 'AGPL-3',
     'external_dependencies': {},
     'data': [
         'security/ir.model.access.csv',
-        'program_indicator_view.xml',
         'program_result_indicator_view.xml',
-        'program_indicator_workflow.xml',
-        'program_action_monitoring_view.xml',
+        'program_result_indicator_value_view.xml',
+        'program_indicator_value_workflow.xml',
+        'program_result_view.xml',
+        'program_result_level_view.xml',
     ],
     'demo': [
     ],

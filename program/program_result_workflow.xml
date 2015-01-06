@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record id="program_result_workflow" model="workflow">
+      <field name="name">Program Result Workflow</field>
+      <field name="osv">program.result</field>
+      <field name="on_create">True</field>
+    </record>
+
+     <!-- Activities -->
+
+    <record id="act_draft" model="workflow.activity">
+      <field name="wkf_id" ref="program_result_workflow"/>
+      <field name="name">draft</field>
+      <field name="flow_start">True</field>
+      <field name="kind">function</field>
+      <field name="action">write({'state': 'draft'})</field>
+    </record>
+
+    <record id="act_validated" model="workflow.activity">
+      <field name="wkf_id" ref="program_result_workflow"/>
+      <field name="name">validated</field>
+      <field name="kind">function</field>
+      <field name="action">write({'state': 'validated'})</field>
+    </record>
+
+    <record id="act_visa_director" model="workflow.activity">
+      <field name="wkf_id" ref="program.program_result_workflow"/>
+      <field name="name">visa_director</field>
+      <field name="kind">function</field>
+      <field name="action">write({'state': 'visa_director'})</field>
+    </record>
+
+    <record id="act_visa_dpe" model="workflow.activity">
+      <field name="wkf_id" ref="program.program_result_workflow"/>
+      <field name="name">visa_dpe</field>
+      <field name="kind">function</field>
+      <field name="action">write({'state': 'visa_dpe'})</field>
+    </record>
+
+
+    <record id="act_visa_admin" model="workflow.activity">
+      <field name="wkf_id" ref="program.program_result_workflow"/>
+      <field name="name">visa_admin</field>
+      <field name="kind">function</field>
+      <field name="action">write({'state': 'visa_admin'})</field>
+    </record>
+
+    <record id="act_opened" model="workflow.activity">
+      <field name="wkf_id" ref="program_result_workflow"/>
+      <field name="name">opened</field>
+      <field name="kind">function</field>
+      <field name="action">write({'state': 'opened'})</field>
+    </record>
+
+    <record id="act_closed" model="workflow.activity">
+      <field name="wkf_id" ref="program_result_workflow"/>
+      <field name="name">closed</field>
+      <field name="kind">function</field>
+      <field name="action">write({'state': 'closed'})</field>
+    </record>
+
+    <record id="act_cancel" model="workflow.activity">
+      <field name="wkf_id" ref="program_result_workflow"/>
+      <field name="name">cancel</field>
+      <field name="kind">function</field>
+      <field name="action">write({'state': 'cancel'})</field>
+      <field name="flow_stop">True</field>
+    </record>
+
+    <!-- Transitions -->
+
+    <record id="trans_validated_draft" model="workflow.transition">
+      <field name="act_from" ref="act_validated" />
+      <field name="act_to" ref="act_draft" />
+      <field name="signal">signal_validate_draft</field>
+    </record>
+
+    <record id="trans_director_draft" model="workflow.transition">
+      <field name="act_from" ref="act_visa_director" />
+      <field name="act_to" ref="act_draft" />
+      <field name="signal">signal_visa_director_draft</field>
+    </record>
+
+    <record id="trans_visa_dpe_draft" model="workflow.transition">
+      <field name="act_from" ref="act_visa_dpe" />
+      <field name="act_to" ref="act_draft" />
+      <field name="signal">signal_visa_dpe_draft</field>
+    </record>
+
+    <record id="trans_visa_admin_draft" model="workflow.transition">
+      <field name="act_from" ref="act_visa_admin" />
+      <field name="act_to" ref="act_draft" />
+      <field name="signal">signal_visa_admin</field>
+    </record>
+
+    <record id="trans_draft_validated" model="workflow.transition">
+      <field name="act_from" ref="act_draft" />
+      <field name="act_to" ref="act_validated" />
+      <field name="signal">signal_validate</field>
+    </record>
+
+    <record id="trans_validated_visa_director" model="workflow.transition">
+      <field name="act_from" ref="act_validated" />
+      <field name="act_to" ref="act_visa_director" />
+      <field name="signal">signal_visa_director</field>
+    </record>
+
+    <record id="trans_visa_director_visa_dpe" model="workflow.transition">
+      <field name="act_from" ref="act_visa_director" />
+      <field name="act_to" ref="act_visa_dpe" />
+      <field name="signal">signal_visa_dpe</field>
+    </record>
+
+    <record id="trans_visa_dpe_visa_admin" model="workflow.transition">
+      <field name="act_from" ref="act_visa_dpe" />
+      <field name="act_to" ref="act_visa_admin" />
+      <field name="signal">signal_visa_admin</field>
+    </record>
+
+    <record id="trans_visa_admin_opened" model="workflow.transition">
+      <field name="act_from" ref="act_visa_admin" />
+      <field name="act_to" ref="program.act_opened" />
+      <field name="signal">signal_open</field>
+    </record>
+
+    <record id="trans_draft_mass_validate" model="workflow.transition">
+      <field name="act_from" ref="act_draft" />
+      <field name="act_to" ref="act_validated" />
+      <field name="signal">signal_mass_validate</field>
+    </record>
+
+    <record id="trans_validated_mass_validate" model="workflow.transition">
+      <field name="act_from" ref="act_validated" />
+      <field name="act_to" ref="act_visa_director" />
+      <field name="signal">signal_mass_validate</field>
+    </record>
+
+    <record id="trans_visa_director_mass_validate" model="workflow.transition">
+      <field name="act_from" ref="act_visa_director" />
+      <field name="act_to" ref="act_visa_dpe" />
+      <field name="signal">signal_mass_validate</field>
+    </record>
+
+    <record id="trans_visa_dpe_mass_validate" model="workflow.transition">
+      <field name="act_from" ref="act_visa_dpe" />
+      <field name="act_to" ref="act_visa_admin" />
+      <field name="signal">signal_mass_validate</field>
+    </record>
+
+    <record id="trans_visa_admin_mass_validate" model="workflow.transition">
+      <field name="act_from" ref="act_visa_admin" />
+      <field name="act_to" ref="program.act_opened" />
+      <field name="signal">signal_mass_validate</field>
+    </record>
+
+    <record id="trans_opened_closed" model="workflow.transition">
+      <field name="act_from" ref="act_opened" />
+      <field name="act_to" ref="act_closed" />
+      <field name="signal">signal_close</field>
+    </record>
+
+    <record id="trans_visa_admin_mass_close" model="workflow.transition">
+      <field name="act_from" ref="act_opened" />
+      <field name="act_to" ref="program.act_closed" />
+      <field name="signal">signal_mass_close</field>
+    </record>
+
+    <record id="trans_draft_cancel" model="workflow.transition">
+      <field name="act_from" ref="act_draft" />
+      <field name="act_to" ref="act_cancel" />
+      <field name="signal">signal_cancel</field>
+    </record>
+
+  </data>
+</openerp>

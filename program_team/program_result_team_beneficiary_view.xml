@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+
+    <record id="view_program_team_beneficiary_tree" model="ir.ui.view">
+      <field name="name">Program Team Beneficiary Tree</field>
+      <field name="model">program.result.team.beneficiary</field>
+      <field name="arch" type="xml">
+
+        <tree string="Beneficiaries" version="7.0" editable="bottom">
+
+          <field name="partner_id" />
+          <field name="country_id" readonly="True"/>
+          <field name="type_id"/>
+
+        </tree>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>

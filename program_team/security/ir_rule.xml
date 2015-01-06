@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+
+    <record id="program_result_department_id" model="ir.rule">
+      <field name="name">Program Result Department</field>
+      <field name="model_id" ref="model_program_result" />
+      <field name="groups" eval="[(4, ref('program.group_program_basic_user'))]" />
+      <field name="domain_force">[('department_rule', '=', user)]</field>
+      <field name="perm_read" eval="0"/>
+    </record>
+
+  </data>
+</openerp>

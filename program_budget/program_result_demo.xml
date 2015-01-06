@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE openerp SYSTEM "openerp.dtd">
+<openerp>
+  <data noupdate="1">
+
+    <!-- Trigger a write to generate account creation -->
+
+    <record id="program.demo_program_result_mi_A" model="program.result">
+      <field name="name">Mission A</field>
+    </record>
+
+    <record id="program.demo_program_result_fr_B" model="program.result">
+      <field name="parent_id" ref="program.demo_program_result_mi_A"/>
+    </record>
+
+    <record id="program.demo_program_result_ir_C" model="program.result">
+      <field name="parent_id" ref="program.demo_program_result_fr_B"/>
+    </record>
+
+    <record id="program.demo_program_result_imr_D" model="program.result">
+      <field name="parent_id" ref="program.demo_program_result_ir_C"/>
+    </record>
+
+    <record id="program.demo_program_result_re_E" model="program.result">
+      <field name="parent_id" ref="program.demo_program_result_imr_D"/>
+    </record>
+
+    <record id="program.demo_program_result_mi_F" model="program.result">
+      <field name="name">Mission F</field>
+    </record>
+
+    <record id="program.demo_program_result_fr_G" model="program.result">
+      <field name="parent_id" ref="program.demo_program_result_mi_F"/>
+    </record>
+
+    <record id="program.demo_program_result_ir_H" model="program.result">
+      <field name="parent_id" ref="program.demo_program_result_fr_G"/>
+    </record>
+
+    <record id="program.demo_program_result_imr_I" model="program.result">
+      <field name="parent_id" ref="program.demo_program_result_ir_H"/>
+    </record>
+
+    <record id="program.demo_program_result_re_J" model="program.result">
+      <field name="parent_id" ref="program.demo_program_result_imr_I"/>
+    </record>
+
+  </data>
+</openerp>

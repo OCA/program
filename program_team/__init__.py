@@ -20,9 +20,16 @@
 #
 ##############################################################################
 
-from . import program_action
-from . import program_action_team_department
-from . import program_action_team_member
-from . import program_action_team_partner
-from . import program_action_team_partner_type
-from . import program_action_team_role
+from . import (
+    res_partner,
+    hr_department,
+    program_result,
+    program_result_level,
+    program_result_team_department,
+    program_result_team_member,
+    program_result_team_partner,
+    program_result_team_partner_type,
+    program_result_team_beneficiary,
+    program_result_team_beneficiary_type,
+    program_result_team_role,
+)

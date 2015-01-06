@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE openerp SYSTEM "openerp.dtd">
+<openerp>
+  <data>
+
+    <record id="view_program_result_form" model="ir.ui.view">
+      <field name="model">program.result</field>
+      <field name="inherit_id" ref="program_budget.view_program_result_form" />
+      <field name="arch" type="xml">
+
+        <field name="crossovered_budgets_modified_total" position="after">
+          <b><label for="foreign_budget_total"/></b>
+          <field name="foreign_budget_total"
+                 nolabel="1"
+                 widget="monetary"
+                 options="{'currency_field': 'currency_id'}"/>
+        </field>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>

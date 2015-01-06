@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE openerp SYSTEM "openerp.dtd">
+
+<openerp>
+  <data>
+
+    <!-- Groups -->
+
+    <record id="group_program_evaluator" model="res.groups">
+      <field name="name">Evaluator</field>
+      <field name="category_id" ref="program.module_category_program" />
+      <field name="implied_ids" eval="[(4, ref('program.group_program_director'))]"/>
+      <field name="comment">Evaluators can View all evaluations but cannot delete them</field>
+    </record>
+
+    <record id="program.group_program_administrator" model="res.groups">
+      <field name="implied_ids" eval="[(4, ref('group_program_evaluator'))]"/>
+    </record>
+
+  </data>
+</openerp>

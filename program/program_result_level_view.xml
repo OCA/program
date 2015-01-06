@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+    <record id="view_program_result_level_tree" model="ir.ui.view">
+      <field name="name">Program Result Level Tree</field>
+      <field name="model">program.result.level</field>
+      <field name="arch" type="xml">
+        <tree string="Result Level" version="7.0">
+          <field name="code" />
+          <field name="name" />
+          <field name="depth" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_program_result_level_form" model="ir.ui.view">
+      <field name="name">Program Result Level Form</field>
+      <field name="model">program.result.level</field>
+      <field name="arch" type="xml">
+        <form string="Result Level" version="7.0">
+          <sheet>
+
+            <div class="oe_title">
+              <label for="name" class="oe_edit_only" />
+              <h1>
+                <field name="name" on_change="onchange_name(name)"/>
+              </h1>
+            </div>
+
+            <group col="4">
+              <group colspan="2">
+                <field name="code" />
+                <field name="parent_id" domain="[('child_id', '=', False), ('id', '!=', id)]"/>
+                <field name="depth" />
+              </group>
+              <div colspan="2"/>
+            </group>
+
+            <notebook>
+              <page name="fvg_show_page" string="Interface">
+
+                <group name="fvg_show" col="4">
+                  <field name="menu_title"/>
+                  <div colspan="2"/>
+                  <group colspan="4">
+                  <field name="fvg_show_group_status"/>
+                  <field name="status_label" attrs="{'invisible': [('fvg_show_group_status', '=', False)]}"/>
+                  <field name="status_options" attrs="{'invisible': [('fvg_show_group_status', '=', False)]}"/>
+                  </group>
+                  <field name="fvg_show_field_statement"/>
+                  <field name="fvg_show_group_transversals"/>
+                  <field name="fvg_show_page_children"/>
+                  <field name="fvg_show_page_risk"/>
+                  <field name="fvg_show_page_target"/>
+
+                </group>
+
+              </page>
+            </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_program_result_level_search" model="ir.ui.view">
+      <field name="name">Program Result Level Search</field>
+      <field name="model">program.result.level</field>
+      <field name="arch" type="xml">
+        <search string="Search Result Levels" version="7.0">
+          <field name="name" />
+          <field name="depth" />
+        </search>
+      </field>
+    </record>
+
+    <record id="action_program_result_level_tree" model="ir.actions.act_window">
+      <field name="name">Result Levels</field>
+      <field name="res_model">program.result.level</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_program_result_level_tree" />
+      <field name="search_view_id" ref="view_program_result_level_search" />
+      <field name="target">current</field>
+    </record>
+
+    <menuitem
+      id="menu_program_configuration_level"
+      name="Result Levels"
+      parent="menu_program_configuration"
+      action="action_program_result_level_tree"
+      groups="group_program_manager"
+      sequence="1" />
+  </data>
+</openerp>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data noupdate="1">
+
+    <record id="demo_result_level_mi" model="program.result.level">
+      <field name="name">Mission</field>
+      <field name="code">MI</field>
+      <field name="menu_title">Missions</field>
+    </record>
+
+    <record id="demo_result_level_fr" model="program.result.level">
+      <field name="name">Final Result</field>
+      <field name="code">FR</field>
+      <field name="menu_title">Final Results</field>
+      <field name="parent_id" ref="demo_result_level_mi"/>
+    </record>
+
+    <record id="demo_result_level_ir" model="program.result.level">
+      <field name="name">Intermediate Result</field>
+      <field name="code">IR</field>
+      <field name="menu_title">Intermediate Results</field>
+      <field name="parent_id" ref="demo_result_level_fr"/>
+    </record>
+
+    <record id="demo_result_level_imr" model="program.result.level">
+      <field name="name">Immediate Result</field>
+      <field name="code">ImR</field>
+      <field name="menu_title">Immediate Results</field>
+      <field name="parent_id" ref="demo_result_level_ir"/>
+    </record>
+
+    <record id="demo_result_level_re" model="program.result.level">
+      <field name="name">Realisation</field>
+      <field name="code">RE</field>
+      <field name="menu_title">Realisations</field>
+      <field name="parent_id" ref="demo_result_level_imr"/>
+    </record>
+
+    <record id="demo_result_level_act" model="program.result.level">
+      <field name="name">Activity</field>
+      <field name="code">AC</field>
+      <field name="menu_title">Activities</field>
+      <field name="parent_id" ref="demo_result_level_re"/>
+    </record>
+
+  </data>
+</openerp>

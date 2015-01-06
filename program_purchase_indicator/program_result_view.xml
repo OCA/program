@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE openerp SYSTEM "openerp.dtd">
+<openerp>
+  <data>
+
+    <record id="view_program_result_form" model="ir.ui.view">
+      <field name="model">program.result</field>
+      <field name="inherit_id" ref="program_purchase.view_program_result_form" />
+      <field name="arch" type="xml">
+
+        <group string="Progression" position="after">
+          <group name="indicators" col="4">
+            <label for="result_indicator_ids"/>
+            <field name="result_indicator_ids2" nolabel="1" colspan="4">
+              <tree>
+                <field name="name"/>
+                <field name="value_progress" widget="progressbar"/>
+              </tree>
+            </field>
+          </group>
+        </group>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>

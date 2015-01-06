@@ -6,139 +6,273 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-12 20:33+0000\n"
-"PO-Revision-Date: 2014-03-12 16:51-0500\n"
-"Last-Translator: Davin Baragiotta <davin.baragiotta@savoirfairelinux.com>\n"
+"POT-Creation-Date: 2014-10-20 20:58+0000\n"
+"PO-Revision-Date: 2014-10-20 17:00-0500\n"
+"Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #. module: program_team
-#: field:program.action,team_partner:0
+#: view:program.result:0 field:program.result,team_partner_ids:0
 msgid "Partners"
 msgstr "Partenaires"
 
 #. module: program_team
-#: model:_description:0
-#: model:ir.model,name:program_team.model_program_action_team_department
-msgid "program.action.team.department"
-msgstr "program.action.team.department"
+#: field:hr.department,department_rule:0
+#: field:program.result,department_rule:0
+msgid "Department Rule"
+msgstr "Restriction départementale"
 
 #. module: program_team
-#: field:program.action.team.partner,organisation:0
-msgid "Organisation"
-msgstr "Organisation"
-
-#. module: program_team
-#: field:program.action.team.department,department:0
-#: field:program.action.team.role,department:0
-msgid "Department"
-msgstr "Département"
-
-#. module: program_team
-#: field:program.action.team.department,role:0
-#: field:program.action.team.member,role:0
-#: field:program.action.team.partner,role:0
-msgid "Role"
-msgstr "Rôle"
-
-#. module: program_team
-#: model:ir.actions.act_window,name:program_team.action_program_action_team_role_tree
-#: model:ir.ui.menu,name:program_team.menu_configuration_action_team_role
-#: view:program.action.team.role:0
+#: model:ir.actions.act_window,name:program_team.action_program_result_team_role_tree
+#: model:ir.ui.menu,name:program_team.menu_configuration_result_team_role
+#: view:program.result.team.partner:0 view:program.result.team.partner.type:0
+#: view:program.result.team.role:0
 msgid "Team Roles"
 msgstr "Rôles d'équipe"
 
 #. module: program_team
-#: field:program.action.team.member,employee:0
-#: field:program.action.team.role,employee:0
+#: field:program.result,team_member_ids:0
+msgid "Team Members"
+msgstr "Membres de l'équipe"
+
+#. module: program_team
+#: view:program.result.team.beneficiary.type:0
+msgid "Beneficiary Types"
+msgstr "Types de bénéficiaires"
+
+#. module: program_team
+#: model:ir.model,name:program_team.model_program_result_team_beneficiary
+msgid "Team Beneficiary"
+msgstr "Bénéficiaires à l'équipe"
+
+#. module: program_team
+#: field:program.result.team.beneficiary,partner_id:0
+msgid "Beneficiary"
+msgstr "Bénéficiaire"
+
+#. module: program_team
+#: model:ir.model,name:program_team.model_hr_department
+#: field:program.result,department_id:0
+#: field:program.result.team.department,department_id:0
+#: field:program.result.team.role,is_department:0
+msgid "Department"
+msgstr "Unité administrative"
+
+#. module: program_team
+#: field:program.result.level,fvg_show_page_beneficiary:0
+msgid "Show \"Beneficiaries\" Tab"
+msgstr "Montrer l'onglet « Récipiendaires »"
+
+#. module: program_team
+#: field:program.result.team.department,role_id:0
+#: field:program.result.team.member,role_id:0
+msgid "Role"
+msgstr "Rôle"
+
+#. module: program_team
+#: model:ir.model,name:program_team.model_program_result_team_partner_type
+msgid "Team Partner Type"
+msgstr "Types de partenaire"
+
+#. module: program_team
+#: field:program.result.team.member,employee_id:0
+#: field:program.result.team.role,is_employee:0
 msgid "Employee"
 msgstr "Employé"
 
 #. module: program_team
-#: view:program.action.team.role:0
+#: view:program.result.team.role:0
 msgid "Search Team Roles"
 msgstr "Rechercher dans les rôles d'équipe"
 
 #. module: program_team
-#: model:ir.model,name:program_team.model_program_action
-msgid "program.action"
-msgstr "program.action"
+#: field:program.result.team.beneficiary,type_id:0
+#: field:program.result.team.partner,type_id:0
+msgid "Category"
+msgstr "Catégorie"
 
 #. module: program_team
-#: view:program.action.team.role:0 field:program.action.team.role,name:0
+#: code:addons/program_team/program_result_team_beneficiary.py:30
+#, python-format
+msgid "This partner is already part of the beneficiary list."
+msgstr "Ce partenaire fait déjà partie de la liste de bénéficiaires."
+
+#. module: program_team
+#: model:ir.model,name:program_team.model_program_result_level
+msgid "Result Level"
+msgstr "Niveau de résultats"
+
+#. module: program_team
+#: view:program.result.team.beneficiary.type:0
+msgid "Beneficiary Type"
+msgstr "Type de bénéficiaires"
+
+#. module: program_team
+#: field:program.result.level,fvg_show_field_department_id:0
+msgid "Show \"Department\" Field"
+msgstr "Montrer le champs «Unité administrative »"
+
+#. module: program_team
+#: model:ir.actions.act_window,name:program_team.action_program_result_team_beneficiary_type_tree
+#: model:ir.ui.menu,name:program_team.menu_configuration_result_team_beneficiary_type
+msgid "Team Beneficiary Types"
+msgstr "Types de bénéficaires"
+
+#. module: program_team
+#: model:ir.actions.act_window,name:program_team.action_program_result_team_partner_type_tree
+#: model:ir.ui.menu,name:program_team.menu_configuration_result_team_partner_type
+msgid "Team Partner Types"
+msgstr "Types de partenaires"
+
+#. module: program_team
+#: model:ir.model,name:program_team.model_program_result_team_beneficiary_type
+msgid "Team Beneficiary Type"
+msgstr "Partenaire de l'équipe"
+
+#. module: program_team
+#: model:ir.model,name:program_team.model_program_result_team_partner
+msgid "Team Partner"
+msgstr "Partenaire de l'équipe"
+
+#. module: program_team
+#: field:program.result.level,fvg_show_page_team:0
+msgid "Show \"Team\" Tab"
+msgstr "Montrer l'onglet « Équipe »"
+
+#. module: program_team
+#: field:program.result.level,fvg_show_page_partner:0
+msgid "Show \"Partners\" Tab"
+msgstr "Montrer l'onglet « Partenaires »"
+
+#. module: program_team
+#: field:program.result.team.beneficiary.type,name:0
+#: field:program.result.team.partner.type,name:0
+#: view:program.result.team.role:0 field:program.result.team.role,name:0
 msgid "Name"
 msgstr "Nom"
 
 #. module: program_team
-#: model:_description:0
-#: model:ir.model,name:program_team.model_program_action_team_role
-msgid "program.action.team.role"
-msgstr "program.action.team.role"
+#: field:program.result.team.beneficiary,country_id:0
+#: field:program.result.team.partner,country_id:0
+msgid "Country"
+msgstr "Pays"
 
 #. module: program_team
-#: help:program.action.team.partner,contribution:0
-msgid "Arbitrary contribution, usually a non-financial or unquantifiable one."
-msgstr ""
-"Contribution arbitraire, habituellement non-financière ou inquantifiable."
+#: field:res.partner,is_not_employee:0
+msgid "Not Employee"
+msgstr "N'est pas un employé"
 
 #. module: program_team
-#: field:program.action,team_member:0
-msgid "Members"
-msgstr "Membres"
-
-#. module: program_team
-#: field:program.action.team.partner,contribution:0
-msgid "Non-Financial Contribution"
-msgstr "Contribution non-financière"
-
-#. module: program_team
-#: model:_description:0
-msgid "Model Program Document"
-msgstr "Modèle Program Document"
-
-#. module: program_team
-#: field:program.action,team_department:0
+#: field:program.result,team_department_ids:0
 msgid "Departments"
-msgstr "Départements"
+msgstr "Unités administratives"
 
 #. module: program_team
-#: view:program.action:0
+#: field:program.result.team.role,is_contact:0
+msgid "Contact"
+msgstr "Contact"
+
+#. module: program_team
+#: view:program.result.team.partner.type:0
+msgid "Partner Type"
+msgstr "Type de partenaire"
+
+#. module: program_team
+#: view:program.result:0
 msgid "Team"
 msgstr "Équipe"
 
 #. module: program_team
-#: field:program.action.team.department,action:0
-#: field:program.action.team.member,action:0
-#: field:program.action.team.partner,action:0
-msgid "Action"
-msgstr "Action"
+#: model:ir.model,name:program_team.model_program_result_team_member
+msgid "Team Member"
+msgstr "Membre de l'équipe"
 
 #. module: program_team
-#: view:program.action.team.role:0
+#: code:addons/program_team/program_result_team_partner.py:30
+#, python-format
+msgid "This partner is already part of the partner list."
+msgstr "Ce partenaire fait déjà partie de la liste de partenaires."
+
+#. module: program_team
+#: model:ir.model,name:program_team.model_program_result_team_department
+msgid "Team Department"
+msgstr "Département de l'équipe"
+
+#. module: program_team
+#: model:ir.model,name:program_team.model_program_result_team_role
+#: view:program.result.team.role:0
 msgid "Team Role"
 msgstr "Rôle d'équipe"
 
 #. module: program_team
-#: model:_description:0
-#: model:ir.model,name:program_team.model_program_action_team_member
-msgid "program.action.team.member"
-msgstr "program.action.team.member"
+#: field:program.result,team_has_partners:0
+msgid "Has Partners"
+msgstr "A des partenaires"
 
 #. module: program_team
-#: model:_description:0
-#: model:ir.model,name:program_team.model_program_action_team_partner
-msgid "program.action.team.partner"
-msgstr "program.action.team.partner"
+#: view:program.result:0 field:program.result,team_beneficiary_ids:0
+#: view:program.result.team.beneficiary:0
+msgid "Beneficiaries"
+msgstr "Récipiendaires"
 
 #. module: program_team
-#: field:program.action.team.role,partner:0
+#: model:ir.model,name:program_team.model_program_result
+#: field:program.result.team.beneficiary,result_id:0
+#: field:program.result.team.department,result_id:0
+#: field:program.result.team.member,result_id:0
+#: field:program.result.team.partner,result_id:0
+msgid "Result"
+msgstr "Résultat"
+
+#. module: program_team
+#: model:ir.model,name:program_team.model_res_partner
+#: field:program.result.team.partner,partner_id:0
 msgid "Partner"
 msgstr "Partenaire"
+
+#~ msgid "Contacts"
+#~ msgstr "Contacts"
+
+#~ msgid "Organisation"
+#~ msgstr "Organisation"
+
+#~ msgid "Team Contact"
+#~ msgstr "Contact de l'équipe"
+
+#~ msgid ""
+#~ "Arbitrary contribution, usually a non-financial or unquantifiable one."
+#~ msgstr ""
+#~ "Contribution arbitraire, habituellement non-financière ou inquantifiable."
+
+#~ msgid "Active"
+#~ msgstr "Actif"
+
+#~ msgid "Non-Financial Contribution"
+#~ msgstr "Contribution non-financière"
+
+#~ msgid "department"
+#~ msgstr "Département"
+
+#~ msgid "Discard"
+#~ msgstr "Annuler"
+
+#~ msgid "Save and Close"
+#~ msgstr "Enregistrer & fermer"
+
+#~ msgid "or"
+#~ msgstr "ou"
+
+#~ msgid "Email Thread"
+#~ msgstr "Discussion par courriel"
+
+#~ msgid "Model Program Document"
+#~ msgstr "Modèle Program Document"
 
 #~ msgid "Administrative Units"
 #~ msgstr "Unités administratives"

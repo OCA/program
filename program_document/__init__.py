@@ -20,4 +20,7 @@
 #
 ##############################################################################
 
-import program_document
+from . import (
+    program_result,
+    program_result_level,
+)

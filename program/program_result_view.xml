@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE openerp SYSTEM "openerp.dtd">
+<openerp>
+  <data>
+    <record id="view_program_result_tree" model="ir.ui.view">
+      <field name="name">Result Tree</field>
+      <field name="model">program.result</field>
+      <field name="field_parent">child_ids</field>
+      <field name="arch" type="xml">
+        <tree string="Results"
+              colors="blue:state == 'draft';grey:state == 'cancel';"
+              version="7.0">
+          <field name="result_level_id" />
+          <field name="code" />
+          <field name="name" />
+          <field name="date_from" />
+          <field name="date_to" />
+          <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_program_result_form" model="ir.ui.view">
+      <field name="name">Result Form</field>
+      <field name="model">program.result</field>
+      <field name="arch" type="xml">
+        <form string="Result" version="7.0">
+          <header>
+            <button name="signal_validate"
+                    type="workflow"
+                    states="draft"
+                    string="Validate"
+                    class="oe_highlight"
+                    groups="program.group_program_basic_user"/>
+            <button name="signal_visa_director"
+                    type="workflow"
+                    states="validated"
+                    string="Validate"
+                    class="oe_highlight"
+                    groups="program.group_program_director"/>
+            <button name="signal_validate_draft"
+                    type="workflow"
+                    states="validated"
+                    string="Return to Draft"
+                    groups="program.group_program_director"/>
+            <button name="signal_visa_dpe"
+                    type="workflow"
+                    states="visa_director"
+                    string="Validate"
+                    class="oe_highlight"
+                    groups="program.group_program_dpe"/>
+            <button name="signal_visa_director_draft"
+                    type="workflow"
+                    states="visa_director"
+                    string="Return to Draft"
+                    groups="program.group_program_dpe"/>
+            <button name="signal_visa_admin"
+                    type="workflow"
+                    states="visa_dpe"
+                    string="Validate"
+                    class="oe_highlight"
+                    groups="program.group_program_administrator"/>
+            <button name="signal_visa_dpe_draft"
+                    type="workflow"
+                    states="visa_dpe"
+                    string="Return to Draft"
+                    groups="program.group_program_administrator"/>
+            <button name="signal_open"
+                    type="workflow"
+                    states="visa_admin"
+                    string="Open"
+                    class="oe_highlight"
+                    groups="program.group_program_dpe"/>
+            <button name="signal_visa_admin_draft"
+                    type="workflow"
+                    states="visa_admin"
+                    string="Return to Draft"
+                    groups="program.group_program_dpe"/>
+            <button name="signal_close"
+                    type="workflow"
+                    states="opened"
+                    string="Close"
+                    class="oe_highlight"
+                    groups="program.group_program_dpe"/>
+            <button name="signal_cancel"
+                    type="workflow"
+                    states="draft"
+                    string="Cancel"
+                    groups="program.group_program_basic_user"/>
+            <field name="state"
+                   widget="statusbar"
+                   statusbar_visible="draft,validated,visa_director,visa_dpe,visa_admin,opened,closed"/>
+          </header>
+          <sheet>
+            <div class="oe_title">
+              <label for="name" class="oe_edit_only" />
+              <h1>
+                <field name="name"
+                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              </h1>
+            </div>
+
+            <group colspan="4" col="2">
+              <field name="statement"
+                     attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              <field name="tag_ids"
+                     widget="many2many_tags"/>
+            </group>
+
+            <group colspan="4" col="4">
+              <group name="general_info">
+                <field name="code"
+                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                <field name="result_level_id"
+                       invisible="context.get('default_parent_depth', False) is not False"
+                       readonly="1"/>
+                <field name="parent_depth"
+                       invisible="1"
+                       on_change="onchange_parent_depth(parent_depth)"/>
+                <field name="parent_id"
+                       on_change="onchange_parent_id(parent_id)"
+                       invisible="context.get('default_parent_depth', False) == -1"
+                       attrs="{'readonly': [('state', '!=', 'draft')], 'required': [('parent_depth', '>', 0)]}"/>
+                <field name="intervention_id"
+                       widget="selection"
+                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              </group>
+
+              <group>
+                <field name="date_from" />
+                <field name="date_to" />
+              </group>
+            </group>
+
+            <group colspan="4" col="2">
+              <field name="description" />
+            </group>
+
+            <group name="status" colspan="4" col="6">
+              <b><field name="status_label" nolabel="1"/></b>
+              <field name="status" nolabel="1"/>
+              <div colspan="4"/>
+            </group>
+
+            <notebook>
+
+              <page name="target" string="Targets">
+                <group colspan="4" col="2">
+                  <field name="target_audience_type_ids" domain="[('active', '=', True)]" />
+                </group>
+              </page>
+
+              <page name="children" string="Results">
+
+                <group col="2">
+                  <field name="depth" invisible="1"/>
+                  <field name="parent_id2"/>
+                  <label for="child_ids"  colspan="2"/>
+                  <field name="child_ids"
+                         nolabel="1"
+                         domain="[('id', '=', 0)]"
+                         context="{'default_parent_id': id}"
+                         widget="many2many"
+                         colspan="2">
+                    <tree>
+                      <field name="result_level_id" />
+                      <field name="name" />
+                    </tree>
+                  </field>
+                </group>
+
+                <group name="transversals" col="2">
+
+                  <b><field name="transverse_child_ids_label" nolabel="1"  colspan="2"/></b>
+                  <field name="transverse_child_ids"
+                         nolabel="1"
+                         domain="[('id', '!=', parent_id), ('depth', '=', depth - 1)]"
+                         attrs="{'readonly': [('depth', '==', 1)]}"
+                         colspan="2">
+                    <tree>
+                      <field name="result_level_id" />
+                      <field name="name" />
+                    </tree>
+                  </field>
+
+                  <b><field name="transverse_parent_ids_label" nolabel="1" colspan="2"/></b>
+
+                  <field name="transverse_parent_ids"
+                         nolabel="1"
+                         domain="[('parent_id', '!=', id), ('depth', '=', depth + 1)]"
+                          colspan="2">
+                    <tree>
+                      <field name="result_level_id" />
+                      <field name="name" />
+                    </tree>
+                  </field>
+
+                </group>
+
+              </page>
+
+              <page name="risk" string="Assumptions and Risks">
+
+                <label for="assumptions"/>
+                <field name="assumptions"/>
+                <label for="risks"/>
+                <field name="risks"/>
+
+              </page>
+
+            </notebook>
+          </sheet>
+
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+            <field name="message_ids" widget="mail_thread"/>
+          </div>
+
+        </form>
+      </field>
+    </record>
+
+    <record id="view_program_result_calendar" model="ir.ui.view">
+      <field name="name">Result Calendar</field>
+      <field name="model">program.result</field>
+      <field name="arch" type="xml">
+        <calendar string="Result Schedule" color="result_level_id" date_start="date_from" date_stop="date_to" version="7.0">
+          <field name="code" />
+          <field name="name" />
+        </calendar>
+      </field>
+    </record>
+
+    <record id="view_program_result_search" model="ir.ui.view">
+      <field name="name">Result Search</field>
+      <field name="model">program.result</field>
+      <field name="arch" type="xml">
+        <search string="Search Results" version="7.0">
+          <field name="name" string="Name" />
+          <field name="tag_ids" string="Tag" />
+
+          <group expand="0" string="Group by...">
+            <filter string="Parent" name="parent_id" context="{'group_by': 'parent_id'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_program_result_tree" model="ir.actions.act_window">
+      <field name="name">Result Chain</field>
+      <field name="res_model">program.result</field>
+      <field name="view_type">tree</field>
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_program_result_tree" />
+      <field name="domain">[('parent_id', '=', False)]</field>
+      <field name="search_view_id" ref="view_program_result_search" />
+      <field name="target">current</field>
+    </record>
+
+    <record id="action_program_result_list" model="ir.actions.act_window">
+      <field name="name">Results</field>
+      <field name="res_model">program.result</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form,calendar</field>
+      <field name="view_id" ref="view_program_result_tree" />
+      <field name="search_view_id" ref="view_program_result_search" />
+      <field name="target">current</field>
+    </record>
+
+    <act_window id="action_program_result_multi_validate"
+                name="Validate"
+                res_model="program.result.validation"
+                src_model="program.result"
+                view_mode="form"
+                target="new"
+                key2="client_action_multi"/>
+
+    <act_window id="action_program_result_multi_close"
+                name="Close"
+                res_model="program.result.close"
+                src_model="program.result"
+                view_mode="form"
+                target="new"
+                groups="program.group_program_dpe"
+                key2="client_action_multi"/>
+
+    <!-- Action to open list and forms of item (view_type=tree) -->
+    <record model="ir.actions.act_window" id="action_program_result_form">
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">program.result</field>
+        <field name="name">Results</field>
+        <field name="view_type">form</field>
+        <field name="domain">[('parent_id', 'child_of', active_id)]</field>
+        <field name="context">{'parent_id': active_id}</field>
+    </record>
+
+    <!-- Insert a value for tree view to open list and forms of item -->
+    <record model="ir.values" id="ir_action_result_structure_form">
+        <field name="key2" eval="'tree_but_open'"/>
+        <field name="model" eval="'program.result'"/>
+        <field name="name">Open Result Form</field>
+        <field name="value"
+               eval="'ir.actions.act_window,%d'%action_program_result_form"/>
+    </record>
+
+    <menuitem
+      id="menu_program"
+      name="Programs"
+      groups="group_program_basic_user"
+      sequence="12" />
+
+    <menuitem
+      id="menu_program_result"
+      name="Results"
+      parent="menu_program"
+      groups="group_program_basic_user"
+      sequence="1" />
+
+    <menuitem
+      id="menu_program_result_result"
+      name="Results"
+      parent="menu_program_result"
+      action="action_program_result_list"
+      groups="base.group_no_one"
+      sequence="1" />
+
+
+    <menuitem
+      id="menu_program_result_chain"
+      name="Result Chain"
+      parent="menu_program_result"
+      action="action_program_result_tree"
+      groups="group_program_basic_user"
+      sequence="2" />
+
+    <menuitem
+      id="menu_program_configuration"
+      name="Configuration"
+      parent="menu_program"
+      groups="group_program_manager"
+      sequence="10" />
+  </data>
+</openerp>

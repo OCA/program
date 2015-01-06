@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE openerp SYSTEM "openerp.dtd">
+<openerp>
+  <data>
+
+    <record id="view_program_result_form" model="ir.ui.view">
+      <field name="model">program.result</field>
+      <field name="inherit_id" ref="program.view_program_result_form" />
+      <field name="priority" eval="60"/>
+      <field name="arch" type="xml">
+
+        <notebook>
+
+          <page name="budget" string="Budget">
+
+            <field name="currency_id" invisible="1"/>
+
+            <group name="sale_total" class="oe_subtotal_footer oe_left">
+              <div class="oe_horizontal_separator oe_clear oe_left" colspan="2">Summary</div>
+              <b><label for="crossovered_budgets_modified_total"/></b>
+              <field name="crossovered_budgets_modified_total"
+                     nolabel="1" widget="monetary"
+                     options="{'currency_field': 'currency_id'}"/>
+              <label for="budget_total" class="oe_subtotal_footer_separator"/>
+              <field name="budget_total"
+                     nolabel="1"
+                     class="oe_subtotal_footer_separator"
+                     widget='monetary'
+                     options="{'currency_field': 'currency_id'}"/>
+            </group>
+
+            <group name="foreign budgets">
+              <div class="oe_horizontal_separator oe_clear "><field name="company_id" nolabel="1"/></div>
+              <field name="crossovered_budget_line_ids" nolabel="1" colspan="2">
+                <tree>
+                  <field name="crossovered_budget_id"/>
+                  <field name="planned_amount"
+                         sum="Planned"/>
+                </tree>
+              </field>
+            </group>
+
+          </page>
+
+        </notebook>
+
+        <field name="target_audience_type_ids" position="before">
+          <field name="target_country_ids" widget="one2many"/>
+          <field name="target_region_ids" />
+        </field>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE openerp SYSTEM "openerp.dtd">
+<openerp>
+  <data noupdate="1">
+
+    <record id="demo_program_result_mi_A" model="program.result">
+      <field name="name">Mission A</field>
+      <field name="code">A</field>
+      <field name="parent_depth">-1</field>
+      <field name="result_level_id" ref="program.demo_result_level_mi"/>
+    </record>
+
+    <record id="demo_program_result_fr_B" model="program.result">
+      <field name="name">Final Result B</field>
+      <field name="code">B</field>
+      <field name="parent_depth">1</field>
+      <field name="parent_id" ref="demo_program_result_mi_A"/>
+      <field name="result_level_id" ref="program.demo_result_level_fr"/>
+    </record>
+
+    <record id="demo_program_result_ir_C" model="program.result">
+      <field name="name">Intermediate Result C</field>
+      <field name="code">C</field>
+      <field name="parent_depth">2</field>
+      <field name="parent_id" ref="demo_program_result_fr_B"/>
+      <field name="result_level_id" ref="program.demo_result_level_ir"/>
+    </record>
+
+    <record id="demo_program_result_imr_D" model="program.result">
+      <field name="name">Immediate Result D</field>
+      <field name="code">D</field>
+      <field name="parent_depth">3</field>
+      <field name="parent_id" ref="demo_program_result_ir_C"/>
+      <field name="result_level_id" ref="program.demo_result_level_imr"/>
+    </record>
+
+    <record id="demo_program_result_re_E" model="program.result">
+      <field name="name">Realisation E</field>
+      <field name="code">E</field>
+      <field name="parent_depth">4</field>
+      <field name="parent_id" ref="demo_program_result_imr_D"/>
+      <field name="result_level_id" ref="program.demo_result_level_re"/>
+    </record>
+
+    <record id="demo_program_result_mi_F" model="program.result">
+      <field name="name">Mission F</field>
+      <field name="code">F</field>
+      <field name="parent_depth">-1</field>
+      <field name="result_level_id" ref="program.demo_result_level_mi"/>
+    </record>
+
+    <record id="demo_program_result_fr_G" model="program.result">
+      <field name="name">Final Result G</field>
+      <field name="code">G</field>
+      <field name="parent_depth">1</field>
+      <field name="parent_id" ref="demo_program_result_mi_F"/>
+      <field name="result_level_id" ref="program.demo_result_level_fr"/>
+    </record>
+
+    <record id="demo_program_result_ir_H" model="program.result">
+      <field name="name">Intermediate Result H</field>
+      <field name="code">H</field>
+      <field name="parent_depth">2</field>
+      <field name="parent_id" ref="demo_program_result_fr_G"/>
+      <field name="result_level_id" ref="program.demo_result_level_ir"/>
+    </record>
+
+    <record id="demo_program_result_imr_I" model="program.result">
+      <field name="name">Immediate Result I</field>
+      <field name="code">I</field>
+      <field name="parent_depth">3</field>
+      <field name="parent_id" ref="demo_program_result_ir_H"/>
+      <field name="result_level_id" ref="program.demo_result_level_imr"/>
+    </record>
+
+    <record id="demo_program_result_re_J" model="program.result">
+      <field name="name">Realisation J</field>
+      <field name="code">J</field>
+      <field name="parent_depth">4</field>
+      <field name="parent_id" ref="demo_program_result_imr_I"/>
+      <field name="result_level_id" ref="program.demo_result_level_re"/>
+    </record>
+
+  </data>
+</openerp>

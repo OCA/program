@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE openerp SYSTEM "openerp.dtd">
+<openerp>
+  <data>
+
+    <record id="view_program_crossovered_budget_summary_tree" model="ir.ui.view">
+      <field name="name">Program Budget Summary Tree</field>
+      <field name="model">program.crossovered.budget.summary</field>
+      <field name="arch" type="xml">
+
+        <tree string="Program Budget Summary List" version="7.0">
+          <field name="budget_id"/>
+          <field name="planned_amount"/>
+          <field name="theoretical_amount"/>
+          <field name="practical_amount"/>
+        </tree>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>

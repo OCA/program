@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+
+    <record id="view_program_result_form" model="ir.ui.view">
+      <field name="model">program.result</field>
+      <field name="inherit_id" ref="program.view_program_result_form" />
+      <field name="priority" eval="110"/>
+      <field name="arch" type="xml">
+
+        <notebook>
+
+          <page name="travels" string="Travel">
+            <group col="1">
+              <label for="travel_ids" />
+              <field name="code_result" invisible="1"/>
+              <field name="travel_ids" nolabel="1"
+                     attrs="{'readonly': [('code_result', '!=', 'AC')]}"/>
+            </group>
+          </page>
+
+        </notebook>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>

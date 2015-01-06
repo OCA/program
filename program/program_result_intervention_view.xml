@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+    <record id="view_program_result_intervention_tree" model="ir.ui.view">
+      <field name="name">Program Result Intervention Tree</field>
+      <field name="model">program.result.intervention</field>
+      <field name="arch" type="xml">
+        <tree string="Result Intervention Method" version="7.0">
+          <field name="name" />
+          <field name="code" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_program_result_intervention_form" model="ir.ui.view">
+      <field name="name">Program Result Intervention Form</field>
+      <field name="model">program.result.intervention</field>
+      <field name="arch" type="xml">
+        <form string="Result Intervention Method" version="7.0">
+          <sheet>
+            <div class="oe_title">
+              <label for="name" class="oe_edit_only" />
+              <h1>
+                <field name="name" />
+              </h1>
+            </div>
+
+            <group col="4">
+              <group colspan="2">
+                <field name="code" />
+              </group>
+              <div colspan="2"/>
+            </group>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_program_result_intervention_search" model="ir.ui.view">
+      <field name="name">Program Result Intervention Search</field>
+      <field name="model">program.result.intervention</field>
+      <field name="arch" type="xml">
+        <search string="Search Intervention Methods" version="7.0">
+          <field name="name" />
+          <field name="code" />
+        </search>
+      </field>
+    </record>
+
+    <record id="action_program_result_intervention_tree" model="ir.actions.act_window">
+      <field name="name">Intervention Methods</field>
+      <field name="res_model">program.result.intervention</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_program_result_intervention_tree" />
+      <field name="search_view_id" ref="view_program_result_intervention_search" />
+      <field name="target">current</field>
+    </record>
+
+    <menuitem
+      id="menu_program_configuration_intervention"
+      name="Intervention Methods"
+      parent="menu_program_configuration"
+      action="action_program_result_intervention_tree"
+      groups="group_program_manager"
+      sequence="90" />
+  </data>
+</openerp>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE openerp SYSTEM "openerp.dtd">
+<openerp>
+  <data>
+
+    <record id="view_program_result_form" model="ir.ui.view">
+      <field name="model">program.result</field>
+      <field name="inherit_id" ref="program_budget.view_program_result_form" />
+      <field name="priority" eval="80"/>
+      <field name="arch" type="xml">
+
+         <notebook>
+
+          <page name="monitoring" string="Monitoring">
+
+            <group string="Progression" col="4">
+              <field name="prgs_time" widget="progressbar"/>
+              <div/>
+              <field name="comment_time" nolabel="1" placeholder="Comments..."/>
+
+              <field name="prgs_budget" widget="progressbar"/>
+              <div/>
+              <field name="comment_budget" nolabel="1" placeholder="Comments..."/>
+
+              <field name="prgs_appreciation" widget="progressbar" readonly="False"/>
+              <field name="appreciation" nolabel="1"/>
+              <field name="comment_appreciation" nolabel="1" placeholder="Comments..."/>
+            </group>
+
+            <group string="Summary of expenses">
+              <field name="budget_summary_ids" nolabel="1"/>
+            </group>
+
+          </page>
+
+        </notebook>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>

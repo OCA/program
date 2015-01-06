@@ -1,207 +1,224 @@
 # Translation of OpenERP Server.
 # This file contains the translation of the following modules:
-#	* program_indicator
+# 	* program_indicator
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-06 20:45+0000\n"
-"PO-Revision-Date: 2014-03-06 20:45+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2014-09-18 16:52+0000\n"
+"PO-Revision-Date: 2014-09-18 12:53-0500\n"
+"Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"X-Generator: Poedit 1.6.9\n"
 
 #. module: program_indicator
-#: code:addons/program_indicator/program.py:134
-#: view:program.indicator:0
-#: field:result.indicator,indicator_id:0
+#: field:program.result.indicator.value,indicator_id:0
 msgid "Indicator"
 msgstr "Indicateur"
 
 #. module: program_indicator
-#: field:program.indicator,name:0
-msgid "Name"
-msgstr "Libellé"
+#: field:program.result.indicator.value,uid:0
+msgid "Author"
+msgstr "Auteur"
 
 #. module: program_indicator
-#: field:program.indicator,generic:0
-msgid "Generic"
-msgstr "Générique"
+#: field:program.result.indicator,value_logged_ids:0
+msgid "Logged Values"
+msgstr "Valeurs proposées"
 
 #. module: program_indicator
-#: field:program.indicator,risk_hypothesis:0
-msgid "Risk Hypothesis"
-msgstr "Risques et hypothèses"
-
-#. module: program_indicator
-#: field:program.result,result_indicator_id:0
-#: view:result.indicator:0
+#: model:ir.model,name:program_indicator.model_program_result_indicator
+#: field:program.result,result_indicator_ids:0 view:program.result.indicator:0
 msgid "Result Indicator"
 msgstr "Indicateurs de résultats"
 
 #. module: program_indicator
-#: view:result.indicator:0
-#: field:result.indicator,action_id:0
-msgid "Action"
-msgstr "Action"
-
-#. module: program_indicator
-#: selection:result.indicator,state:0
+#: selection:program.result.indicator.value,state:0
 msgid "Draft"
 msgstr "Brouillon"
 
 #. module: program_indicator
-#: model:ir.actions.act_window,name:program_indicator.action_program_indicator_tree
+#: view:program.result.indicator.value:0
+msgid "Erase Value"
+msgstr "Effacer la valeur"
+
+#. module: program_indicator
 #: model:ir.ui.menu,name:program_indicator.menu_program_indicator_action
-#: model:ir.ui.menu,name:program_indicator.menu_program_indicator_action_action
+#: view:program.result:0
 msgid "Indicators"
 msgstr "Indicateurs"
 
 #. module: program_indicator
-#: field:program.indicator,verification_means:0
-msgid "Verification means"
-msgstr "Moyens de vérification"
+#: model:ir.model,name:program_indicator.model_program_result_level
+msgid "Result Level"
+msgstr "Niveau de résultats"
 
 #. module: program_indicator
-#: model:ir.model,name:program_indicator.model_program_action
-msgid "program.action"
-msgstr ""
-
-#. module: program_indicator
-#: view:result.indicator:0
-#: selection:result.indicator,state:0
-msgid "Pending"
-msgstr ""
-
-#. module: program_indicator
-#: field:result.indicator,state:0
+#: field:program.result.indicator.value,state:0
 msgid "Status"
-msgstr ""
+msgstr "Etat"
 
 #. module: program_indicator
-#: field:result.indicator,risk_hypothesis:0
-msgid "Risk hypothesis"
-msgstr "Risques et hypothèses"
+#: view:program.result.indicator.value:0
+msgid "Result Indicator Values"
+msgstr "Valeurs des indicateurs de résultats"
 
 #. module: program_indicator
-#: view:result.indicator:0
+#: view:program.result.indicator.value:0
+msgid "Confirm Value"
+msgstr "Confirmer la valeur"
+
+#. module: program_indicator
+#: field:program.result.indicator,value_initial:0
+msgid "Initial Value"
+msgstr "Valeur initiale"
+
+#. module: program_indicator
+#: view:program.result.indicator:0
 msgid "Search Result Indicators"
 msgstr "Rechercher"
 
 #. module: program_indicator
-#: field:result.indicator,partner_id:0
-msgid "User"
-msgstr "Utilisateur"
-
-#. module: program_indicator
-#: field:result.indicator,value_date:0
+#: field:program.result.indicator.value,name:0
 msgid "Date"
 msgstr "Date"
 
 #. module: program_indicator
-#: model:ir.model,name:program_indicator.model_result_indicator
-msgid "result.indicator"
-msgstr ""
+#: field:program.result.indicator,partner_id:0
+msgid "Manager of follow-up"
+msgstr "Responsable de suivi"
 
 #. module: program_indicator
-#: view:result.indicator:0
-#: field:result.indicator,result_id:0
-msgid "Result"
-msgstr "Résultat"
+#: model:ir.model,name:program_indicator.model_program_result_indicator_value
+msgid "Result Indicator Value"
+msgstr "Valeurs d'indicateurs de résultats"
 
 #. module: program_indicator
-#: view:program.result:0
-msgid "Result indicators"
-msgstr "Indicateurs de résultats"
+#: view:program.result.indicator:0
+msgid "Indicator Values"
+msgstr "Valeurs de l'indicateur"
 
 #. module: program_indicator
-#: code:addons/program_indicator/program.py:135
-#: field:result.indicator,value_target:0
-#, python-format
-msgid "Target value"
-msgstr "Valeur cible"
+#: field:program.result.indicator,value_uid:0
+msgid "Last Modified by"
+msgstr "Dernière modification par"
 
 #. module: program_indicator
-#: field:program.indicator,name:0
+#: field:program.result.indicator,name:0
 msgid "Name"
-msgstr "Nom"
+msgstr "Libellé"
 
 #. module: program_indicator
-#: code:addons/program_indicator/program.py:133
-#: field:result.indicator,value_initial:0
-#, python-format
-msgid "Initial value"
-msgstr "Valeur initiale"
+#: view:program.result.indicator.value:0
+msgid "Validate Value"
+msgstr "Valider la valeur"
 
 #. module: program_indicator
-#: view:result.indicator:0
-#: selection:result.indicator,state:0
-msgid "Submitted"
-msgstr "Soumis"
+#: field:program.result.indicator,value_progress:0
+msgid "Value Progress"
+msgstr "Progrès de la valeur"
 
 #. module: program_indicator
-#: code:addons/program_indicator/program.py:136
-#: field:result.indicator,value:0
-#, python-format
+#: field:program.result.indicator,value:0
+#: field:program.result.indicator.value,value:0
 msgid "Value"
 msgstr "Valeur"
 
 #. module: program_indicator
-#: selection:result.indicator,state:0
+#: selection:program.result.indicator.value,state:0
 msgid "Cancelled"
 msgstr "Annulé"
 
 #. module: program_indicator
-#: model:ir.model,name:program_indicator.model_program_result
-msgid "program.result"
-msgstr ""
-
-#. module: program_indicator
-#: field:result.indicator,comment:0
+#: field:program.result.indicator,comment:0
 msgid "Comment"
 msgstr "Commentaire"
 
 #. module: program_indicator
-#: model:ir.actions.act_window,name:program_indicator.action_program_result_indicator_tree
-#: model:ir.ui.menu,name:program_indicator.menu_result_indicator_action_action
-#: view:result.indicator:0
+#: model:ir.actions.act_window,name:program_indicator.action_program_program_indicator_result_tree
+#: model:ir.ui.menu,name:program_indicator.menu_program_indicator_result_action_action
+#: view:program.result.indicator:0
 msgid "Result Indicators"
 msgstr "Indicateurs de résultats"
 
 #. module: program_indicator
-#: field:result.indicator,mandatory:0
-msgid "Mandatory"
-msgstr "Obligatoire"
+#: field:program.result.indicator,value_target:0
+msgid "Target Value"
+msgstr "Valeur cible"
 
 #. module: program_indicator
-#: model:ir.model,name:program_indicator.model_program_indicator
-msgid "program.indicator"
-msgstr ""
+#: field:program.result.level,fvg_show_page_indicators:0
+msgid "Show \"Indicator\" Tab"
+msgstr "Montrer l'onglet « Indicateur »"
 
 #. module: program_indicator
-#: view:result.indicator:0
+#: view:program.result.indicator:0
 msgid "Group by..."
 msgstr "Grouper par..."
 
+#. module: program_indicator
+#: selection:program.result.indicator.value,state:0
+msgid "Done"
+msgstr "Terminé"
 
 #. module: program_indicator
-#: view:result.indicator:0
-msgid "Cancel"
-msgstr "Annuler"
+#: model:ir.model,name:program_indicator.model_program_result
+#: view:program.result.indicator:0 field:program.result.indicator,result_id:0
+msgid "Result"
+msgstr "Résultat"
 
 #. module: program_indicator
-#: view:result.indicator:0
-#: selection:result.indicator,state:0
+#: selection:program.result.indicator.value,state:0
 msgid "Validated"
 msgstr "Validé"
 
-#. module: program_indicator
-#: view:result.indicator:0
-#: selection:result.indicator,state:0
-msgid "Open"
-msgstr "Ouvert"
+#~ msgid "Pending"
+#~ msgstr "En attente"
 
+#~ msgid "Delay between two checks of the indicator."
+#~ msgstr "Delai entre deux suivis de l'indicateur."
+
+#~ msgid "Submitted"
+#~ msgstr "Soumis"
+
+#~ msgid "Mandatory"
+#~ msgstr "Obligatoire"
+
+#~ msgid "Frequency"
+#~ msgstr "Periodicité"
+
+#~ msgid "Email Thread"
+#~ msgstr "Discussion par courriel"
+
+#~ msgid "Cancel"
+#~ msgstr "Annuler"
+
+#~ msgid "Verification Means"
+#~ msgstr "Moyens de vérification"
+
+#~ msgid "Open"
+#~ msgstr "Ouvert"
+
+#~ msgid "Risk hypothesis"
+#~ msgstr "Risques et hypothèses"
+
+#~ msgid "Generic"
+#~ msgstr "Générique"
+
+#~ msgid "Risk Hypothesis"
+#~ msgstr "Risques et hypothèses"
+
+#~ msgid "User"
+#~ msgstr "Utilisateur"
+
+#~ msgid "Model Program Document"
+#~ msgstr "Modèle du document de programmation"
+
+#~ msgid "Action"
+#~ msgstr "Action"

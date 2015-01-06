@@ -1,0 +1,268 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* program_budget
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-09-23 14:51+0000\n"
+"PO-Revision-Date: 2014-09-23 10:54-0500\n"
+"Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
+"Language-Team: Savoir-faire Linux <support@savoirfairelinux.com>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#. module: program_budget
+#: code:addons/program_budget/program_result.py:260
+#, python-format
+msgid "Deletion of Results has been disabled"
+msgstr "La suppression de résultats a été désactivée."
+
+#. module: program_budget
+#: view:program.result:0
+msgid "Partners"
+msgstr "Partenaires"
+
+#. module: program_budget
+#: model:ir.model,name:program_budget.model_program_result_country_role
+msgid "program.result.country.role"
+msgstr ""
+
+#. module: program_budget
+#: field:program.result,account_analytic_id:0
+#: field:program.result,child_account_ids:0
+msgid "Analytic account"
+msgstr "Compte analytique"
+
+#. module: program_budget
+#: field:program.result.country,role:0
+msgid "Role"
+msgstr "Rôle"
+
+#. module: program_budget
+#: field:program.result,foreign_budget_lines:0
+msgid "Foreign Budgets"
+msgstr "Budgets des partenaires"
+
+#. module: program_budget
+#: view:program.result.country.role:0
+msgid "Result Country Roles"
+msgstr "Rôles des pays cibles"
+
+#. module: program_budget
+#: model:ir.model,name:program_budget.model_program_result_level
+msgid "Result Level"
+msgstr "Niveau de résultats"
+
+#. module: program_budget
+#: field:program.result.level,fvg_show_page_budget:0
+msgid "Show \"Budget\" Tab"
+msgstr "Montrer l'onglet « Budget »"
+
+#. module: program_budget
+#: field:program.crossovered.budget.lines,amount:0
+msgid "Amount in Account Currency"
+msgstr "Total en devise du compte"
+
+#. module: program_budget
+#: field:program.result,company_id:0
+msgid "Company"
+msgstr "Companie"
+
+#. module: program_budget
+#: view:program.result.region:0
+msgid "Result Region"
+msgstr "Région du résultat"
+
+#. module: program_budget
+#: field:program.result,foreign_budget_total:0
+msgid "Total Foreign Budgets"
+msgstr "Budget total des partenaires"
+
+#. module: program_budget
+#: field:program.result,target_region_ids:0
+msgid "Target Regions"
+msgstr "Régions cibles"
+
+#. module: program_budget
+#: view:program.result.country:0
+msgid "Result Countries"
+msgstr "Pays du résultat"
+
+#. module: program_budget
+#: field:program.result,crossovered_budgets_modified_total:0
+msgid "Total Company Budget"
+msgstr "Budget total de la companie"
+
+#. module: program_budget
+#: help:program.result,child_account_ids:0
+msgid "Get associated accounts and its descendants"
+msgstr "Rechercher tous les comptes associés et leurs descendants"
+
+#. module: program_budget
+#: model:ir.model,name:program_budget.model_program_crossovered_budget_lines
+msgid "program.crossovered.budget.lines"
+msgstr ""
+
+#. module: program_budget
+#: field:program.result.country.role,active:0
+msgid "Active"
+msgstr "Actif"
+
+#. module: program_budget
+#: model:ir.model,name:program_budget.model_program_result_country
+msgid "program.result.country"
+msgstr ""
+
+#. module: program_budget
+#: model:ir.model,name:program_budget.model_program_result_region
+msgid "program.result.region"
+msgstr ""
+
+#. module: program_budget
+#: view:program.result:0
+msgid "Total in Account Currency"
+msgstr "Total en devise du compte"
+
+#. module: program_budget
+#: field:program.result.country,name:0 view:program.result.country.role:0
+#: field:program.result.country.role,name:0 view:program.result.region:0
+#: field:program.result.region,name:0
+msgid "Name"
+msgstr "Nom"
+
+#. module: program_budget
+#: field:program.crossovered.budget.lines,budget_id:0 view:program.result:0
+msgid "Budget"
+msgstr "Budget"
+
+#. module: program_budget
+#: view:program.result:0
+msgid "Summary"
+msgstr "Récapitulatif"
+
+#. module: program_budget
+#: view:program.result:0
+msgid "Planned"
+msgstr "Planifiée"
+
+#. module: program_budget
+#: code:addons/program_budget/account_analytic_account.py:162
+#: code:addons/program_budget/program_result.py:259
+#, python-format
+msgid "Error"
+msgstr "Erreur"
+
+#. module: program_budget
+#: model:ir.actions.act_window,name:program_budget.action_program_result_region_tree
+#: model:ir.ui.menu,name:program_budget.menu_program_configuration_region
+#: view:program.result.region:0
+msgid "Result Regions"
+msgstr "Régions cibles"
+
+#. module: program_budget
+#: field:program.result,target_country_ids:0
+msgid "Target Countries"
+msgstr "Pays cibles"
+
+#. module: program_budget
+#: field:program.result.country,code:0
+msgid "Code"
+msgstr "Code"
+
+#. module: program_budget
+#: view:program.result.country.role:0
+msgid "Result Country Role"
+msgstr "Rôle des pays cibles"
+
+#. module: program_budget
+#: code:addons/program_budget/account_analytic_account.py:163
+#, python-format
+msgid "Account still associated with a Program Result"
+msgstr "Ce compte est toujours associé avec un résultat."
+
+#. module: program_budget
+#: field:program.crossovered.budget.lines,currency_amount:0
+msgid "Amount in Currency"
+msgstr "Montant en devise"
+
+#. module: program_budget
+#: model:ir.model,name:program_budget.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Compte analytique"
+
+#. module: program_budget
+#: field:program.crossovered.budget.lines,currency_id:0
+#: field:program.result,currency_id:0
+msgid "Currency"
+msgstr "Devise"
+
+#. module: program_budget
+#: model:ir.model,name:program_budget.model_program_result
+#: field:program.crossovered.budget.lines,result_id:0
+msgid "Result"
+msgstr "Résultat"
+
+#. module: program_budget
+#: field:program.result,crossovered_budget_line_ids:0
+msgid "Budget Lines"
+msgstr "Lignes budgétaires"
+
+#. module: program_budget
+#: field:program.crossovered.budget.lines,partner_id:0
+msgid "Partner"
+msgstr "Organisme"
+
+#. module: program_budget
+#: model:ir.actions.act_window,name:program_budget.action_program_result_country_role_tree
+#: model:ir.ui.menu,name:program_budget.menu_program_configuration_country_role
+msgid "Roles of Target Countries"
+msgstr "Rôles des pays cibles"
+
+#. module: program_budget
+#: field:program.result,budget_total:0
+msgid "Total"
+msgstr "Total"
+
+#, fuzzy
+#~ msgid "Result Countrie Roles"
+#~ msgstr "Rôles d'équipe"
+
+#~ msgid "Model Program Document"
+#~ msgstr "Modèle du document de programmation"
+
+#~ msgid "Budgets"
+#~ msgstr "Budgets"
+
+#~ msgid "Company Label"
+#~ msgstr "Libellé de companie"
+
+#~ msgid "unknown"
+#~ msgstr "inconnu"
+
+#~ msgid ""
+#~ "You do not have the permissions to view this result's related budget "
+#~ "since you belong in another department"
+#~ msgstr ""
+#~ "Vous n'avez pas la permission de voir le budget de ce résultat puisque "
+#~ "vous ne faites pas partie du bon département."
+
+#~ msgid "Amount"
+#~ msgstr "Montant"
+
+#~ msgid "Currency Total"
+#~ msgstr "Total en devises"
+
+#, fuzzy
+#~ msgid "amount_cur"
+#~ msgstr "Montant"
+
+#, fuzzy
+#~ msgid "amount"
+#~ msgstr "Montant"

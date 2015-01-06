@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+
+    <record id="view_program_result_form" model="ir.ui.view">
+      <field name="model">program.result</field>
+      <field name="inherit_id" ref="program.view_program_result_form" />
+      <field name="priority" eval="50"/>
+      <field name="arch" type="xml">
+
+        <notebook>
+
+          <page name="indicators" string="Indicators">
+            <group col="1">
+              <label for="result_indicator_ids" />
+              <field name="result_indicator_ids" nolabel="1" context="{'from_result': True}"/>
+            </group>
+          </page>
+
+        </notebook>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>

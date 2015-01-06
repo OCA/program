@@ -1,0 +1,54 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* program_travel
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-09-18 17:02+0000\n"
+"PO-Revision-Date: 2014-09-18 13:03-0500\n"
+"Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.6.9\n"
+
+#. module: program_travel
+#: field:program.result.level,fvg_show_page_travels:0
+msgid "Show \"Travel\" Tab"
+msgstr "Montrer l'onglet « Déplacement »"
+
+#. module: program_travel
+#: model:ir.model,name:program_travel.model_travel_travel
+#: view:program.result:0
+msgid "Travel"
+msgstr "Déplacement"
+
+#. module: program_travel
+#: view:travel.travel:0
+msgid "Programming"
+msgstr "Programmation"
+
+#. module: program_travel
+#: field:travel.travel,result_ids:0
+msgid "Results"
+msgstr "Résultats"
+
+#. module: program_travel
+#: field:program.result,travel_ids:0
+msgid "Travels"
+msgstr "Déplacements"
+
+#. module: program_travel
+#: model:ir.model,name:program_travel.model_program_result
+msgid "Result"
+msgstr "Résultat"
+
+#. module: program_travel
+#: model:ir.model,name:program_travel.model_program_result_level
+msgid "Result Level"
+msgstr "Niveau de résultats"

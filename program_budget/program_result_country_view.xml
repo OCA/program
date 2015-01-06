@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+
+    <record id="view_program_result_country_tree" model="ir.ui.view">
+      <field name="name">Program Result Country Tree</field>
+      <field name="model">program.result.country</field>
+      <field name="arch" type="xml">
+
+        <tree string="Result Countries" version="7.0" editable="bottom">
+          <field name="name" />
+          <field name="code" />
+          <field name="role" />
+        </tree>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>
