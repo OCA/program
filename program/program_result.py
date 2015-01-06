@@ -363,6 +363,7 @@ class program_result(orm.Model):
             'program.result.intervention', string='Intervention Mode'
         ),
         'tag_ids': fields.many2many('program.result.tag', string='Tags'),
+        
     }
     _defaults = {
         'state': 'draft',
