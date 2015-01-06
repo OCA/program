@@ -363,7 +363,7 @@ class program_result(orm.Model):
             'program.result.intervention', string='Intervention Mode'
         ),
         'tag_ids': fields.many2many('program.result.tag', string='Tags'),
-        
+        'code_result': fields.char('Code result', size=32),
     }
     _defaults = {
         'state': 'draft',
@@ -381,6 +381,10 @@ class program_result(orm.Model):
             self._result_level_id(cr, uid, context=context)
         ),
         'parent_depth': -1,
+        'code_result': (
+            lambda self, cr, uid, context:
+            self._get_result_code(cr, uid, context=context)
+        ),
     }
 
     def _rec_message(self, cr, uid, ids, context=None):
