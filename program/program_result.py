@@ -282,6 +282,16 @@ class program_result(orm.Model):
                 ]
         return res
 
+    def _get_result_code(self, cr, user, ids=False, context=None):
+        context = context or {}
+        level_pool = self.pool['program.result.level']
+        result_level_id = context.get('default_result_level_id')
+        if result_level_id:
+            return level_pool.read(
+                cr, user, result_level_id, ['code'],
+                context=context)['code']
+        return False
+
     _columns = {
         'name': fields.char(
             'Name', required=True, select=True, translate=True,
