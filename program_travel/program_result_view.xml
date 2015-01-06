@@ -13,7 +13,9 @@
           <page name="travels" string="Travel">
             <group col="1">
               <label for="travel_ids" />
-              <field name="travel_ids" nolabel="1"/>
+              <field name="code_result" invisible="1"/>
+              <field name="travel_ids" nolabel="1"
+                     attrs="{'readonly': [('code_result', '!=', 'AC')]}"/>
             </group>
           </page>
 
