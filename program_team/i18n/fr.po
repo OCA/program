@@ -44,17 +44,17 @@ msgstr "Membres de l'équipe"
 #. module: program_team
 #: view:program.result.team.beneficiary.type:0
 msgid "Beneficiary Types"
-msgstr "Types de bénéficiaires"
+msgstr "Types de récipiendaires"
 
 #. module: program_team
 #: model:ir.model,name:program_team.model_program_result_team_beneficiary
 msgid "Team Beneficiary"
-msgstr "Bénéficiaires à l'équipe"
+msgstr "Récipiendaires à l'équipe"
 
 #. module: program_team
 #: field:program.result.team.beneficiary,partner_id:0
 msgid "Beneficiary"
-msgstr "Bénéficiaire"
+msgstr "Récipiendaire"
 
 #. module: program_team
 #: model:ir.model,name:program_team.model_hr_department
@@ -111,7 +111,7 @@ msgstr "Niveau de résultats"
 #. module: program_team
 #: view:program.result.team.beneficiary.type:0
 msgid "Beneficiary Type"
-msgstr "Type de bénéficiaires"
+msgstr "Type de récipiendaires"
 
 #. module: program_team
 #: field:program.result.level,fvg_show_field_department_id:0
@@ -133,7 +133,7 @@ msgstr "Types de partenaires"
 #. module: program_team
 #: model:ir.model,name:program_team.model_program_result_team_beneficiary_type
 msgid "Team Beneficiary Type"
-msgstr "Partenaire de l'équipe"
+msgstr "Type de récipiendaires à l'équipe"
 
 #. module: program_team
 #: model:ir.model,name:program_team.model_program_result_team_partner
