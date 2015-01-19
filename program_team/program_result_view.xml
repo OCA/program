@@ -7,9 +7,11 @@
       <field name="arch" type="xml">
 
         <group name="general_info">
-          <field name="department_id"
-                 domain="[('department_rule', '=', uid)]"
-                 attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+          <field
+            name="department_id"
+            domain="[('department_rule', '=', uid)]"
+            attrs="{'readonly': [('state', '!=', 'draft')]}"
+            options="{'create': false, 'create_edit': false}" />
         </group>
 
         <page name="target" position="after">
