@@ -30,6 +30,8 @@ import simplejson
 
 from . import _get_validatable
 
+# Be careful when changing the order,
+# see program_result_level.default_validation_spec_ids()
 STATES = [
     ('draft', _('Draft')),
     ('validated', _('Validated')),

@@ -31,6 +31,8 @@ of a result.
 from openerp.osv import fields, orm
 from openerp.tools.translate import _
 
+from .program_result import STATES
+
 
 class program_result_level(orm.Model):
 
@@ -384,6 +386,9 @@ class program_result_level(orm.Model):
         'fvg_show_group_transversals': True,
         'fvg_show_group_status': False,
         'fvg_show_field_statement': True,
+        'validation_spec_ids': (
+            lambda self, *a, **kw: self.default_validation_spec_ids(*a, **kw)
+        ),
     }
 
     def _rec_message(self, cr, uid, ids, context=None):
@@ -392,3 +397,19 @@ class program_result_level(orm.Model):
     _constraints = [
         (orm.Model._check_recursion, _rec_message, ['parent_id']),
     ]
+
+    def default_validation_spec_ids(self, cr, uid, context=None):
+        groups = [
+            ('program', 'group_program_director'),
+            ('program', 'group_program_dpe'),
+            ('program', 'group_program_administrator'),
+        ]
+        states = STATES[1:4]
+
+        data_pool = self.pool['ir.model.data']
+        ref = lambda a: data_pool.get_object(cr, uid, a[0], a[1]).id
+
+        return [
+            (0, 0, {'group_id': ref(group), 'states': state[0]})
+            for group, state in zip(groups, states)
+        ]
