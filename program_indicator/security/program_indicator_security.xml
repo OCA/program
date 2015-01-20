@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE openerp SYSTEM "openerp.dtd">
+
+<openerp>
+  <data>
+
+    <!-- Groups -->
+
+    <record id="group_program_coordinator" model="res.groups">
+      <field name="name">Coordinator</field>
+      <field name="category_id" ref="program.module_category_program" />
+      <field name="implied_ids" eval="[(4, ref('program.group_program_employee'))]"/>
+      <field name="comment">Coordinators can validate result indicator values</field>
+    </record>
+
+    <record id="program.group_program_manager" model="res.groups">
+      <field name="implied_ids" eval="[(4, ref('program_indicator.group_program_coordinator'))]"/>
+    </record>
+
+  </data>
+</openerp>

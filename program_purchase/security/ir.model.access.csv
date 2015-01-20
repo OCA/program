@@ -1,0 +1,6 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+access_account_voucher_line_user,access_account_voucher_line_user,account_voucher.model_account_voucher_line,program.group_program_basic_user,1,0,0,0
+access_account_invoice_user,access_account_invoice_user,account.model_account_invoice,program.group_program_basic_user,1,0,0,0
+access_payment_order_user,access_payment_order_user,account_payment.model_payment_order,program.group_program_basic_user,1,0,0,0
+access_purchase_order_user,access_purchase_order_user,purchase.model_purchase_order,program.group_program_basic_user,1,0,0,0
+access_purchase_order_line_user,access_purchase_order_line_user,purchase.model_purchase_order_line,program.group_program_basic_user,1,0,0,0

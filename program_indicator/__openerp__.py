@@ -44,6 +44,7 @@ Contributors
     'license': 'AGPL-3',
     'external_dependencies': {},
     'data': [
+        'security/program_indicator_security.xml',
         'security/ir.model.access.csv',
         'program_result_indicator_view.xml',
         'program_result_indicator_value_view.xml',

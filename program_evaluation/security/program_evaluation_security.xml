@@ -9,12 +9,12 @@
     <record id="group_program_evaluator" model="res.groups">
       <field name="name">Evaluator</field>
       <field name="category_id" ref="program.module_category_program" />
-      <field name="implied_ids" eval="[(4, ref('program.group_program_director'))]"/>
+      <field name="implied_ids" eval="[(4, ref('program.group_program_basic_user'))]"/>
       <field name="comment">Evaluators can View all evaluations but cannot delete them</field>
     </record>
 
-    <record id="program.group_program_administrator" model="res.groups">
-      <field name="implied_ids" eval="[(4, ref('group_program_evaluator'))]"/>
+    <record id="program.group_program_manager" model="res.groups">
+      <field name="implied_ids" eval="[(4, ref('program_evaluation.group_program_evaluator'))]"/>
     </record>
 
   </data>
