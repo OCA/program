@@ -30,18 +30,6 @@ import simplejson
 
 from . import _get_validatable
 
-RE_GROUP_FROM = [
-    re.compile(r"\[\('state', '!=', 'draft'\)\]"),
-    re.compile(
-        r"\[\[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;\]\]"
-    ),
-]
-RE_GROUP_TO = [
-    "[('state', 'not in', ('draft', 'validated'))]",
-    "[[&quot;state&quot;, &quot;not in&quot;, "
-    "[&quot;draft&quot;, &quot;validated&quot;]]]",
-]
-
 STATES = [
     ('draft', _('Draft')),
     ('validated', _('Validated')),
@@ -198,9 +186,7 @@ class program_result(orm.Model):
         """Change the readonly fields depending on the groups
         and the settings of the levels
 
-        Look for the strings "[('state', '!=', 'draft')]"
-        exactly in the xml view and replace it with
-        "[('state', 'not in', ('draft', 'validated'))]"
+        Non-employees cannot edit the form except for changing the state
 
         Hide intervention_id in all but last level results
         Hide pages and fields according to the config parameters of
@@ -211,19 +197,24 @@ class program_result(orm.Model):
             modifiers['invisible'] = invisible
             elem.attrib['modifiers'] = simplejson.dumps(modifiers)
 
+        def ro_elem(elem, readonly="true"):
+            modifiers = simplejson.loads(elem.attrib.get('modifiers', "{}"))
+            modifiers['readonly'] = readonly
+            elem.attrib['modifiers'] = simplejson.dumps(modifiers)
+
         res = super(program_result, self).fields_view_get(
             cr, user, view_id, view_type, context, toolbar, submenu
         )
 
         if view_type == 'form':
-            user_pool = self.pool['res.users']
             level_pool = self.pool['program.result.level']
-            # Change the readonly fields depending on the groups
-            if user_pool.has_group(cr, user, 'program.group_program_director'):
-                for FROM, TO in zip(RE_GROUP_FROM, RE_GROUP_TO):
-                    res['arch'] = FROM.sub(TO, res['arch'])
 
             arch = etree.fromstring(res['arch'])
+
+            # Change the readonly fields depending on the groups
+            has_group = self.pool['res.users'].has_group
+            if not has_group(cr, user, 'program.group_program_employee'):
+                map(ro_elem, arch.xpath("//field[@name!='state']"))
 
             # Hide intervention_id from all but last level of results
             lower_level = self.pool['program.result.level'].search(
