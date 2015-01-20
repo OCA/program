@@ -22,7 +22,7 @@
 
 {
     'name': 'Program Team - Multi-Menu Bindings',
-    'version': '1.1',
+    'version': '1.10',
     'category': 'Program',
     'summary': 'Team Management on RBM',
     'description': '''

@@ -22,7 +22,7 @@
 
 {
     'name': 'Program Document',
-    'version': '0.4',
+    'version': '1.10',
     'category': 'Program',
     'summary': "Manage program's documents",
     'license': 'AGPL-3',

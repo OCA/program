@@ -22,7 +22,7 @@
 
 {
     'name': 'Program Multi-Menu',
-    'version': '1.4',
+    'version': '1.10',
     'category': 'Program',
     'summary': 'Results Based Management with Multiple Menus',
     'description': '''
