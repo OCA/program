@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+
+    <record id="program_indicator.action_program_program_indicator_result_tree" model="ir.actions.act_window">
+      <field name="domain">[('top_level_menu_id', '=', False)]</field>
+    </record>
+
+  </data>
+</openerp>

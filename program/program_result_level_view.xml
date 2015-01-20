@@ -56,6 +56,17 @@
                 </group>
 
               </page>
+
+              <page string="Validation" attrs="{'invisible': [('depth', '!=', 1)]}">
+                <label for="validation_spec_ids"/>
+                <field name="validation_spec_ids">
+                  <tree editable="top">
+                    <field name="group_id" options="{'create': false, 'create_edit': false}"/>
+                    <field name="states"/>
+                  </tree>
+                </field>
+              </page>
+
             </notebook>
 
           </sheet>

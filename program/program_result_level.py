@@ -38,6 +38,113 @@ class program_result_level(orm.Model):
     _description = 'Result Level'
     _parent_name = 'parent_id'
 
+    def _clone_ref(self, cr, user, ref, defaults=None, copy_name=False,
+                   context=None):
+        """Given a ref, copy it, write defaults and return the new id"""
+        model_data_pool = self.pool['ir.model.data']
+        module, res_name = ref.split('.')
+        model, res_id = model_data_pool.get_object_reference(
+            cr, user, module, res_name
+        )
+        ref_model = self.pool[model]
+        new_id = ref_model.copy(cr, user, res_id, context=context)
+        if copy_name and not defaults.get('name'):
+            defaults['name'] = ref_model.read(
+                cr, user, res_id, ['name'], context=context
+            )['name']
+        if defaults:
+            ref_model.write(cr, user, new_id, defaults, context=context)
+        return new_id
+
+    def _clone_menu_action(self, cr, user,
+                           menu_ref, action_ref,
+                           menu_default=None, action_default=None,
+                           additional_domain=None,
+                           additional_context=None,
+                           copy_name=False,
+                           context=None):
+        """Clone the pair of menu and action, then link them,
+        add elements to the domain
+        """
+        # Clone
+        new_menu_id = self._clone_ref(
+            cr, user, menu_ref, menu_default, copy_name=copy_name,
+            context=context
+        )
+        new_action_id = self._clone_ref(
+            cr, user, action_ref, action_default, context=context
+        )
+        # Link
+        values_pool = self.pool['ir.values']
+        values_id = self.pool['ir.values'].search(
+            cr, user, [('res_id', '=', new_menu_id)], context=context
+        )
+        values_pool.write(
+            cr, user, values_id,
+            {'value': 'ir.actions.act_window,%d' % new_action_id},
+            context=context
+        )
+        # Tweak domain and context
+        if additional_domain or additional_context:
+            action_pool = self.pool['ir.actions.act_window']
+            data = action_pool.read(
+                cr, user, new_action_id, ['domain', 'context'], context=context
+            )
+            domain = eval(data['domain'] or "[]")
+            overwritten_domain_fields = [
+                i[0] for i in additional_domain if len(i) == 3
+            ]
+            domain = [
+                i for i in domain
+                if not (len(i) == 3 and i[0] in overwritten_domain_fields)
+            ]
+            domain += additional_domain or []
+            act_context = eval(data['context'] or "{}")
+            act_context.update(additional_context or {})
+            action_pool.write(
+                cr, user, new_action_id, {
+                    'domain': domain,
+                    'context': act_context,
+                }, context=context
+            )
+        if not copy_name:
+            # Fix duplication of translation
+            trans_pool = self.pool['ir.translation']
+            trans_ids = trans_pool.search(
+                cr, user,
+                [
+                    '|',
+                    '&',
+                    ('name', '=', 'ir.ui.menu,name'),
+                    ('res_id', '=', new_menu_id),
+                    '&',
+                    ('name', '=', 'ir.actions.act_window,name'),
+                    ('res_id', '=', new_action_id),
+                ],
+                context=context
+            )
+            trans_pool.unlink(cr, user, trans_ids, context=context)
+        return new_menu_id, new_action_id
+
+    def _get_basic_user_id(self, cr, user, vals, context=None):
+        return self.pool['ir.model.data'].get_object_reference(
+            cr, user, 'program', 'group_program_basic_user'
+        )[1]
+
+    def _bubble_up_specs(self, cr, user, ids, context=None):
+        """Bubble up Specs to root of chain"""
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        spec_pool = self.pool['program.result.validation.spec']
+        for level in self.browse(cr, user, ids, context=context):
+            if not level.parent_id or not level.validation_spec_ids:
+                continue
+            new_level_id = level.chain_root.id
+            spec_ids = [s.id for s in level.validation_spec_ids]
+            spec_pool.write(cr, user, spec_ids, {
+                'level_id': new_level_id,
+            }, context=context)
+
     def create(self, cr, user, vals, context=None):
         """Create a menu entry for each level
 
@@ -46,26 +153,7 @@ class program_result_level(orm.Model):
         Redirect link through ir.values so new view links to new action
         """
         # Get pools
-        model_pool = self.pool['ir.model.data']
-        trans_pool = self.pool['ir.translation']
-        menu_pool = self.pool['ir.ui.menu']
-        values_pool = self.pool['ir.values']
         act_pool = self.pool['ir.actions.act_window']
-        # Get xml_id with references
-        template_menu_id = model_pool.get_object_reference(
-            cr, user, 'program', 'menu_program_result_result'
-        )[1]
-        template_action_id = model_pool.get_object_reference(
-            cr, user, 'program', 'action_program_result_list'
-        )[1]
-        # Clone objects
-        act_id = act_pool.copy(cr, user, template_action_id, context=context)
-        menu_id = menu_pool.copy(cr, user, template_menu_id, context=context)
-        # Fix duplication of translation
-        trans_ids = trans_pool.search(
-            cr, user, [('res_id', 'in', [act_id, menu_id])], context=context
-        )
-        trans_pool.unlink(cr, user, trans_ids, context=context)
 
         if not vals.get('menu_title'):
             vals['menu_title'] = vals['name']
@@ -73,27 +161,18 @@ class program_result_level(orm.Model):
         if not vals.get('status_label'):
             vals['status_label'] = _("Status of the %s") % vals['name']
 
-        # Set menu entry name
-        menu_pool.write(
-            cr, user, menu_id,
-            {
+        # Clone objects and set menu entry name
+        menu_id, act_id = self._clone_menu_action(
+            cr, user,
+            'program.menu_program_result_result',
+            'program.action_program_result_list',
+            menu_default={
                 'name': vals['menu_title'],
                 'groups_id': [(6, 0, [
-                    model_pool.get_object_reference(
-                        cr, user, 'program', 'group_program_basic_user'
-                    )[1]
+                    self._get_basic_user_id(cr, user, vals, context)
                 ])],
                 'sequence': 20,
             },
-            context=context
-        )
-        # Link action in menu
-        values_id = self.pool['ir.values'].search(
-            cr, user, [('res_id', '=', menu_id)], context=context
-        )
-        values_pool.write(
-            cr, user, values_id,
-            {'value': 'ir.actions.act_window,%d' % act_id},
             context=context
         )
         # Create level with menu ref
@@ -137,11 +216,18 @@ class program_result_level(orm.Model):
                     level.menu_id.action.write({
                         'context': {'default_parent_depth': depth}
                     })
-        return super(program_result_level, self).write(
+        res = super(program_result_level, self).write(
             cr, user, ids, vals, context=context
         )
 
+        if 'parent_id' in vals:
+            self._bubble_up_specs(cr, user, ids, context=context)
+
+        return res
+
     def unlink(self, cr, uid, ids, context=None):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
         menu_pool = self.pool['ir.ui.menu']
         menu_ids = set(
             l['menu_id'][0]
@@ -175,6 +261,52 @@ class program_result_level(orm.Model):
                 self._get_depth(
                     cr, uid, level.parent_id.id, context=context
                 )[level.parent_id.id] if level.parent_id else 0) + 1
+            for level in self.browse(cr, uid, ids, context=context)
+        }
+
+    def _search_chain_end(
+            self, cr, uid, model, name=None, args=None, context=None):
+        def search_root(level):
+            return self.search(
+                cr, uid, [('id', 'child_of', level.id)], context=context
+            )
+
+        def search_tail(level):
+            return search_root(level.chain_root)
+
+        find_chain_ids = search_root if name == 'chain_root' else search_tail
+        op = args[0][1]
+        ids = args[0][2]
+        if isinstance(ids, basestring):
+            ids = self.search(cr, uid, [('name', op, ids)], context=context)
+        elif isinstance(ids, (int, long)):
+            ids = [ids]
+        if op in ['=', 'ilike']:
+            op = 'in'
+        elif op in ['!=', 'not ilike']:
+            op = 'not in'
+        level_ids = []
+        for level in self.browse(cr, uid, ids, context=context):
+            if getattr(level, name).id == level.id:
+                level_ids += find_chain_ids(level)
+        return [('id', op, level_ids)]
+
+    def _get_chain_end(
+            self, cr, uid, ids=None, name=None, args=None, context=None):
+
+        def find_root(level):
+            return level.parent_id and find_root(level.parent_id) or level
+
+        def find_tail(level):
+            return level.child_id and find_tail(level.child_id[0]) or level
+
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+
+        find_end_id = find_root if args.get('find_root', True) else find_tail
+
+        return {
+            level.id: find_end_id(level).id
             for level in self.browse(cr, uid, ids, context=context)
         }
 
@@ -217,6 +349,32 @@ class program_result_level(orm.Model):
             'Options for Status',
             translate=True,
             help='Comma-separated list of options for the Status Field.',
+        ),
+        'validation_spec_ids': fields.one2many(
+            'program.result.validation.spec',
+            'level_id',
+            string='Validation Specifications',
+            help='Configuration of which users can validate which states',
+        ),
+        'chain_root': fields.function(
+            lambda self, *a, **kw: self._get_chain_end(*a, **kw),
+            fnct_search=lambda self, *a, **kw: self._search_chain_end(
+                *a, **kw
+            ),
+            arg={'find_root': True},
+            type='many2one',
+            relation='program.result.level',
+            string='Chain Root',
+        ),
+        'chain_tail': fields.function(
+            lambda self, *a, **kw: self._get_chain_end(*a, **kw),
+            fnct_search=lambda self, *a, **kw: self._search_chain_end(
+                *a, **kw
+            ),
+            arg={'find_root': False},
+            type='many2one',
+            relation='program.result.level',
+            string='Chain Tail',
         ),
     }
     _defaults = {

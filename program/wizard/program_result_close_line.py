@@ -22,6 +22,7 @@
 from openerp.osv import orm, fields
 
 from ..program_result import STATES
+from .. import _get_mapping_general, _get_wizard_validatable
 
 
 class program_result_close_line(orm.TransientModel):
@@ -32,33 +33,17 @@ class program_result_close_line(orm.TransientModel):
     _name = 'program.result.close.line'
     _description = "Result Mass Closer Line"
 
-    def _get_mapping(self):
-        """
-        * program.group_program_dpe: close
-        """
-        return [
-            ('program.group_program_dpe', ['opened']),
-        ]
-
-    def _get_closable(self, cr, uid, ids, name, args, context=None):
-        """Check the user's rights to change states based on
-        group and view_program_result_form's buttons
-        """
-        users_pool = self.pool['res.users']
-        res = {i: False for i in ids}
-        for group, states in self._get_mapping():
-            if users_pool.has_group(cr, uid, group):
-                res.update({i: True for i in self.search(
-                    cr, uid, [
-                        ('id', 'in', ids),
-                        ('state', 'in', states),
-                    ], context=context)
-                })
+    def _get_mapping(self, cr, uid, result_ids, context=None):
+        """Only close from opened states"""
+        res = _get_mapping_general(self, cr, uid, result_ids, context=context)
+        for line_id, mapping in res.iteritems():
+            for gui, states in mapping.iteritems():
+                states.intersection_update(['opened'])
         return res
 
     _columns = {
         'is_closable': fields.function(
-            lambda self, *a, **kw: self._get_closable(*a, **kw),
+            lambda *a, **kw: _get_wizard_validatable(*a, **kw),
             string='Can be Validated',
             type='boolean',
         ),

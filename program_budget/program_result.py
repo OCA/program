@@ -181,6 +181,11 @@ class program_result(orm.Model):
                 cr, uid, vals, context=context
             )
 
+        if not vals.get('result_level_id'):
+            vals['result_level_id'] = self._result_level_id(
+                cr, uid, parent_id=vals.get('parent_id'), context=context
+            )
+
         vals['account_analytic_id'] = self._create_related_account(
             cr, uid, vals, context=context)
 
@@ -214,6 +219,7 @@ class program_result(orm.Model):
                     cr, uid, result.id,
                     self._get_propagatable_fields(),
                     context=context).items() + vals.items())
+                prop_vals['result_level_id'] = result.result_level_id.id
                 account_id = self._create_related_account(
                     cr, uid, prop_vals, context=context)
                 result.write({'account_analytic_id': account_id},

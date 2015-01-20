@@ -24,11 +24,11 @@ import re
 from lxml import etree
 
 from openerp.osv import fields, orm
-from openerp.tools.safe_eval import safe_eval
 from openerp.tools.translate import _
 from openerp import netsvc
 import simplejson
 
+from . import _get_validatable
 
 RE_GROUP_FROM = [
     re.compile(r"\[\('state', '!=', 'draft'\)\]"),
@@ -118,17 +118,19 @@ class program_result(orm.Model):
     def _result_level_id(
             self, cr, user, ids=False, parent_id=False, context=None):
         if parent_id:
-            depth = self.read(cr, user, parent_id, ['depth'])['depth'] + 1
+            parent = self.browse(cr, user, parent_id, context=context)
+            parent_level = parent.result_level_id
+            if parent_level.child_id:
+                return parent_level.child_id[0].id
         else:
             depth = 1
-        level_pool = self.pool['program.result.level']
-        root_ids = level_pool.search(
-            cr, user, [('depth', '=', depth)], context=context
-        )
-        if root_ids:
-            return root_ids[0]
-        else:
-            return False
+            level_pool = self.pool['program.result.level']
+            root_ids = level_pool.search(
+                cr, user, [('depth', '=', depth)], context=context
+            )
+            if root_ids:
+                return root_ids[0]
+        return False
 
     def onchange_parent_id(self, cr, user, ids, parent_id, context=None):
         return {
@@ -140,8 +142,14 @@ class program_result(orm.Model):
         }
 
     def create(self, cr, user, vals, context=None):
+        if context is None:
+            context = {}
         parent_id = vals.get('parent_id')
-        if parent_id or parent_id is False:
+        level_id = (
+            context.get('default_result_level_id') or
+            vals.get('result_level_id')
+        )
+        if not level_id and (parent_id or parent_id is False):
             vals['result_level_id'] = self._result_level_id(
                 cr, user, parent_id=parent_id, context=context
             )
@@ -199,7 +207,7 @@ class program_result(orm.Model):
         the level
         """
         def hide_elem(elem, invisible="true"):
-            modifiers = safe_eval(elem.attrib.get('modifiers', "{}"))
+            modifiers = simplejson.loads(elem.attrib.get('modifiers', "{}"))
             modifiers['invisible'] = invisible
             elem.attrib['modifiers'] = simplejson.dumps(modifiers)
 
@@ -236,6 +244,28 @@ class program_result(orm.Model):
                 )
                 for elem in arch.xpath(xpath):
                     hide_elem(elem, [('result_level_id', 'in', hidden_levels)])
+
+            spec_pool = self.pool['program.result.validation.spec']
+            states = spec_pool.get_all_states(cr, user, context=context)
+            for state in set(states):
+                match = arch.xpath(
+                    "//button[@states='%s' and @type='workflow']" % state
+                )
+                if not match:
+                    continue
+                button = match[0]
+                modifiers = simplejson.loads(
+                    button.attrib.get('modifiers', "{}")
+                )
+                invisible = modifiers.get('invisible', [])
+                if invisible is True:
+                    continue
+                if invisible:
+                    invisible.insert(0, '|')
+                invisible.insert(1, ('validation_domain', '!=', True))
+                if invisible:
+                    modifiers['invisible'] = invisible
+                button.attrib['modifiers'] = simplejson.dumps(modifiers)
 
             res['arch'] = etree.tostring(arch)
         return res
@@ -363,6 +393,11 @@ class program_result(orm.Model):
             'program.result.intervention', string='Intervention Mode'
         ),
         'tag_ids': fields.many2many('program.result.tag', string='Tags'),
+        'validation_domain': fields.function(
+            lambda *a, **kw: _get_validatable(*a, **kw),
+            type='boolean',
+            string="Validation Domain Search",
+        ),
     }
     _defaults = {
         'state': 'draft',

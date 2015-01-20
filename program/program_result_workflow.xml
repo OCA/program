@@ -122,7 +122,7 @@
     <record id="trans_visa_admin_opened" model="workflow.transition">
       <field name="act_from" ref="act_visa_admin" />
       <field name="act_to" ref="program.act_opened" />
-      <field name="signal">signal_open</field>
+      <field name="signal">signal_opened</field>
     </record>
 
     <record id="trans_draft_mass_validate" model="workflow.transition">

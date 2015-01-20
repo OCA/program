@@ -23,9 +23,12 @@
 from openerp.osv import fields, orm
 
 
+# FIXME: Model name should match Indicator (program.result.evaluation)
+#        Migration script would be necessary
 class program_evaluation(orm.Model):
 
     _name = 'program.evaluation'
+    _description = 'Result Evaluation'
     _defaults = {
         'state': 'draft'
     }

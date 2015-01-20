@@ -26,6 +26,7 @@ from openerp.osv import fields, orm
 class program_result_region(orm.Model):
 
     _name = 'program.result.region'
+    _description = 'Target Region'
     _columns = {
         'name': fields.char('Name', required=True, select=True),
     }
