@@ -13,7 +13,7 @@
           <page name="indicators" string="Indicators">
             <group col="1">
               <label for="result_indicator_ids" />
-              <field name="result_indicator_ids" nolabel="1" context="{'from_result': True}"/>
+              <field name="result_indicator_ids" nolabel="1" context="{'from_result': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
             </group>
           </page>
 

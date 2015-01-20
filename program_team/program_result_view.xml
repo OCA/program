@@ -18,7 +18,7 @@
 
           <page name="team" string="Team">
             <group colspan="4" col="2">
-              <field name="team_department_ids">
+              <field name="team_department_ids" attrs="{'readonly': [('state', '!=', 'draft')]}">
                 <tree editable="bottom">
                   <field name="department_id"/>
                     <button name="action_department_form_view"
@@ -28,7 +28,7 @@
                 </tree>
               </field>
 
-              <field name="team_member_ids">
+              <field name="team_member_ids" attrs="{'readonly': [('state', '!=', 'draft')]}">
                 <tree editable="bottom">
                   <field name="employee_id"/>
                   <button name="action_member_form_view"
@@ -44,7 +44,7 @@
           <page name="beneficiary" string="Beneficiaries">
 
               <label for="team_beneficiary_ids"/>
-              <field name="team_beneficiary_ids"/>
+              <field name="team_beneficiary_ids" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
 
           </page>
 
@@ -52,13 +52,13 @@
             <group col="4">
 
               <field name="team_has_partners"
-                     attrs="{'invisible': [('team_partner_ids', '!=', [])], 'readonly': [('team_partner_ids', '!=', [])]}"
+                     attrs="{'invisible': [('team_partner_ids', '!=', [])], 'readonly': ['|', ('team_partner_ids', '!=', []), ('state', '!=', 'draft')]}"
                       />
               <div colspan="2"/>
               <field name="team_partner_ids"
                      nolabel="1"
                      colspan="4"
-                     attrs="{'invisible': [('team_has_partners', '=', False)]}"/>
+                     attrs="{'invisible': [('team_has_partners', '=', False)], 'readonly': [('state', '!=', 'draft')]}"/>
 
             </group>
           </page>
