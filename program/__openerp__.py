@@ -59,7 +59,6 @@ Contributors
     'demo': [
         'program_result_level_demo.xml',
         'program_result_demo.xml',
-        'program_result_validation_spec_demo.xml',
     ],
     'auto_install': False,
     'installable': True,
