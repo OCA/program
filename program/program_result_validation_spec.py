@@ -32,9 +32,15 @@ class program_result_validation_spec(orm.Model):
         'level_id': fields.many2one(
             'program.result.level',
             'Level',
+            ondelete='cascade',
             required=True,
         ),
-        'group_id': fields.many2one('res.groups', 'Group', required=True),
+        'group_id': fields.many2one(
+            'res.groups',
+            'Group',
+            ondelete='cascade',
+            required=True
+        ),
         'states': fields.char(
             'States',
             required=True,
