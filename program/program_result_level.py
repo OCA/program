@@ -142,10 +142,18 @@ class program_result_level(orm.Model):
             if not level.parent_id or not level.validation_spec_ids:
                 continue
             new_level_id = level.chain_root.id
-            spec_ids = [s.id for s in level.validation_spec_ids]
-            spec_pool.write(cr, user, spec_ids, {
-                'level_id': new_level_id,
-            }, context=context)
+            for spec in level.validation_spec_ids:
+                if not spec_pool.search(
+                        cr, user, [
+                            ('level_id', '=', new_level_id),
+                            ('group_id', '=', spec.group_id.id),
+                        ], context=context):
+                    spec_pool.write(cr, user, spec.id, {
+                        'level_id': new_level_id,
+                    }, context=context)
+                else:
+                    # Duplicate key, remove it
+                    spec_pool.unlink(cr, user, [spec.id], context=context)
 
     def create(self, cr, user, vals, context=None):
         """Create a menu entry for each level
