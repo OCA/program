@@ -248,24 +248,22 @@ class program_result(orm.Model):
             spec_pool = self.pool['program.result.validation.spec']
             states = spec_pool.get_all_states(cr, user, context=context)
             for state in set(states):
-                match = arch.xpath(
+                matches = arch.xpath(
                     "//button[@states='%s' and @type='workflow']" % state
                 )
-                if not match:
-                    continue
-                button = match[0]
-                modifiers = simplejson.loads(
-                    button.attrib.get('modifiers', "{}")
-                )
-                invisible = modifiers.get('invisible', [])
-                if invisible is True:
-                    continue
-                if invisible:
-                    invisible.insert(0, '|')
-                invisible.insert(1, ('validation_domain', '!=', True))
-                if invisible:
-                    modifiers['invisible'] = invisible
-                button.attrib['modifiers'] = simplejson.dumps(modifiers)
+                for button in matches:
+                    modifiers = simplejson.loads(
+                        button.attrib.get('modifiers', "{}")
+                    )
+                    invisible = modifiers.get('invisible', [])
+                    if invisible is True:
+                        continue
+                    if invisible:
+                        invisible.insert(0, '|')
+                    invisible.insert(1, ('validation_domain', '!=', True))
+                    if invisible:
+                        modifiers['invisible'] = invisible
+                    button.attrib['modifiers'] = simplejson.dumps(modifiers)
 
             res['arch'] = etree.tostring(arch)
         return res
