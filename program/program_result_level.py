@@ -407,17 +407,28 @@ class program_result_level(orm.Model):
     ]
 
     def default_validation_spec_ids(self, cr, uid, context=None):
-        groups = [
-            ('program', 'group_program_director'),
-            ('program', 'group_program_dpe'),
-            ('program', 'group_program_administrator'),
-        ]
-        states = STATES[1:4]
-
+        """Create default validations from validated to closed using groups
+        """
         data_pool = self.pool['ir.model.data']
-        ref = lambda a: data_pool.get_object(cr, uid, a[0], a[1]).id
 
+        def ref(xid):
+            return data_pool.get_object(cr, uid, xid[0], xid[1]).id
+
+        groups = [
+            ('program', 'group_program_director'),  # validated->visa_director
+            ('program', 'group_program_dpe'),  # visa_director->visa_dpe
+            ('program', 'group_program_administrator'),  # visa_dpe->visa_admin
+            ('program', 'group_program_administrator'),  # visa_admin->opened
+            ('program', 'group_program_dpe'),  # opened->closed
+        ]
+        groups = map(ref, groups)
+        states = STATES[1:1+len(groups)]
+
+        res = {}
+        for group, state in zip(groups, states):
+            res[group] = res.get(group, [])
+            res[group].append(state[0])
         return [
-            (0, 0, {'group_id': ref(group), 'states': state[0]})
-            for group, state in zip(groups, states)
+            (0, 0, {'group_id': group, 'states': ','.join(res[group])})
+            for group in sorted(set(groups))
         ]
