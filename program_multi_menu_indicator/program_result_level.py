@@ -29,13 +29,16 @@ class program_result_level(orm.Model):
 
     def create_menus(self, cr, user, vals, context=None):
         model_data_pool = self.pool['ir.model.data']
-        res = super(program_result_level, self).create_menus(
+        parent_id, old_to_new = super(program_result_level, self).create_menus(
             cr, user, vals, context=context
         )
         top_level_menu_id = vals['top_level_menu_id']
 
         # Clone Indicator Menu
-        menu_configuration_id = self._clone_ref(
+        menu_program = model_data_pool.get_object(
+            cr, user, 'program', 'menu_program_configuration'
+        )
+        old_to_new[menu_program.id] = menu_configuration_id = self._clone_ref(
             cr, user,
             'program_indicator.menu_program_indicator_action',
             {'parent_id': top_level_menu_id},
@@ -47,7 +50,7 @@ class program_result_level(orm.Model):
         ).child_id:
             menu_ref = child_id.get_external_id()[child_id.id]
             action_ref = child_id.action.get_external_id()[child_id.action.id]
-            self._clone_menu_action(
+            old_to_new[child_id.id] = self._clone_menu_action(
                 cr, user, menu_ref, action_ref,
                 menu_default={'parent_id': menu_configuration_id},
                 additional_domain=self._get_custom_domain(
@@ -58,6 +61,6 @@ class program_result_level(orm.Model):
                 ),
                 copy_name=True,
                 context=context
-            )
+            )[0]
 
-        return res
+        return parent_id, old_to_new

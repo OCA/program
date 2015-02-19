@@ -76,9 +76,15 @@ class program_result_level(orm.Model):
             return {}
         return {'default_top_level_menu_id': top_level_menu_id}
 
-    def create_groups(self, cr, user, vals, context=None):
+    def create_groups(self, cr, user, vals, menu_id, menus_old_to_new,
+                      context=None):
+        """Copy the ACLs from base program
+        Remove their rights from the original menus and add them to the new
+        menus' equivalents.
+        """
         model_data_pool = self.pool['ir.model.data']
         group_pool = self.pool['res.groups']
+        menu_pool = self.pool['ir.ui.menu']
         original_category = model_data_pool.get_object(
             cr, user, 'program', 'module_category_program'
         )
@@ -104,6 +110,19 @@ class program_result_level(orm.Model):
                 context=context
             )
             group_pool.write(cr, user, new_id, {'name': name}, context=None)
+            for menu in group_pool.browse(
+                    cr, user, new_id, context=context).menu_access:
+                if not menus_old_to_new.get(menu.id):
+                    continue
+                group_pool.write(
+                    cr, user, new_id, {
+                        'menu_access': [
+                            (3, menu.id),
+                            (4, menus_old_to_new[menu.id]),
+                        ]
+                    }, context=context
+                )
+
             old_to_new[group_id] = new_id
 
         # Fix implied ids to use new ids
@@ -119,17 +138,50 @@ class program_result_level(orm.Model):
                 context=None
             )
 
+        # Set new menu to only be accessible by the new base group
+        base_user_id = group_pool.search(
+            cr, user, [
+                ('id', 'in', old_to_new.values()),
+                ('implied_ids', 'not in', old_to_new.values())
+            ], context=context
+        )[0]
+
+        old_menu_ids = menu_pool.search(
+            cr, user,
+            [('groups_id', '=', base_user_id), ('parent_id', '=', False)],
+            context=context
+        )
+
+        # Remove all menu accesses for it
+        # Unlink old Top menu
+        menu_pool.write(
+            cr, user, old_menu_ids,
+            {'groups_id': [(3, base_user_id)]},
+            context=context
+        )
+
+        menu = menu_pool.browse(cr, user, menu_id, context=context)
+        menu.parent_id.write({'groups_id': [(4, base_user_id)]})
+
     def create_menus(self, cr, user, vals, context=None):
+        """Copy menus from original Programing menu
+        Create a mapping of these old menus for the new menus so ACLs can
+        be transferred.
+        """
         model_data_pool = self.pool['ir.model.data']
 
+        old_to_new = {}
+
+        menu_program = model_data_pool.get_object(
+            cr, user, 'program', 'menu_program'
+        )
         top_level_menu_id = self.pool['ir.ui.menu'].create(
             cr, user, {
                 'name': vals['top_level_menu_name'],
-                'sequence': model_data_pool.get_object(
-                    cr, user, 'program', 'menu_program'
-                ).sequence,
+                'sequence': menu_program.sequence,
             }, context=context
         )
+        old_to_new[menu_program.id] = top_level_menu_id
         vals['top_level_menu_id'] = top_level_menu_id
         parent_id = self._clone_ref(
             cr, user,
@@ -138,7 +190,10 @@ class program_result_level(orm.Model):
             copy_name=True,
             context=context
         )
-        self._clone_menu_action(
+        menu_program = model_data_pool.get_object(
+            cr, user, 'program', 'menu_program_result_result'
+        )
+        old_to_new[menu_program.id] = self._clone_menu_action(
             cr, user,
             'program.menu_program_result_result',
             'program.action_program_result_list',
@@ -148,8 +203,11 @@ class program_result_level(orm.Model):
             ),
             copy_name=True,
             context=context
+        )[0]
+        menu_program = model_data_pool.get_object(
+            cr, user, 'program', 'menu_program_result_chain'
         )
-        self._clone_menu_action(
+        old_to_new[menu_program.id] = self._clone_menu_action(
             cr, user,
             'program.menu_program_result_chain',
             'program.action_program_result_tree',
@@ -159,10 +217,13 @@ class program_result_level(orm.Model):
             ),
             copy_name=True,
             context=context
-        )
+        )[0]
 
         # Configuration
-        menu_configuration_id = self._clone_ref(
+        menu_program = model_data_pool.get_object(
+            cr, user, 'program', 'menu_program_configuration'
+        )
+        old_to_new[menu_program.id] = menu_configuration_id = self._clone_ref(
             cr, user,
             'program.menu_program_configuration',
             {'parent_id': top_level_menu_id},
@@ -178,7 +239,7 @@ class program_result_level(orm.Model):
                 # Avoid complications when code is run without inheritance tree
                 # Such as unittests after DB is initialized with other modules
                 continue
-            self._clone_menu_action(
+            old_to_new[child_id.id] = self._clone_menu_action(
                 cr, user, menu_ref, action_ref,
                 menu_default={'parent_id': menu_configuration_id},
                 additional_domain=self._get_custom_domain(
@@ -189,9 +250,9 @@ class program_result_level(orm.Model):
                 ),
                 copy_name=True,
                 context=context
-            )
+            )[0]
 
-        return parent_id
+        return parent_id, old_to_new
 
     def _destroy_menus(self, cr, user, top_level_menu_id, context=None):
         """Delete any menu, actions and elements associated with menu"""
@@ -228,17 +289,40 @@ class program_result_level(orm.Model):
             element_pool.unlink(cr, user, element_ids, context=context)
 
     def _get_basic_user_id(self, cr, user, vals, context=None):
-        return self.pool['ir.model.data'].get_object_reference(
-            cr, user, 'program', 'group_program_basic_user'
-        )[1]
+        """Retrieve Basic User from the top level menu
+        The basic user from that menu, should be in the correct category
+        """
+        res = super(program_result_level, self)._get_basic_user_id(
+            cr, user, vals, context=context
+        )
+
+        menu_pool = self.pool['ir.ui.menu']
+        top_level_menu_id = vals.get('top_level_menu_id')
+        parent_id = vals.get('parent_id')
+        if not top_level_menu_id and parent_id:
+            top_level_menu_id = self.browse(
+                cr, user, parent_id, context=context
+            ).chain_root.top_level_menu_id.id
+        if not top_level_menu_id:
+            return res
+        groups_id = menu_pool.browse(
+            cr, user, top_level_menu_id, context=context
+        ).groups_id
+        if not groups_id:
+            return res
+        return groups_id[0].id
 
     def create(self, cr, user, vals, context=None):
         self.validate_vals(vals)
         parent_id = False
 
         if vals.get('top_level_menu'):
-            parent_id = self.create_menus(cr, user, vals, context=context)
-            self.create_groups(cr, user, vals, context=context)
+            parent_id, old_to_new = self.create_menus(
+                cr, user, vals, context=context
+            )
+            self.create_groups(
+                cr, user, vals, parent_id, old_to_new, context=context
+            )
 
         res = super(program_result_level, self).create(
             cr, user, vals, context=context
@@ -281,7 +365,9 @@ class program_result_level(orm.Model):
         parent_id = False
 
         if no_menu and top_level_menu and not vals.get('top_level_menu_id'):
-            parent_id = self.create_menus(cr, user, vals, context=context)
+            parent_id, old_to_new = self.create_menus(
+                cr, user, vals, context=context
+            )
 
         res = super(program_result_level, self).write(
             cr, user, ids, vals, context=context
