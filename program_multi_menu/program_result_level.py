@@ -260,18 +260,18 @@ class program_result_level(orm.Model):
         no_menu = False
 
         for level in self.browse(cr, user, ids, context=context):
-            if (vals.get('parent_id') is not False
-                    and level.depth > 1
-                    and top_level_menu):
+            if (vals.get('parent_id') is not False and
+                    level.depth > 1 and
+                    top_level_menu):
                 raise orm.except_orm(
                     _('Error!'),
                     _('Top level menus can only be set on the highest level '
                       'of a result chain')
                 )
-            if (vals.get('top_level_menu_name')
-                    and level.top_level_menu_id
-                    and level.depth == 1
-                    and top_level_menu is not False):
+            if (vals.get('top_level_menu_name') and
+                    level.top_level_menu_id and
+                    level.depth == 1 and
+                    top_level_menu is not False):
                 level.top_level_menu_id.write({
                     'name': vals['top_level_menu_name'],
                 })
