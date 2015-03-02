@@ -37,7 +37,7 @@ Contributors
 * Alexandre Boily (alexandre.boily@savoirfairelinux.com)
 * Sandy Carter (sandy.carter@savoirfairelinux.com)
 ''',
-    'author': 'Savoir-faire Linux',
+    'author': "Savoir-faire Linux,Odoo Community Association (OCA)",
     'website': 'http://www.savoirfairelinux.com',
     'license': 'AGPL-3',
     'depends': [

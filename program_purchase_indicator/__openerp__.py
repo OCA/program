@@ -23,7 +23,7 @@
 {
     'name': 'Program Purchase - Indicator',
     'version': '0.4',
-    'author': 'Savoir-faire Linux',
+    'author': "Savoir-faire Linux,Odoo Community Association (OCA)",
     'maintainer': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',
     'category': 'Customer Relationship Management',
