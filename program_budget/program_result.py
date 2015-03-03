@@ -163,8 +163,10 @@ class program_result(orm.Model):
         if not parent_id:
             return False
         parent_id = self.browse(cr, uid, parent_id, context=context)
-        return (parent_id.account_analytic_id
-                and parent_id.account_analytic_id.id)
+        return (
+            parent_id.account_analytic_id and
+            parent_id.account_analytic_id.id
+        )
 
     def create(self, cr, uid, vals, context=None):
         """ Create a program.result

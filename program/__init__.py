@@ -81,4 +81,4 @@ from . import (
     program_result_tag,
     program_result_validation_spec,
     wizard,
-)
+)  # noqa: E402 functions need to be defined before imports so they can be used
