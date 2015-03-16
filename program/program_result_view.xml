@@ -139,7 +139,7 @@
 
               <page name="target" string="Targets">
                 <group colspan="4" col="2">
-                  <field name="target_audience_type_ids" domain="[('active', '=', True)]" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                  <field name="target_audience_type_ids" domain="[('active', '=', True)]"/>
                 </group>
               </page>
 
@@ -154,7 +154,6 @@
                          domain="[('id', '=', 0)]"
                          context="{'default_parent_id': id}"
                          widget="many2many"
-                         attrs="{'readonly': [('state', '!=', 'draft')]}"
                          colspan="2">
                     <tree>
                       <field name="result_level_id" />
@@ -182,8 +181,7 @@
                   <field name="transverse_parent_ids"
                          nolabel="1"
                          domain="[('parent_id', '!=', id), ('depth', '=', depth + 1)]"
-                         colspan="2"
-                         attrs="{'readonly': [('state', '!=', 'draft')]}">
+                         colspan="2">
                     <tree>
                       <field name="result_level_id" />
                       <field name="name" />
@@ -197,9 +195,9 @@
               <page name="risk" string="Assumptions and Risks">
 
                 <label for="assumptions"/>
-                <field name="assumptions" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                <field name="assumptions"/>
                 <label for="risks"/>
-                <field name="risks" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                <field name="risks"/>
 
               </page>
 

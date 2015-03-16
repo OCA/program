@@ -46,7 +46,7 @@
 
         <field name="target_audience_type_ids" position="before">
           <field name="target_country_ids" widget="one2many"/>
-          <field name="target_region_ids" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+          <field name="target_region_ids"/>
         </field>
 
       </field>
