@@ -195,11 +195,21 @@ class program_result(orm.Model):
         the level
         """
         def hide_elem(elem, invisible="true"):
+            """Set field element's invisibility status
+
+            :param lxml.etree.Element elem: View's field
+            :param bool invisible: what to set the invisibility status of field
+            """
             modifiers = simplejson.loads(elem.attrib.get('modifiers', "{}"))
             modifiers['invisible'] = invisible
             elem.attrib['modifiers'] = simplejson.dumps(modifiers)
 
         def ro_elem(elem, readonly="true"):
+            """Set field element's read-only status
+
+            :param lxml.etree.Element elem: View's field
+            :param bool readonly: what to set the read-only status of field
+            """
             modifiers = simplejson.loads(elem.attrib.get('modifiers', "{}"))
             modifiers['readonly'] = readonly
             elem.attrib['modifiers'] = simplejson.dumps(modifiers)

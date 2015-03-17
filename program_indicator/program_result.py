@@ -51,7 +51,11 @@ class program_result(orm.Model):
     def fields_view_get(
             self, cr, user, view_id=None, view_type='form', context=None,
             toolbar=False, submenu=False):
-        """
+        """Give access to Coordinator for write in validated of fields which
+        are normally not editable by other groups.
+
+        This allows this user to do corrections after validation.
+
         Look for the strings "[('state', '!=', 'draft')]"
         exactly in the xml view and replace it with
         "[('state', 'not in', ('draft', 'validated'))]"
