@@ -9,12 +9,6 @@
         <notebook>
 
           <page name="documents" string="Documents">
-            <button name="%(document_multiple_records.action_view_document)s"
-                    type="action"
-                    string="Add"
-                    groups="program.group_program_employee"
-                    attrs="{'invisible': [('state', '!=', 'draft')]}"
-                    class="oe_edit_only"/>
             <field name="document_ids" attrs="{'readonly': [('state', '!=', 'draft')]}">
               <tree create="1">
                 <field name="name" string="Name"/>
