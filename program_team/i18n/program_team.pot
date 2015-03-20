@@ -121,7 +121,7 @@ msgstr ""
 #. module: program_team
 #: model:ir.actions.act_window,name:program_team.action_program_result_team_beneficiary_type_tree
 #: model:ir.ui.menu,name:program_team.menu_configuration_result_team_beneficiary_type
-msgid "Team Beneficiary Types"
+msgid "Beneficiary Types"
 msgstr ""
 
 #. module: program_team

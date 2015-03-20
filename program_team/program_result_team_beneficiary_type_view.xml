@@ -37,7 +37,7 @@
 
 
     <record id="action_program_result_team_beneficiary_type_tree" model="ir.actions.act_window">
-      <field name="name">Team Beneficiary Types</field>
+      <field name="name">Beneficiary Types</field>
       <field name="res_model">program.result.team.beneficiary.type</field>
       <field name="view_type">form</field>
       <field name="view_mode">tree,form</field>
@@ -46,7 +46,7 @@
     </record>
 
     <menuitem id="menu_configuration_result_team_beneficiary_type"
-              name="Team Beneficiary Types"
+              name="Beneficiary Types"
               parent="program.menu_program_configuration"
               action="action_program_result_team_beneficiary_type_tree"
               groups="program.group_program_manager"
