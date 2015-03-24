@@ -9,7 +9,7 @@
         <notebook>
 
           <page name="documents" string="Documents">
-            <field name="document_ids" attrs="{'readonly': [('state', '!=', 'draft')]}">
+            <field name="document_ids">
               <tree create="1">
                 <field name="name" string="Name"/>
                 <field name="datas_fname" />
