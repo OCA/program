@@ -31,3 +31,21 @@ class program_result_level(orm.Model):
     _defaults = {
         'fvg_show_page_indicators': True,
     }
+
+    def default_validation_spec_ids(self, cr, uid, context=None):
+        """Add validation entry for coordinator at "validated" state
+        """
+        coordinator = self.pool['ir.model.data'].get_object(
+            cr, uid, "program_indicator", "group_program_coordinator"
+        )
+        states = [
+            "validated",
+        ]
+        res = super(program_result_level, self).default_validation_spec_ids(
+            cr, uid, context=context
+        )
+        res.append((0, 0, {
+            'group_id': coordinator.id,
+            'states': ','.join(states)
+        }))
+        return res
