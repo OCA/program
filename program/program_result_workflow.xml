@@ -92,7 +92,7 @@
     <record id="trans_visa_admin_draft" model="workflow.transition">
       <field name="act_from" ref="act_visa_admin" />
       <field name="act_to" ref="act_draft" />
-      <field name="signal">signal_visa_admin</field>
+      <field name="signal">signal_visa_admin_draft</field>
     </record>
 
     <record id="trans_draft_validated" model="workflow.transition">
