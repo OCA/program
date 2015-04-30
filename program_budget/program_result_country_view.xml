@@ -8,9 +8,9 @@
       <field name="arch" type="xml">
 
         <tree string="Result Countries" version="7.0" editable="bottom">
-          <field name="name" />
+          <field name="name" options="{'create': false, 'create_edit': false}"/>
           <field name="code" />
-          <field name="role" />
+          <field name="role" options="{'create': false, 'create_edit': false}"/>
         </tree>
 
       </field>
