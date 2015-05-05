@@ -42,7 +42,6 @@ Contributors
     'license': 'AGPL-3',
     'depends': [
         'mail',
-        'web_m2x_options',
     ],
     'data': [
         'security/program_security.xml',
