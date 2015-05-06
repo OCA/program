@@ -31,6 +31,8 @@ of a result.
 from openerp.osv import fields, orm
 from openerp.tools.translate import _
 
+from .program_result import STATES
+
 
 class program_result_level(orm.Model):
 
@@ -140,10 +142,18 @@ class program_result_level(orm.Model):
             if not level.parent_id or not level.validation_spec_ids:
                 continue
             new_level_id = level.chain_root.id
-            spec_ids = [s.id for s in level.validation_spec_ids]
-            spec_pool.write(cr, user, spec_ids, {
-                'level_id': new_level_id,
-            }, context=context)
+            for spec in level.validation_spec_ids:
+                if not spec_pool.search(
+                        cr, user, [
+                            ('level_id', '=', new_level_id),
+                            ('group_id', '=', spec.group_id.id),
+                        ], context=context):
+                    spec_pool.write(cr, user, spec.id, {
+                        'level_id': new_level_id,
+                    }, context=context)
+                else:
+                    # Duplicate key, remove it
+                    spec_pool.unlink(cr, user, [spec.id], context=context)
 
     def create(self, cr, user, vals, context=None):
         """Create a menu entry for each level
@@ -384,6 +394,9 @@ class program_result_level(orm.Model):
         'fvg_show_group_transversals': True,
         'fvg_show_group_status': False,
         'fvg_show_field_statement': True,
+        'validation_spec_ids': (
+            lambda self, *a, **kw: self.default_validation_spec_ids(*a, **kw)
+        ),
     }
 
     def _rec_message(self, cr, uid, ids, context=None):
@@ -392,3 +405,30 @@ class program_result_level(orm.Model):
     _constraints = [
         (orm.Model._check_recursion, _rec_message, ['parent_id']),
     ]
+
+    def default_validation_spec_ids(self, cr, uid, context=None):
+        """Create default validations from validated to closed using groups
+        """
+        data_pool = self.pool['ir.model.data']
+
+        def ref(xid):
+            return data_pool.get_object(cr, uid, xid[0], xid[1]).id
+
+        groups = [
+            ('program', 'group_program_director'),  # validated->visa_director
+            ('program', 'group_program_dpe'),  # visa_director->visa_dpe
+            ('program', 'group_program_administrator'),  # visa_dpe->visa_admin
+            ('program', 'group_program_administrator'),  # visa_admin->opened
+            ('program', 'group_program_dpe'),  # opened->closed
+        ]
+        groups = map(ref, groups)
+        states = STATES[1:1+len(groups)]
+
+        res = {}
+        for group, state in zip(groups, states):
+            res[group] = res.get(group, [])
+            res[group].append(state[0])
+        return [
+            (0, 0, {'group_id': group, 'states': ','.join(res[group])})
+            for group in sorted(set(groups))
+        ]

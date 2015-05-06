@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-05 15:44+0000\n"
-"PO-Revision-Date: 2014-12-05 10:49-0500\n"
+"POT-Creation-Date: 2015-03-09 23:34+0000\n"
+"PO-Revision-Date: 2015-03-09 19:40-0500\n"
 "Last-Translator: Sandy Carter <sandy.carter@savoirfairelinux.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.11\n"
+"X-Generator: Poedit 1.7.4\n"
 
 #. module: program
 #: field:program.result.level,chain_tail:0
@@ -33,13 +33,12 @@ msgid "Validation Domain Search"
 msgstr "Recherche du domaine de la validation"
 
 #. module: program
-#: model:res.groups,comment:program.group_program_dpe
 #: model:res.groups,name:program.group_program_dpe
 msgid "Evaluation and Planing Directorate"
 msgstr "Direction Planification et Evaluation (DPE)"
 
 #. module: program
-#: code:addons/program/program_result.py:90
+#: code:addons/program/program_result.py:80
 #, python-format
 msgid "%s contributes to"
 msgstr "%s contribue à"
@@ -111,6 +110,11 @@ msgid "Immediate Result"
 msgstr "Résultat immédiat"
 
 #. module: program
+#: model:res.groups,name:program.group_program_basic_user
+msgid "Base"
+msgstr "Base"
+
+#. module: program
 #: model:ir.model,name:program.model_program_result_tag
 #: view:program.result.tag:0
 msgid "Result Tag"
@@ -123,7 +127,12 @@ msgid "Validate"
 msgstr "Valider"
 
 #. module: program
-#: code:addons/program/program_result.py:419
+#: model:res.groups,comment:program.group_program_director
+msgid "This group can validate Results to the visa_director state."
+msgstr "Ce groupe peut valider des résultats à l'état Visa Directeur."
+
+#. module: program
+#: code:addons/program/program_result.py:412
 #, python-format
 msgid "Error! You can not create recursive Results."
 msgstr "Erreur ! Vous ne pouvez pas créer de résultats récursifs"
@@ -149,13 +158,18 @@ msgid "Assumptions and Risks"
 msgstr "Risques et hypothèses"
 
 #. module: program
-#: code:addons/program/program_result.py:100
+#: code:addons/program/program_result.py:90
 #, python-format
 msgid "Contributed by %s"
 msgstr "Résultats contribuant à %s"
 
 #. module: program
-#: code:addons/program/program_result.py:53 selection:program.result,state:0
+#: model:res.groups,comment:program.group_program_dpe
+msgid "This group can validate results to the visa_dpe state."
+msgstr "Ce groupe peut valider des résultats à l'état Visa DPE."
+
+#. module: program
+#: code:addons/program/program_result.py:43 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
@@ -208,7 +222,7 @@ msgid "Typology of Assumptions"
 msgstr "Typologie des hypothèses"
 
 #. module: program
-#: code:addons/program/program_result.py:49 selection:program.result,state:0
+#: code:addons/program/program_result.py:39 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
@@ -219,11 +233,6 @@ msgstr "Visa DPE"
 #: field:program.result.level,fvg_show_page_children:0
 msgid "Show \"Results\" Tab"
 msgstr "Montrer l'onglet « Résultats »"
-
-#. module: program
-#: model:res.groups,comment:program.group_program_basic_user
-msgid "Basic Program Users"
-msgstr "Utilisateurs de la programmation"
 
 #. module: program
 #: view:program.result.tag:0
@@ -246,14 +255,19 @@ msgid "Followers"
 msgstr "Abonnés"
 
 #. module: program
+#: model:res.groups,name:program.group_program_employee
+msgid "Employee"
+msgstr "Employé"
+
+#. module: program
 #: model:ir.actions.act_window,name:program.action_program_result_intervention_tree
 #: model:ir.ui.menu,name:program.menu_program_configuration_intervention
 msgid "Intervention Methods"
 msgstr "Modes d'intervention"
 
 #. module: program
-#: code:addons/program/program_result_level.py:155
-#: code:addons/program/program_result_level.py:245
+#: code:addons/program/program_result_level.py:172
+#: code:addons/program/program_result_level.py:262
 #, python-format
 msgid "Status of the %s"
 msgstr "Statut du %s"
@@ -329,7 +343,7 @@ msgid "Final Result B"
 msgstr "Résultat final B"
 
 #. module: program
-#: code:addons/program/program_result.py:50 selection:program.result,state:0
+#: code:addons/program/program_result.py:40 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
@@ -340,6 +354,11 @@ msgstr "Visa Admin"
 #: field:program.result,child_ids:0
 msgid "Child Results"
 msgstr "Résultats fils"
+
+#. module: program
+#: model:res.groups,comment:program.group_program_administrator
+msgid "This group can validate results to the visa_administrator state."
+msgstr "Ce groupe peut valider des résultats à l'état Visa Admin."
 
 #. module: program
 #: field:program.result.level,fvg_show_page_risk:0
@@ -369,14 +388,26 @@ msgid "Result"
 msgstr "Résultat"
 
 #. module: program
-#: model:res.groups,comment:program.group_program_director
-msgid "Program Directors can validate results"
-msgstr "Les directeurs de la programmation peuvent valider des résultats"
-
-#. module: program
 #: field:program.result,date_from:0
 msgid "Start Date"
 msgstr "Date de début"
+
+#. module: program
+#: model:res.groups,comment:program.group_program_basic_user
+msgid ""
+"Very basic access to object used in Result Based Management.\n"
+"These permissions are granted to every group in Result Based Management.\n"
+"* Read and write permissions for program.result\n"
+"* Read permissions for program.result.level\n"
+"* Read, write, create access for program.indicator\n"
+"* Read access for program.evaluation"
+msgstr ""
+"Accès très basique sur les objets de la gestion axée sur les résultats.\n"
+"Ces permissions sont donnés pour tous les groupes de ce module.\n"
+"* Lecture et écriture de program.result\n"
+"* Lecture de program.result.level\n"
+"* Lecture, écriture et création de program.indicator\n"
+"* Lecture de program.evaluation"
 
 #. module: program
 #: view:program.result.close:0 view:program.result.validation:0
@@ -394,11 +425,9 @@ msgid "Status of the Intermediate Result"
 msgstr "Statut du résultat intermédiaire"
 
 #. module: program
-#: model:res.groups,comment:program.group_program_manager
-msgid "Program Managers have full access to configuration"
-msgstr ""
-"Les Gestionnaires de la programmation ont les droits complets de la "
-"configuration"
+#: model:program.result.level,name:program.demo_result_level_re
+msgid "Realisation"
+msgstr "Réalisation"
 
 #. module: program
 #: model:program.result.level,code:program.demo_result_level_fr
@@ -411,7 +440,7 @@ msgid "Group"
 msgstr "Groupe"
 
 #. module: program
-#: code:addons/program/program_result.py:51 selection:program.result,state:0
+#: code:addons/program/program_result.py:41 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
@@ -425,11 +454,6 @@ msgid "Can be Validated"
 msgstr "Peut être validé"
 
 #. module: program
-#: model:res.groups,name:program.group_program_basic_user
-msgid "Basic User"
-msgstr "Utilisateur de base"
-
-#. module: program
 #: model:ir.model,name:program.model_program_result_target
 #: view:program.result.tag:0 view:program.result.target:0
 msgid "Result Target"
@@ -441,7 +465,7 @@ msgid "Program"
 msgstr "Programme"
 
 #. module: program
-#: code:addons/program/program_result.py:46 selection:program.result,state:0
+#: code:addons/program/program_result.py:36 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
@@ -449,7 +473,7 @@ msgid "Draft"
 msgstr "Brouillon"
 
 #. module: program
-#: code:addons/program/program_result.py:52 selection:program.result,state:0
+#: code:addons/program/program_result.py:42 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
@@ -462,7 +486,7 @@ msgid "Parent Depth"
 msgstr "Profondeur du parent"
 
 #. module: program
-#: code:addons/program/program_result.py:402
+#: code:addons/program/program_result.py:395
 #, python-format
 msgid "Status"
 msgstr "Statut"
@@ -518,9 +542,9 @@ msgid "Status of the Final Result"
 msgstr "Statut du résultat final"
 
 #. module: program
-#: model:program.result,name:program.demo_program_result_imr_I
-msgid "Immediate Result I"
-msgstr "Résultat Immédiat I"
+#: model:program.result.level,name:program.demo_result_level_ir
+msgid "Intermediate Result"
+msgstr "Résultat intermédiaire"
 
 #. module: program
 #: field:program.result.tag,active:0 field:program.result.target,active:0
@@ -624,7 +648,7 @@ msgid "Close"
 msgstr "Fermer"
 
 #. module: program
-#: code:addons/program/program_result.py:47 selection:program.result,state:0
+#: code:addons/program/program_result.py:37 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
@@ -662,9 +686,22 @@ msgid "Immediate Result D"
 msgstr "Résultat Immédiat D"
 
 #. module: program
-#: model:program.result.level,name:program.demo_result_level_ir
-msgid "Intermediate Result"
-msgstr "Résultat intermédiaire"
+#: model:res.groups,comment:program.group_program_employee
+msgid ""
+"This is the main group of Result Based Management.\n"
+"* This group can Create and Modify Results\n"
+"* This group can Modify most fields in a draft form\n"
+"* This group can validate Results until the validated state"
+msgstr ""
+"Ceci est le groupe principal de la gestion axée sur les résultats.\n"
+"* Ce groupe peut créer et modifier des résultats\n"
+"* Ce groupe peut modifier la plupart des champs en état brouillon\n"
+"* Ce groupe peut valider les résultat jusqu'à l'état Validé"
+
+#. module: program
+#: model:program.result,name:program.demo_program_result_imr_I
+msgid "Immediate Result I"
+msgstr "Résultat Immédiat I"
 
 #. module: program
 #: model:ir.actions.act_window,name:program.action_program_result_form
@@ -704,7 +741,6 @@ msgid "States"
 msgstr "États"
 
 #. module: program
-#: model:res.groups,comment:program.group_program_administrator
 #: model:res.groups,name:program.group_program_administrator
 msgid "Administrator"
 msgstr "Administrateur"
@@ -726,7 +762,14 @@ msgid "Typology of Risks"
 msgstr "Typologie des risques"
 
 #. module: program
-#: code:addons/program/program_result.py:48 selection:program.result,state:0
+#: model:res.groups,comment:program.group_program_manager
+msgid "This group has full access to configuration."
+msgstr ""
+"Les Gestionnaires de la programmation ont les droits complets de la "
+"configuration"
+
+#. module: program
+#: code:addons/program/program_result.py:38 selection:program.result,state:0
 #: selection:program.result.close.line,state:0
 #: selection:program.result.validation.line,state:0
 #, python-format
@@ -773,7 +816,7 @@ msgid "Show Transversal fields"
 msgstr "Montrer les champs transversaux"
 
 #. module: program
-#: code:addons/program/program_result_validation_spec.py:52
+#: code:addons/program/program_result_validation_spec.py:58
 #, python-format
 msgid "Duplicate Group"
 msgstr "Groupe en double"
@@ -789,7 +832,7 @@ msgid "Activity"
 msgstr "Activité"
 
 #. module: program
-#: code:addons/program/program_result_level.py:383
+#: code:addons/program/program_result_level.py:403
 #, python-format
 msgid "Error! You can not create recursive Levels."
 msgstr "Erreur ! Vous ne pouvez pas créer de niveaux récursifs."
@@ -809,11 +852,6 @@ msgstr "Chaîne de résultats"
 #: model:program.result.level,name:program.demo_result_level_mi
 msgid "Mission"
 msgstr "Mission"
-
-#. module: program
-#: model:program.result.level,name:program.demo_result_level_re
-msgid "Realisation"
-msgstr "Réalisation"
 
 #. module: program
 #: field:program.result,status_label:0
@@ -852,6 +890,15 @@ msgstr "Libellé du menu"
 #: field:program.result.level,status_options:0
 msgid "Options for Status"
 msgstr "Options du statut"
+
+#~ msgid "Basic Program Users"
+#~ msgstr "Utilisateurs de la programmation"
+
+#~ msgid "Program Directors can validate results"
+#~ msgstr "Les directeurs de la programmation peuvent valider des résultats"
+
+#~ msgid "Basic User"
+#~ msgstr "Utilisateur de base"
 
 #~ msgid "Abandoned"
 #~ msgstr "Abandonné"

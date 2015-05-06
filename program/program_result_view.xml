@@ -96,6 +96,7 @@
               <field name="statement"
                      attrs="{'readonly': [('state', '!=', 'draft')]}"/>
               <field name="tag_ids"
+                     attrs="{'readonly': [('state', '!=', 'draft')]}"
                      widget="many2many_tags"/>
             </group>
 
@@ -119,13 +120,13 @@
               </group>
 
               <group>
-                <field name="date_from" />
-                <field name="date_to" />
+                <field name="date_from" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                <field name="date_to" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
               </group>
             </group>
 
             <group colspan="4" col="2">
-              <field name="description" />
+              <field name="description" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
             </group>
 
             <group name="status" colspan="4" col="6">
@@ -138,7 +139,7 @@
 
               <page name="target" string="Targets">
                 <group colspan="4" col="2">
-                  <field name="target_audience_type_ids" domain="[('active', '=', True)]" />
+                  <field name="target_audience_type_ids" domain="[('active', '=', True)]"/>
                 </group>
               </page>
 
@@ -180,7 +181,7 @@
                   <field name="transverse_parent_ids"
                          nolabel="1"
                          domain="[('parent_id', '!=', id), ('depth', '=', depth + 1)]"
-                          colspan="2">
+                         colspan="2">
                     <tree>
                       <field name="result_level_id" />
                       <field name="name" />

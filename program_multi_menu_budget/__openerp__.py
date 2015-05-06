@@ -22,7 +22,7 @@
 
 {
     'name': 'Program Budget - Multi-Menu Bindings',
-    'version': '1.1',
+    'version': '1.10',
     'category': 'Program',
     'summary': 'Account Budget bindings to Results',
     'description': '''

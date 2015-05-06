@@ -21,7 +21,7 @@
 
 {
     'name': 'Program - Travel Bindings',
-    'version': '1.1',
+    'version': '1.10',
     'author': "Savoir-faire Linux,Odoo Community Association (OCA)",
     'maintainer': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',

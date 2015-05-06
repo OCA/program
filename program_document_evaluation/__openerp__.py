@@ -22,7 +22,7 @@
 
 {
     'name': 'Program Document - Evaluation Bindings',
-    'version': '0.4',
+    'version': '1.10',
     'category': 'Program',
     'summary': "Evaluation bindings for Program Document",
     'license': 'AGPL-3',

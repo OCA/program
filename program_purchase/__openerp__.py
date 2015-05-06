@@ -22,7 +22,7 @@
 
 {
     'name': 'Program Purchase',
-    'version': '1.1',
+    'version': '1.10',
     'category': 'Program',
     'summary': 'Purchase bindings to Results',
     'description': '''
@@ -39,8 +39,11 @@ Contributors
     'license': 'AGPL-3',
     'depends': [
         'program_budget',
+        'account_payment',
+        'purchase',
     ],
     'data': [
+        'security/ir.model.access.csv',
         'program_crossovered_budget_summary_view.xml',
         'program_result_view.xml',
         'program_result_level_view.xml',

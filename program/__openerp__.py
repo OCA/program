@@ -22,7 +22,7 @@
 
 {
     'name': 'Program',
-    'version': '1.7',
+    'version': '1.10',
     'category': 'Program',
     'summary': 'Results Based Management',
     'description': '''
@@ -59,7 +59,6 @@ Contributors
     'demo': [
         'program_result_level_demo.xml',
         'program_result_demo.xml',
-        'program_result_validation_spec_demo.xml',
     ],
     'auto_install': False,
     'installable': True,

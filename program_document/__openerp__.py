@@ -22,7 +22,7 @@
 
 {
     'name': 'Program Document',
-    'version': '0.4',
+    'version': '1.10',
     'category': 'Program',
     'summary': "Manage program's documents",
     'license': 'AGPL-3',
@@ -35,7 +35,8 @@ Manage program's documents.
 Contributors
 ------------
 
-* Joao Alfredo Gama Batista (joao.gama@savoirfairelinux.com)
+* Joao Alfredo Gama Batista <joao.gama@savoirfairelinux.com>
+* Sandy Carter <sandy.carter@savoirfairelinux.com>
 ''',
     'author': "Savoir-faire Linux,Odoo Community Association (OCA)",
     'website': 'http://www.savoirfairelinux.com',
@@ -45,6 +46,7 @@ Contributors
         'document_multiple_records'
     ],
     'data': [
+        'security/ir.model.access.csv',
         'program_result_view.xml',
         'program_result_level_view.xml',
     ],

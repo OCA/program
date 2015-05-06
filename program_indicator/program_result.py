@@ -20,7 +20,22 @@
 #
 ##############################################################################
 
+import re
+
 from openerp.osv import fields, orm
+
+
+RE_GROUP_FROM = [
+    re.compile(r"\[\('state', '!=', 'draft'\)\]"),
+    re.compile(
+        r"\[\[&quot;state&quot;, &quot;!=&quot;, &quot;draft&quot;\]\]"
+    ),
+]
+RE_GROUP_TO = [
+    "[('state', 'not in', ('draft', 'validated'))]",
+    "[[&quot;state&quot;, &quot;not in&quot;, "
+    "[&quot;draft&quot;, &quot;validated&quot;]]]",
+]
 
 
 class program_result(orm.Model):
@@ -32,3 +47,29 @@ class program_result(orm.Model):
             'program.result.indicator', 'result_id', 'Result Indicator',
         ),
     }
+
+    def fields_view_get(
+            self, cr, user, view_id=None, view_type='form', context=None,
+            toolbar=False, submenu=False):
+        """Give access to Coordinator for write in validated of fields which
+        are normally not editable by other groups.
+
+        This allows this user to do corrections after validation.
+
+        Look for the strings "[('state', '!=', 'draft')]"
+        exactly in the xml view and replace it with
+        "[('state', 'not in', ('draft', 'validated'))]"
+        """
+
+        res = super(program_result, self).fields_view_get(
+            cr, user, view_id, view_type, context, toolbar, submenu
+        )
+
+        if view_type == 'form':
+            user_pool = self.pool['res.users']
+            # Change the readonly fields depending on the groups
+            if user_pool.has_group(
+                    cr, user, 'program_indicator.group_program_coordinator'):
+                for FROM, TO in zip(RE_GROUP_FROM, RE_GROUP_TO):
+                    res['arch'] = FROM.sub(TO, res['arch'])
+        return res

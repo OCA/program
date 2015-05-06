@@ -9,10 +9,6 @@
         <notebook>
 
           <page name="documents" string="Documents">
-            <button name="%(document_multiple_records.action_view_document)s"
-                    type="action"
-                    string="Add"
-                    class="oe_edit_only"/>
             <field name="document_ids">
               <tree>
                 <field name="name" string="Name"/>
