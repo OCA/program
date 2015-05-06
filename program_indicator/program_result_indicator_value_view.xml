@@ -19,19 +19,19 @@
                   type="workflow"
                   states="draft"
                   icon="gtk-apply"
-                  groups="program.group_program_basic_user"/>
+                  groups="program.group_program_director"/>
           <button name="signal_done"
                   string="Validate Value"
                   type="workflow"
                   states="validated"
                   icon="gtk-apply"
-                  groups="program.group_program_basic_user"/>
+                  groups="program.group_program_dpe"/>
           <button name="signal_cancel"
                   string="Erase Value"
                   type="workflow"
                   states="draft"
                   icon="gtk-cancel"
-                  groups="program.group_program_basic_user"/>
+                  groups="program.group_program_director"/>
         </tree>
 
       </field>
