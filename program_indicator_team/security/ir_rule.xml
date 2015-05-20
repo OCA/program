@@ -10,5 +10,12 @@
       <field name="perm_read" eval="0"/>
     </record>
 
+    <record id="program_indicator.rule_indicator_value_director" model="ir.rule">
+        <field name="domain_force">[
+        	('state', '=', 'draft'),
+        	('indicator_id.department_rule', '=', user),
+        ]</field>
+    </record>
+
   </data>
 </openerp>
