@@ -1,8 +1,8 @@
 # Translation of OpenERP Server.
 # This file contains the translation of the following modules:
-# * program_purchase_indicator
 # 
 # Translators:
+# Sandy Carter <bwrsandman@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: program (7.0)\n"
@@ -17,17 +17,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#. module: program_purchase_indicator
-#: field:program.result,result_indicator_ids2:0
-msgid "Indicators"
-msgstr "Indicateurs"
-
-#. module: program_purchase_indicator
-#: model:ir.model,name:program_purchase_indicator.model_program_result
+#. module: program_document_evaluation
+#: model:ir.model,name:program_document_evaluation.model_program_result
 msgid "Result"
 msgstr "Résultat"
-
-#. module: program_purchase_indicator
-#: view:program.result:0
-msgid "Progression"
-msgstr "Avancement"

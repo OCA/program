@@ -3,7 +3,6 @@
 # * program_budget_team
 # 
 # Translators:
-# Maxime Chambreuil <maxime.chambreuil@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: program (7.0)\n"
@@ -11,44 +10,44 @@ msgstr ""
 "POT-Creation-Date: 2015-07-25 00:56+0000\n"
 "PO-Revision-Date: 2015-05-17 16:56+0000\n"
 "Last-Translator: Maxime Chambreuil <maxime.chambreuil@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/oca/OCA-program-7-0/language/fr/)\n"
+"Language-Team: English (http://www.transifex.com/oca/OCA-program-7-0/language/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: program_budget_team
 #: field:program.result.team.partner,amount:0
 msgid "Amount company currency"
-msgstr "Total en devise de la companie"
+msgstr "Amount company currency"
 
 #. module: program_budget_team
 #: field:program.result,foreign_budget_total:0
 msgid "Total Foreign Budgets"
-msgstr ""
+msgstr "Total Foreign Budgets"
 
 #. module: program_budget_team
 #: field:program.result.team.partner,currency_id:0
 msgid "Currency"
-msgstr "Devise"
+msgstr "Currency"
 
 #. module: program_budget_team
 #: model:ir.model,name:program_budget_team.model_program_result
 msgid "Result"
-msgstr "Résultat"
+msgstr "Result"
 
 #. module: program_budget_team
 #: view:program.result.team.partner:0
 msgid "Team Roles"
-msgstr "Rôles d'équipe"
+msgstr "Team Roles"
 
 #. module: program_budget_team
 #: model:ir.model,name:program_budget_team.model_program_result_team_partner
 msgid "Team Partner"
-msgstr "Partenaire de l'équipe"
+msgstr "Team Partner"
 
 #. module: program_budget_team
 #: field:program.result.team.partner,contribution:0
 msgid "Contribution"
-msgstr "Contributions"
+msgstr "Contribution"
