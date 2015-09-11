@@ -22,7 +22,7 @@
 
 {
     'name': 'Program Budget',
-    'version': '1.10',
+    'version': '1.10.1',
     'author': "Savoir-faire Linux,Odoo Community Association (OCA)",
     'maintainer': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',
