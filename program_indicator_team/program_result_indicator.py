@@ -35,6 +35,7 @@ class program_indicator_result(orm.Model):
             'result_id',
             'department_id',
             type='many2one',
+            relation='hr.department',
             string='Department',
         ),
         'department_rule': fields.function(
