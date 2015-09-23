@@ -4,26 +4,6 @@
 Program
 =======
 
-program
--------
-
-program\_document
------------------
-
-Depends on document\_multiple\_records from [Knowledge](https://github.com/OCA/knowledge)
-
-program\_evaluation
--------------------
-
-program\_indicator
-------------------
-
-program\_result
----------------
-
-program\_team
--------------
-
 [//]: # (addons)
 Available addons
 ----------------
@@ -47,6 +27,7 @@ addon | version | summary
 [program_purchase_indicator](program_purchase_indicator/) | 1.10 | Team Bindings for Program Indicator
 [program_team](program_team/) | 1.10 | Team Management on RBM
 [program_travel](program_travel/) | 1.10 | Travel Bindings for Program Indicator
+
 [//]: # (end addons)
 
 Translation Status
