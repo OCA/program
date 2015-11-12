@@ -57,6 +57,7 @@ class account_analytic_account(orm.Model):
 
         Create the related result if this account is under
         the root program node"""
+        context = {} if context is None else context
 
         account_id = super(account_analytic_account, self).create(
             cr, uid, vals, context=context
