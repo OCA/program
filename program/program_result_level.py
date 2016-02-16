@@ -30,6 +30,7 @@ of a result.
 
 from openerp.osv import fields, orm
 from openerp.tools.translate import _
+from openerp.tools.safe_eval import safe_eval
 
 from .program_result import STATES
 
@@ -92,7 +93,7 @@ class program_result_level(orm.Model):
             data = action_pool.read(
                 cr, user, new_action_id, ['domain', 'context'], context=context
             )
-            domain = eval(data['domain'] or "[]")
+            domain = safe_eval(data['domain'] or "[]")
             overwritten_domain_fields = [
                 i[0] for i in additional_domain if len(i) == 3
             ]
@@ -101,7 +102,7 @@ class program_result_level(orm.Model):
                 if not (len(i) == 3 and i[0] in overwritten_domain_fields)
             ]
             domain += additional_domain or []
-            act_context = eval(data['context'] or "{}")
+            act_context = safe_eval(data['context'] or "{}")
             act_context.update(additional_context or {})
             action_pool.write(
                 cr, user, new_action_id, {
