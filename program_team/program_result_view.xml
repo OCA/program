@@ -20,21 +20,29 @@
             <group colspan="4" col="2">
               <field name="team_department_ids">
                 <tree editable="bottom">
-                  <field name="department_id"/>
+                  <field name="department_id"
+                         options="{'create': false, 'create_edit': false}"/>
                     <button name="action_department_form_view"
                             type="object"
                             icon="gtk-open"/>
-                  <field name="role_id" domain="[('is_department', '=', True)]" context="{'default_is_department': True}"/>
+                  <field name="role_id"
+                         domain="[('is_department', '=', True)]"
+                         context="{'default_is_department': True}"
+                         options="{'create': false, 'create_edit': false}"/>
                 </tree>
               </field>
 
               <field name="team_member_ids">
                 <tree editable="bottom">
-                  <field name="employee_id"/>
+                  <field name="employee_id"
+                         options="{'create': false, 'create_edit': false}"/>
                   <button name="action_member_form_view"
                           type="object"
                           icon="gtk-open"/>
-                  <field name="role_id" domain="[('is_employee', '=', True)]"  context="{'default_is_employee': True}"/>
+                  <field name="role_id"
+                         domain="[('is_employee', '=', True)]"
+                         context="{'default_is_employee': True}"
+                         options="{'create': false, 'create_edit': false}"/>
                 </tree>
               </field>
 

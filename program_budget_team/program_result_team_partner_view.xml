@@ -28,6 +28,7 @@
 
         <field name="currency_id" position="attributes">
           <attribute name="invisible">0</attribute>
+          <attribute name="options">{'create': false, 'create_edit': false}</attribute>
         </field>
 
         <field name="amount" position="attributes">
