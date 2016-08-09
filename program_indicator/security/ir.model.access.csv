@@ -1,3 +1,5 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
 access_result_indicator,access_result_indicator,model_program_result_indicator,program.group_program_basic_user,1,1,1,0
 access_result_indicator_value,access_result_indicator_value,model_program_result_indicator_value,program.group_program_basic_user,1,0,1,0
+access_result_indicator_value_director,access_result_indicator_value_director,model_program_result_indicator_value,program.group_program_director,1,1,1,0
+access_result_indicator_value_dpe,access_result_indicator_value_dpe,model_program_result_indicator_value,program.group_program_dpe,1,1,1,0

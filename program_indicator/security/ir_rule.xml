@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+
+    <record id="rule_indicator_value_director" model="ir.rule">
+        <field name="name">Program Indicator Value Director</field>
+        <field model="ir.model" name="model_id" ref="model_program_result_indicator_value"/>
+        <field name="domain_force">[('state', '=', 'draft')]</field>
+        <field name="groups" eval="[(4, ref('program.group_program_director'))]"/>
+        <field name="perm_read" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="rule_indicator_value_dpe" model="ir.rule">
+        <field name="name">Program Indicator Value DPE</field>
+        <field model="ir.model" name="model_id" ref="model_program_result_indicator_value"/>
+        <field name="domain_force">[('state', '=', 'validated')]</field>
+        <field name="groups" eval="[(4, ref('program.group_program_dpe'))]"/>
+        <field name="perm_read" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="rule_indicator_value_manager" model="ir.rule">
+        <field name="name">Program Indicator Value Manager</field>
+        <field model="ir.model" name="model_id" ref="model_program_result_indicator_value"/>
+        <field name="domain_force">[]</field>
+        <field name="groups" eval="[(4, ref('program.group_program_manager'))]"/>
+        <field name="perm_read" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+  </data>
+</openerp>
