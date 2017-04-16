@@ -24,6 +24,7 @@ from openerp.osv import fields, orm
 
 
 class program_result(orm.Model):
+
     """Model Program Document"""
 
     _description = __doc__

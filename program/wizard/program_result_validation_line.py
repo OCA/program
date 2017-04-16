@@ -26,6 +26,7 @@ from .. import _get_mapping_general, _get_wizard_validatable
 
 
 class program_result_validation_line(orm.TransientModel):
+
     """Form to mass-validate results based on their
     states and user's group rights
     """

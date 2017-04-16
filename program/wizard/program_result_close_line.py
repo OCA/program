@@ -26,6 +26,7 @@ from .. import _get_mapping_general, _get_wizard_validatable
 
 
 class program_result_close_line(orm.TransientModel):
+
     """Form to mass-close results based on their
     states and user's group rights
     """

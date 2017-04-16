@@ -26,6 +26,7 @@ from ..program_result import STATES
 
 
 class program_result_close(orm.TransientModel):
+
     """Form to mass-close results based on their
     states and user's group rights
     """
