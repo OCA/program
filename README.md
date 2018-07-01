@@ -5,11 +5,12 @@ Program
 =======
 
 [//]: # (addons)
+
 Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
-[program](program/) | 1.10 | Results Based Management
+[program](program/) | 7.0.1.10.1 | Results Based Management
 [program_budget](program_budget/) | 1.10.1 | Account Budget bindings to Results
 [program_budget_team](program_budget_team/) | 1.10 | Team Budget bindings to Results Budget
 [program_document](program_document/) | 1.10 | Manage program's documents
